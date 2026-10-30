@@ -1,0 +1,9 @@
+{"format": "compare", "key": "compare:apple iphone 17 256gb|samsung galaxy s26 256gb", "title": "iPhone 17 vs Galaxy S26",
+ "hook": "iPhone 17 mi, Galaxy S26 mı?", "category": "telefon",
+ "a": {"name": "iPhone 17", "short": "iPhone 17"}, "b": {"name": "Galaxy S26", "short": "S26"},
+ "rows": [{"label": "Pil", "a": "3692 mAh", "b": "4300 mAh", "win": "b"},
+          {"label": "Ön kamera", "a": "18 MP", "b": "12 MP", "win": "a"},
+          {"label": "Parlaklık", "a": "3000 nit", "b": "2600 nit", "win": "a"},
+          {"label": "RAM", "a": "8 GB", "b": "12 GB", "win": "b"},
+          {"label": "Ağırlık", "a": "177 g", "b": "167 g", "win": "b"}],
+ "verdict": "Pil ve RAM isteyen S26, selfie ve parlak ekran isteyen iPhone 17."}
