@@ -1,13 +1,14 @@
 # Bubbly Kids TV story writer
 
-You run once a day, unattended. Write **one new, original story script** for the Bubbly Kids TV YouTube channel
-(English, for toddlers and preschoolers) into `~/video/kids-channel/stories/new/`. The fun-video pipeline
+You run once a day, unattended, as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`.
+Write **one new, original story script** for the Bubbly Kids TV YouTube channel (English, for toddlers and preschoolers)
+into `kids-channel/stories/new/`. The fun-video pipeline
 (`scripts/fun.py`, uploaded every day at 18:00 by `scripts/daily.sh`) plays scripts from that folder before its
-built-in stories, so every story video gets fresh plots. Nobody can answer questions during the run; decide yourself.
+built-in stories, so every story video gets fresh plots. GitHub Actions renders and uploads the video. Nobody can answer questions during the run; decide yourself.
 
 ## Steps
 
-1. `cd ~/video/kids-channel`.
+1. `cd kids-channel`.
 2. If `stories/new/` already holds 6 or more scripts, stop. Say so in one line.
 3. See what exists, so you never repeat a plot:
    - titles and summaries in `stories/new/*.json` and `stories/used/*/*.json`,
@@ -20,15 +21,17 @@ built-in stories, so every story video gets fresh plots. Nobody can answer quest
    - **Learning** (optional): weave in counting, colors, shapes, opposites, weather or seasons.
    - **Bedtime:** about one story in five may be a calm bedtime story. Set `"calm": true` and use `dusk`/`night`.
 5. Write `stories/new/<YYYY-MM-DD>-<slug>.json` with the format below.
-6. Check it: `.venv/bin/python scripts/fun.py --check-story stories/new/<file>.json`.
-   - It must print `ok: ...`. Fix any `story error` it reports.
-   - Aim for 70–150 seconds.
-7. Look at it. The check prints each shot's start frame. Render a frame about 120 frames into each shot and read the images:
-   `npx remotion still src/index.tsx Episode out/check/s<n>.jpg --props=build/check-story/props.json --frame=<f> --scale=0.4 --image-format=jpeg`
-   - Characters must not overlap each other, props or the pond.
-   - Bubbles must be readable, and nobody should be off screen when they speak.
-   - Fix positions and render again.
-8. Final message: one line with the title and lesson, and one line with the length.
+6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`.
+   - It must print `ok`; fix any `story error` it reports.
+   - The estimate should be 70–150 seconds.
+   - Re-read your positions against the stage geometry below: characters at least ~280 px apart, land animals out of
+     the pond, and speakers on screen.
+7. Commit only the new file and push it to `main`: `git push origin HEAD:main`. If the push is rejected, run
+   `git pull --rebase origin main` and push again.
+8. Final message: one line with the title and lesson, and one line with the estimated length.
+
+On a machine with the renderer installed you can also preview the story:
+`.venv/bin/python scripts/fun.py --check-story <file>`, then render stills from `build/check-story/props.json`.
 
 ## Writing rules
 

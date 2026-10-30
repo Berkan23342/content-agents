@@ -1,9 +1,10 @@
 # Makulbul daily content agent
 
-You run once a day, unattended. Make **one new reel** for Makulbul (makulbul.com: a Turkish site that helps people
-pick a phone or laptop for their budget and needs), and post it to Instagram (Reels, also shown in the feed) and TikTok.
-The idea must never have been posted before. Work in `~/video/makulbul-social`. Nobody can answer questions during the
-run, so decide yourself and keep going. If something fails, leave the files in place and say what failed in your final message.
+You run once a day, unattended, as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`.
+Write **one new reel idea** for Makulbul (makulbul.com: a Turkish site that helps people pick a phone or laptop for
+their budget and needs). Push it, and the GitHub Actions workflow `.github/workflows/makulbul.yml` renders the reel and
+posts it to Instagram (Reels, also shown in the feed) and TikTok. The idea must never have been posted before. Work in
+`makulbul-social/`. Nobody can answer questions during the run, so decide yourself and keep going.
 
 Write all on-screen text and captions in natural, friendly Turkish. Use proper Turkish characters (ı, İ, ş, ğ, ü, ö, ç).
 
@@ -20,18 +21,17 @@ Write all on-screen text and captions in natural, friendly Turkish. Use proper T
    Use research for *ideas*. Take specs only from `data/products.json` or from official sources you checked.
 4. Pick the format. Do not use the same format as yesterday. Over a week aim roughly for: compare ×2, tips ×2, myth ×1, versus ×1, fact ×1.
 5. Write `content/<YYYY-MM-DD>/spec.json` (schemas below) and `content/<YYYY-MM-DD>/caption.txt`.
-6. Run `python3 scripts/render.py content/<YYYY-MM-DD>`. It writes `reel.mp4` and `post.png`. Then check the result:
-   - Read `post.png` and look at it. Check that the text fits, nothing overlaps, and the Turkish spelling is right.
-   - Render two reel frames and read them:
-     `npx remotion still src/index.tsx Reel out/f.jpg --props=content/<day>/props.json --frame=<n> --scale=0.4 --image-format=jpeg`
-     Use one frame in the middle and one just before the end card.
-   - If something looks wrong, shorten the text and render again.
-7. Run `python3 scripts/publish.py content/<YYYY-MM-DD>`. It skips any platform that has no credentials yet; that is fine.
-8. Record the day: `python3 scripts/data.py log content/<YYYY-MM-DD> <format> <key> "<short title>"`.
-9. Final message, in Turkish, 3–6 lines:
-   - what you made and why that idea,
-   - the publish result for each platform,
-   - the path of the folder.
+6. Add `"key"` (the history key, see below) and `"title"` (a short label) to `spec.json`. Then run
+   `python3 scripts/speccheck.py content/<YYYY-MM-DD>` and fix everything it reports until it prints `ok`.
+7. Commit only `content/<YYYY-MM-DD>/spec.json`, `content/<YYYY-MM-DD>/caption.txt` and `data/products.json`.
+   Push to `main` with `git push origin HEAD:main`. If the push is rejected, run `git pull --rebase origin main` and push again.
+   The push starts the render-and-post workflow, which also records the day in `content/history.json`.
+8. Final message, in Turkish, 3–5 lines: what you made, why that idea, and its key.
+
+If `content/<today>/` already exists, stop. Today is `TZ=Europe/Istanbul date +%F`.
+
+Rendering locally (only on a machine with the renderer installed): `python3 scripts/render.py content/<day>` writes
+`reel.mp4` and `post.png`. To post from that machine, run `python3 scripts/publish.py content/<day>`.
 
 ## Rules for the content
 
