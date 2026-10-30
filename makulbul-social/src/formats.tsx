@@ -111,7 +111,7 @@ const Compare: React.FC<{s: Extract<Spec, {format: 'compare'}>; still?: boolean}
 					);
 				})}
 			</div>
-			<div style={{position: 'absolute', top: still ? 480 : s.category === 'laptop' ? 850 : 905, left: 70, right: 70, display: 'flex', flexDirection: 'column', gap: 16}}>
+			<div style={{position: 'absolute', top: still ? 480 : s.category === 'laptop' ? 840 : 890, left: 70, right: 70, display: 'flex', flexDirection: 'column', gap: still ? 16 : 12}}>
 				{s.rows.map((r, i) => {
 					const at = rowsAt + i * 42;
 					if (!still && frame < at) return null;
@@ -128,7 +128,7 @@ const Compare: React.FC<{s: Extract<Spec, {format: 'compare'}>; still?: boolean}
 					};
 					return (
 						<Rise key={i} at={still ? -99 : at} dist={40}>
-							<Card style={{display: 'flex', alignItems: 'center', padding: '22px 34px', gap: 20}}>
+							<Card style={{display: 'flex', alignItems: 'center', padding: still ? '22px 34px' : '18px 34px', gap: 20}}>
 								{cell('a')}
 								<div style={{fontFamily: BODY, fontWeight: 700, fontSize: 34, color: C.text, textAlign: 'center', minWidth: 230}}>{r.label}</div>
 								{cell('b')}
