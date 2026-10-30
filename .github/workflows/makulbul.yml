@@ -1,0 +1,88 @@
+# Makulbul: when the daily agent pushes content/<day>/spec.json, render the reel and post it to Instagram and TikTok.
+name: Makulbul post
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "makulbul-social/content/*/spec.json"
+      - "makulbul-social/content/*/caption.txt"
+  workflow_dispatch:
+
+concurrency:
+  group: makulbul
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: makulbul-social
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: makulbul-social/package-lock.json
+
+      - name: System packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fluidsynth fonts-noto-color-emoji
+          sudo apt-get install -y -qq libnss3 libgbm1 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libpango-1.0-0 libcairo2 || true
+
+      - name: Restore soundfont
+        uses: actions/cache@v4
+        with:
+          path: kids-channel/assets/soundfont/GeneralUser-GS.sf2
+          key: soundfont-v1
+
+      - name: Download soundfont (first run only)
+        working-directory: kids-channel
+        run: |
+          mkdir -p assets/soundfont
+          [ -f assets/soundfont/GeneralUser-GS.sf2 ] || curl -sSfL -o assets/soundfont/GeneralUser-GS.sf2 https://raw.githubusercontent.com/mrbumpy409/GeneralUser-GS/main/GeneralUser-GS.sf2
+
+      - run: npm ci
+
+      - name: Platform credentials
+        env:
+          INSTAGRAM: ${{ secrets.INSTAGRAM_JSON }}
+          TIKTOK: ${{ secrets.TIKTOK_JSON }}
+        run: |
+          mkdir -p secrets
+          [ -z "$INSTAGRAM" ] || printf '%s' "$INSTAGRAM" > secrets/instagram.json
+          [ -z "$TIKTOK" ] || printf '%s' "$TIKTOK" > secrets/tiktok.json
+
+      - name: Render and publish
+        run: python3 scripts/ci_post.py
+
+      - name: Keep the reel and post for 30 days (for posting by hand)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: makulbul-${{ github.run_id }}
+          path: |
+            makulbul-social/content/*/reel.mp4
+            makulbul-social/content/*/post.png
+            makulbul-social/content/*/caption.txt
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Save state (published.json, history)
+        if: always()
+        run: |
+          rm -rf secrets
+          git config user.name "content-bot"
+          git config user.email "content-bot@users.noreply.github.com"
+          git add content
+          git diff --cached --quiet && exit 0
+          git commit -q -m "makulbul: posted $(TZ=Europe/Istanbul date +%F)"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done

@@ -3,8 +3,8 @@
 You run once a day, unattended, as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`.
 Write **one new, original story script** for the Bubbly Kids TV YouTube channel (English, for toddlers and preschoolers)
 into `kids-channel/stories/new/`. The fun-video pipeline
-(`scripts/fun.py`, uploaded every day at 18:00 by `scripts/daily.sh`) plays scripts from that folder before its
-built-in stories, so every story video gets fresh plots. GitHub Actions renders and uploads the video. Nobody can answer questions during the run; decide yourself.
+(`scripts/fun.py`, rendered and uploaded every day at 18:00 by `.github/workflows/kids-video.yml`) plays scripts from that folder before its
+built-in stories, so every story video gets fresh plots. Nobody can answer questions during the run; decide yourself.
 
 ## Steps
 
