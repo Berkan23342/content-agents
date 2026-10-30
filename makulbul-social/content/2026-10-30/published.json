@@ -1,0 +1,10 @@
+{
+ "instagram": {
+  "status": "skipped",
+  "reason": "secrets/instagram.json yok"
+ },
+ "tiktok": {
+  "status": "skipped",
+  "reason": "secrets/tiktok.json yok"
+ }
+}
