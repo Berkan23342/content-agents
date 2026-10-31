@@ -1,5 +1,5 @@
 # Bubbly Kids TV: renders and uploads the daily videos, no Mac needed.
-# YouTube publishes them at 10:00 (learning) and 18:00 (fun) Istanbul time.
+# YouTube publishes them at 10:00 (learning), 13:00 (Short), 18:00 (fun) and 21:00 (Short) Istanbul time.
 name: Kids video
 
 on:
@@ -18,7 +18,7 @@ on:
     inputs:
       kind:
         type: choice
-        options: [auto, learn, fun]
+        options: [auto, learn, fun, short1, short2]
         default: auto
       upload:
         description: Upload to YouTube (off = render only, the video is kept as an artifact)

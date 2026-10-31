@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition, registerRoot} from 'remotion';
 import {Episode, EpisodeProps, EpisodeThumbnail} from './Episode';
 import {Logo} from './Brand';
+import {Short, ShortProps} from './Short';
 
 // Real props come from build/<date>/props.json via `--props`; this is only a Studio placeholder.
 const placeholder: EpisodeProps = {
@@ -10,6 +11,8 @@ const placeholder: EpisodeProps = {
 	scenes: [{type: 'intro', from: 0, duration: 150, title: ['Learn Colors', '& Numbers!'], heroes: []}],
 	thumb: {title: ['Learn Colors', '& Numbers!'], heroes: []},
 };
+
+const shortPlaceholder: ShortProps = {durationInFrames: 150, audio: '', bg: 'day', header: 'Guess the Shadow', scenes: []};
 
 const Root: React.FC = () => (
 	<>
@@ -22,6 +25,16 @@ const Root: React.FC = () => (
 			fps={30}
 			width={1920}
 			height={1080}
+		/>
+		<Composition
+			id="Short"
+			component={Short}
+			defaultProps={shortPlaceholder}
+			calculateMetadata={({props}) => ({durationInFrames: props.durationInFrames})}
+			durationInFrames={150}
+			fps={30}
+			width={1080}
+			height={1920}
 		/>
 		<Composition id="Thumbnail" component={EpisodeThumbnail} defaultProps={placeholder} durationInFrames={1} fps={30} width={1920} height={1080} />
 		<Composition id="Logo" component={Logo} durationInFrames={1} fps={30} width={800} height={800} />

@@ -423,7 +423,7 @@ export const Scenery: React.FC<{bg: Bg; tint: string | null}> = ({bg, tint}) => 
 	);
 };
 
-const Confetti: React.FC<{x: number; y: number; at: number; count?: number; spread?: number}> = ({x, y, at, count = 36, spread = 1}) => {
+export const Confetti: React.FC<{x: number; y: number; at: number; count?: number; spread?: number}> = ({x, y, at, count = 36, spread = 1}) => {
 	const frame = useCurrentFrame();
 	const t = frame - at;
 	if (t < 0 || t > 70) return null;
@@ -571,7 +571,7 @@ const Dust: React.FC<{x: number; y: number; d: number}> = ({x, y, d}) => {
 };
 
 /** Slowly turning sunburst. */
-const Rays: React.FC<{x: number; y: number; r: number; color: string; opacity: number; frame: number; count?: number}> = ({
+export const Rays: React.FC<{x: number; y: number; r: number; color: string; opacity: number; frame: number; count?: number}> = ({
 	x,
 	y,
 	r,
@@ -711,7 +711,7 @@ export const StoryScene: React.FC<{scene: Extract<FunScene, {type: 'story'}>}> =
 	);
 };
 
-const Shards: React.FC<{x: number; y: number; at: number; color: string}> = ({x, y, at, color}) => {
+export const Shards: React.FC<{x: number; y: number; at: number; color: string}> = ({x, y, at, color}) => {
 	const frame = useCurrentFrame();
 	const t = frame - at;
 	if (t < 0 || t > 50) return null;
