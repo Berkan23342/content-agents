@@ -9,7 +9,9 @@ built-in stories, so every story video gets fresh plots. Nobody can answer quest
 ## Steps
 
 1. `cd kids-channel`.
-2. If `stories/new/` already holds 6 or more scripts, stop. Say so in one line.
+2. If `stories/new/` already holds 8 or more scripts, do not write a story. Instead write the current date and time
+   into `stories/new/.heartbeat`, commit only that file and push it to `main` (step 7). Every push to `stories/new/`
+   starts the video job, so the push matters even without a new story.
 3. See what exists, so you never repeat a plot:
    - titles and summaries in `stories/new/*.json` and `stories/used/*/*.json`,
    - the built-in plots: lost balloon, sharing food, rainy day with umbrella, tortoise-and-hare race, bedtime on the farm.
