@@ -609,6 +609,7 @@ def outro(b, bg, top):
     start = b.t
     b.chapters.append((start, "Bye bye!"))
     b.sfx.append((start + 0.3, "ding"))
+    b.sfx.append((start + 0.5, "cheer"))
     d = b.say(start + 0.3, f"{top} Thank you for watching Bubbly Kids TV!")
     bye_at = 0.3 + d + 0.35
     d2 = b.say(start + bye_at, "Bye bye! See you next time!")
@@ -1020,11 +1021,12 @@ def main():
     wav_rel = write_audio(b, work, name)
     props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb}
     write_json(work, props, {"title": meta["title"][:100], "description": description(b, meta, ep_no), "tags": meta["tags"]})
-    used = os.path.join(STORY_DIR, "used", a.date)
-    for path, _ in SCRIPTS[:STORY_SIZES[size][0]]:
-        if os.path.dirname(path) != used:
-            os.makedirs(used, exist_ok=True)
-            os.rename(path, os.path.join(used, os.path.basename(path)))
+    if kind == "story":  # archive the scripts this video used
+        used = os.path.join(STORY_DIR, "used", a.date)
+        for path, _ in SCRIPTS[:STORY_SIZES[size][0]]:
+            if os.path.dirname(path) != used:
+                os.makedirs(used, exist_ok=True)
+                os.rename(path, os.path.join(used, os.path.basename(path)))
     print(f"fun {kind} {ep_no} {a.date}: {b.t:.1f}s, {len(b.scenes)} scenes, {len(b.voices)} lines")
 
 
