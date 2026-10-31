@@ -47,7 +47,10 @@ jobs:
       KIND: ${{ github.event_name == 'workflow_dispatch' && inputs.kind || 'auto' }}
       UPLOAD: ${{ github.event_name != 'workflow_dispatch' || inputs.upload }}
     steps:
+      # latest main, not the commit that triggered the run: an earlier queued run may have uploaded meanwhile
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: What is due
         id: due

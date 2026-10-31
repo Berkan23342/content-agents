@@ -24,7 +24,10 @@ jobs:
       run:
         working-directory: makulbul-social
     steps:
+      # latest main, not the commit that triggered the run: an earlier queued run may have uploaded meanwhile
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
