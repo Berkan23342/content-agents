@@ -25,6 +25,8 @@ import wave
 
 import numpy as np
 
+import audio
+
 SR = 44100
 FPS = 30
 VOICE = os.environ.get("VOICE", "af_heart")
@@ -155,40 +157,43 @@ def read_wav(path):
 _kokoro = None
 
 
+def kokoro_model():
+    """The full-precision model sounds cleaner; the int8 one is the small fallback."""
+    for name, tag in (("kokoro-v1.0.onnx", "fp32"), ("kokoro-v1.0.int8.onnx", "int8")):
+        if os.path.exists(os.path.join(KOKORO, name)):
+            return name, tag
+    raise SystemExit("no Kokoro model in assets/kokoro")
+
+
 def tts(text, voice=None, speed=SPEED, pitch=1.0):
-    """Mono narration clip at SR, cached on disk by text. pitch > 1 raises pitch and tempo together."""
+    """Processed mono narration clip at SR (see audio.voice), with the raw TTS cached on disk by text.
+    pitch > 1 raises pitch and tempo together (cartoon voices)."""
     global _kokoro
     voice = voice or VOICE
-    cache = os.path.join(BUILD, "tts-cache", voice)
+    model, tag = kokoro_model()
+    cache = os.path.join(BUILD, "tts-cache", tag, voice)
     os.makedirs(cache, exist_ok=True)
     key = hashlib.sha1(f"{speed}|{text}".encode()).hexdigest()[:16]
     wav = os.path.join(cache, f"{key}.wav")
+    import soundfile as sf
+
     if not os.path.exists(wav):
-        import soundfile as sf
         from kokoro_onnx import Kokoro
 
         if _kokoro is None:
-            _kokoro = Kokoro(os.path.join(KOKORO, "kokoro-v1.0.int8.onnx"), os.path.join(KOKORO, "voices-v1.0.bin"))
+            _kokoro = Kokoro(os.path.join(KOKORO, model), os.path.join(KOKORO, "voices-v1.0.bin"))
         samples, sr = _kokoro.create(text, voice=voice, speed=speed, lang="en-gb" if voice.startswith("b") else "en-us")
-        raw = wav + ".raw.wav"
-        sf.write(raw, samples, sr, subtype="PCM_16")
-        if shutil.which("afconvert"):
-            subprocess.run(["afconvert", "-f", "WAVE", "-d", f"LEI16@{SR}", "-c", "1", raw, wav], check=True)
-        else:  # Linux (GitHub Actions)
-            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", raw, "-ar", str(SR), "-ac", "1", "-c:a", "pcm_s16le", wav], check=True)
-        os.remove(raw)
-    data = read_wav(wav)[:, 0]
-    loud = np.where(np.abs(data) > 0.01)[0]
-    data = data[max(loud[0] - 200, 0): loud[-1] + 1500]
-    if pitch != 1.0:
-        data = np.interp(np.arange(0, len(data) - 1, pitch), np.arange(len(data)), data).astype(np.float32)
-    return data
+        sf.write(wav + ".tmp.wav", samples, sr, subtype="FLOAT")
+        os.replace(wav + ".tmp.wav", wav)
+    data, sr = sf.read(wav, dtype="float32")
+    return audio.voice(data, sr, pitch)
 
 
 class Midi:
-    def __init__(self, bpm):
+    def __init__(self, bpm, humanize=True):
         self.bpm = bpm
         self.events = []
+        self.rng = random.Random(bpm) if humanize else None
 
     def tick(self, sec):
         return round(sec * 480 * self.bpm / 60)
@@ -200,6 +205,10 @@ class Midi:
         self.events.append((0, 0, bytes([0xB0 | ch, cc, val])))
 
     def note(self, ch, pitch, sec, length, vel):
+        if self.rng:  # a player is never perfectly even
+            vel = max(1, min(127, vel + self.rng.randint(-7, 7)))
+            if ch != DRUMS:
+                sec = max(0.0, sec + self.rng.uniform(-0.008, 0.008))
         self.events.append((self.tick(sec), 2, bytes([0x90 | ch, pitch, vel])))
         self.events.append((self.tick(sec + length), 1, bytes([0x80 | ch, pitch, 0])))
 
@@ -225,7 +234,10 @@ class Midi:
 
 def render_midi(midi, path_base, gain=0.6):
     midi.save(path_base + ".mid")
-    subprocess.run(["fluidsynth", "-ni", "-q", "-g", str(gain), "-r", str(SR), "-F", path_base + ".wav", SOUNDFONT, path_base + ".mid"], check=True)
+    subprocess.run(["fluidsynth", "-ni", "-q", "-g", str(gain), "-r", str(SR),
+                    "-o", "synth.reverb.active=1", "-o", "synth.reverb.room-size=0.55", "-o", "synth.reverb.damp=0.4",
+                    "-o", "synth.reverb.width=0.9", "-o", "synth.reverb.level=0.55", "-o", "synth.chorus.active=1",
+                    "-o", "synth.chorus.level=1.2", "-F", path_base + ".wav", SOUNDFONT, path_base + ".mid"], check=True)
     return read_wav(path_base + ".wav")
 
 
@@ -253,6 +265,8 @@ def song_audio(name, length_s, lead_offset, work, style="gentle"):
         vols = ((0, 100), (1, 80), (2, 90), (DRUMS, 70))
     for ch, vol in vols:
         m.control(ch, 7, vol)
+    for ch, pan in ((0, 64), (1, 38), (2, 64), (3, 92), (DRUMS, 64)):
+        m.control(ch, 10, pan)
     t, loop = 0.0, 0
     while t < length_s + 1:
         m.program(0, leads[(loop + lead_offset) % len(leads)], t)
@@ -303,43 +317,6 @@ def song_audio(name, length_s, lead_offset, work, style="gentle"):
     n = int(length_s * SR)
     audio = np.pad(audio, ((0, max(0, n - len(audio))), (0, 0)))[:n]
     return audio / (np.max(np.abs(audio)) + 1e-9)
-
-
-def sfx_audio(events, work):
-    m = Midi(120)
-    m.program(3, HARP)
-    m.program(4, GLOCK)
-    m.program(5, TIMPANI)
-    m.control(3, 7, 90)
-    m.control(4, 7, 70)
-    for at, kind in events:
-        if kind == "whoop":
-            for i, p in enumerate([67, 72, 76, 79, 84]):
-                m.note(3, p, at + i * 0.05, 0.6, 55)
-        elif kind == "pop":
-            m.note(4, 84, at, 0.3, 55)
-            m.note(4, 91, at + 0.09, 0.4, 50)
-        elif kind == "tick":
-            m.note(4, 88, at, 0.25, 45)
-        elif kind == "ding":
-            for p in (84, 88, 91, 96):
-                m.note(4, p, at, 1.2, 50)
-        elif kind == "sparkle":
-            for i, p in enumerate([84, 88, 91, 96, 100]):
-                m.note(4, p, at + i * 0.07, 0.5, 45)
-        elif kind == "whoosh":
-            for i, p in enumerate(range(96, 60, -3)):
-                m.note(3, p, at + i * 0.025, 0.4, 50)
-        elif kind == "boing":
-            m.note(DRUMS, 76, at, 0.1, 70)
-            m.note(DRUMS, 77, at + 0.12, 0.1, 60)
-        elif kind == "thunder":
-            for i in range(14):
-                m.note(5, 36 if i % 2 else 38, at + i * 0.07, 0.3, max(30, 100 - i * 5))
-        elif kind == "splash":
-            m.note(DRUMS, 55, at, 0.6, 60)
-            m.note(DRUMS, 49, at + 0.05, 0.8, 40)
-    return render_midi(m, os.path.join(work, "sfx"))
 
 
 # ---------------------------------------------------------------- episode builder
@@ -566,6 +543,7 @@ def build(day: dt.date, sizes):
     start = b.t
     b.chapters.append((start, "Bye bye!"))
     b.sfx.append((start + 0.3, "ding"))
+    b.sfx.append((start + 0.5, "cheer"))
     d = b.say(start + 0.3, "Great job today! You are so smart!")
     bye_at = 0.3 + d + 0.35
     d2 = b.say(start + bye_at, "Bye bye! See you tomorrow!")
@@ -577,7 +555,11 @@ def build(day: dt.date, sizes):
     return b, order, summary, ep_no
 
 
-def mix(b: Builder, work):
+MUSIC_LEVEL = 3.2  # music bus gain on top of b.music_gain (kids channels keep the music up front)
+DUCK_DEPTH = 0.3  # how far the music dips under speech (0 = not at all, 1 = silent)
+
+
+def mix(b: Builder, work, music_level=None, duck_depth=None):
     total = b.t
     n = int(total * SR)
     xf = int(0.6 * SR)
@@ -599,22 +581,21 @@ def mix(b: Builder, work):
         i = int(at * SR)
         j = min(n, i + len(clip))
         voice[i:j] += clip[: j - i]
-    fx = sfx_audio(b.sfx, work)
-    fx = np.pad(fx, ((0, max(0, n - len(fx))), (0, 0)))[:n]
+    fx = audio.render_sfx(b.sfx, n)
 
-    active = (np.abs(voice) > 0.005).astype(np.float32)
-    win = int(0.25 * SR)
-    active = np.convolve(active, np.ones(win) / win, mode="same") > 0.02
-    duck = np.where(active, 0.45, 1.0)
-    k = int(0.15 * SR)
-    duck = np.convolve(duck, np.ones(k) / k, mode="same")
+    # music dips under speech: fast attack, slow release, so it breathes back between lines
+    speaking = audio.envelope(voice, SR, attack=0.05, release=0.45)
+    duck = 1.0 - (DUCK_DEPTH if duck_depth is None else duck_depth) * np.clip(speaking / 0.05, 0, 1)
     fade = np.minimum(1, (n - np.arange(n)) / (2.5 * SR))
     for ms, me in b.mutes:
         i0, i1 = int(ms * SR), int(me * SR)
         fade[i0:i1] = 0
         fade[max(0, i0 - 400):i0] *= np.linspace(1, 0, min(400, i0))
-    out = music * (b.music_gain * duck * fade)[:, None] + voice[:, None] * 0.9 + fx * 0.5
-    return out / np.max(np.abs(out)) * 0.9
+    music = audio.highpass(music, SR, 40)
+    music = audio.eq(music, SR, "peak", 3000, -2.5, 0.7)  # leave room for the voice
+    level = MUSIC_LEVEL if music_level is None else music_level
+    out = music * (b.music_gain * level * duck * fade)[:, None] + voice[:, None] * 0.9 + fx * 0.55
+    return audio.master(out, SR)
 
 
 def fmt(sec):

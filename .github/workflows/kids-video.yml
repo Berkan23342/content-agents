@@ -85,14 +85,15 @@ jobs:
           path: |
             kids-channel/assets/kokoro
             kids-channel/assets/soundfont/GeneralUser-GS.sf2
-          key: assets-v1
+          key: assets-v2
 
       - name: Download models and soundfont (first run only)
         if: steps.due.outputs.todo != ''
         run: |
           mkdir -p assets/kokoro assets/soundfont
           base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
-          [ -f assets/kokoro/kokoro-v1.0.int8.onnx ] || curl -sSfL -o assets/kokoro/kokoro-v1.0.int8.onnx $base/kokoro-v1.0.int8.onnx
+          # full-precision voice model (cleaner narration than the int8 one)
+          [ -f assets/kokoro/kokoro-v1.0.onnx ] || curl -sSfL -o assets/kokoro/kokoro-v1.0.onnx $base/kokoro-v1.0.onnx
           [ -f assets/kokoro/voices-v1.0.bin ] || curl -sSfL -o assets/kokoro/voices-v1.0.bin $base/voices-v1.0.bin
           [ -f assets/soundfont/GeneralUser-GS.sf2 ] || curl -sSfL -o assets/soundfont/GeneralUser-GS.sf2 https://raw.githubusercontent.com/mrbumpy409/GeneralUser-GS/main/GeneralUser-GS.sf2
 
@@ -101,8 +102,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: kids-channel/build/tts-cache
-          key: tts-${{ github.run_id }}
-          restore-keys: tts-
+          key: tts2-${{ github.run_id }}
+          restore-keys: tts2-
 
       - if: steps.due.outputs.todo != ''
         run: npm ci

@@ -6,3 +6,5 @@ google-auth==2.62.0
 google-auth-oauthlib==1.5.0
 google-auth-httplib2==0.4.4
 httplib2==0.32.1
+scipy>=1.14
+pyloudnorm==0.2.0
