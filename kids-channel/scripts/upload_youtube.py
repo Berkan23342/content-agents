@@ -30,6 +30,7 @@ SECRETS = os.path.join(ROOT, "secrets")
 CLIENT = os.path.join(SECRETS, "client_secret.json")
 TOKEN = os.path.join(SECRETS, "token.json")
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+READONLY = "https://www.googleapis.com/auth/youtube.readonly"  # only in tokens made with --sign-in
 EDUCATION = "27"
 
 
@@ -40,8 +41,8 @@ def notify(message: str):
         print(message)
 
 
-def credentials(client=CLIENT, token=TOKEN) -> Credentials:
-    creds = Credentials.from_authorized_user_file(token, SCOPES) if os.path.exists(token) else None
+def credentials(client=CLIENT, token=TOKEN, scopes=SCOPES) -> Credentials:
+    creds = Credentials.from_authorized_user_file(token, scopes) if os.path.exists(token) else None
     if creds and creds.expired and creds.refresh_token:
         try:
             creds.refresh(Request())
@@ -49,7 +50,7 @@ def credentials(client=CLIENT, token=TOKEN) -> Credentials:
             creds = None
     if not creds or not creds.valid:
         notify("YouTube girişi gerekiyor: açılan tarayıcı sayfasında izin verin.")
-        flow = InstalledAppFlow.from_client_secrets_file(client, SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file(client, scopes)
         creds = flow.run_local_server(port=0, timeout_seconds=3 * 3600)
         if not creds:
             raise SystemExit("sign-in timed out")
@@ -123,10 +124,12 @@ def main():
     p.add_argument("--token", default=TOKEN, help="token of the channel to upload to (default secrets/token.json)")
     p.add_argument("--general-audience", action="store_true", help="not made for kids (other channels)")
     p.add_argument("--sign-in", action="store_true", help="only sign in and save --token, then stop")
+    p.add_argument("--expect-channel", help="upload only if the token belongs to this channel id (token made with --sign-in)")
     a = p.parse_args()
-    if a.sign_in:
-        credentials(a.client, a.token)
-        print(f"saved {a.token}")
+    if a.sign_in:  # read-only access too, so the token can tell which channel it belongs to
+        creds = credentials(a.client, a.token, SCOPES + [READONLY])
+        me = build("youtube", "v3", credentials=creds).channels().list(part="snippet", mine=True).execute()["items"][0]
+        print(f"saved {a.token} for channel {me['snippet']['title']} ({me['id']})")
         return
     if a.meta:
         meta = json.load(open(a.meta))
@@ -135,8 +138,12 @@ def main():
         title = a.title
         description = open(a.description_file).read() if a.description_file else ""
         tags = [t.strip() for t in a.tags.split(",") if t.strip()]
-    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at,
-                      credentials(a.client, a.token), not a.general_audience)
+    creds = credentials(a.client, a.token, SCOPES + [READONLY] if a.expect_channel else SCOPES)
+    if a.expect_channel:
+        mine = build("youtube", "v3", credentials=creds).channels().list(part="id", mine=True).execute()["items"][0]["id"]
+        if mine != a.expect_channel:
+            raise SystemExit(f"the token belongs to channel {mine}, not {a.expect_channel}: not uploading")
+    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at, creds, not a.general_audience)
     if a.log:
         with open(a.log, "a") as fh:
             fh.write(f"{os.path.basename(a.video)} https://youtu.be/{video_id}\n")

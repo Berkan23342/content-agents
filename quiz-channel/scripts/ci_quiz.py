@@ -19,6 +19,7 @@ TZ = ZoneInfo("Europe/Istanbul")
 PUBLISH_AT = {"q1": dt.time(19, 0), "q2": dt.time(23, 30)}
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
+CHANNEL = "UCyuNuzwYO9UgNt5GP0UqePg"  # Brain Snack Quiz; the uploader refuses a token for any other channel
 
 
 def uploaded(vid):
@@ -55,7 +56,7 @@ def make(q, date, upload):
         return
     publish = dt.datetime.combine(dt.date.fromisoformat(date), PUBLISH_AT[q], TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
-            "--client", "secrets/client_secret.json", "--token", TOKEN]
+            "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]
     if publish - dt.datetime.now(TZ) > dt.timedelta(minutes=15):
         args += ["--publish-at", publish.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
     else:
