@@ -1,0 +1,56 @@
+{
+  "type": "trivia",
+  "title": "Food Quiz",
+  "questions": [
+    {
+      "q": "Which country is the home of pizza?",
+      "options": [
+        "Italy",
+        "France",
+        "Greece",
+        "Spain"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What is the main ingredient in guacamole?",
+      "options": [
+        "Tomato",
+        "Avocado",
+        "Lime",
+        "Pea"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Which nut is used to make marzipan?",
+      "options": [
+        "Peanut",
+        "Cashew",
+        "Almond",
+        "Walnut"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "What is sushi often wrapped in?",
+      "options": [
+        "Rice paper",
+        "Lettuce",
+        "Seaweed",
+        "Tofu"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Which spice is the most expensive by weight?",
+      "options": [
+        "Saffron",
+        "Vanilla",
+        "Cinnamon",
+        "Pepper"
+      ],
+      "answer": 0
+    }
+  ]
+}

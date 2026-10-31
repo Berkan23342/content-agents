@@ -1,0 +1,31 @@
+{
+  "type": "truefalse",
+  "title": "Animal Facts",
+  "questions": [
+    {
+      "q": "A group of flamingos is called a flamboyance.",
+      "answer": true,
+      "note": "Yes! A flamboyance of flamingos."
+    },
+    {
+      "q": "Bats are blind.",
+      "answer": false,
+      "note": "Bats can see, and many also use echoes."
+    },
+    {
+      "q": "An ostrich's eye is bigger than its brain.",
+      "answer": true,
+      "note": "Each eye is about 5 cm wide!"
+    },
+    {
+      "q": "Goldfish only have a three-second memory.",
+      "answer": false,
+      "note": "Goldfish can remember things for months."
+    },
+    {
+      "q": "Sloths can hold their breath longer than dolphins.",
+      "answer": true,
+      "note": "Sloths can hold it for up to 40 minutes!"
+    }
+  ]
+}

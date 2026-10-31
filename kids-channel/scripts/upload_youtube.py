@@ -40,8 +40,8 @@ def notify(message: str):
         print(message)
 
 
-def credentials() -> Credentials:
-    creds = Credentials.from_authorized_user_file(TOKEN, SCOPES) if os.path.exists(TOKEN) else None
+def credentials(client=CLIENT, token=TOKEN) -> Credentials:
+    creds = Credentials.from_authorized_user_file(token, SCOPES) if os.path.exists(token) else None
     if creds and creds.expired and creds.refresh_token:
         try:
             creds.refresh(Request())
@@ -49,18 +49,18 @@ def credentials() -> Credentials:
             creds = None
     if not creds or not creds.valid:
         notify("YouTube girişi gerekiyor: açılan tarayıcı sayfasında izin verin.")
-        flow = InstalledAppFlow.from_client_secrets_file(CLIENT, SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file(client, SCOPES)
         creds = flow.run_local_server(port=0, timeout_seconds=3 * 3600)
         if not creds:
             raise SystemExit("sign-in timed out")
-    with open(TOKEN, "w") as fh:
+    with open(token, "w") as fh:
         fh.write(creds.to_json())
     return creds
 
 
-def upload(video, title, description, tags, thumbnail=None, privacy="private", publish_at=None):
-    youtube = build("youtube", "v3", credentials=credentials())
-    status = {"privacyStatus": privacy, "selfDeclaredMadeForKids": True}
+def upload(video, title, description, tags, thumbnail=None, privacy="private", publish_at=None, creds=None, for_kids=True):
+    youtube = build("youtube", "v3", credentials=creds or credentials())
+    status = {"privacyStatus": privacy, "selfDeclaredMadeForKids": for_kids}
     if publish_at:  # scheduled publishing only works on private videos
         status.update(privacyStatus="private", publishAt=publish_at)
     body = {
@@ -110,7 +110,7 @@ def upload(video, title, description, tags, thumbnail=None, privacy="private", p
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--video", required=True)
+    p.add_argument("--video")
     p.add_argument("--meta", help="JSON with title, description and tags (from scripts/episode.py)")
     p.add_argument("--title")
     p.add_argument("--description-file")
@@ -119,7 +119,15 @@ def main():
     p.add_argument("--privacy", choices=["private", "unlisted", "public"], default="private")
     p.add_argument("--publish-at", help="RFC 3339 time, e.g. 2026-11-01T16:00:00Z")
     p.add_argument("--log", help="append '<video> <url>' to this file after uploading")
+    p.add_argument("--client", default=CLIENT, help="OAuth client file (default secrets/client_secret.json)")
+    p.add_argument("--token", default=TOKEN, help="token of the channel to upload to (default secrets/token.json)")
+    p.add_argument("--general-audience", action="store_true", help="not made for kids (other channels)")
+    p.add_argument("--sign-in", action="store_true", help="only sign in and save --token, then stop")
     a = p.parse_args()
+    if a.sign_in:
+        credentials(a.client, a.token)
+        print(f"saved {a.token}")
+        return
     if a.meta:
         meta = json.load(open(a.meta))
         title, description, tags = meta["title"], meta["description"], meta["tags"]
@@ -127,7 +135,8 @@ def main():
         title = a.title
         description = open(a.description_file).read() if a.description_file else ""
         tags = [t.strip() for t in a.tags.split(",") if t.strip()]
-    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at)
+    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at,
+                      credentials(a.client, a.token), not a.general_audience)
     if a.log:
         with open(a.log, "a") as fh:
             fh.write(f"{os.path.basename(a.video)} https://youtu.be/{video_id}\n")

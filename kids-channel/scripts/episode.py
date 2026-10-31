@@ -565,7 +565,8 @@ def mix(b: Builder, work, music_level=None, duck_depth=None):
     xf = int(0.6 * SR)
     music = np.zeros((n, 2), dtype=np.float32)
     for i, (s, e, song, *style) in enumerate(b.music):
-        a = song_audio(song, e - s + 0.6, i, work, *style)
+        # a song name from SONGS, or a function (length_s, work) -> stereo music for other channels' own tracks
+        a = song(e - s + 0.6, work) if callable(song) else song_audio(song, e - s + 0.6, i, work, *style)
         i0 = int(s * SR)
         seg = a[: max(0, min(len(a), n - i0))]
         ramp = np.ones(len(seg), dtype=np.float32)

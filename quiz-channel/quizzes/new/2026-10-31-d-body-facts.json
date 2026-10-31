@@ -1,0 +1,31 @@
+{
+  "type": "truefalse",
+  "title": "Body Facts",
+  "questions": [
+    {
+      "q": "You only use 10% of your brain.",
+      "answer": false,
+      "note": "You use almost all of your brain."
+    },
+    {
+      "q": "Adults have more than 200 bones.",
+      "answer": true,
+      "note": "An adult skeleton has 206 bones."
+    },
+    {
+      "q": "Babies have more bones than adults.",
+      "answer": true,
+      "note": "About 300! Many join together later."
+    },
+    {
+      "q": "Your heart is on the far left of your chest.",
+      "answer": false,
+      "note": "It sits near the middle, tilted left."
+    },
+    {
+      "q": "Fingernails grow faster than toenails.",
+      "answer": true,
+      "note": "Fingernails grow about twice as fast."
+    }
+  ]
+}

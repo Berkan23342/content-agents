@@ -1,0 +1,56 @@
+{
+  "type": "trivia",
+  "title": "Geography Quiz",
+  "questions": [
+    {
+      "q": "What is the capital of France?",
+      "options": [
+        "Paris",
+        "Lyon",
+        "Rome",
+        "Madrid"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Which is the largest ocean on Earth?",
+      "options": [
+        "Atlantic",
+        "Indian",
+        "Arctic",
+        "Pacific"
+      ],
+      "answer": 3
+    },
+    {
+      "q": "On which continent is the Sahara Desert?",
+      "options": [
+        "Asia",
+        "Africa",
+        "Australia",
+        "South America"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What is the capital of Australia?",
+      "options": [
+        "Sydney",
+        "Melbourne",
+        "Canberra",
+        "Perth"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Which country has the most people?",
+      "options": [
+        "China",
+        "India",
+        "United States",
+        "Indonesia"
+      ],
+      "answer": 1
+    }
+  ]
+}

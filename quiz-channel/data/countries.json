@@ -1,0 +1,926 @@
+[
+{
+"code": "us",
+"name": "United States",
+"region": "americas",
+"level": 1
+},
+{
+"code": "gb",
+"name": "United Kingdom",
+"region": "europe",
+"level": 1
+},
+{
+"code": "jp",
+"name": "Japan",
+"region": "asia",
+"level": 1
+},
+{
+"code": "ca",
+"name": "Canada",
+"region": "americas",
+"level": 1
+},
+{
+"code": "br",
+"name": "Brazil",
+"region": "americas",
+"level": 1
+},
+{
+"code": "fr",
+"name": "France",
+"region": "europe",
+"level": 1
+},
+{
+"code": "de",
+"name": "Germany",
+"region": "europe",
+"level": 1
+},
+{
+"code": "it",
+"name": "Italy",
+"region": "europe",
+"level": 1
+},
+{
+"code": "es",
+"name": "Spain",
+"region": "europe",
+"level": 1
+},
+{
+"code": "cn",
+"name": "China",
+"region": "asia",
+"level": 1
+},
+{
+"code": "in",
+"name": "India",
+"region": "asia",
+"level": 1
+},
+{
+"code": "tr",
+"name": "Türkiye",
+"region": "europe",
+"level": 1
+},
+{
+"code": "mx",
+"name": "Mexico",
+"region": "americas",
+"level": 1
+},
+{
+"code": "kr",
+"name": "South Korea",
+"region": "asia",
+"level": 1
+},
+{
+"code": "au",
+"name": "Australia",
+"region": "oceania",
+"level": 1
+},
+{
+"code": "ru",
+"name": "Russia",
+"region": "europe",
+"level": 1
+},
+{
+"code": "ar",
+"name": "Argentina",
+"region": "americas",
+"level": 1
+},
+{
+"code": "ch",
+"name": "Switzerland",
+"region": "europe",
+"level": 1
+},
+{
+"code": "se",
+"name": "Sweden",
+"region": "europe",
+"level": 1
+},
+{
+"code": "gr",
+"name": "Greece",
+"region": "europe",
+"level": 1
+},
+{
+"code": "pt",
+"name": "Portugal",
+"region": "europe",
+"level": 1
+},
+{
+"code": "nl",
+"name": "Netherlands",
+"region": "europe",
+"level": 1
+},
+{
+"code": "ie",
+"name": "Ireland",
+"region": "europe",
+"level": 1
+},
+{
+"code": "eg",
+"name": "Egypt",
+"region": "africa",
+"level": 1
+},
+{
+"code": "za",
+"name": "South Africa",
+"region": "africa",
+"level": 1
+},
+{
+"code": "sa",
+"name": "Saudi Arabia",
+"region": "asia",
+"level": 1
+},
+{
+"code": "ua",
+"name": "Ukraine",
+"region": "europe",
+"level": 1
+},
+{
+"code": "no",
+"name": "Norway",
+"region": "europe",
+"level": 1
+},
+{
+"code": "fi",
+"name": "Finland",
+"region": "europe",
+"level": 1
+},
+{
+"code": "dk",
+"name": "Denmark",
+"region": "europe",
+"level": 1
+},
+{
+"code": "pl",
+"name": "Poland",
+"region": "europe",
+"level": 2
+},
+{
+"code": "be",
+"name": "Belgium",
+"region": "europe",
+"level": 2
+},
+{
+"code": "at",
+"name": "Austria",
+"region": "europe",
+"level": 2
+},
+{
+"code": "cz",
+"name": "Czechia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "hu",
+"name": "Hungary",
+"region": "europe",
+"level": 2
+},
+{
+"code": "ro",
+"name": "Romania",
+"region": "europe",
+"level": 2
+},
+{
+"code": "hr",
+"name": "Croatia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "bg",
+"name": "Bulgaria",
+"region": "europe",
+"level": 2
+},
+{
+"code": "is",
+"name": "Iceland",
+"region": "europe",
+"level": 2
+},
+{
+"code": "nz",
+"name": "New Zealand",
+"region": "oceania",
+"level": 2
+},
+{
+"code": "cl",
+"name": "Chile",
+"region": "americas",
+"level": 2
+},
+{
+"code": "co",
+"name": "Colombia",
+"region": "americas",
+"level": 2
+},
+{
+"code": "pe",
+"name": "Peru",
+"region": "americas",
+"level": 2
+},
+{
+"code": "ve",
+"name": "Venezuela",
+"region": "americas",
+"level": 2
+},
+{
+"code": "cu",
+"name": "Cuba",
+"region": "americas",
+"level": 2
+},
+{
+"code": "jm",
+"name": "Jamaica",
+"region": "americas",
+"level": 2
+},
+{
+"code": "uy",
+"name": "Uruguay",
+"region": "americas",
+"level": 2
+},
+{
+"code": "ng",
+"name": "Nigeria",
+"region": "africa",
+"level": 2
+},
+{
+"code": "ke",
+"name": "Kenya",
+"region": "africa",
+"level": 2
+},
+{
+"code": "ma",
+"name": "Morocco",
+"region": "africa",
+"level": 2
+},
+{
+"code": "dz",
+"name": "Algeria",
+"region": "africa",
+"level": 2
+},
+{
+"code": "tn",
+"name": "Tunisia",
+"region": "africa",
+"level": 2
+},
+{
+"code": "gh",
+"name": "Ghana",
+"region": "africa",
+"level": 2
+},
+{
+"code": "et",
+"name": "Ethiopia",
+"region": "africa",
+"level": 2
+},
+{
+"code": "th",
+"name": "Thailand",
+"region": "asia",
+"level": 2
+},
+{
+"code": "vn",
+"name": "Vietnam",
+"region": "asia",
+"level": 2
+},
+{
+"code": "id",
+"name": "Indonesia",
+"region": "asia",
+"level": 2
+},
+{
+"code": "my",
+"name": "Malaysia",
+"region": "asia",
+"level": 2
+},
+{
+"code": "ph",
+"name": "Philippines",
+"region": "asia",
+"level": 2
+},
+{
+"code": "sg",
+"name": "Singapore",
+"region": "asia",
+"level": 2
+},
+{
+"code": "pk",
+"name": "Pakistan",
+"region": "asia",
+"level": 2
+},
+{
+"code": "bd",
+"name": "Bangladesh",
+"region": "asia",
+"level": 2
+},
+{
+"code": "ae",
+"name": "United Arab Emirates",
+"region": "asia",
+"level": 2
+},
+{
+"code": "qa",
+"name": "Qatar",
+"region": "asia",
+"level": 2
+},
+{
+"code": "kz",
+"name": "Kazakhstan",
+"region": "asia",
+"level": 2
+},
+{
+"code": "az",
+"name": "Azerbaijan",
+"region": "asia",
+"level": 2
+},
+{
+"code": "ge",
+"name": "Georgia",
+"region": "asia",
+"level": 2
+},
+{
+"code": "ee",
+"name": "Estonia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "lv",
+"name": "Latvia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "lt",
+"name": "Lithuania",
+"region": "europe",
+"level": 2
+},
+{
+"code": "sk",
+"name": "Slovakia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "si",
+"name": "Slovenia",
+"region": "europe",
+"level": 2
+},
+{
+"code": "al",
+"name": "Albania",
+"region": "europe",
+"level": 2
+},
+{
+"code": "cy",
+"name": "Cyprus",
+"region": "europe",
+"level": 2
+},
+{
+"code": "mt",
+"name": "Malta",
+"region": "europe",
+"level": 2
+},
+{
+"code": "lu",
+"name": "Luxembourg",
+"region": "europe",
+"level": 2
+},
+{
+"code": "mc",
+"name": "Monaco",
+"region": "europe",
+"level": 2
+},
+{
+"code": "np",
+"name": "Nepal",
+"region": "asia",
+"level": 2
+},
+{
+"code": "lk",
+"name": "Sri Lanka",
+"region": "asia",
+"level": 2
+},
+{
+"code": "mn",
+"name": "Mongolia",
+"region": "asia",
+"level": 2
+},
+{
+"code": "bt",
+"name": "Bhutan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "kh",
+"name": "Cambodia",
+"region": "asia",
+"level": 3
+},
+{
+"code": "la",
+"name": "Laos",
+"region": "asia",
+"level": 3
+},
+{
+"code": "mm",
+"name": "Myanmar",
+"region": "asia",
+"level": 3
+},
+{
+"code": "bn",
+"name": "Brunei",
+"region": "asia",
+"level": 3
+},
+{
+"code": "uz",
+"name": "Uzbekistan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "kg",
+"name": "Kyrgyzstan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "tj",
+"name": "Tajikistan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "tm",
+"name": "Turkmenistan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "am",
+"name": "Armenia",
+"region": "asia",
+"level": 3
+},
+{
+"code": "md",
+"name": "Moldova",
+"region": "europe",
+"level": 3
+},
+{
+"code": "by",
+"name": "Belarus",
+"region": "europe",
+"level": 3
+},
+{
+"code": "me",
+"name": "Montenegro",
+"region": "europe",
+"level": 3
+},
+{
+"code": "mk",
+"name": "North Macedonia",
+"region": "europe",
+"level": 3
+},
+{
+"code": "ba",
+"name": "Bosnia and Herzegovina",
+"region": "europe",
+"level": 3
+},
+{
+"code": "ad",
+"name": "Andorra",
+"region": "europe",
+"level": 3
+},
+{
+"code": "li",
+"name": "Liechtenstein",
+"region": "europe",
+"level": 3
+},
+{
+"code": "sm",
+"name": "San Marino",
+"region": "europe",
+"level": 3
+},
+{
+"code": "om",
+"name": "Oman",
+"region": "asia",
+"level": 3
+},
+{
+"code": "jo",
+"name": "Jordan",
+"region": "asia",
+"level": 3
+},
+{
+"code": "lb",
+"name": "Lebanon",
+"region": "asia",
+"level": 3
+},
+{
+"code": "kw",
+"name": "Kuwait",
+"region": "asia",
+"level": 3
+},
+{
+"code": "bh",
+"name": "Bahrain",
+"region": "asia",
+"level": 3
+},
+{
+"code": "mv",
+"name": "Maldives",
+"region": "asia",
+"level": 3
+},
+{
+"code": "sc",
+"name": "Seychelles",
+"region": "africa",
+"level": 3
+},
+{
+"code": "mu",
+"name": "Mauritius",
+"region": "africa",
+"level": 3
+},
+{
+"code": "mg",
+"name": "Madagascar",
+"region": "africa",
+"level": 3
+},
+{
+"code": "mz",
+"name": "Mozambique",
+"region": "africa",
+"level": 3
+},
+{
+"code": "bw",
+"name": "Botswana",
+"region": "africa",
+"level": 3
+},
+{
+"code": "na",
+"name": "Namibia",
+"region": "africa",
+"level": 3
+},
+{
+"code": "zw",
+"name": "Zimbabwe",
+"region": "africa",
+"level": 3
+},
+{
+"code": "zm",
+"name": "Zambia",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ug",
+"name": "Uganda",
+"region": "africa",
+"level": 3
+},
+{
+"code": "rw",
+"name": "Rwanda",
+"region": "africa",
+"level": 3
+},
+{
+"code": "tz",
+"name": "Tanzania",
+"region": "africa",
+"level": 3
+},
+{
+"code": "sn",
+"name": "Senegal",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ml",
+"name": "Mali",
+"region": "africa",
+"level": 3
+},
+{
+"code": "td",
+"name": "Chad",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ci",
+"name": "Côte d'Ivoire",
+"region": "africa",
+"level": 3
+},
+{
+"code": "cm",
+"name": "Cameroon",
+"region": "africa",
+"level": 3
+},
+{
+"code": "gn",
+"name": "Guinea",
+"region": "africa",
+"level": 3
+},
+{
+"code": "bf",
+"name": "Burkina Faso",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ne",
+"name": "Niger",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ao",
+"name": "Angola",
+"region": "africa",
+"level": 3
+},
+{
+"code": "ga",
+"name": "Gabon",
+"region": "africa",
+"level": 3
+},
+{
+"code": "bj",
+"name": "Benin",
+"region": "africa",
+"level": 3
+},
+{
+"code": "tg",
+"name": "Togo",
+"region": "africa",
+"level": 3
+},
+{
+"code": "sl",
+"name": "Sierra Leone",
+"region": "africa",
+"level": 3
+},
+{
+"code": "lr",
+"name": "Liberia",
+"region": "africa",
+"level": 3
+},
+{
+"code": "cv",
+"name": "Cape Verde",
+"region": "africa",
+"level": 3
+},
+{
+"code": "gy",
+"name": "Guyana",
+"region": "americas",
+"level": 3
+},
+{
+"code": "sr",
+"name": "Suriname",
+"region": "americas",
+"level": 3
+},
+{
+"code": "bo",
+"name": "Bolivia",
+"region": "americas",
+"level": 3
+},
+{
+"code": "py",
+"name": "Paraguay",
+"region": "americas",
+"level": 3
+},
+{
+"code": "ec",
+"name": "Ecuador",
+"region": "americas",
+"level": 3
+},
+{
+"code": "bz",
+"name": "Belize",
+"region": "americas",
+"level": 3
+},
+{
+"code": "hn",
+"name": "Honduras",
+"region": "americas",
+"level": 3
+},
+{
+"code": "ni",
+"name": "Nicaragua",
+"region": "americas",
+"level": 3
+},
+{
+"code": "sv",
+"name": "El Salvador",
+"region": "americas",
+"level": 3
+},
+{
+"code": "gt",
+"name": "Guatemala",
+"region": "americas",
+"level": 3
+},
+{
+"code": "cr",
+"name": "Costa Rica",
+"region": "americas",
+"level": 3
+},
+{
+"code": "pa",
+"name": "Panama",
+"region": "americas",
+"level": 3
+},
+{
+"code": "do",
+"name": "Dominican Republic",
+"region": "americas",
+"level": 3
+},
+{
+"code": "ht",
+"name": "Haiti",
+"region": "americas",
+"level": 3
+},
+{
+"code": "tt",
+"name": "Trinidad and Tobago",
+"region": "americas",
+"level": 3
+},
+{
+"code": "bb",
+"name": "Barbados",
+"region": "americas",
+"level": 3
+},
+{
+"code": "bs",
+"name": "Bahamas",
+"region": "americas",
+"level": 3
+},
+{
+"code": "fj",
+"name": "Fiji",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "pg",
+"name": "Papua New Guinea",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "ws",
+"name": "Samoa",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "to",
+"name": "Tonga",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "vu",
+"name": "Vanuatu",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "sb",
+"name": "Solomon Islands",
+"region": "oceania",
+"level": 3
+},
+{
+"code": "ki",
+"name": "Kiribati",
+"region": "oceania",
+"level": 3
+}
+]

@@ -1,0 +1,56 @@
+{
+  "type": "trivia",
+  "title": "Animal Quiz",
+  "questions": [
+    {
+      "q": "What is the fastest land animal?",
+      "options": [
+        "Lion",
+        "Cheetah",
+        "Horse",
+        "Gazelle"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "How many legs does a spider have?",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What is the largest mammal in the world?",
+      "options": [
+        "Blue whale",
+        "Elephant",
+        "Giraffe",
+        "Orca"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Which animal is called the King of the Jungle?",
+      "options": [
+        "Tiger",
+        "Gorilla",
+        "Lion",
+        "Bear"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "How many hearts does an octopus have?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": 2
+    }
+  ]
+}

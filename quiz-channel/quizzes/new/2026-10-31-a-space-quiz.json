@@ -1,0 +1,56 @@
+{
+  "type": "trivia",
+  "title": "Space Quiz",
+  "questions": [
+    {
+      "q": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What is the largest planet in our solar system?",
+      "options": [
+        "Saturn",
+        "Neptune",
+        "Jupiter",
+        "Earth"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "How many planets are in our solar system?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "What is the closest star to Earth?",
+      "options": [
+        "The Sun",
+        "Sirius",
+        "Polaris",
+        "Alpha Centauri"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "What is the hottest planet in our solar system?",
+      "options": [
+        "Mercury",
+        "Venus",
+        "Mars",
+        "Jupiter"
+      ],
+      "answer": 1
+    }
+  ]
+}

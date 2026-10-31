@@ -1,0 +1,31 @@
+{
+  "type": "truefalse",
+  "title": "Food Facts",
+  "questions": [
+    {
+      "q": "Peanuts are nuts.",
+      "answer": false,
+      "note": "Peanuts are legumes, like beans and peas."
+    },
+    {
+      "q": "Honey can stay good for thousands of years.",
+      "answer": true,
+      "note": "Edible honey was found in ancient tombs."
+    },
+    {
+      "q": "Carrots have always been orange.",
+      "answer": false,
+      "note": "Early carrots were purple or yellow."
+    },
+    {
+      "q": "Bananas are berries.",
+      "answer": true,
+      "note": "Botanically, bananas count as berries."
+    },
+    {
+      "q": "Strawberries have their seeds on the outside.",
+      "answer": true,
+      "note": "About 200 tiny seeds on every berry!"
+    }
+  ]
+}

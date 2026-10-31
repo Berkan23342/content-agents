@@ -1,0 +1,31 @@
+{
+  "type": "truefalse",
+  "title": "Space Facts",
+  "questions": [
+    {
+      "q": "You can see the Great Wall of China from the Moon.",
+      "answer": false,
+      "note": "It is far too thin to see from the Moon."
+    },
+    {
+      "q": "The Sun is a star.",
+      "answer": true,
+      "note": "It's the closest star to Earth."
+    },
+    {
+      "q": "A day on Venus is longer than its year.",
+      "answer": true,
+      "note": "Venus spins very, very slowly."
+    },
+    {
+      "q": "There is no gravity in space.",
+      "answer": false,
+      "note": "Gravity is everywhere, even in orbit."
+    },
+    {
+      "q": "Footprints on the Moon can last for millions of years.",
+      "answer": true,
+      "note": "There is no wind on the Moon to blow them away."
+    }
+  ]
+}
