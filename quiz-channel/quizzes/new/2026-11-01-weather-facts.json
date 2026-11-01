@@ -1,0 +1,11 @@
+{
+  "type": "truefalse",
+  "title": "Weather Facts",
+  "questions": [
+    {"q": "Lightning can strike the same place twice.", "answer": true, "note": "Tall objects get struck again and again."},
+    {"q": "Thunder happens before lightning.", "answer": false, "note": "They happen together, but light travels faster."},
+    {"q": "Clouds are made of tiny water droplets.", "answer": true, "note": "Or tiny ice crystals, high up."},
+    {"q": "A rainbow is really a full circle.", "answer": true, "note": "From a plane you can see the whole circle."},
+    {"q": "Raindrops are shaped like teardrops.", "answer": false, "note": "Small drops are round, big ones look like buns."}
+  ]
+}
