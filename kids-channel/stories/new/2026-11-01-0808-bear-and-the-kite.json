@@ -1,0 +1,58 @@
+{
+  "title": "Bear and the Red Kite",
+  "lesson": "Trying again and not giving up",
+  "summary": "Bear's kite will not fly at first. With help from Bunny and Duck, Bear tries again and the kite soars.",
+  "cast": ["bear", "bunny", "duck"],
+  "calm": false,
+  "shots": [
+    {"bg": "park",
+     "actors": [{"name": "bear", "x": 600}],
+     "props": [{"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 800, "y": 830, "size": 170}],
+     "steps": [
+       {"say": "Once upon a time, a little bear got a new red kite."},
+       {"line": "bear", "text": "Grr, hooray! I will fly my kite up high.", "bubble": "Fly, kite, fly!", "act": "jump"},
+       {"prop_move": "kite", "x": 800, "y": 500, "dur": 0.8},
+       {"sfx": "whoosh"},
+       {"prop_move": "kite", "x": 800, "y": 830, "dur": 0.7},
+       {"sfx": "boing"},
+       {"say": "Oh no! The kite fell down, flop."},
+       {"line": "bear", "text": "Grr. It will not fly. I give up.", "bubble": "I give up.", "act": "shake"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "bear", "x": 600}],
+     "props": [{"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 800, "y": 830, "size": 170}],
+     "steps": [
+       {"say": "Then, hop, hop, hop! Bunny came by."},
+       {"enter": "bunny", "x": 1100, "side": "right", "speed": 600},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Hello, Bear! Why are you sad?", "bubble": "Why so sad?", "act": "wave"},
+       {"line": "bear", "text": "My kite will not fly. I tried one time.", "bubble": "I tried once."},
+       {"line": "bunny", "text": "Try again, Bear! Run, run, run!", "bubble": "Try again!", "act": "jump"},
+       {"prop_move": "kite", "x": 1000, "y": 550, "dur": 0.9},
+       {"sfx": "whoosh"},
+       {"prop_move": "kite", "x": 1000, "y": 830, "dur": 0.7},
+       {"say": "Flop! The kite fell down again."},
+       {"line": "bear", "text": "Grr. I tried two times.", "bubble": "I tried twice.", "act": "shake"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "bear", "x": 500}, {"name": "bunny", "x": 900}],
+     "props": [{"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 700, "y": 830, "size": 170}],
+     "steps": [
+       {"say": "Then, waddle, waddle! Duck came to help."},
+       {"enter": "duck", "x": 1350, "side": "right", "speed": 600},
+       {"arrive": "duck"},
+       {"line": "duck", "text": "Quack! Wait for the wind, then run.", "bubble": "Wait for wind!", "act": "wave"},
+       {"line": "bear", "text": "Grr. I will try one more time.", "bubble": "Try again!", "act": "jump"},
+       {"say": "They all waited. The wind went whoosh!"},
+       {"sfx": "whoosh"},
+       {"prop_move": "kite", "x": 900, "y": 250, "dur": 1.6},
+       {"sfx": "sparkle"},
+       {"act": "all", "kind": "spin"},
+       {"line": "bear", "text": "Grr, look! My kite is flying!", "bubble": "It is flying!", "act": "jump"},
+       {"line": "bunny", "text": "You tried again, and you did it!", "bubble": "You did it!"},
+       {"line": "duck", "text": "Quack! Never give up, Bear!", "bubble": "Never give up!"},
+       {"sfx": "whoop"},
+       {"say": "Three happy friends watched the red kite fly. The end!"}
+     ]}
+  ]
+}
