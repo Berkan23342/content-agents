@@ -36,9 +36,19 @@
      "arrive": "owl"
     },
     {
+     "say": "The night was soft and still. Even the crickets were quiet.",
+     "slow": true
+    },
+    {
      "line": "owl",
      "text": "Hoo hoo. I cannot sleep tonight.",
      "bubble": "I cannot sleep.",
+     "act": "shake"
+    },
+    {
+     "line": "owl",
+     "text": "I have tried and tried. My eyes stay open.",
+     "bubble": "Eyes stay open.",
      "act": "shake"
     },
     {
@@ -46,6 +56,12 @@
      "text": "Let us count the stars together.",
      "bubble": "Count the stars!",
      "act": "wave"
+    },
+    {
+     "line": "owl",
+     "text": "Oh yes, that sounds nice. Hoo hoo.",
+     "bubble": "That sounds nice.",
+     "act": "jump"
     }
    ]
   },
@@ -167,6 +183,12 @@
      "slow": true
     },
     {
+     "line": "turtle",
+     "text": "Breathe in slow. Breathe out slow. Look up high.",
+     "bubble": "Breathe slow.",
+     "act": "wave"
+    },
+    {
      "prop": "s4",
      "icon": "star",
      "color": "#FFC92E",
@@ -180,7 +202,7 @@
     },
     {
      "line": "turtle",
-     "text": "Four stars. Yawn.",
+     "text": "Four stars. Yawn. Twinkle, twinkle.",
      "bubble": "Four stars.",
      "act": "wave"
     },
@@ -272,6 +294,10 @@
      "text": "Good night, Owl. Sleep tight.",
      "bubble": "Good night, Owl.",
      "act": "sleep"
+    },
+    {
+     "say": "Turtle smiled. The stars twinkled softly all night long.",
+     "slow": true
     },
     {
      "say": "Counting is a calm way to get sleepy. Good night, everyone.",
