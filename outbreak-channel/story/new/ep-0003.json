@@ -1,0 +1,135 @@
+{
+  "episode": 3,
+  "day": 2,
+  "title": "Pier Four",
+  "ambience": "rain",
+  "summary": "The power dies, the phone loses signal, and an old radio gives them one way out: Pier Four, two miles away.",
+  "beats": [
+    {
+      "scene": "room",
+      "light": "off",
+      "guest": "okafor",
+      "dog": "sleep",
+      "tone": "dawn",
+      "text": "Day two. Whatever was behind the door left before sunrise.",
+      "hl": [
+        "left"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "off",
+      "guest": "okafor",
+      "dog": "sleep",
+      "tone": "dawn",
+      "cam": "left",
+      "text": "Mrs. Okafor slept on my couch. Biscuit slept on her feet."
+    },
+    {
+      "scene": "window",
+      "zombies": 9,
+      "tone": "dawn",
+      "rain": true,
+      "text": "In daylight I could count them. Nine on our block. Standing still. Waiting.",
+      "hl": [
+        "Nine"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "power": false,
+      "cans": 3,
+      "text": "At noon, the fridge stopped humming. The power was gone.",
+      "hl": [
+        "power"
+      ],
+      "sfx": [
+        "click@1.3"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "nosignal",
+      "battery": 40,
+      "lines": [
+        "Searching..."
+      ],
+      "cam": "still",
+      "text": "No signal. No news. Just my battery, at forty percent.",
+      "hl": [
+        "forty percent"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "items": [
+        "can:3",
+        "water:2",
+        "dogfood",
+        "flashlight",
+        "candle:4",
+        "radio"
+      ],
+      "cam": "pull",
+      "text": "Mrs. Okafor made a list. Food for three days. Water for two.",
+      "hl": [
+        "three",
+        "two"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "text": "Then she turned on her old radio. Static. Only static.",
+      "hl": [
+        "Static"
+      ],
+      "sfx": [
+        "static@0.3"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "Until a calm voice cut through. This is Harbor Station. Boats leave Pier Four at dawn.",
+      "hl": [
+        "Pier Four"
+      ],
+      "sfx": [
+        "static@0.1"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "cam": "pull",
+      "text": "The signal died. Mrs. Okafor looked at me. The next boat was in three days.",
+      "hl": [
+        "three days"
+      ],
+      "sfx": [
+        "static@0.2"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "text": "Pier Four is two miles away.",
+      "hl": [
+        "two miles"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "text": "And between us and the street, there are nine floors full of them.",
+      "hl": [
+        "nine floors"
+      ],
+      "sfx": [
+        "groan@1.0"
+      ]
+    }
+  ]
+}

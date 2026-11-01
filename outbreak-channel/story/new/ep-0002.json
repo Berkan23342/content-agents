@@ -1,0 +1,131 @@
+{
+  "episode": 2,
+  "day": 1,
+  "title": "Apartment 7B",
+  "ambience": "night",
+  "summary": "The voice belongs to Mrs. Okafor from 7B. She brings bad news about the stairs, and Biscuit growls at the door.",
+  "beats": [
+    {
+      "scene": "door",
+      "shadow": true,
+      "text": "Sam. It's me. Open the door. Please, quickly.",
+      "hl": [
+        "quickly"
+      ],
+      "sfx": [
+        "knock@2.4"
+      ]
+    },
+    {
+      "scene": "peephole",
+      "who": "okafor",
+      "text": "Through the peephole I saw Mrs. Okafor from 7B. Seventy-two years old. Barefoot.",
+      "hl": [
+        "Okafor"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "text": "Behind her, the hallway lights were flickering. And the stairwell door was open.",
+      "hl": [
+        "open"
+      ],
+      "sfx": [
+        "creak@1.8"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "alert",
+      "lines": [
+        "Stay indoors.",
+        "Lock your doors.",
+        "Do not open for anyone."
+      ],
+      "cam": "still",
+      "text": "The alert said do not open for anyone.",
+      "hl": [
+        "anyone"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "text": "But it was Mrs. Okafor. So I opened it.",
+      "hl": [
+        "opened"
+      ],
+      "sfx": [
+        "click@1.4",
+        "creak@1.9"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "okafor",
+      "dog": "sit",
+      "text": "She pushed past me and locked it herself. Two locks and the chain.",
+      "sfx": [
+        "click@2.0"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "okafor",
+      "dog": "sit",
+      "cam": "left",
+      "text": "She said the stairs were full of them, all the way down to four. She took the elevator up.",
+      "hl": [
+        "full of them"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "okafor",
+      "dog": "sit",
+      "text": "Then she asked one question. How much water do you have?",
+      "hl": [
+        "water"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "power": true,
+      "cans": 3,
+      "text": "Three cans of beans. Two bottles of water. Half a bag of dog food.",
+      "hl": [
+        "Three",
+        "Two"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "okafor",
+      "dog": "alert",
+      "text": "That's when Biscuit started growling at the door.",
+      "hl": [
+        "growling"
+      ],
+      "sfx": [
+        "heartbeat@0.4"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "push",
+      "text": "Low. Steady. At something on the other side.",
+      "hl": [
+        "other side"
+      ],
+      "sfx": [
+        "scratch@0.5",
+        "groan@1.8"
+      ]
+    }
+  ]
+}
