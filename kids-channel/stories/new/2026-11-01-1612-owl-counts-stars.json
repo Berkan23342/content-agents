@@ -1,0 +1,287 @@
+{
+ "title": "Owl Counts the Stars",
+ "lesson": "Staying calm and counting helps you fall asleep",
+ "summary": "Owl cannot sleep, so Turtle counts five twinkling stars with her until she falls asleep.",
+ "cast": [
+  "turtle",
+  "owl"
+ ],
+ "calm": true,
+ "shots": [
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Once upon a time, the moon came up over the quiet hill.",
+     "slow": true
+    },
+    {
+     "say": "Little Turtle was walking home. Slow, slow, slow.",
+     "slow": true
+    },
+    {
+     "enter": "owl",
+     "x": 1200,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Hoo hoo. I cannot sleep tonight.",
+     "bubble": "I cannot sleep.",
+     "act": "shake"
+    },
+    {
+     "line": "turtle",
+     "text": "Let us count the stars together.",
+     "bubble": "Count the stars!",
+     "act": "wave"
+    }
+   ]
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    },
+    {
+     "name": "owl",
+     "x": 1200
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "They looked up at the sky. One little star came out.",
+     "slow": true
+    },
+    {
+     "prop": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 300,
+     "size": 120,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "owl",
+     "text": "One star. Hoo hoo.",
+     "bubble": "One star.",
+     "act": "wave"
+    },
+    {
+     "prop": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 830,
+     "y": 300,
+     "size": 120,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "turtle",
+     "text": "Two stars. Yawn.",
+     "bubble": "Two stars.",
+     "act": "wave"
+    },
+    {
+     "prop": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 995,
+     "y": 300,
+     "size": 120,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "owl",
+     "text": "Three stars. Hoo hoo.",
+     "bubble": "Three stars.",
+     "act": "wave"
+    }
+   ]
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    },
+    {
+     "name": "owl",
+     "x": 1200
+    }
+   ],
+   "props": [
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 830,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 995,
+     "y": 300,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Two more stars twinkled. Twinkle, twinkle.",
+     "slow": true
+    },
+    {
+     "prop": "s4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1160,
+     "y": 300,
+     "size": 120,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "turtle",
+     "text": "Four stars. Yawn.",
+     "bubble": "Four stars.",
+     "act": "wave"
+    },
+    {
+     "prop": "s5",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1325,
+     "y": 300,
+     "size": 120,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "owl",
+     "text": "Five stars. Hoo... hoo...",
+     "bubble": "Five stars...",
+     "act": "wave"
+    },
+    {
+     "act": "owl",
+     "kind": "sleep"
+    },
+    {
+     "say": "Owl was so sleepy. Her eyes went closed.",
+     "slow": true
+    }
+   ]
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    },
+    {
+     "name": "owl",
+     "x": 1200
+    }
+   ],
+   "props": [
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 830,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 995,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1160,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "s5",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1325,
+     "y": 300,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "line": "turtle",
+     "text": "Good night, Owl. Sleep tight.",
+     "bubble": "Good night, Owl.",
+     "act": "sleep"
+    },
+    {
+     "say": "Counting is a calm way to get sleepy. Good night, everyone.",
+     "slow": true
+    },
+    {
+     "say": "The end!",
+     "slow": true
+    }
+   ]
+  }
+ ]
+}
