@@ -19,7 +19,7 @@ TZ = ZoneInfo("Europe/Istanbul")
 PUBLISH_AT = {"e1": (0, dt.time(20, 0)), "e2": (1, dt.time(3, 0))}  # (days after the date, time)
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
-CHANNEL = ""  # Outbreak Diary; the uploader refuses a token for any other channel
+CHANNEL = "UCtjcmQc9DV_sKh4_3UrToIQ"  # Outbreak Diary; the uploader refuses a token for any other channel
 
 
 def uploaded(vid):
