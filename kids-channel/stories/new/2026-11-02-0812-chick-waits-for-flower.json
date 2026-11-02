@@ -1,0 +1,57 @@
+{
+  "title": "Chick Waits for a Flower",
+  "lesson": "Patience: good things take time",
+  "summary": "Chick plants a seed with Cow and learns to wait until a yellow flower grows.",
+  "cast": ["chick", "cow", "bunny"],
+  "calm": false,
+  "shots": [
+    {"bg": "day",
+     "actors": [{"name": "chick", "x": 600}],
+     "props": [],
+     "steps": [
+       {"say": "Once upon a time, a little chick found a tiny seed."},
+       {"line": "chick", "text": "Peep, peep! I will plant my seed.", "bubble": "I will plant it!", "act": "jump"},
+       {"enter": "cow", "x": 1200, "side": "right", "speed": 600},
+       {"say": "Cow came to help."},
+       {"arrive": "cow"},
+       {"line": "cow", "text": "Moo! Dig a hole, then put the seed in.", "bubble": "Dig a hole!", "act": "wave"},
+       {"prop": "seed", "icon": "egg", "color": "#8B5A2B", "x": 900, "y": 830, "size": 90},
+       {"sfx": "pop"},
+       {"line": "chick", "text": "Now, grow, grow, grow!", "bubble": "Grow, grow!", "act": "spin"},
+       {"line": "cow", "text": "Moo. A seed needs time. We must wait.", "bubble": "We must wait", "act": "shake"},
+       {"pause": 0.6}
+     ]},
+    {"bg": "rain",
+     "actors": [{"name": "chick", "x": 600}, {"name": "cow", "x": 1250}],
+     "props": [{"id": "seed", "icon": "egg", "color": "#8B5A2B", "x": 920, "y": 830, "size": 90}],
+     "steps": [
+       {"say": "One day passed. Rain fell. Nothing grew yet."},
+       {"line": "chick", "text": "Peep. Is it ready yet?", "bubble": "Is it ready?", "act": "shake"},
+       {"line": "cow", "text": "Moo. Not yet. Let us wait.", "bubble": "Not yet", "act": "wave"},
+       {"say": "Two days passed. The sun peeked out. Still nothing grew."},
+       {"line": "chick", "text": "Peep. Is it ready yet?", "bubble": "Is it ready?", "act": "shake"},
+       {"line": "cow", "text": "Moo. Not yet. Let us wait.", "bubble": "Not yet", "act": "wave"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "day",
+     "actors": [{"name": "chick", "x": 600}, {"name": "cow", "x": 1250}],
+     "props": [{"id": "seed", "icon": "egg", "color": "#8B5A2B", "x": 920, "y": 830, "size": 90}],
+     "steps": [
+       {"say": "Three days passed. Chick sat down and waited quietly."},
+       {"hide": "seed"},
+       {"prop": "flower", "icon": "flower", "color": "#FFC92E", "x": 920, "y": 800, "size": 200},
+       {"sfx": "sparkle"},
+       {"say": "Look! A little green shoot, and then a yellow flower!"},
+       {"act": "all", "kind": "jump"},
+       {"line": "chick", "text": "Peep, peep! My flower grew!", "bubble": "My flower grew!", "act": "spin"},
+       {"enter": "bunny", "x": 1620, "side": "right", "speed": 700},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Oh, how pretty! Can I smell it?", "bubble": "How pretty!", "act": "wave"},
+       {"line": "chick", "text": "Yes! Waiting was worth it.", "bubble": "Worth the wait!", "act": "jump"},
+       {"act": "all", "kind": "spin"},
+       {"sfx": "ding"},
+       {"say": "Good things come to those who wait. The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
