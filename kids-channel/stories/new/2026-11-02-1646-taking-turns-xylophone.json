@@ -1,0 +1,66 @@
+{
+  "title": "Dog and Cat Take Turns",
+  "lesson": "Taking turns is fun for everyone",
+  "summary": "Dog and Cat both want to play the xylophone, until Pig shows them how to take turns.",
+  "cast": ["dog", "cat", "pig"],
+  "calm": false,
+  "shots": [
+    {"bg": "park",
+     "actors": [{"name": "dog", "x": 500}],
+     "props": [{"id": "xylo", "icon": "xylophone", "color": "#FF8A1F", "x": 960, "y": 800, "size": 260}],
+     "steps": [
+       {"say": "Once upon a time, Dog found a shiny xylophone in the park."},
+       {"line": "dog", "text": "Woof! I will play a song.", "bubble": "I will play!", "act": "jump"},
+       {"sfx": "ding"},
+       {"enter": "cat", "x": 1400, "side": "right", "speed": 650},
+       {"say": "Cat heard the music and came running."},
+       {"arrive": "cat"},
+       {"line": "cat", "text": "Meow! I want to play too!", "bubble": "Me too!", "act": "wave"},
+       {"line": "dog", "text": "Woof! No, it is my song!", "bubble": "It is mine!", "act": "shake"},
+       {"line": "cat", "text": "Meow! No, it is my song!", "bubble": "No, mine!", "act": "shake"},
+       {"say": "Oh no. Nobody played. The park was quiet."},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "dog", "x": 500}, {"name": "cat", "x": 1400}],
+     "props": [{"id": "xylo", "icon": "xylophone", "color": "#FF8A1F", "x": 960, "y": 800, "size": 260}],
+     "steps": [
+       {"say": "Then Pig trotted by with a big smile."},
+       {"enter": "pig", "x": 950, "side": "left", "speed": 600},
+       {"arrive": "pig"},
+       {"line": "pig", "text": "Oink! Why not take turns?", "bubble": "Take turns!", "act": "wave"},
+       {"line": "dog", "text": "Woof! What are turns?", "bubble": "What are turns?", "act": "shake"},
+       {"line": "pig", "text": "Oink! One plays, one listens. Then we swap.", "bubble": "Play, then swap", "act": "jump"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "dog", "x": 500}, {"name": "cat", "x": 1400}, {"name": "pig", "x": 950}],
+     "props": [{"id": "xylo", "icon": "xylophone", "color": "#FF8A1F", "x": 1180, "y": 800, "size": 260}],
+     "steps": [
+       {"say": "First, Dog played. One, two, three notes."},
+       {"sfx": "ding"},
+       {"sfx": "ding"},
+       {"sfx": "ding"},
+       {"line": "cat", "text": "Meow! Lovely. Now is it my turn?", "bubble": "My turn?", "act": "wave"},
+       {"line": "dog", "text": "Woof! Yes! Your turn, Cat.", "bubble": "Your turn!", "act": "jump"},
+       {"say": "Next, Cat played. One, two, three notes."},
+       {"sfx": "ding"},
+       {"sfx": "ding"},
+       {"sfx": "ding"},
+       {"line": "pig", "text": "Oink! Now Dog, then Cat. Take turns!", "bubble": "Take turns!", "act": "spin"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "dog", "x": 500}, {"name": "cat", "x": 1400}, {"name": "pig", "x": 950}],
+     "props": [{"id": "heart", "icon": "heart", "color": "#FF6FB5", "x": 950, "y": 300, "size": 160, "float": true}],
+     "steps": [
+       {"say": "Soon the whole park was full of happy music."},
+       {"act": "all", "kind": "jump"},
+       {"sfx": "sparkle"},
+       {"line": "dog", "text": "Woof! Taking turns is fun!", "bubble": "Turns are fun!", "act": "spin"},
+       {"line": "cat", "text": "Meow! Thank you, Pig. Thank you, Dog.", "bubble": "Thank you!", "act": "wave"},
+       {"say": "Everyone had a turn, and everyone was happy. The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
