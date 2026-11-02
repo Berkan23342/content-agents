@@ -29,7 +29,7 @@ GROUND = 900  # where the characters' feet touch the grass
 SIZE = 420  # full-body character height
 OFF_L, OFF_R = -260, 2180
 
-# name: (Kokoro voice, pitch lift, sound, colour). Only female voices: the user wants no male voices on the channel.
+# name: (Kokoro voice, pitch lift, sound, colour). Mostly female voices; the user wants only a few male ones.
 CAST = {
     "chick": ("af_bella", 1.25, "Cheep cheep!", "#FF8A1F"),
     "bunny": ("af_kore", 1.2, "Hop hop!", "#FF6FB5"),
@@ -40,10 +40,10 @@ CAST = {
     "frog": ("af_nova", 1.18, "Ribbit!", "#3CC75A"),
     "dog": ("af_jessica", 1.05, "Woof woof!", "#A0632F"),
     "cow": ("af_river", 0.96, "Moo!", "#2F8CFF"),
-    "lion": ("af_alloy", 0.93, "Roar!", "#E8962F"),
+    "lion": ("am_fenrir", 0.95, "Roar!", "#E8962F"),
     "owl": ("bf_lily", 1.0, "Hoo hoo!", "#A0632F"),
-    "turtle": ("bf_alice", 0.96, "Hello!", "#2F8F45"),
-    "bear": ("af_sky", 0.93, "Grrr!", "#9A6235"),
+    "turtle": ("bm_george", 0.97, "Hello!", "#2F8F45"),
+    "bear": ("am_fenrir", 1.02, "Grrr!", "#9A6235"),
 }
 
 # animals with a sound line, for eggs and shadows: icon, name, line, bubble, colour
