@@ -4,25 +4,31 @@ The channel runs several stories side by side; story/series.json lists them, eac
 The episode script comes from story/<series>/new/ (the lowest episode number first), written by the story writer
 routine (see AGENT.md and story/<series>/bible.md). After building, it moves to story/<series>/used/<date>/.
 Part N of a story is always Day N.
-Voice, mixing and the master come from the kids channel's scripts (kids-channel/scripts/episode.py and audio.py);
-the horror sounds and the score are in scripts/dread.py.
+The narrator (always a woman) and any characters who speak are voiced by Chatterbox (scripts/voice_cb.py, run in its
+own Python environment), copying the voices in voices/*.wav; mixing and the master come from the kids channel's scripts
+(kids-channel/scripts/episode.py and audio.py); the horror sounds and the score are in scripts/dread.py.
 
 Writes build/<id>/{props,meta}.json and public/audio/<id>.wav.
 Run with ../kids-channel/.venv/bin/python scripts/diary.py --series harbor-view --id 2026-11-02-e1 [--file ...] [--keep]
 """
 import argparse
 import glob
+import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
+import tempfile
 import wave
 
 import numpy as np
+import soundfile as sf
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts"))
 
+import audio  # noqa: E402
 from episode import SR, Builder, mix  # noqa: E402
 import dread  # noqa: E402,F401  (registers the horror sounds)
 from diarycheck import DiaryError, check_episode, sfx_name  # noqa: E402
@@ -31,9 +37,40 @@ BUILD = os.path.join(ROOT, "build")
 PUBLIC = os.path.join(ROOT, "public")
 STORY = os.path.join(ROOT, "story")
 SERIES = {s["id"]: s for s in json.load(open(os.path.join(STORY, "series.json")))}
+VOICES = os.path.join(ROOT, "voices")
+CB_PYTHON = os.environ.get("CB_PYTHON", os.path.join(ROOT, ".venv-cb", "bin", "python"))
+EXAGGERATION = 0.55  # Chatterbox: how dramatic the delivery is
+CFG = 0.45  # Chatterbox: lower is slower and more deliberate
 GAP = 0.35  # silence after each beat
 END_CARD = 2.8
 SHAKES = {"bang", "thud", "glass", "sting"}
+
+
+def voice_cache(voice, text):
+    key = hashlib.sha1(f"{EXAGGERATION}|{CFG}|{text}".encode()).hexdigest()[:16]
+    return os.path.join(BUILD, "cb-cache", voice, f"{key}.wav")
+
+
+def speak_all(lines):
+    """Makes every (voice, text) line that is not cached yet, in one Chatterbox run."""
+    jobs = []
+    for voice, text in dict.fromkeys(lines):
+        out = voice_cache(voice, text)
+        if not os.path.exists(out):
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            jobs.append({"text": text, "ref": os.path.join(VOICES, f"{voice}.wav"), "out": out,
+                         "exaggeration": EXAGGERATION, "cfg": CFG, "seed": 7})
+    if not jobs:
+        return
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fh:
+        json.dump(jobs, fh)
+    subprocess.run([CB_PYTHON, os.path.join(ROOT, "scripts", "voice_cb.py"), fh.name], check=True)
+    os.remove(fh.name)
+
+
+def clip(voice, text):
+    data, sr = sf.read(voice_cache(voice, text), dtype="float32")
+    return audio.voice(data, sr)
 
 
 def take_episode(series, vid):
@@ -46,7 +83,7 @@ def take_episode(series, vid):
     for path in glob.glob(os.path.join(STORY, series, "new", "*.json")):
         try:
             spec = json.load(open(path))
-            check_episode(spec)
+            check_episode(spec, SERIES[series]["cast"])
         except (DiaryError, json.JSONDecodeError) as e:
             print(f"skipping {os.path.basename(path)}: {e}")
             continue
@@ -56,7 +93,7 @@ def take_episode(series, vid):
     return min(waiting)[1]
 
 
-def chunks_for(text, hl, t0, t1, f):
+def chunks_for(text, hl, t0, t1, f, talk=False):
     """Splits a line into 1-3 word captions, timed by word length and punctuation across [t0, t1] seconds."""
     tokens = text.split()
     weights = []
@@ -78,13 +115,20 @@ def chunks_for(text, hl, t0, t1, f):
         until = edges[out[k + 1][0]] if k + 1 < len(out) else edges[idx[-1] + 1] + 0.3
         ws = [tokens[j] for j in idx]
         chunks.append({"words": ws, "hl": [re.sub(r"[^A-Za-z0-9']", "", w).lower() in marked for w in ws],
-                       "at": f(at), "until": f(until)})
+                       "at": f(at), "until": f(until), "talk": talk})
     return chunks
 
 
 def build(spec, series):
     b = Builder()
-    say = lambda at, text: b.say(at, text, voice=series["voice"], speed=series["speed"])  # noqa: E731
+    lines = [(beat.get("speaker", series["narrator"]), beat["text"]) for beat in spec["beats"]]
+    speak_all(lines)
+
+    def say(at, voice, text):
+        c = clip(voice, text)
+        b.voices.append((at, c))
+        return len(c) / SR
+
     beats, chunks = [], []
     b.sfx.append((0.05, "thud"))
     cur = 0.3
@@ -92,8 +136,9 @@ def build(spec, series):
     sting_at = None
     for i, beat in enumerate(spec["beats"]):
         start = cur
-        d = say(start + 0.1, beat["text"])
-        chunks += chunks_for(beat["text"], beat.get("hl", []), start + 0.12, start + 0.1 + d, b.f)
+        voice, text = lines[i]
+        d = say(start + 0.1, voice, text)
+        chunks += chunks_for(text, beat.get("hl", []), start + 0.12, start + 0.1 + d, b.f, "speaker" in beat)
         hits = []
         for s in beat.get("sfx", []):
             name = sfx_name(s)
@@ -110,7 +155,7 @@ def build(spec, series):
                 hits.append(b.f(sting_at - start))
             end = sting_at + 0.6 + END_CARD
         params = {k: v for k, v in beat.items() if k not in ("scene", "text", "hl", "sfx", "cam", "tone", "rain", "fog",
-                                                              "flashlight", "alarm", "hold")}
+                                                              "flashlight", "alarm", "hold", "speaker")}
         beats.append({"from": b.f(start), "duration": b.f(end) - b.f(start), "scene": beat["scene"], "p": params,
                       "cam": beat.get("cam", "push"), "tone": beat.get("tone", "night"), "rain": bool(beat.get("rain")),
                       "fog": bool(beat.get("fog")), "flashlight": bool(beat.get("flashlight")),
@@ -169,7 +214,7 @@ def main():
     path = a.file or take_episode(a.series, a.id)
     spec = json.load(open(path))
     try:
-        check_episode(spec)
+        check_episode(spec, series["cast"])
     except DiaryError as e:
         raise SystemExit(f"episode error in {path}: {e}")
     work = os.path.join(BUILD, a.id)

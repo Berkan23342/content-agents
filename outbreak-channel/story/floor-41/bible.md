@@ -44,6 +44,15 @@ Same rules as every Outbreak Diary story:
 3. **Parts 13-20. Losing power.** The main elevators die. The skybridge on floor 30. Dev's knee. A storm.
 4. **Parts 21-30. The roof.** A helicopter rumour, the climb to 52, and a choice that opens season 2.
 
+## Voices
+
+- The narrator is always the woman telling the story.
+- A character can say a line in their own voice: put the spoken words alone in a beat with `"speaker"`. For example,
+  `{"text": "Stay away from the door.", "speaker": "..."}`. The narration around it says who speaks ("Then a voice
+  whispered.").
+- Speakers in this story: `dev`, `ruth`, `announcer` (the Harbor Station radio voice). Anyone else is quoted by the narrator.
+- Use one or two spoken lines per part. They make the story feel alive.
+
 ## Rules for every part
 
 - **One part is one day.** Part N is Day N: the video shows "DAY N" by itself, and a first line that names the day says

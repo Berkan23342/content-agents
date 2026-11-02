@@ -257,7 +257,7 @@ export const Cabin: React.FC<SceneProps> = ({p, f}) => {
 	);
 };
 
-/** Inside Noah's old pickup at night: the road in the headlights. zombies: walkers in the lights. wipers: on. */
+/** Inside Nora's old pickup at night: the road in the headlights. zombies: walkers in the lights. wipers: on. */
 export const Truck: React.FC<SceneProps> = ({p, f}) => {
 	const zombies = num(p.zombies, 0);
 	const lights = p.lights !== false;

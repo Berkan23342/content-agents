@@ -80,6 +80,7 @@ days in one part or one day in two parts. A first line that names the day says "
 | `tone` | `night` (default), `dawn` or `dusk`. |
 | `rain`, `fog`, `flashlight`, `alarm` | `true` adds rain, low fog, a moving flashlight in the dark, or a red danger pulse. |
 | `hold` | Seconds of silence after the line (default 0.35). Use 0.8-1.2 before a reveal. |
+| `speaker` | A character from the story's cast says `text` in their own voice; see the Voices section of its bible. Leave it out for narration. The narrator is always the woman telling the story. |
 
 **Sounds:** `heartbeat`, `knock`, `bang` (pounding on a door, shakes the camera), `creak`, `static`, `siren`, `groan`,
 `glass`, `steps`, `sting`, `thud`, `scratch`, `buzz` (phone), `click` (lock or switch), `drip`, `thunder`, `whoosh`.
@@ -109,7 +110,7 @@ in Harbor View.
 | `elevator` | Elevator doors with the floor number above. | `doors` closed/open/gap (hands reaching through), `floor` 0-52, `power` (false = red emergency light) |
 | `forest` | Pine woods at night around the lake. | `zombies` 0-12 between the trees, `cabin` (the cabin's lit window far away), `fire` |
 | `cabin` | The ranger cabin: log walls, a stone fireplace, a window on the woods. | `light` fire/lantern/off, `guest` ava, `zombie` (a figure outside the window) |
-| `truck` | Inside Noah's pickup at night, the road in the headlights. | `zombies` 0-8 in the lights, `lights` (headlights, default true), `wipers` |
+| `truck` | Inside Nora's pickup at night, the road in the headlights. | `zombies` 0-8 in the lights, `lights` (headlights, default true), `wipers` |
 
 Use the same scene for two or three beats in a row when the action stays in one place: the camera keeps moving and it
 feels like one shot. Change the scene when Sam looks at something new.

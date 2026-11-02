@@ -104,7 +104,15 @@
       "scene": "office",
       "light": "off",
       "flashlight": true,
-      "text": "Then a flashlight swept the floor, and a man whispered: Security. Anyone up here?",
+      "text": "Then a flashlight swept the floor, and a man whispered."
+    },
+    {
+      "scene": "office",
+      "light": "off",
+      "flashlight": true,
+      "cam": "push",
+      "speaker": "dev",
+      "text": "Security. Anyone up here?",
       "hl": [
         "Security"
       ]

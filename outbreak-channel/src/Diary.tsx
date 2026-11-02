@@ -11,7 +11,7 @@ const elite = loadElite('normal', {weights: ['400'], subsets: ['latin']}).fontFa
 loadInter('normal', {weights: ['400', '800'], subsets: ['latin']});
 
 // ---------------------------------------------------------------- props (written by scripts/diary.py)
-type Chunk = {words: string[]; hl: boolean[]; at: number; until: number};
+type Chunk = {words: string[]; hl: boolean[]; at: number; until: number; talk?: boolean};
 export type Beat = {
 	from: number;
 	duration: number;
@@ -149,7 +149,7 @@ const Captions: React.FC<{chunks: Chunk[]}> = ({chunks}) => {
 						fontSize: 112,
 						lineHeight: 1.12,
 						textTransform: 'uppercase',
-						color: c.hl[i] ? C.red : '#ffffff',
+						color: c.hl[i] ? C.red : c.talk ? '#ffe39a' : '#ffffff',
 						WebkitTextStroke: '14px #000',
 						paintOrder: 'stroke fill',
 						textShadow: '0 10px 24px rgba(0,0,0,0.8)',

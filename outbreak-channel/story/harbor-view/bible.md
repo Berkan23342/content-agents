@@ -43,6 +43,15 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 4. **Parts 19-25. The fever.** Someone in the group is hurt. Hard choices. Biscuit goes missing and comes back.
 5. **Parts 26-30. Pier Four.** A rainy night run to the harbour, and an ending that opens season 2.
 
+## Voices
+
+- The narrator is always the woman telling the story.
+- A character can say a line in their own voice: put the spoken words alone in a beat with `"speaker"`. For example,
+  `{"text": "Stay away from the door.", "speaker": "..."}`. The narration around it says who speaks ("Then a voice
+  whispered.").
+- Speakers in this story: `okafor` (Mrs. Okafor), `leo`, `hale` (Mr. Hale), `announcer` (the Harbor Station radio voice). Anyone else is quoted by the narrator.
+- Use one or two spoken lines per part. They make the story feel alive.
+
 ## Rules for every part
 
 - **One part is one day.** Part N is Day N: the video shows "DAY N" by itself, and a first line that names the day says

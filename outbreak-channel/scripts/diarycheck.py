@@ -5,6 +5,7 @@
 Prints "ok" with a rough length estimate, or the first problem found. scripts/diary.py uses the same checks.
 """
 import json
+import os
 import re
 import sys
 
@@ -34,7 +35,7 @@ ITEMS = {"can", "water", "dogfood", "flashlight", "candle", "radio", "battery", 
          "keys", "walkie"}
 SFX = {"heartbeat", "knock", "bang", "creak", "static", "siren", "groan", "glass", "steps", "sting", "thud", "scratch",
        "buzz", "click", "drip", "thunder", "whoosh"}
-BEAT_KEYS = {"scene", "text", "hl", "sfx", "cam", "tone", "rain", "fog", "flashlight", "alarm", "hold"}
+BEAT_KEYS = {"scene", "text", "hl", "sfx", "cam", "tone", "rain", "fog", "flashlight", "alarm", "hold", "speaker"}
 CAMS = {"push", "pull", "left", "right", "still"}
 TONES = {"night", "dawn", "dusk"}
 AMBIENCE = {"rain", "wind", "night", "none"}
@@ -64,8 +65,9 @@ def sfx_name(entry):
     return name
 
 
-def check_episode(spec):
-    """Raises DiaryError with a readable message when an episode uses something the renderer does not have."""
+def check_episode(spec, cast=None):
+    """Raises DiaryError with a readable message when an episode uses something the renderer does not have.
+    cast: the characters of this story who can speak a line ("speaker"), from story/series.json."""
     for key in ("episode", "title", "summary", "beats"):
         if key not in spec:
             raise DiaryError(f"missing '{key}'")
@@ -116,6 +118,8 @@ def check_episode(spec):
                         raise DiaryError(f"{where}: item {it!r}: use {sorted(ITEMS)}, optionally with a count like 'can:3'")
         for s in b.get("sfx", []):
             sfx_name(s)
+        if "speaker" in b and cast is not None and b["speaker"] not in cast:
+            raise DiaryError(f"{where}: speaker must be one of this story's cast {cast}")
         if b.get("cam", "push") not in CAMS:
             raise DiaryError(f"{where}: cam must be one of {sorted(CAMS)}")
         if b.get("tone", "night") not in TONES:
@@ -133,10 +137,21 @@ def estimate_seconds(total_words):
     return total_words * 0.5 + 3.5  # measured on parts 1-3, with the pauses and the end card
 
 
+def cast_for(path):
+    """The speaking cast of the story a script belongs to (story/<id>/...)."""
+    series = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "story", "series.json")
+    parts = os.path.abspath(path).split(os.sep)
+    story = parts[parts.index("story") + 1] if "story" in parts else None
+    for s in json.load(open(series)):
+        if s["id"] == story:
+            return s["cast"]
+    return None
+
+
 def main():
     for path in sys.argv[1:]:
         try:
-            total = check_episode(json.load(open(path)))
+            total = check_episode(json.load(open(path)), cast_for(path))
         except (DiaryError, json.JSONDecodeError) as e:
             raise SystemExit(f"episode error in {path}: {e}")
         print(f"ok: {path} ({total} words, about {estimate_seconds(total):.0f} s)")

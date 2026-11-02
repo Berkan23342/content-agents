@@ -90,12 +90,19 @@
     {
       "scene": "radio",
       "mode": "voice",
-      "text": "Until a calm voice cut through. This is Harbor Station. Boats leave Pier Four at dawn.",
-      "hl": [
-        "Pier Four"
-      ],
+      "text": "Until a calm voice cut through.",
       "sfx": [
         "static@0.1"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "cam": "push",
+      "speaker": "announcer",
+      "text": "This is Harbor Station. Boats leave Pier Four at dawn.",
+      "hl": [
+        "Pier Four"
       ]
     },
     {

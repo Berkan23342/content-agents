@@ -38,7 +38,7 @@ permissions:
 jobs:
   video:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: outbreak-channel
@@ -75,7 +75,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: kids-channel/requirements.txt
+          cache-dependency-path: |
+            kids-channel/requirements.txt
+            outbreak-channel/requirements-voice.txt
 
       - name: System packages
         if: steps.due.outputs.todo != ''
@@ -116,6 +118,30 @@ jobs:
         run: npm ci
       - if: steps.due.outputs.todo != ''
         run: pip install -q -r ../kids-channel/requirements.txt
+
+      # The narrators are voiced by Chatterbox, which needs PyTorch: it gets its own environment (CPU build).
+      - name: Voice engine
+        if: steps.due.outputs.todo != ''
+        run: |
+          python -m venv "$HOME/cb"
+          "$HOME/cb/bin/pip" install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          "$HOME/cb/bin/pip" install -q -r requirements-voice.txt
+          echo "CB_PYTHON=$HOME/cb/bin/python" >> "$GITHUB_ENV"
+
+      - name: Restore the voice model
+        if: steps.due.outputs.todo != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface/hub
+          key: chatterbox-0.1.7
+
+      - name: Restore narration cache
+        if: steps.due.outputs.todo != ''
+        uses: actions/cache@v4
+        with:
+          path: outbreak-channel/build/cb-cache
+          key: outbreak-cb-${{ github.run_id }}
+          restore-keys: outbreak-cb-
 
       - name: YouTube credentials
         if: steps.due.outputs.todo != ''

@@ -2,7 +2,7 @@
   "episode": 1,
   "title": "The Quiet Town",
   "ambience": "wind",
-  "summary": "At the Pine Hollow ranger cabin, Noah and his niece Ava hear the nearby town go silent over the radio.",
+  "summary": "At the Pine Hollow ranger cabin, Nora and her niece Ava hear the nearby town go silent over the radio.",
   "beats": [
     {
       "scene": "forest",
@@ -46,11 +46,11 @@
       "screen": "message",
       "lines": [
         "Mom",
-        "Stay with Noah.",
+        "Stay with Nora.",
         "Don't come to the city."
       ],
       "cam": "still",
-      "text": "One message got through before the signal died: Stay with Noah. Don't come to the city.",
+      "text": "One message got through before the signal died: Stay with Nora. Don't come to the city.",
       "hl": [
         "Don't come"
       ],
