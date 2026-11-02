@@ -23,6 +23,12 @@ SCENES = {  # scene: {param: allowed values, a (min, max) range, BOOL, or "lines
     "phone": {"screen": {"alert", "message", "nosignal", "battery"}, "lines": "lines", "battery": (0, 100)},
     "radio": {"mode": {"static", "voice"}},
     "supplies": {"items": "items"},
+    "tower": {"zombies": (0, 12), "fire": BOOL, "heli": BOOL},
+    "office": {"light": {"on", "flicker", "off"}, "zombie": BOOL, "guest": {"dev"}, "fire": BOOL},
+    "elevator": {"doors": {"closed", "open", "gap"}, "floor": (0, 52), "power": BOOL},
+    "forest": {"zombies": (0, 12), "cabin": BOOL, "fire": BOOL},
+    "cabin": {"light": {"fire", "lantern", "off"}, "guest": {"ava"}, "zombie": BOOL},
+    "truck": {"zombies": (0, 8), "lights": BOOL, "wipers": BOOL},
 }
 ITEMS = {"can", "water", "dogfood", "flashlight", "candle", "radio", "battery", "medkit", "map", "rope", "bat", "backpack",
          "keys", "walkie"}
@@ -60,11 +66,13 @@ def sfx_name(entry):
 
 def check_episode(spec):
     """Raises DiaryError with a readable message when an episode uses something the renderer does not have."""
-    for key in ("episode", "day", "title", "summary", "beats"):
+    for key in ("episode", "title", "summary", "beats"):
         if key not in spec:
             raise DiaryError(f"missing '{key}'")
-    if not isinstance(spec["episode"], int) or not isinstance(spec["day"], int):
-        raise DiaryError("'episode' and 'day' are whole numbers")
+    if not isinstance(spec["episode"], int):
+        raise DiaryError("'episode' is a whole number")
+    if spec.get("day", spec["episode"]) != spec["episode"]:
+        raise DiaryError("part N is always Day N: leave 'day' out")
     if len(spec["title"]) > 28:
         raise DiaryError(f"title is {len(spec['title'])} characters, keep it to 28")
     if spec.get("ambience", "night") not in AMBIENCE:

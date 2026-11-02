@@ -1,13 +1,15 @@
-"""Makes and uploads the day's two Outbreak Diary parts on a server (GitHub Actions).
+"""Makes and uploads the day's Outbreak Diary parts on a server (GitHub Actions): one new day of every story.
 
-  python3 scripts/ci_diary.py e1|e2|auto [--date YYYY-MM-DD] [--no-upload]
-  python3 scripts/ci_diary.py due        prints the parts that are not uploaded yet ("e1 e2", or nothing)
+  python3 scripts/ci_diary.py e1|e2|e3|auto [--date YYYY-MM-DD] [--no-upload]
+  python3 scripts/ci_diary.py due        prints the parts that are not uploaded yet ("e1 e2 e3", or nothing)
 
-Both parts are made in one morning run. YouTube publishes them at 20:00 Istanbul time and at 03:00 the next night
-(lunch and evening in the US); if that time has already passed, the part is published right away.
+story/series.json gives each story a slot and a publishing time (Istanbul time, possibly the next night). All parts are
+made in one morning run and YouTube publishes them at those times; if a time has already passed, the part goes out
+right away.
 """
 import argparse
 import datetime as dt
+import json
 import os
 import subprocess
 import sys
@@ -16,7 +18,7 @@ from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
-PUBLISH_AT = {"e1": (0, dt.time(20, 0)), "e2": (1, dt.time(3, 0))}  # (days after the date, time)
+SERIES = {s["slot"]: s for s in json.load(open(os.path.join(ROOT, "story", "series.json")))}
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
 CHANNEL = "UCtjcmQc9DV_sKh4_3UrToIQ"  # Outbreak Diary; the uploader refuses a token for any other channel
@@ -27,7 +29,7 @@ def uploaded(vid):
 
 
 def due(date):
-    return [e for e in PUBLISH_AT if not uploaded(f"{date}-{e}")]
+    return [e for e in sorted(SERIES) if not uploaded(f"{date}-{e}")]
 
 
 def run(*cmd, tries=1):
@@ -48,7 +50,8 @@ def make(e, date, upload):
     if upload and not (os.path.exists(TOKEN) and os.path.getsize(TOKEN)):
         raise SystemExit("no channel token: add the OUTBREAK_YOUTUBE_TOKEN secret (see README)")
     py = sys.executable
-    run(py, "scripts/diary.py", "--id", vid, *([] if upload else ["--keep"]))  # a test render leaves the story where it is
+    run(py, "scripts/diary.py", "--series", SERIES[e]["id"], "--id", vid,
+        *([] if upload else ["--keep"]))  # a test render leaves the story where it is
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     mp4 = f"out/{vid}.mp4"
     run("npx", "remotion", "render", "src/index.tsx", "Diary", mp4, f"--props=build/{vid}/props.json", "--timeout=120000",
@@ -56,8 +59,8 @@ def make(e, date, upload):
     if not upload:
         print(f"rendered {mp4} (not uploaded)")
         return
-    days, at = PUBLISH_AT[e]
-    publish = dt.datetime.combine(dt.date.fromisoformat(date) + dt.timedelta(days=days), at, TZ)
+    days, at = SERIES[e]["publish"]
+    publish = dt.datetime.combine(dt.date.fromisoformat(date) + dt.timedelta(days=days), dt.time.fromisoformat(at), TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
             "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]
     if publish - dt.datetime.now(TZ) > dt.timedelta(minutes=15):
@@ -69,7 +72,7 @@ def make(e, date, upload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("kind", choices=["e1", "e2", "auto", "due"])
+    p.add_argument("kind", choices=sorted(SERIES) + ["auto", "due"])
     p.add_argument("--date", default="")
     p.add_argument("--no-upload", action="store_true")
     a = p.parse_args()

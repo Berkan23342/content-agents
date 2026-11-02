@@ -1,0 +1,109 @@
+{
+  "episode": 1,
+  "title": "The Quiet Town",
+  "ambience": "wind",
+  "summary": "At the Pine Hollow ranger cabin, Noah and his niece Ava hear the nearby town go silent over the radio.",
+  "beats": [
+    {
+      "scene": "forest",
+      "cabin": true,
+      "text": "Day one. First the birds went quiet. Every bird on the lake, at once.",
+      "hl": [
+        "quiet"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "cam": "left",
+      "text": "Ava, my niece, was busy complaining that the cabin has no signal.",
+      "hl": [
+        "no signal"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "text": "At nine, the ranger radio started talking. Too many voices. All at once.",
+      "hl": [
+        "All at once"
+      ],
+      "sfx": [
+        "static@0.2"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "Cedar Falls asking for backup. Then for ambulances. Then nobody asked for anything.",
+      "hl": [
+        "nobody"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "message",
+      "lines": [
+        "Mom",
+        "Stay with Noah.",
+        "Don't come to the city."
+      ],
+      "cam": "still",
+      "text": "One message got through before the signal died: Stay with Noah. Don't come to the city.",
+      "hl": [
+        "Don't come"
+      ],
+      "sfx": [
+        "buzz@0.1"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "text": "Her mom is my sister, a nurse in Port Ellis. Ava read it ten times."
+    },
+    {
+      "scene": "forest",
+      "zombies": 1,
+      "fog": true,
+      "text": "Around midnight, something walked out of the trees by the dock.",
+      "hl": [
+        "the trees"
+      ],
+      "sfx": [
+        "steps@1.6"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 1,
+      "fog": true,
+      "cam": "pull",
+      "text": "It moved like a man who forgot how his legs worked."
+    },
+    {
+      "scene": "cabin",
+      "light": "off",
+      "guest": "ava",
+      "cam": "still",
+      "text": "I killed the fire. Ava grabbed my arm.",
+      "sfx": [
+        "heartbeat@0.3"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "off",
+      "zombie": true,
+      "text": "It stopped at our window. And it was wearing a ranger's uniform.",
+      "hl": [
+        "ranger's uniform"
+      ],
+      "sfx": [
+        "groan@1.4"
+      ]
+    }
+  ]
+}

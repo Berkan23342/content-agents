@@ -1,12 +1,14 @@
-"""Plans and voices one Outbreak Diary episode: a vertical 45-60 second part of a serialized zombie survival story.
+"""Plans and voices one Outbreak Diary episode: a vertical 45-65 second part of a serialized zombie survival story.
 
-The episode script comes from story/new/ (the lowest episode number first), written by the story writer routine
-(see AGENT.md and story/bible.md). After building, the script moves to story/used/<date>/.
+The channel runs several stories side by side; story/series.json lists them, each with its own narrator.
+The episode script comes from story/<series>/new/ (the lowest episode number first), written by the story writer
+routine (see AGENT.md and story/<series>/bible.md). After building, it moves to story/<series>/used/<date>/.
+Part N of a story is always Day N.
 Voice, mixing and the master come from the kids channel's scripts (kids-channel/scripts/episode.py and audio.py);
 the horror sounds and the score are in scripts/dread.py.
 
 Writes build/<id>/{props,meta}.json and public/audio/<id>.wav.
-Run with ../kids-channel/.venv/bin/python scripts/diary.py --id 2026-11-02-e1 [--file story/new/ep-0001.json] [--keep]
+Run with ../kids-channel/.venv/bin/python scripts/diary.py --series harbor-view --id 2026-11-02-e1 [--file ...] [--keep]
 """
 import argparse
 import glob
@@ -28,22 +30,20 @@ from diarycheck import DiaryError, check_episode, sfx_name  # noqa: E402
 BUILD = os.path.join(ROOT, "build")
 PUBLIC = os.path.join(ROOT, "public")
 STORY = os.path.join(ROOT, "story")
-
-NARRATOR = "af_nicole"  # the user picked this whispery voice
-SPEED = 1.1
+SERIES = {s["id"]: s for s in json.load(open(os.path.join(STORY, "series.json")))}
 GAP = 0.35  # silence after each beat
 END_CARD = 2.8
 SHAKES = {"bang", "thud", "glass", "sting"}
 
 
-def take_episode(vid):
-    """The script this video already used (on a re-run), else the lowest episode waiting in story/new."""
+def take_episode(series, vid):
+    """The script this video already used (on a re-run), else the lowest episode waiting in story/<series>/new."""
     date, _, slot = vid.rpartition("-")
-    used = sorted(glob.glob(os.path.join(STORY, "used", date, f"{slot}-*.json")))
+    used = sorted(glob.glob(os.path.join(STORY, series, "used", date, f"{slot}-*.json")))
     if used:
         return used[0]
     waiting = []
-    for path in glob.glob(os.path.join(STORY, "new", "*.json")):
+    for path in glob.glob(os.path.join(STORY, series, "new", "*.json")):
         try:
             spec = json.load(open(path))
             check_episode(spec)
@@ -52,7 +52,7 @@ def take_episode(vid):
             continue
         waiting.append((spec["episode"], path))
     if not waiting:
-        raise SystemExit("no episode script in story/new")
+        raise SystemExit(f"no episode script in story/{series}/new")
     return min(waiting)[1]
 
 
@@ -82,9 +82,9 @@ def chunks_for(text, hl, t0, t1, f):
     return chunks
 
 
-def build(spec):
+def build(spec, series):
     b = Builder()
-    say = lambda at, text: b.say(at, text, voice=NARRATOR, speed=SPEED)  # noqa: E731
+    say = lambda at, text: b.say(at, text, voice=series["voice"], speed=series["speed"])  # noqa: E731
     beats, chunks = [], []
     b.sfx.append((0.05, "thud"))
     cur = 0.3
@@ -120,18 +120,20 @@ def build(spec):
     b.t = cur
     b.mutes = [(sting_at - 0.6, sting_at)]  # the score drops out just before the final hit
     ambience = spec.get("ambience", "night")
-    b.music = [(0, b.t, lambda length, work: dread.score(length, work, f"score-{spec['episode']}",
+    b.music = [(0, b.t, lambda length, work: dread.score(length, work, f"score-{series['id']}-{spec['episode']}",
                                                          None if ambience == "none" else ambience, 0.5))]
     b.music_gain = 0.2
-    props = {"durationInFrames": b.f(b.t), "day": spec["day"], "episode": spec["episode"], "title": spec["title"],
+    n = spec["episode"]
+    props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "title": spec["title"],
              "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
-    title = f"Day {spec['day']}: {spec['title']} | Zombie Survival Story Part {spec['episode']} #shorts"
+    title = f"Day {n}: {spec['title']} | {series['name']} | Zombie Survival Story #shorts"
     meta = {
         "title": title[:100],
         "description": "\n".join([
-            f"Part {spec['episode']} of Outbreak Diary. {spec['summary']}",
+            f"{series['name']}, day {n}. {spec['summary']}",
             "",
-            "A new part every day. Follow so you don't miss what happens next.",
+            f"{series['about']} A new day of this story, and of the other Outbreak Diary stories, every day.",
+            "Follow so you don't miss what happens next.",
             "An original animated story. All characters and events are fictional.",
             "",
             "#zombie #survival #horrorstory #shorts #animation",
@@ -158,11 +160,13 @@ def write_audio(b, work, name):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--id", required=True, help="video id, <date>-e1 or <date>-e2")
+    p.add_argument("--series", required=True, choices=sorted(SERIES))
+    p.add_argument("--id", required=True, help="video id, <date>-<slot>")
     p.add_argument("--file", help="build this script instead of the next one in story/new")
     p.add_argument("--keep", action="store_true", help="do not move the script to story/used (for previews)")
     a = p.parse_args()
-    path = a.file or take_episode(a.id)
+    series = SERIES[a.series]
+    path = a.file or take_episode(a.series, a.id)
     spec = json.load(open(path))
     try:
         check_episode(spec)
@@ -170,18 +174,18 @@ def main():
         raise SystemExit(f"episode error in {path}: {e}")
     work = os.path.join(BUILD, a.id)
     os.makedirs(work, exist_ok=True)
-    b, props, meta = build(spec)
+    b, props, meta = build(spec, series)
     props["audio"] = write_audio(b, work, a.id)
     with open(os.path.join(work, "props.json"), "w") as fh:
         json.dump(props, fh)
     with open(os.path.join(work, "meta.json"), "w") as fh:
         json.dump(meta, fh, indent=2, ensure_ascii=False)
     date, _, slot = a.id.rpartition("-")
-    used = os.path.join(STORY, "used", date)
+    used = os.path.join(STORY, a.series, "used", date)
     if not a.keep and os.path.dirname(os.path.abspath(path)) != used:
         os.makedirs(used, exist_ok=True)
         os.rename(path, os.path.join(used, f"{slot}-{os.path.basename(path)}"))
-    print(f"episode {spec['episode']} (day {spec['day']}) {spec['title']!r}: {b.t:.1f}s, {len(props['beats'])} beats -> {a.id}")
+    print(f"{series['name']} day {spec['episode']} {spec['title']!r}: {b.t:.1f}s, {len(props['beats'])} beats -> {a.id}")
 
 
 if __name__ == "__main__":

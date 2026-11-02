@@ -8,7 +8,7 @@ const placeholder: DiaryProps = {
 	durationInFrames: 90,
 	audio: '',
 	day: 1,
-	episode: 1,
+	series: 'Harbor View',
 	title: 'The Sirens',
 	beats: [
 		{from: 0, duration: 90, scene: 'building', p: {zombies: 3}, cam: 'push', tone: 'night', rain: false, fog: false, flashlight: false, alarm: false, cutIn: false, cutOut: false, hits: []},

@@ -1,6 +1,5 @@
 {
   "episode": 5,
-  "day": 3,
   "title": "The Boy in 11C",
   "ambience": "rain",
   "summary": "Sam climbs two floors in the dark to find who was tapping on the pipes.",
@@ -10,7 +9,7 @@
       "light": "on",
       "tone": "dawn",
       "cam": "push",
-      "text": "Day three. The tapping from above was real. I had to know who.",
+      "text": "Day five. The tapping from above was real. I had to know who.",
       "hl": [
         "above"
       ]

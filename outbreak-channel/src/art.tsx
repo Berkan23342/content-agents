@@ -223,17 +223,36 @@ export const Dog: React.FC<{x: number; y: number; s: number; frame: number; pose
 	);
 };
 
-/** A person sitting, mostly in shadow. who: okafor (grey bun, cardigan) or leo (hoodie). (x, y) = seat. */
+const LOOKS: Record<string, {body: string; skin: string; legs: string}> = {
+	okafor: {body: '#5b3f52', skin: '#6e4a3a', legs: '#2b2433'},
+	leo: {body: '#2e3f5e', skin: '#6e4a3a', legs: '#1f2a40'},
+	dev: {body: '#1f2c48', skin: '#5a3a2c', legs: '#151c2c'},
+	ava: {body: '#6a2e3a', skin: '#b88a6c', legs: '#22252f'},
+};
+
+/** A person sitting, mostly in shadow. who: okafor (grey bun), leo (hoodie), dev (guard's cap) or ava (ponytail). */
 export const Sitter: React.FC<{x: number; y: number; s: number; frame: number; who: string}> = ({x, y, s, frame, who}) => {
 	const b = Math.sin(frame / 18) * 2;
-	const body = who === 'leo' ? '#2e3f5e' : '#5b3f52';
-	const skin = '#6e4a3a';
+	const look = LOOKS[who] ?? LOOKS.okafor;
+	const body = look.body;
+	const skin = look.skin;
 	return (
 		<g transform={`translate(${x} ${y}) scale(${s})`}>
 			<path d={`M-70 0 Q-80 -150 -40 ${-190 + b} L40 ${-190 + b} Q80 -150 70 0 Z`} fill={body} />
-			<path d="M-60 0 L-60 40 L110 40 L120 120 L150 120 L140 10 Z" fill={who === 'leo' ? '#1f2a40' : '#2b2433'} />
+			<path d="M-60 0 L-60 40 L110 40 L120 120 L150 120 L140 10 Z" fill={look.legs} />
 			<circle cx={0} cy={-235 + b} r={46} fill={skin} />
-			{who === 'leo' ? (
+			{who === 'dev' ? (
+				<>
+					<path d={`M-50 ${-250 + b} Q-46 ${-296 + b} 0 ${-294 + b} Q46 ${-296 + b} 50 ${-250 + b} Z`} fill="#141a2b" />
+					<rect x={-14} y={-262 + b} width={84} height={12} rx={6} fill="#141a2b" />
+					<circle cx={-26} cy={-120 + b} r={9} fill="#c9a24a" />
+				</>
+			) : who === 'ava' ? (
+				<>
+					<path d={`M-48 ${-236 + b} Q-50 ${-292 + b} 0 ${-290 + b} Q50 ${-292 + b} 48 ${-236 + b} Q20 ${-266 + b} -48 ${-236 + b} Z`} fill="#3a2418" />
+					<path d={`M40 ${-262 + b} Q96 ${-250 + b} ${80 + Math.sin(frame / 11) * 6} ${-190 + b}`} stroke="#3a2418" strokeWidth={22} fill="none" strokeLinecap="round" />
+				</>
+			) : who === 'leo' ? (
 				<path d={`M-56 ${-230 + b} Q-60 ${-300 + b} 0 ${-298 + b} Q60 ${-300 + b} 56 ${-230 + b} L44 ${-210 + b} Q0 ${-280 + b} -44 ${-210 + b} Z`} fill={body} />
 			) : (
 				<>

@@ -1,6 +1,5 @@
 {
   "episode": 3,
-  "day": 2,
   "title": "Pier Four",
   "ambience": "rain",
   "summary": "The power dies, the phone loses signal, and an old radio gives them one way out: Pier Four, two miles away.",
@@ -11,7 +10,7 @@
       "guest": "okafor",
       "dog": "sleep",
       "tone": "dawn",
-      "text": "Day two. Whatever was behind the door left before sunrise.",
+      "text": "Day three. Whatever was behind the door left before sunrise.",
       "hl": [
         "left"
       ]

@@ -1,0 +1,113 @@
+{
+  "episode": 1,
+  "title": "Working Late",
+  "ambience": "wind",
+  "summary": "Maya stays late on floor 41 of Meridian Tower. Then the city goes wrong, and the elevator comes up.",
+  "beats": [
+    {
+      "scene": "tower",
+      "zombies": 0,
+      "text": "Day one. I was the last one on floor forty-one. Working late, again.",
+      "hl": [
+        "forty-one"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "on",
+      "fire": false,
+      "cam": "left",
+      "text": "Midnight. Just me, a cold coffee, and my scale model of the whole city.",
+      "hl": [
+        "model"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "fire": false,
+      "text": "Then the lights flickered, and somewhere far below, glass broke.",
+      "hl": [
+        "glass"
+      ],
+      "sfx": [
+        "glass@2.6"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 4,
+      "text": "From forty-one floors up, the street looked like an ant farm. A very wrong one.",
+      "hl": [
+        "wrong"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "alert",
+      "lines": [
+        "Shelter in place.",
+        "Avoid anyone with symptoms.",
+        "Do not use elevators."
+      ],
+      "cam": "still",
+      "text": "My phone buzzed. Shelter in place. Do not use elevators.",
+      "hl": [
+        "elevators"
+      ],
+      "sfx": [
+        "buzz@0.1"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 41,
+      "text": "I called the elevator anyway. I just wanted to go home."
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 33,
+      "text": "Then I watched the numbers. It wasn't going down. Something was riding it up to me.",
+      "hl": [
+        "up to me"
+      ],
+      "sfx": [
+        "heartbeat@0.8"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "gap",
+      "floor": 41,
+      "alarm": true,
+      "text": "The doors opened a hand's width. And a hand came through.",
+      "hl": [
+        "hand"
+      ],
+      "sfx": [
+        "groan@0.6",
+        "bang@1.8"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "off",
+      "cam": "still",
+      "text": "I ran. I hid under my desk. I didn't breathe.",
+      "sfx": [
+        "heartbeat@0.2"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "off",
+      "flashlight": true,
+      "text": "Then a flashlight swept the floor, and a man whispered: Security. Anyone up here?",
+      "hl": [
+        "Security"
+      ]
+    }
+  ]
+}

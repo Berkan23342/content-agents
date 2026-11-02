@@ -1,6 +1,5 @@
 {
   "episode": 4,
-  "day": 2,
   "title": "Three Taps",
   "ambience": "rain",
   "summary": "Night falls on Harbor View, and something starts tapping on the pipes. It is not random.",
@@ -14,7 +13,7 @@
       "sfx": [
         "knock@1.0"
       ],
-      "text": "That night, the pipes started tapping.",
+      "text": "Day four. That night, the pipes started tapping.",
       "hl": [
         "tapping"
       ]

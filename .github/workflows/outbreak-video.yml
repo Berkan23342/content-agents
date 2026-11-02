@@ -1,5 +1,5 @@
-# Outbreak Diary: renders and uploads two parts of the serialized zombie story a day, no Mac needed.
-# Both are made in the morning; YouTube publishes them at 20:00 and 03:00 Istanbul time.
+# Outbreak Diary: renders and uploads one new day of every story each day, no Mac needed.
+# All are made in the morning; YouTube publishes them at the times in outbreak-channel/story/series.json.
 name: Outbreak video
 
 on:
@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "outbreak-channel/story/new/**"
+      - "outbreak-channel/story/*/new/**"
   # Backups, because GitHub's scheduler can be hours late. A run with nothing due stops after a few seconds.
   schedule:
     - cron: "30 6 * * *"
@@ -17,7 +17,7 @@ on:
     inputs:
       kind:
         type: choice
-        options: [auto, e1, e2]
+        options: [auto, e1, e2, e3]
         default: auto
       upload:
         description: Upload to YouTube (off = render only, the video is kept as an artifact)

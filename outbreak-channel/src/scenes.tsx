@@ -1,5 +1,6 @@
 import React from 'react';
 import {C, Dog, FireGlow, H, Moon, Sitter, Skyline, Smoke, Stars, TopWalker, W, Walker, clamp, flicker, hash, lerp} from './art';
+import {Cabin, Elevator, Forest, Office, Tower, Truck} from './scenes2';
 
 // Every scene is an SVG drawing of the full 1080x1920 frame. `p` holds the beat's parameters (see scripts/diarycheck.py).
 export type Params = Record<string, unknown>;
@@ -815,6 +816,12 @@ export const SCENES: Record<string, React.FC<SceneProps>> = {
 	phone: Phone,
 	radio: Radio,
 	supplies: Supplies,
+	tower: Tower,
+	office: Office,
+	elevator: Elevator,
+	forest: Forest,
+	cabin: Cabin,
+	truck: Truck,
 };
 
 /** Where the camera pushes in for each scene (the interesting point). */
@@ -832,4 +839,10 @@ export const FOCUS: Record<string, [number, number]> = {
 	phone: [540, 900],
 	radio: [540, 980],
 	supplies: [540, 900],
+	tower: [540, 500],
+	office: [540, 1000],
+	elevator: [540, 900],
+	forest: [540, 1250],
+	cabin: [600, 1200],
+	truck: [540, 900],
 };

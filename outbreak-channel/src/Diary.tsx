@@ -31,7 +31,7 @@ export type DiaryProps = {
 	durationInFrames: number;
 	audio: string;
 	day: number;
-	episode: number;
+	series: string;
 	title: string;
 	beats: Beat[];
 	chunks: Chunk[];
@@ -120,7 +120,12 @@ const BeatView: React.FC<{b: Beat}> = ({b}) => {
 				{b.rain ? <Rain f={f} /> : null}
 			</AbsoluteFill>
 			{tone ? <AbsoluteFill style={tone} /> : null}
-			{b.flashlight ? <AbsoluteFill style={{background: `radial-gradient(circle at ${lx}px ${ly}px, rgba(0,0,0,0) 0px, rgba(0,0,0,0.15) 200px, rgba(0,0,0,0.93) 430px)`}} /> : null}
+			{b.flashlight ? (
+				<>
+					<AbsoluteFill style={{background: `radial-gradient(circle at ${lx}px ${ly}px, rgba(255,240,205,0.5) 0px, rgba(255,240,205,0.12) 220px, rgba(255,240,205,0) 330px)`, mixBlendMode: 'screen'}} />
+					<AbsoluteFill style={{background: `radial-gradient(circle at ${lx}px ${ly}px, rgba(0,0,0,0) 0px, rgba(0,0,0,0.15) 200px, rgba(0,0,0,0.93) 430px)`}} />
+				</>
+			) : null}
 			{b.alarm ? <AbsoluteFill style={{background: C.red, mixBlendMode: 'multiply', opacity: 0.25 + 0.2 * Math.sin(f / 4)}} /> : null}
 			{fade > 0 ? <AbsoluteFill style={{background: '#000', opacity: fade}} /> : null}
 		</AbsoluteFill>
@@ -157,14 +162,14 @@ const Captions: React.FC<{chunks: Chunk[]}> = ({chunks}) => {
 	);
 };
 
-const Intro: React.FC<{day: number; title: string}> = ({day, title}) => {
+const Intro: React.FC<{day: number; series: string; title: string}> = ({day, series, title}) => {
 	const f = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const slam = spring({frame: f, fps, config: {damping: 12, stiffness: 220}});
 	const out = clamp((f - 54) / 10);
 	return (
 		<div style={{position: 'absolute', top: 200, width: '100%', textAlign: 'center', opacity: 1 - out}}>
-			<div style={{fontFamily: elite, fontSize: 46, letterSpacing: 10, color: '#d9d2c0'}}>OUTBREAK DIARY</div>
+			<div style={{fontFamily: elite, fontSize: 40, letterSpacing: 8, color: '#d9d2c0'}}>OUTBREAK DIARY · {series.toUpperCase()}</div>
 			<div style={{fontFamily: anton, fontSize: 230, color: '#fff', lineHeight: 1.05, transform: `scale(${2 - slam})`, textShadow: '0 12px 30px rgba(0,0,0,0.9)'}}>DAY {day}</div>
 			<div style={{width: 300 * slam, height: 12, background: C.red, margin: '0 auto'}} />
 			<div style={{fontFamily: elite, fontSize: 60, color: '#efe6d2', marginTop: 28, textShadow: '0 6px 20px rgba(0,0,0,0.9)'}}>{title}</div>
@@ -172,16 +177,16 @@ const Intro: React.FC<{day: number; title: string}> = ({day, title}) => {
 	);
 };
 
-const TopLabel: React.FC<{day: number; episode: number}> = ({day, episode}) => {
+const TopLabel: React.FC<{day: number; series: string}> = ({day, series}) => {
 	const f = useCurrentFrame();
 	return (
 		<div style={{position: 'absolute', top: 118, width: '100%', textAlign: 'center', fontFamily: elite, fontSize: 36, letterSpacing: 4, color: '#e6dccb', opacity: 0.75 * clamp((f - 64) / 12)}}>
-			DAY {day} · PART {episode}
+			{series.toUpperCase()} · DAY {day}
 		</div>
 	);
 };
 
-const EndCard: React.FC<{episode: number; endAt: number}> = ({episode, endAt}) => {
+const EndCard: React.FC<{day: number; endAt: number}> = ({day, endAt}) => {
 	const f = useCurrentFrame() - endAt;
 	if (f < 0) return null;
 	const text = 'TO BE CONTINUED...';
@@ -190,14 +195,14 @@ const EndCard: React.FC<{episode: number; endAt: number}> = ({episode, endAt}) =
 		<AbsoluteFill style={{background: `rgba(0,0,0,${0.75 * clamp(f / 12)})`}}>
 			<div style={{position: 'absolute', top: 760, width: '100%', textAlign: 'center', fontFamily: elite, fontSize: 76, color: '#efe6d2'}}>{text.slice(0, shown)}</div>
 			<div style={{position: 'absolute', top: 900, width: '100%', textAlign: 'center', fontFamily: anton, fontSize: 84, color: C.red, opacity: clamp((f - 34) / 8)}}>
-				FOLLOW FOR PART {episode + 1}
+				FOLLOW FOR DAY {day + 1}
 			</div>
 		</AbsoluteFill>
 	);
 };
 
 // ---------------------------------------------------------------- composition
-export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, episode, title, endAt}) => {
+export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, title, endAt}) => {
 	const f = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
@@ -208,9 +213,9 @@ export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, episode,
 			))}
 			<Vignette />
 			<Grain f={f} />
-			{f < 70 ? <Intro day={day} title={title} /> : <TopLabel day={day} episode={episode} />}
+			{f < 70 ? <Intro day={day} series={series} title={title} /> : <TopLabel day={day} series={series} />}
 			<Captions chunks={chunks} />
-			<EndCard episode={episode} endAt={endAt} />
+			<EndCard day={day} endAt={endAt} />
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
 	);
