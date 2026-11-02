@@ -29,7 +29,7 @@ GROUND = 900  # where the characters' feet touch the grass
 SIZE = 420  # full-body character height
 OFF_L, OFF_R = -260, 2180
 
-# name: (Kokoro voice, pitch lift, sound, colour)
+# name: (Kokoro voice, pitch lift, sound, colour). Only female voices: the user wants no male voices on the channel.
 CAST = {
     "chick": ("af_bella", 1.25, "Cheep cheep!", "#FF8A1F"),
     "bunny": ("af_kore", 1.2, "Hop hop!", "#FF6FB5"),
@@ -37,13 +37,13 @@ CAST = {
     "cat": ("af_sarah", 1.12, "Meow!", "#F08A24"),
     "pig": ("bf_emma", 1.1, "Oink oink!", "#FF6FB5"),
     "sheep": ("bf_isabella", 1.12, "Baa baa!", "#9B5CFF"),
-    "frog": ("am_michael", 1.2, "Ribbit!", "#3CC75A"),
-    "dog": ("am_puck", 1.02, "Woof woof!", "#A0632F"),
-    "cow": ("am_michael", 0.95, "Moo!", "#2F8CFF"),
-    "lion": ("am_fenrir", 0.95, "Roar!", "#E8962F"),
-    "owl": ("bm_fable", 1.0, "Hoo hoo!", "#A0632F"),
-    "turtle": ("bm_george", 0.97, "Hello!", "#2F8F45"),
-    "bear": ("am_fenrir", 1.02, "Grrr!", "#9A6235"),
+    "frog": ("af_nova", 1.18, "Ribbit!", "#3CC75A"),
+    "dog": ("af_jessica", 1.05, "Woof woof!", "#A0632F"),
+    "cow": ("af_river", 0.96, "Moo!", "#2F8CFF"),
+    "lion": ("af_alloy", 0.93, "Roar!", "#E8962F"),
+    "owl": ("bf_lily", 1.0, "Hoo hoo!", "#A0632F"),
+    "turtle": ("bf_alice", 0.96, "Hello!", "#2F8F45"),
+    "bear": ("af_sky", 0.93, "Grrr!", "#9A6235"),
 }
 
 # animals with a sound line, for eggs and shadows: icon, name, line, bubble, colour

@@ -165,6 +165,15 @@ def kokoro_model():
     raise SystemExit("no Kokoro model in assets/kokoro")
 
 
+def voice_style(voice):
+    """A Kokoro voice name, or a blend of voices such as "af_heart:0.6+af_nicole:0.4" (weights are normalised)."""
+    if "+" not in voice:
+        return voice
+    parts = [(name, float(w or 1)) for name, _, w in (p.partition(":") for p in voice.split("+"))]
+    total = sum(w for _, w in parts)
+    return sum(_kokoro.get_voice_style(name) * (w / total) for name, w in parts)
+
+
 def tts(text, voice=None, speed=SPEED, pitch=1.0):
     """Processed mono narration clip at SR (see audio.voice), with the raw TTS cached on disk by text.
     pitch > 1 raises pitch and tempo together (cartoon voices)."""
@@ -182,7 +191,7 @@ def tts(text, voice=None, speed=SPEED, pitch=1.0):
 
         if _kokoro is None:
             _kokoro = Kokoro(os.path.join(KOKORO, model), os.path.join(KOKORO, "voices-v1.0.bin"))
-        samples, sr = _kokoro.create(text, voice=voice, speed=speed, lang="en-gb" if voice.startswith("b") else "en-us")
+        samples, sr = _kokoro.create(text, voice=voice_style(voice), speed=speed, lang="en-gb" if voice.startswith("b") else "en-us")
         sf.write(wav + ".tmp.wav", samples, sr, subtype="FLOAT")
         os.replace(wav + ".tmp.wav", wav)
     data, sr = sf.read(wav, dtype="float32")
