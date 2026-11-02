@@ -53,16 +53,15 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 
 ## Current state
 
-- **After:** part 3
-- **Day:** 2, early evening, in 9C
-- **Who:** Sam, Biscuit and Mrs. Okafor are together and unhurt. Leo and Mr. Hale have not been met yet.
-- **Supplies:** 3 cans of beans, 2 bottles of water, half a bag of dog food, a flashlight, 4 candles and Mrs. Okafor's
-  radio.
-- **Power:** off since noon on Day 2. The phone is at 40%, with no signal.
-- **Known:** the stairs are full of them down to the 4th floor. Nine of them stand in the street. Harbor Station says
-  boats leave Pier Four at dawn, and the next one is in three days.
-- **Open threads:** something scratched at the door on night 1. Who knocked on 11C's door? How do they get water?
-
+- **After:** part 5
+- **Day:** 3, morning, in 11C (Sam and Biscuit visiting Leo; Mrs. Okafor waits in 9C)
+- **Who:** Sam, Biscuit, Mrs. Okafor and Leo are unhurt. Mr. Hale is alive somewhere low in the building.
+- **Supplies:** 3 cans of beans, 2 bottles of water, half a bag of dog food, a flashlight, 4 candles, Mrs. Okafor's
+  radio, Leo's bat and a working walkie-talkie. Phone at 40%, no signal. Power off.
+- **Known:** the stairs are full of them down to the 4th floor. Nine stand in the street. Boats leave Pier Four at
+  dawn; the next one is in about two days. Hale has the roof key and warned that they are inside the stairwell.
+- **Open threads:** who tapped once from below on night 2? Something scratched at the door on night 1. How do they
+  get water? Where is Leo's sister? Can they reach Hale and the roof key?
 ## Episode log
 
 - **Part 1 (Day 1) The Sirens:** the sirens and the alert. The street fills. Someone knocks and whispers Sam's name.
@@ -70,3 +69,7 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
   supplies are small. Biscuit growls at something behind the door.
 - **Part 3 (Day 2) Pier Four:** the power goes and the phone loses signal. The radio says boats leave Pier Four in
   three days, two miles and nine floors away.
+- **Part 4 (Day 2) Three Taps:** at night the pipes tap in code. Sam answers; three taps reply from above and one from
+  below.
+- **Part 5 (Day 3) The Boy in 11C:** Sam finds Leo in 11C. His walkie-talkie picks up Mr. Hale, who has the roof key and
+  warns that they are inside the stairwell.

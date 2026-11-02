@@ -1,0 +1,150 @@
+{
+  "episode": 4,
+  "day": 2,
+  "title": "Three Taps",
+  "ambience": "rain",
+  "summary": "Night falls on Harbor View, and something starts tapping on the pipes. It is not random.",
+  "beats": [
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "push",
+      "sfx": [
+        "knock@1.0"
+      ],
+      "text": "That night, the pipes started tapping.",
+      "hl": [
+        "tapping"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "still",
+      "text": "Biscuit lifted his head. I held his muzzle. Silence keeps us alive.",
+      "hl": [
+        "Silence"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "left",
+      "sfx": [
+        "knock@1.5"
+      ],
+      "text": "\"Pipes knock when they cool,\" Mrs. Okafor whispered. Then it knocked again.",
+      "hl": [
+        "again"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "push",
+      "hold": 0.9,
+      "sfx": [
+        "knock@0.0",
+        "knock@0.6"
+      ],
+      "text": "Three taps. A pause. Three taps. A pause.",
+      "hl": [
+        "Three taps"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 9,
+      "rain": true,
+      "cam": "pull",
+      "text": "Below, the nine stood still. Rain hid it. Nobody heard.",
+      "hl": [
+        "rain"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "power": false,
+      "cans": 3,
+      "cam": "left",
+      "text": "\"That is a signal,\" said Mrs. Okafor. \"Someone alive wants an answer.\"",
+      "hl": [
+        "alive"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "power": false,
+      "cans": 3,
+      "cam": "push",
+      "text": "A reply could bring them to our door. Or save someone.",
+      "hl": [
+        "save someone"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "push",
+      "sfx": [
+        "knock@1.2"
+      ],
+      "text": "So I tapped the pipe with a spoon. Three times, soft.",
+      "hl": [
+        "Three times"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "still",
+      "sfx": [
+        "heartbeat@0.3"
+      ],
+      "hold": 1.0,
+      "text": "We waited. My heart was louder than the rain.",
+      "hl": [
+        "heart"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "guest": "okafor",
+      "dog": "alert",
+      "cam": "push",
+      "sfx": [
+        "knock@0.2",
+        "thud@2.0"
+      ],
+      "text": "It answered. Three taps from above. Then one tap from below.",
+      "hl": [
+        "below"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "sfx": [
+        "groan@1.5"
+      ],
+      "text": "Mrs. Okafor went pale. \"Two people are listening,\" she said. \"And only one of them is friendly.\"",
+      "hl": [
+        "friendly"
+      ]
+    }
+  ]
+}

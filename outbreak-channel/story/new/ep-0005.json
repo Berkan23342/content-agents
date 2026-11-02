@@ -1,0 +1,136 @@
+{
+  "episode": 5,
+  "day": 3,
+  "title": "The Boy in 11C",
+  "ambience": "rain",
+  "summary": "Sam climbs two floors in the dark to find who was tapping on the pipes.",
+  "beats": [
+    {
+      "scene": "hallway",
+      "light": "on",
+      "tone": "dawn",
+      "cam": "push",
+      "text": "Day three. The tapping from above was real. I had to know who.",
+      "hl": [
+        "above"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "tone": "dawn",
+      "cam": "push",
+      "text": "Everything bad lived below the fourth floor. Up was safe.",
+      "hl": [
+        "bad"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "tone": "dawn",
+      "cam": "pull",
+      "sfx": [
+        "steps@0.2"
+      ],
+      "text": "Two floors. I counted every step.",
+      "hl": [
+        "counted"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "still",
+      "sfx": [
+        "knock@1.0"
+      ],
+      "text": "Apartment 11C. I tapped three times with the spoon.",
+      "hl": [
+        "11C"
+      ]
+    },
+    {
+      "scene": "peephole",
+      "who": "leo",
+      "cam": "push",
+      "hold": 0.8,
+      "text": "Through the peephole: a boy with a bat and a terrible haircut.",
+      "hl": [
+        "bat"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "push",
+      "sfx": [
+        "click@1.2"
+      ],
+      "text": "\"You are late,\" he whispered. \"I was about to start a podcast.\"",
+      "hl": [
+        "late"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "leo",
+      "dog": "sit",
+      "tone": "dawn",
+      "cam": "left",
+      "text": "Leo. Fourteen. His parents went to find his sister on Day one.",
+      "hl": [
+        "Leo"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "leo",
+      "dog": "sit",
+      "tone": "dawn",
+      "cam": "push",
+      "text": "He joked about it. His hands shook. I did not laugh.",
+      "hl": [
+        "shook"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "leo",
+      "dog": "sit",
+      "tone": "dawn",
+      "cam": "push",
+      "sfx": [
+        "static@1.4"
+      ],
+      "text": "Then he held up a walkie-talkie. \"Found it in the lobby box. It works.\"",
+      "hl": [
+        "walkie-talkie"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "cam": "still",
+      "sfx": [
+        "static@0.1"
+      ],
+      "hold": 0.9,
+      "text": "It crackled. A rough voice said, \"This is Hale. I have the roof key.\"",
+      "hl": [
+        "roof key"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "sfx": [
+        "groan@1.0"
+      ],
+      "text": "Then, quietly: \"Do not come down. They are already inside the stairwell.\"",
+      "hl": [
+        "inside"
+      ]
+    }
+  ]
+}
