@@ -1,0 +1,11 @@
+{
+  "type": "trivia",
+  "title": "Music Quiz",
+  "questions": [
+    {"q": "How many strings does a standard guitar have?", "options": ["4", "5", "6", "8"], "answer": 2},
+    {"q": "Which instrument has black and white keys?", "options": ["Piano", "Drum", "Flute", "Trumpet"], "answer": 0},
+    {"q": "In music, what does 'forte' mean?", "options": ["Slow", "Soft", "Fast", "Loud"], "answer": 3},
+    {"q": "How many lines are on a musical staff?", "options": ["3", "5", "7", "10"], "answer": 1},
+    {"q": "How many keys does a standard piano have?", "options": ["66", "76", "88", "100"], "answer": 2}
+  ]
+}
