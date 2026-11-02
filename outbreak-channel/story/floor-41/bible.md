@@ -68,7 +68,7 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 1
+- **After:** part 1 (written; it is published on 2026-11-03 because of YouTube's upload limit)
 - **Day:** 1, a little after midnight, on floor 41
 - **Who:** Maya is alone and hiding under her desk. A man who says he is security is on the floor with a flashlight.
 - **Supplies:** a cold coffee, a phone at 70%, a desk drawer of snacks.
