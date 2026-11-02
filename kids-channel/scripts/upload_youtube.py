@@ -14,6 +14,7 @@ import os
 import shutil
 import subprocess
 import time
+import urllib.request
 
 import httplib2
 
@@ -31,6 +32,7 @@ CLIENT = os.path.join(SECRETS, "client_secret.json")
 TOKEN = os.path.join(SECRETS, "token.json")
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 READONLY = "https://www.googleapis.com/auth/youtube.readonly"  # only in tokens made with --sign-in
+MANAGE = "https://www.googleapis.com/auth/youtube"  # playlists and titles; only in tokens made with --sign-in --manage
 EDUCATION = "27"
 
 
@@ -49,6 +51,8 @@ def credentials(client=CLIENT, token=TOKEN, scopes=SCOPES) -> Credentials:
         except RefreshError:  # testing-mode tokens expire after 7 days
             creds = None
     if not creds or not creds.valid:
+        if os.environ.get("CI"):  # a server cannot open a browser; waiting for one would hang the job for hours
+            raise SystemExit(f"{token} is missing, expired or lacks a permission: sign in again on a Mac (--sign-in)")
         notify("YouTube girişi gerekiyor: açılan tarayıcı sayfasında izin verin.")
         flow = InstalledAppFlow.from_client_secrets_file(client, scopes)
         creds = flow.run_local_server(port=0, timeout_seconds=3 * 3600)
@@ -109,6 +113,32 @@ def upload(video, title, description, tags, thumbnail=None, privacy="private", p
     return video_id
 
 
+def add_to_playlist(youtube, video_id, name, description=""):
+    """Adds the video to the channel's public playlist called `name`, creating the playlist the first time."""
+    found, page = None, None
+    while not found:
+        r = youtube.playlists().list(part="snippet", mine=True, maxResults=50, pageToken=page).execute()
+        found = next((p["id"] for p in r["items"] if p["snippet"]["title"] == name), None)
+        page = r.get("nextPageToken")
+        if not page:
+            break
+    if not found:
+        found = youtube.playlists().insert(part="snippet,status", body={
+            "snippet": {"title": name, "description": description}, "status": {"privacyStatus": "public"}}).execute()["id"]
+        print(f"created playlist {name!r}")
+    youtube.playlistItems().insert(part="snippet", body={
+        "snippet": {"playlistId": found, "resourceId": {"kind": "youtube#video", "videoId": video_id}}}).execute()
+    print(f"added to playlist {name!r}")
+
+
+def set_title(youtube, video_id, title):
+    v = youtube.videos().list(part="snippet", id=video_id).execute()["items"][0]
+    snippet = {k: v["snippet"][k] for k in ("title", "description", "tags", "categoryId", "defaultLanguage") if k in v["snippet"]}
+    snippet["title"] = title[:100]
+    youtube.videos().update(part="snippet", body={"id": video_id, "snippet": snippet}).execute()
+    print(f"{video_id}: {title}")
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--video")
@@ -125,11 +155,28 @@ def main():
     p.add_argument("--general-audience", action="store_true", help="not made for kids (other channels)")
     p.add_argument("--sign-in", action="store_true", help="only sign in and save --token, then stop")
     p.add_argument("--expect-channel", help="upload only if the token belongs to this channel id (token made with --sign-in)")
+    p.add_argument("--manage", action="store_true", help="with --sign-in: also allow playlists and title changes")
+    p.add_argument("--playlist", help="add the video to this playlist (token made with --sign-in --manage)")
+    p.add_argument("--playlist-description", default="")
+    p.add_argument("--set-title", metavar="VIDEO_ID", help="change the title of an uploaded video to --title, then stop")
     a = p.parse_args()
     if a.sign_in:  # read-only access too, so the token can tell which channel it belongs to
-        creds = credentials(a.client, a.token, SCOPES + [READONLY])
+        wanted = SCOPES + [READONLY] + ([MANAGE] if a.manage else [])
+        if os.path.exists(a.token):
+            os.remove(a.token)  # always a fresh consent, so every permission is asked for again
+        creds = credentials(a.client, a.token, wanted)
+        # Google lets people untick permissions: keep only what was really granted, so later runs ask for no more
+        info = json.load(urllib.request.urlopen(f"https://oauth2.googleapis.com/tokeninfo?access_token={creds.token}"))
+        granted = info.get("scope", "").split()
+        data = json.loads(creds.to_json())
+        data["scopes"] = granted
+        with open(a.token, "w") as fh:
+            json.dump(data, fh)
         me = build("youtube", "v3", credentials=creds).channels().list(part="snippet", mine=True).execute()["items"][0]
         print(f"saved {a.token} for channel {me['snippet']['title']} ({me['id']})")
+        missing = [s.rsplit("/", 1)[-1] for s in wanted if s not in granted]
+        if missing:
+            print(f"not granted: {', '.join(missing)} (the box was unticked on Google's page)")
         return
     if a.meta:
         meta = json.load(open(a.meta))
@@ -138,7 +185,11 @@ def main():
         title = a.title
         description = open(a.description_file).read() if a.description_file else ""
         tags = [t.strip() for t in a.tags.split(",") if t.strip()]
-    creds = credentials(a.client, a.token, SCOPES + [READONLY] if a.expect_channel else SCOPES)
+    manage = bool(a.playlist or a.set_title)
+    creds = credentials(a.client, a.token, SCOPES + ([READONLY] if a.expect_channel or manage else []) + ([MANAGE] if manage else []))
+    if a.set_title:
+        set_title(build("youtube", "v3", credentials=creds), a.set_title, title)
+        return
     if a.expect_channel:
         mine = build("youtube", "v3", credentials=creds).channels().list(part="id", mine=True).execute()["items"][0]["id"]
         if mine != a.expect_channel:
@@ -147,6 +198,11 @@ def main():
     if a.log:
         with open(a.log, "a") as fh:
             fh.write(f"{os.path.basename(a.video)} https://youtu.be/{video_id}\n")
+    if a.playlist:  # the video is up either way: a playlist problem must not cause a second upload
+        try:
+            add_to_playlist(build("youtube", "v3", credentials=creds), video_id, a.playlist, a.playlist_description)
+        except (HttpError, RefreshError) as e:
+            print(f"playlist skipped: {getattr(e, 'reason', e)}")
 
 
 if __name__ == "__main__":

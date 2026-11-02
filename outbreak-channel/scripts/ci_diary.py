@@ -63,6 +63,9 @@ def make(e, date, upload):
     publish = dt.datetime.combine(dt.date.fromisoformat(date) + dt.timedelta(days=days), dt.time.fromisoformat(at), TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
             "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]
+    if "https://www.googleapis.com/auth/youtube" in json.load(open(TOKEN)).get("scopes", []):  # token made with --manage
+        args += ["--playlist", f"{SERIES[e]['name']} | Outbreak Diary", "--playlist-description",
+                 f"{SERIES[e]['about']} Every day of the story, in order."]
     if publish - dt.datetime.now(TZ) > dt.timedelta(minutes=15):
         args += ["--publish-at", publish.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
     else:

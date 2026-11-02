@@ -2,7 +2,9 @@
 2026-11-01-e2.mp4 https://youtu.be/R0SpmhfwhxY
 2026-11-02-e1-old-day-label.mp4 https://youtu.be/-Ks9ZNBFC8c
 2026-11-02-e2-old-day-label.mp4 https://youtu.be/U6Id3yKgbZw
-2026-11-02-e1.mp4 https://youtu.be/u9O5z2h8-XM
-2026-11-02-e2.mp4 https://youtu.be/PwrDHVD6tK8
-2026-11-02-e3.mp4 https://youtu.be/OxuPWkdzWVM
+2026-11-02-e1-old-voice.mp4 https://youtu.be/u9O5z2h8-XM
+2026-11-02-e2-old-voice.mp4 https://youtu.be/PwrDHVD6tK8
+2026-11-02-e3-old-voice.mp4 https://youtu.be/OxuPWkdzWVM
 2026-11-01-e2fix.mp4 https://youtu.be/nCVQ-erZeis
+2026-11-02-e3.mp4 https://youtu.be/MDBBd-RyzFc
+2026-11-02-e1.mp4 https://youtu.be/oM2efadGLXw

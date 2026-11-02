@@ -171,7 +171,7 @@ def build(spec, series):
     n = spec["episode"]
     props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "title": spec["title"],
              "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
-    title = f"Day {n}: {spec['title']} | {series['name']} | Zombie Survival Story #shorts"
+    title = video_title(series, n, spec["title"])
     meta = {
         "title": title[:100],
         "description": "\n".join([
@@ -187,6 +187,11 @@ def build(spec, series):
                  "scary story", "outbreak diary"],
     }
     return b, props, meta
+
+
+def video_title(series, day, title):
+    """The story's name first, so viewers can tell the stories apart: "Harbor View · Day 3: Pier Four | ..."."""
+    return f"{series['name']} · Day {day}: {title} | Zombie Survival Story #shorts"
 
 
 def write_audio(b, work, name):
