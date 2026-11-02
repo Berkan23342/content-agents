@@ -80,8 +80,15 @@ def main():
     if a.kind == "due":
         print(" ".join(due(date)))
         return
+    failed = []
     for e in due(date) if a.kind == "auto" else [a.kind]:
-        make(e, date, not a.no_upload)
+        try:  # one story without a script must not stop the others
+            make(e, date, not a.no_upload)
+        except SystemExit as err:
+            print(f"{e} ({SERIES[e]['id']}): {err}", flush=True)
+            failed.append(e)
+    if failed:
+        raise SystemExit(f"not made: {' '.join(failed)}")
 
 
 if __name__ == "__main__":
