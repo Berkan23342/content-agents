@@ -23,7 +23,8 @@ built-in stories, so every story video gets fresh plots. Nobody can answer quest
    - **Learning** (optional): weave in counting, colors, shapes, opposites, weather or seasons.
    - **Bedtime:** about one story in five may be a calm bedtime story. Set `"calm": true` and use `dusk`/`night`.
 5. Write `stories/new/<YYYY-MM-DD>-<slug>.json` with the format below.
-6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`.
+6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`. It also refuses a title used before or a
+   story too close to an earlier one.
    - It must print `ok`; fix any `story error` it reports.
    - The estimate should be 70–150 seconds.
    - Re-read your positions against the stage geometry below: characters at least ~280 px apart, land animals out of
@@ -34,6 +35,13 @@ built-in stories, so every story video gets fresh plots. Nobody can answer quest
 
 On a machine with the renderer installed you can also preview the story:
 `.venv/bin/python scripts/fun.py --check-story <file>`, then render stills from `build/check-story/props.json`.
+
+## Trends
+
+`trends/latest.md` (at the repository root, updated every Monday and Thursday) lists the fastest-growing kids videos of
+the last month. Read its `kids` table. About once a week, base a story on a theme that is working there, for example a
+season, a holiday, a game or an animal, told with our own characters and plot. Never copy anyone's story, characters or
+songs. Record the source as `"inspired_by": "<link> (theme only)"` in the script.
 
 ## Writing rules
 

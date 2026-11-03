@@ -29,7 +29,8 @@ def uploaded(vid):
 
 
 def due(date):
-    return [e for e in sorted(SERIES) if not uploaded(f"{date}-{e}")]
+    weekday = dt.date.fromisoformat(date).weekday()  # some stories (the specials) only run on certain days
+    return [e for e in sorted(SERIES) if not uploaded(f"{date}-{e}") and weekday in SERIES[e].get("weekdays", range(7))]
 
 
 def run(*cmd, tries=1):

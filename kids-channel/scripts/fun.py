@@ -19,7 +19,7 @@ import random
 
 import numpy as np
 
-from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_story
+from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_against, check_story
 from episode import (ANIMALS, BUILD, DANCE_BPM, FIRST_EPISODE, FPS, GENTLE_SONGS, MIN_SECONDS, NUMBER_WORDS, PALETTE, SR,
                      Builder, an, fmt, write_audio, write_json)
 
@@ -588,7 +588,10 @@ def scripted_stories(date, limit):
     out = []
     for path in paths:
         try:
-            out.append((path, load_script(path)))
+            spec = load_script(path)
+            if os.path.dirname(path) != used:  # a new story must not repeat an earlier one
+                check_against(path, spec)
+            out.append((path, spec))
         except (StoryError, ValueError, KeyError) as e:
             print(f"skipping story {os.path.basename(path)}: {e}")
     return out

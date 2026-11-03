@@ -4,8 +4,14 @@
 
 Prints "ok" or the first problem found. scripts/quiz.py uses the same checks.
 """
+import glob
 import json
+import os
 import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "shared"))
+from novelty import words  # noqa: E402
 
 PACK_TYPES = {"trivia", "truefalse"}
 QUESTIONS = 5
@@ -53,10 +59,61 @@ def check_pack(spec):
         raise PackError("all five answers are the same; mix them up")
 
 
+STOP = {"a", "an", "the", "is", "are", "was", "of", "in", "on", "to", "and", "or", "what", "which", "who", "how", "many",
+        "does", "do", "it", "its", "that", "this", "has", "have", "for", "by", "with", "can", "be", "as", "at", "most"}
+
+
+def _content(text):
+    return {w for w in words(text) if w not in STOP}
+
+
+def _same_question(a, b):
+    """Two questions ask the same thing: same answer and mostly the same important words."""
+    true_false = isinstance(a["answer"], bool)
+    if (a["answer"] if true_false else a["_answer"]) != (b["answer"] if true_false else b["_answer"]):
+        return False
+    ca, cb = _content(a["q"]), _content(b["q"])
+    score = len(ca & cb) / max(1, len(ca | cb))
+    return score >= (0.75 if true_false else 0.5)
+
+
+def _with_answers(spec):
+    out = []
+    for q in spec["questions"]:
+        q = dict(q)
+        if not isinstance(q["answer"], bool):
+            q["_answer"] = q["options"][q["answer"]].strip().lower()
+        out.append(q)
+    return out
+
+
+def check_against(path, spec):
+    """No pack title twice, and no question that an earlier pack already asked. Raises PackError."""
+    path = os.path.abspath(path)
+    mine = _with_answers(spec)
+    for p in glob.glob(os.path.join(ROOT, "quizzes", "new", "*.json")) + glob.glob(os.path.join(ROOT, "quizzes", "used", "*", "*.json")):
+        if os.path.abspath(p) == path:
+            continue
+        try:
+            other = json.load(open(p))
+        except json.JSONDecodeError:
+            continue
+        if other.get("type") == spec["type"] and other.get("title", "").strip().lower() == spec["title"].strip().lower():
+            raise PackError(f"the title {spec['title']!r} was already used ({os.path.basename(p)})")
+        if other.get("type") != spec["type"]:
+            continue
+        for i, q in enumerate(mine, 1):
+            for o in _with_answers(other):
+                if _same_question(q, o):
+                    raise PackError(f"question {i} repeats {os.path.basename(p)}: {o['q']!r}")
+
+
 def main():
     for path in sys.argv[1:]:
         try:
-            check_pack(json.load(open(path)))
+            spec = json.load(open(path))
+            check_pack(spec)
+            check_against(path, spec)
         except (PackError, json.JSONDecodeError) as e:
             raise SystemExit(f"pack error in {path}: {e}")
         print(f"ok: {path}")

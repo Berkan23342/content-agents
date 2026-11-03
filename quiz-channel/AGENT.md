@@ -18,9 +18,17 @@ questions during the run; decide yourself.
    `quizzes/used/*/*.json`.
 4. Write each pack to `quizzes/new/<YYYY-MM-DD>-<slug>.json` with the format below.
 5. Check them with `python3 scripts/quizcheck.py quizzes/new/<file>.json`. It must print `ok`; fix any `pack error`.
+   It also refuses a pack whose title or questions repeat an earlier pack.
 6. Commit only the new files and push to `main`: `git push origin HEAD:main`. If the push is rejected, run
    `git pull --rebase origin main` and push again.
 7. Final message: one line per pack with its type and title.
+
+## Trends
+
+`trends/latest.md` (at the repository root, updated every Monday and Thursday) lists the fastest-growing quiz Shorts of the
+last month. Read its `quiz` table. Each week, at least one of your packs should take a topic or angle that is working
+there, for example countries by their first letter, or famous inventions, written as our own questions. Never copy
+anyone's questions or titles. Record the source as `"inspired_by": "<link> (topic only)"` in the pack.
 
 ## What makes a good pack
 

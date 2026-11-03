@@ -4,8 +4,14 @@
 
 Prints "ok" with a rough length estimate, or the first problem found. scripts/fun.py uses the same checks.
 """
+import glob
 import json
+import os
 import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "shared"))
+from novelty import overlap  # noqa: E402
 
 CHARACTERS = {"chick", "bunny", "duck", "cat", "pig", "sheep", "frog", "dog", "cow", "lion", "owl", "turtle", "bear"}
 SCRIPT_BGS = {"day", "park", "farm", "forest", "pond", "dusk", "night", "rain"}
@@ -64,6 +70,35 @@ def check_story(spec):
 
 
 
+TOO_SIMILAR = 0.25  # share of three-word runs shared with an earlier story (today's stories share at most 0.05)
+
+
+def story_text(spec):
+    parts = [spec["title"], spec["summary"]]
+    for shot in spec["shots"]:
+        for st in shot["steps"]:
+            parts.append(st.get("say") or st.get("text") or "")
+    return " ".join(parts)
+
+
+def check_against(path, spec):
+    """No title twice and no story too close to an earlier one (waiting or published). Raises StoryError."""
+    path = os.path.abspath(path)
+    text = story_text(spec)
+    for p in glob.glob(os.path.join(ROOT, "stories", "new", "*.json")) + glob.glob(os.path.join(ROOT, "stories", "used", "*", "*.json")):
+        if os.path.abspath(p) == path:
+            continue
+        try:
+            other = json.load(open(p))
+        except json.JSONDecodeError:
+            continue
+        if other.get("title", "").strip().lower() == spec["title"].strip().lower():
+            raise StoryError(f"the title {spec['title']!r} was already used ({os.path.basename(p)})")
+        score = overlap(text, story_text(other))
+        if score >= TOO_SIMILAR:
+            raise StoryError(f"too similar to {os.path.basename(p)} ({score:.0%} of phrases repeat); write a new plot")
+
+
 def estimate_seconds(spec):
     """Rough length: speech at ~2.4 words/s plus pauses, walks and shot transitions."""
     t = 0.0
@@ -88,6 +123,7 @@ def main():
         spec = json.load(fh)
     try:
         check_story(spec)
+        check_against(sys.argv[1], spec)
     except StoryError as e:
         raise SystemExit(f"story error: {e}")
     t = estimate_seconds(spec)

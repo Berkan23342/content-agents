@@ -24,7 +24,12 @@ days in one part or one day in two parts. A first line that names the day says "
    last part ended: answer its cliffhanger first, then move the story forward. Use only the scenes the story's bible
    allows.
 5. Check it with `python3 scripts/diarycheck.py story/<id>/new/ep-NNNN.json`. It must print `ok`; fix any
-   `episode error`. Then update the story's `bible.md`:
+   `episode error`. The checker also refuses a part that:
+   - skips or repeats a part number,
+   - reuses a title or a trend link,
+   - shares too many phrases with any earlier script.
+
+   The video job refuses such a part too, so a repeat is never published. Then update the story's `bible.md`:
    - **Current state:** after which part (= day), who is where, supplies, what they know, open threads.
    - **Episode log:** add one line.
    Repeat steps 4-5 until every story has 2 parts waiting.
@@ -36,6 +41,27 @@ days in one part or one day in two parts. A first line that names the day says "
 7. Commit the new scripts and the updated bibles, and push to `main`: `git push origin HEAD:main`. If the push is
    rejected, run `git pull --rebase origin main` and push again.
 8. Final message: one line per new part, giving the story, part number, title and what happens.
+
+## Specials and trends
+
+- **Trends.** `trends/latest.md` (at the repository root) lists the fastest-growing zombie and horror Shorts of the
+  last month, updated every Monday and Thursday. Read the `outbreak` table before writing. Notice what works: premises
+  built on a rule ("if you hear three knocks, don't open"), what-ifs, a clear goal, a hook in the first second. Use those
+  ideas in our own stories.
+- **Never copy.** Never reuse anyone's script, title, characters, pictures or music. Never retell another video's plot
+  beat by beat. Take a premise or a hook and build something new in our world.
+- **Specials** (`story/specials/`) are one-part stories, complete in about a minute. They are published on Tuesdays and
+  Fridays; keep 2 waiting like every story.
+  - Each special has its own narrator (always a woman) and its own characters, in the same rainy city of Port Ellis or
+    near it.
+  - The idea starts from a trending premise in `trends/latest.md`, made our own. Record it in
+    `"inspired_by": "<link> (premise only: ...)"`.
+  - Set `"narrator"` to one of `heart`, `isabella`, `nicole`, `grace`, `ruth`, `tess`, a different one from the last
+    special.
+  - Speakers in specials are `man`, `woman`, `boy`, `girl` and `announcer`.
+  - The video shows "SPECIAL" instead of a day. The first line is a strong hook and the last line a twist; the video
+    ends with "THE END...?". The specials have no bible; read the earlier ones in `story/specials/` so you never repeat
+    an idea.
 
 ## Writing rules
 

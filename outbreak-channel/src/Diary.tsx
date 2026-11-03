@@ -32,6 +32,7 @@ export type DiaryProps = {
 	audio: string;
 	day: number;
 	series: string;
+	label?: string | null; // a one-part special shows this instead of "DAY N"
 	title: string;
 	beats: Beat[];
 	chunks: Chunk[];
@@ -162,7 +163,7 @@ const Captions: React.FC<{chunks: Chunk[]}> = ({chunks}) => {
 	);
 };
 
-const Intro: React.FC<{day: number; series: string; title: string}> = ({day, series, title}) => {
+const Intro: React.FC<{day: number; series: string; label?: string | null; title: string}> = ({day, series, label, title}) => {
 	const f = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const slam = spring({frame: f, fps, config: {damping: 12, stiffness: 220}});
@@ -170,39 +171,39 @@ const Intro: React.FC<{day: number; series: string; title: string}> = ({day, ser
 	return (
 		<div style={{position: 'absolute', top: 200, width: '100%', textAlign: 'center', opacity: 1 - out}}>
 			<div style={{fontFamily: elite, fontSize: 40, letterSpacing: 8, color: '#d9d2c0'}}>OUTBREAK DIARY · {series.toUpperCase()}</div>
-			<div style={{fontFamily: anton, fontSize: 230, color: '#fff', lineHeight: 1.05, transform: `scale(${2 - slam})`, textShadow: '0 12px 30px rgba(0,0,0,0.9)'}}>DAY {day}</div>
+			<div style={{fontFamily: anton, fontSize: 230, color: '#fff', lineHeight: 1.05, transform: `scale(${2 - slam})`, textShadow: '0 12px 30px rgba(0,0,0,0.9)'}}>{label ?? `DAY ${day}`}</div>
 			<div style={{width: 300 * slam, height: 12, background: C.red, margin: '0 auto'}} />
 			<div style={{fontFamily: elite, fontSize: 60, color: '#efe6d2', marginTop: 28, textShadow: '0 6px 20px rgba(0,0,0,0.9)'}}>{title}</div>
 		</div>
 	);
 };
 
-const TopLabel: React.FC<{day: number; series: string}> = ({day, series}) => {
+const TopLabel: React.FC<{day: number; series: string; label?: string | null}> = ({day, series, label}) => {
 	const f = useCurrentFrame();
 	return (
 		<div style={{position: 'absolute', top: 118, width: '100%', textAlign: 'center', fontFamily: elite, fontSize: 36, letterSpacing: 4, color: '#e6dccb', opacity: 0.75 * clamp((f - 64) / 12)}}>
-			{series.toUpperCase()} · DAY {day}
+			{label ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}
 		</div>
 	);
 };
 
-const EndCard: React.FC<{day: number; endAt: number}> = ({day, endAt}) => {
+const EndCard: React.FC<{day: number; endAt: number; label?: string | null}> = ({day, endAt, label}) => {
 	const f = useCurrentFrame() - endAt;
 	if (f < 0) return null;
-	const text = 'TO BE CONTINUED...';
+	const text = label ? 'THE END...?' : 'TO BE CONTINUED...';
 	const shown = Math.floor(clamp(f / 30) * text.length);
 	return (
 		<AbsoluteFill style={{background: `rgba(0,0,0,${0.75 * clamp(f / 12)})`}}>
 			<div style={{position: 'absolute', top: 760, width: '100%', textAlign: 'center', fontFamily: elite, fontSize: 76, color: '#efe6d2'}}>{text.slice(0, shown)}</div>
 			<div style={{position: 'absolute', top: 900, width: '100%', textAlign: 'center', fontFamily: anton, fontSize: 84, color: C.red, opacity: clamp((f - 34) / 8)}}>
-				FOLLOW FOR DAY {day + 1}
+				{label ? 'FOLLOW FOR MORE STORIES' : `FOLLOW FOR DAY ${day + 1}`}
 			</div>
 		</AbsoluteFill>
 	);
 };
 
 // ---------------------------------------------------------------- composition
-export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, title, endAt}) => {
+export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, title, endAt}) => {
 	const f = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
@@ -213,9 +214,9 @@ export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, 
 			))}
 			<Vignette />
 			<Grain f={f} />
-			{f < 70 ? <Intro day={day} series={series} title={title} /> : <TopLabel day={day} series={series} />}
+			{f < 70 ? <Intro day={day} series={series} label={label} title={title} /> : <TopLabel day={day} series={series} label={label} />}
 			<Captions chunks={chunks} />
-			<EndCard day={day} endAt={endAt} />
+			<EndCard day={day} endAt={endAt} label={label} />
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
 	);

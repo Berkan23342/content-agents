@@ -27,7 +27,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts"))
 
 from episode import DRUMS, SR, Builder, Midi, mix, render_midi  # noqa: E402
-from quizcheck import PackError, check_pack  # noqa: E402
+from quizcheck import PackError, check_against, check_pack  # noqa: E402
 
 BUILD = os.path.join(ROOT, "build")
 PUBLIC = os.path.join(ROOT, "public")
@@ -204,6 +204,8 @@ def take_pack(kind, date, slot):
         try:
             spec = json.load(open(path))
             check_pack(spec)
+            if path not in mine:  # a re-run may reuse its own pack
+                check_against(path, spec)
         except (PackError, json.JSONDecodeError) as e:
             print(f"skipping {os.path.basename(path)}: {e}")
             continue

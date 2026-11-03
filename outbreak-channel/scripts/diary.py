@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts"
 import audio  # noqa: E402
 from episode import SR, Builder, mix  # noqa: E402
 import dread  # noqa: E402,F401  (registers the horror sounds)
-from diarycheck import DiaryError, check_episode, sfx_name  # noqa: E402
+from diarycheck import DiaryError, check_against, check_episode, sfx_name  # noqa: E402
 
 BUILD = os.path.join(ROOT, "build")
 PUBLIC = os.path.join(ROOT, "public")
@@ -90,7 +90,15 @@ def take_episode(series, vid):
         waiting.append((spec["episode"], path))
     if not waiting:
         raise SystemExit(f"no episode script in story/{series}/new")
-    return min(waiting)[1]
+    episode, path = min(waiting)
+    published = [json.load(open(p))["episode"] for p in glob.glob(os.path.join(STORY, series, "used", "*", "*.json"))]
+    if episode != max(published, default=0) + 1:  # never skip or repeat a day
+        raise SystemExit(f"{series}: the next part should be {max(published, default=0) + 1}, the first waiting is {episode}")
+    try:
+        check_against(path, json.load(open(path)))
+    except DiaryError as e:  # better no video today than a repeat
+        raise SystemExit(f"{series}: {os.path.basename(path)} not published: {e}")
+    return path
 
 
 def chunks_for(text, hl, t0, t1, f, talk=False):
@@ -121,7 +129,8 @@ def chunks_for(text, hl, t0, t1, f, talk=False):
 
 def build(spec, series):
     b = Builder()
-    lines = [(beat.get("speaker", series["narrator"]), beat["text"]) for beat in spec["beats"]]
+    narrator = spec.get("narrator", series["narrator"])  # a special may pick its own narrator
+    lines = [(beat.get("speaker", narrator), beat["text"]) for beat in spec["beats"]]
     speak_all(lines)
 
     def say(at, voice, text):
@@ -169,13 +178,13 @@ def build(spec, series):
                                                          None if ambience == "none" else ambience, 0.5))]
     b.music_gain = 0.2
     n = spec["episode"]
-    props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "title": spec["title"],
+    props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"), "title": spec["title"],
              "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
     title = video_title(series, n, spec["title"])
     meta = {
         "title": title[:100],
         "description": "\n".join([
-            f"{series['name']}, day {n}. {spec['summary']}",
+            f"{series['name']}, day {n}. {spec['summary']}" if not series.get("label") else spec["summary"],
             "",
             f"{series['about']} A new day of this story, and of the other Outbreak Diary stories, every day.",
             "Follow so you don't miss what happens next.",
@@ -190,7 +199,10 @@ def build(spec, series):
 
 
 def video_title(series, day, title):
-    """The story's name first, so viewers can tell the stories apart: "Harbor View · Day 3: Pier Four | ..."."""
+    """The story's name first, so viewers can tell the stories apart: "Harbor View · Day 3: Pier Four | ...".
+    A one-part special has no days: "They Never Look Up | Outbreak Specials · Zombie Story"."""
+    if series.get("label"):
+        return f"{title} | {series['name']} · Zombie Survival Story #shorts"
     return f"{series['name']} · Day {day}: {title} | Zombie Survival Story #shorts"
 
 

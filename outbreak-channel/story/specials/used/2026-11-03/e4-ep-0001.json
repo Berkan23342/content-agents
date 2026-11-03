@@ -1,0 +1,117 @@
+{
+  "episode": 1,
+  "title": "They Never Look Up",
+  "narrator": "grace",
+  "ambience": "wind",
+  "inspired_by": "https://youtu.be/7ws3CCPcdmU (premise only: the infected never look up)",
+  "summary": "A window cleaner is stuck on a platform thirty floors up when the outbreak starts. She learns one rule. Then it breaks.",
+  "beats": [
+    {
+      "scene": "tower",
+      "zombies": 0,
+      "text": "I clean windows for a living. Thirty floors up, on a platform the size of a bed.",
+      "hl": [
+        "Thirty floors"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 0,
+      "tone": "dawn",
+      "text": "That morning, the city below me started screaming.",
+      "hl": [
+        "screaming"
+      ],
+      "sfx": [
+        "siren@0.3"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 8,
+      "tone": "dawn",
+      "text": "People ran. Then the people chasing them stopped running, and started wandering.",
+      "hl": [
+        "wandering"
+      ],
+      "sfx": [
+        "groan@2.2"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "alert",
+      "lines": [
+        "Stay where you are.",
+        "Help is coming."
+      ],
+      "cam": "still",
+      "text": "My phone said: stay where you are. Help is coming.",
+      "sfx": [
+        "buzz@0.1"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "text": "So I stayed. For three days, I watched them. And I learned one thing."
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "cam": "push",
+      "hold": 0.8,
+      "text": "They never look up.",
+      "hl": [
+        "never look up"
+      ],
+      "sfx": [
+        "heartbeat@0.2"
+      ]
+    },
+    {
+      "scene": "tower",
+      "tone": "dusk",
+      "rain": true,
+      "text": "I ate the last of my lunch. I drank the rain."
+    },
+    {
+      "scene": "tower",
+      "tone": "dusk",
+      "text": "On the fourth night, the platform motor coughed, and died.",
+      "hl": [
+        "died"
+      ],
+      "sfx": [
+        "click@2.4"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "text": "The cable groaned. One of them, right below me, stopped walking.",
+      "sfx": [
+        "creak@0.3"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "alarm": true,
+      "text": "Slowly, very slowly, it tilted its head...",
+      "hl": [
+        "tilted its head"
+      ],
+      "hold": 0.6
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "cam": "push",
+      "text": "and looked up.",
+      "hl": [
+        "looked up"
+      ]
+    }
+  ]
+}

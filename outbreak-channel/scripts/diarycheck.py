@@ -4,10 +4,15 @@
 
 Prints "ok" with a rough length estimate, or the first problem found. scripts/diary.py uses the same checks.
 """
+import glob
 import json
 import os
 import re
 import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "shared"))
+from novelty import overlap  # noqa: E402
 
 BOOL = "bool"
 SCENES = {  # scene: {param: allowed values, a (min, max) range, BOOL, or "lines"/"items"}
@@ -39,6 +44,7 @@ BEAT_KEYS = {"scene", "text", "hl", "sfx", "cam", "tone", "rain", "fog", "flashl
 CAMS = {"push", "pull", "left", "right", "still"}
 TONES = {"night", "dawn", "dusk"}
 AMBIENCE = {"rain", "wind", "night", "none"}
+NARRATORS = {"nicole", "isabella", "heart", "grace", "ruth", "tess"}  # women's voices in voices/
 MAX_BEAT_WORDS = 24
 WORDS = (85, 130)
 BEATS = (8, 16)
@@ -75,6 +81,8 @@ def check_episode(spec, cast=None):
         raise DiaryError("'episode' is a whole number")
     if spec.get("day", spec["episode"]) != spec["episode"]:
         raise DiaryError("part N is always Day N: leave 'day' out")
+    if spec.get("narrator", "heart") not in NARRATORS:
+        raise DiaryError(f"narrator must be one of {sorted(NARRATORS)} (the narrator is always a woman)")
     if len(spec["title"]) > 28:
         raise DiaryError(f"title is {len(spec['title'])} characters, keep it to 28")
     if spec.get("ambience", "night") not in AMBIENCE:
@@ -133,6 +141,47 @@ def check_episode(spec, cast=None):
     return total
 
 
+TOO_SIMILAR = 0.2  # share of three-word runs shared with an earlier script (today's scripts share at most 0.03)
+
+
+def script_text(spec):
+    return spec["title"] + ". " + " ".join(b["text"] for b in spec["beats"])
+
+
+def check_against(path, spec):
+    """The checks that need every other script: part numbers in order, and nothing repeated.
+    Raises DiaryError. path is the script's file in story/<id>/new/ or story/<id>/used/<date>/."""
+    path = os.path.abspath(path)
+    story_dir = os.path.join(ROOT, "story", os.path.relpath(path, os.path.join(ROOT, "story")).split(os.sep)[0])
+    others = []
+    for p in glob.glob(os.path.join(ROOT, "story", "*", "new", "*.json")) + glob.glob(os.path.join(ROOT, "story", "*", "used", "*", "*.json")):
+        if os.path.abspath(p) != path:
+            try:
+                others.append((p, json.load(open(p))))
+            except json.JSONDecodeError:
+                continue
+    mine = [(p, o) for p, o in others if os.path.abspath(p).startswith(story_dir + os.sep)]
+    numbers = sorted([o["episode"] for _, o in mine] + [spec["episode"]])
+    if len(set(numbers)) != len(numbers):
+        raise DiaryError(f"part {spec['episode']} already exists in this story")
+    if numbers != list(range(1, len(numbers) + 1)):
+        raise DiaryError(f"parts must go 1, 2, 3... without gaps; this story would have {numbers}")
+    m = re.search(r"ep-(\d+)\.json$", path)
+    if m and int(m.group(1)) != spec["episode"]:
+        raise DiaryError(f"the file name says part {int(m.group(1))} but 'episode' is {spec['episode']}")
+    for p, o in mine:
+        if o["title"].strip().lower() == spec["title"].strip().lower():
+            raise DiaryError(f"the title {spec['title']!r} was already used ({os.path.basename(p)})")
+    link = spec.get("inspired_by", "").split(" ")[0]
+    if link and any(o.get("inspired_by", "").split(" ")[0] == link for _, o in others):
+        raise DiaryError(f"another script was already inspired by {link}; pick a different trend")
+    text = script_text(spec)
+    for p, o in others:
+        score = overlap(text, script_text(o))
+        if score >= TOO_SIMILAR:
+            raise DiaryError(f"too similar to {os.path.relpath(p, ROOT)} ({score:.0%} of phrases repeat); write something new")
+
+
 def estimate_seconds(total_words):
     return total_words * 0.5 + 3.5  # measured on parts 1-3, with the pauses and the end card
 
@@ -151,7 +200,9 @@ def cast_for(path):
 def main():
     for path in sys.argv[1:]:
         try:
-            total = check_episode(json.load(open(path)), cast_for(path))
+            spec = json.load(open(path))
+            total = check_episode(spec, cast_for(path))
+            check_against(path, spec)
         except (DiaryError, json.JSONDecodeError) as e:
             raise SystemExit(f"episode error in {path}: {e}")
         print(f"ok: {path} ({total} words, about {estimate_seconds(total):.0f} s)")
