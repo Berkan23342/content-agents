@@ -1,0 +1,127 @@
+{
+  "episode": 3,
+  "title": "Who Took the Canoe",
+  "ambience": "night",
+  "summary": "Nora tracks whoever took the canoe before the night comes down.",
+  "beats": [
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "cabin": true,
+      "tone": "dawn",
+      "cam": "push",
+      "text": "Day three. Yesterday, somebody took our canoe.",
+      "hl": [
+        "canoe"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "fog": true,
+      "tone": "dawn",
+      "cam": "left",
+      "text": "The infected do not steal boats. I went to read the shore.",
+      "hl": [
+        "steal"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "tone": "dawn",
+      "cam": "push",
+      "sfx": [
+        "steps@0.6"
+      ],
+      "text": "Small boot prints in the mud. A running stride. A drag line.",
+      "hl": [
+        "Small"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "speaker": "ava",
+      "text": "\"A kid,\" Ava said. \"Or someone scared.\"",
+      "hl": [
+        "scared"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "fire": false,
+      "tone": "dawn",
+      "cam": "pull",
+      "text": "I climbed onto the cabin roof with binoculars.",
+      "hl": [
+        "binoculars"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "fire": false,
+      "flare": true,
+      "tone": "dusk",
+      "cam": "push",
+      "text": "The canoe drifted near the far shore. A small figure waved a red scarf.",
+      "hl": [
+        "red scarf"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "tone": "dusk",
+      "cam": "left",
+      "text": "Ava wanted to go at once. I said no. Walt was still out there.",
+      "hl": [
+        "no"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "tess",
+      "tone": "dusk",
+      "sfx": [
+        "static@0.1"
+      ],
+      "text": "At dusk Tess said, \"Nora, someone just landed on the south shore.\"",
+      "hl": [
+        "south shore"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 12,
+      "tone": "dusk",
+      "fog": true,
+      "cam": "push",
+      "sfx": [
+        "groan@1.2"
+      ],
+      "text": "\"They are not alone,\" she added. \"A dozen are following their footsteps.\"",
+      "hl": [
+        "dozen"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 8,
+      "cabin": true,
+      "tone": "dusk",
+      "cam": "push",
+      "hold": 0.9,
+      "sfx": [
+        "heartbeat@0.4"
+      ],
+      "text": "The red scarf kept waving. And it was heading straight for our cabin.",
+      "hl": [
+        "our cabin"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "episode": 2,
+  "title": "The Ranger at the Glass",
+  "ambience": "wind",
+  "summary": "Morning shows Nora who the visitor was, and the lake offers a way out.",
+  "beats": [
+    {
+      "scene": "cabin",
+      "light": "off",
+      "zombie": true,
+      "tone": "dawn",
+      "cam": "push",
+      "text": "Day two. At dawn the man in the ranger's uniform was still at our window.",
+      "hl": [
+        "dawn"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "off",
+      "zombie": true,
+      "tone": "dawn",
+      "cam": "still",
+      "text": "I knew the badge. Walt. He kept the north trails for twenty years.",
+      "hl": [
+        "Walt"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "off",
+      "guest": "ava",
+      "zombie": true,
+      "tone": "dawn",
+      "cam": "push",
+      "text": "He did not blink. He did not breathe. He only listened.",
+      "hl": [
+        "listened"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "off",
+      "guest": "ava",
+      "speaker": "ava",
+      "text": "\"Aunt Nora,\" Ava breathed. \"What do we do?\"",
+      "hl": [
+        "What do we do"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "cam": "push",
+      "sfx": [
+        "static@0.2"
+      ],
+      "text": "I turned the radio on, very low. Tess at the fire tower would know.",
+      "hl": [
+        "Tess"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "tess",
+      "text": "\"Nora? It's Tess. Don't go outside. They follow every sound.\"",
+      "hl": [
+        "every sound"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "tess",
+      "hold": 0.6,
+      "text": "Then: \"Go to the water. They can't swim.\"",
+      "hl": [
+        "water"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 1,
+      "cabin": true,
+      "tone": "dawn",
+      "cam": "left",
+      "text": "The canoe was thirty steps away, with Walt in the way.",
+      "hl": [
+        "thirty steps"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "items": [
+        "can",
+        "water",
+        "flashlight",
+        "radio",
+        "map"
+      ],
+      "cam": "push",
+      "text": "Ava found a tin of beans and threw it at the far trees.",
+      "hl": [
+        "beans"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 1,
+      "fog": true,
+      "tone": "dawn",
+      "cam": "pull",
+      "sfx": [
+        "thud@0.4",
+        "steps@1.5"
+      ],
+      "text": "Walt turned and followed the sound. The dock was clear.",
+      "hl": [
+        "turned"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "cabin": true,
+      "tone": "dawn",
+      "cam": "push",
+      "hold": 0.9,
+      "text": "But when I looked back at the dock, the canoe was gone.",
+      "hl": [
+        "gone"
+      ]
+    }
+  ]
+}

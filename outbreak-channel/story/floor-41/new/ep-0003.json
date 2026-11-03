@@ -1,0 +1,138 @@
+{
+  "episode": 3,
+  "title": "Ruth on Twelve",
+  "ambience": "wind",
+  "summary": "Maya and Dev try to help Ruth without bringing the whole tower upstairs.",
+  "beats": [
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "cam": "push",
+      "sfx": [
+        "static@0.2"
+      ],
+      "text": "Day three. Ruth was still on the radio, whispering from floor twelve.",
+      "hl": [
+        "Ruth"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "ruth",
+      "text": "She had a desk phone, a locked door, and a stapler.",
+      "hl": [
+        "stapler"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "guest": "dev",
+      "cam": "left",
+      "text": "Dev rubbed his knee. \"Twenty-nine floors. In the dark. With them listening.\"",
+      "hl": [
+        "listening"
+      ]
+    },
+    {
+      "scene": "tower",
+      "zombies": 6,
+      "cam": "pull",
+      "text": "I did what I do. I built the tower in my head, floor by floor.",
+      "hl": [
+        "floor by floor"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 41,
+      "power": false,
+      "cam": "still",
+      "text": "The service elevator was on the north side. One shaft, no stairwell.",
+      "hl": [
+        "service elevator"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 41,
+      "power": false,
+      "cam": "push",
+      "text": "\"If it still has power,\" said Dev, \"we can bring her up.\"",
+      "hl": [
+        "bring her up"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 30,
+      "power": false,
+      "cam": "push",
+      "sfx": [
+        "click@0.2",
+        "whoosh@1.0"
+      ],
+      "text": "We pressed the button. Far below, a motor hummed to life.",
+      "hl": [
+        "hummed"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 12,
+      "power": false,
+      "hold": 0.9,
+      "sfx": [
+        "heartbeat@0.5"
+      ],
+      "text": "The number climbed. Twenty. Fifteen. Twelve. It stopped.",
+      "hl": [
+        "stopped"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "alarm": true,
+      "sfx": [
+        "static@0.1",
+        "glass@1.2"
+      ],
+      "text": "The doors opened on twelve. Ruth screamed once, then went quiet.",
+      "hl": [
+        "quiet"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 12,
+      "power": false,
+      "cam": "push",
+      "text": "Dev whispered, \"She called it. Something else got in.\"",
+      "hl": [
+        "something else"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 20,
+      "power": false,
+      "alarm": true,
+      "cam": "push",
+      "sfx": [
+        "groan@1.0"
+      ],
+      "text": "The numbers began to climb toward us.",
+      "hl": [
+        "climb"
+      ]
+    }
+  ]
+}

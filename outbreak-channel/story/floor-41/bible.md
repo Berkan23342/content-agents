@@ -68,15 +68,19 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 1 (written; it is published on 2026-11-03 because of YouTube's upload limit)
-- **Day:** 1, a little after midnight, on floor 41
-- **Who:** Maya is alone and hiding under her desk. A man who says he is security is on the floor with a flashlight.
-- **Supplies:** a cold coffee, a phone at 70%, a desk drawer of snacks.
-- **Known:** the alert says shelter in place and do not use the elevators. Something rode the elevator up to 41 and
-  pushed a hand through the doors.
-- **Open threads:** is the man really security? Where did the elevator thing go? What is happening in the lobby?
+- **After:** part 3 (published 2026-11-04 or later because of YouTube's upload limit)
+- **Day:** 3, on floor 41
+- **Who:** Maya and Dev are unhurt; Dev's knee hurts. Ruth, on floor 12, has gone silent after the service elevator
+  opened on her floor.
+- **Supplies:** Dev's radio and eleven keycards, a desk drawer of snacks, a phone at about 60%.
+- **Known:** the main elevators are dead and the emergency lights are red. Dev locked all doors on 41. Something rode the
+  service elevator up from floor 12 and the numbers are climbing.
+- **Open threads:** what is in the service elevator? Is Ruth alive? Who flashes a torch from Calder Tower?
 
 ## Episode log
 
 - **Part 1 (Day 1) Working Late:** Maya is working late. Glass breaks below and the alert arrives. The elevator comes
   up with something inside it. She hides, and a flashlight finds the floor.
+- **Part 2 (Day 2) Security:** Dev is real. He locks the floor, the elevators die, and Ruth calls on the radio from floor 12.
+- **Part 3 (Day 3) Ruth on Twelve:** Maya and Dev call the service elevator for Ruth. Ruth screams and goes silent, and
+  the elevator climbs toward 41.

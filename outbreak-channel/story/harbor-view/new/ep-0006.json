@@ -1,0 +1,133 @@
+{
+  "episode": 6,
+  "title": "The Last Horn",
+  "ambience": "rain",
+  "summary": "Dawn on Day six brings a sound from the harbour, and a hard truth from Mr. Hale.",
+  "beats": [
+    {
+      "scene": "window",
+      "zombies": 9,
+      "tone": "dawn",
+      "cam": "pull",
+      "sfx": [
+        "siren@0.3"
+      ],
+      "text": "Day six. At dawn, a horn sounded from the harbour.",
+      "hl": [
+        "horn"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 9,
+      "tone": "dawn",
+      "cam": "push",
+      "text": "One long note. Pier Four. The boat was leaving.",
+      "hl": [
+        "leaving"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "tone": "dawn",
+      "cam": "push",
+      "text": "We were still on nine, with four floors of them below us.",
+      "hl": [
+        "nine"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "lamp",
+      "guest": "leo",
+      "dog": "sit",
+      "tone": "dawn",
+      "cam": "left",
+      "text": "Leo dropped onto the couch. \"So that was our ride,\" he said.",
+      "hl": [
+        "ride"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "cam": "still",
+      "sfx": [
+        "static@0.2"
+      ],
+      "text": "Mrs. Okafor turned her radio on, very low."
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "announcer",
+      "hold": 0.8,
+      "text": "\"Another boat leaves in three days,\" said the Harbor Station voice. \"Last departure.\"",
+      "hl": [
+        "Last departure"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "items": [
+        "can:3",
+        "water:2",
+        "dogfood",
+        "flashlight",
+        "candle:4",
+        "radio",
+        "bat",
+        "walkie"
+      ],
+      "cam": "push",
+      "text": "Three days. I counted our supplies twice.",
+      "hl": [
+        "counted"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "cam": "push",
+      "sfx": [
+        "static@0.1"
+      ],
+      "text": "The walkie-talkie hissed. Hale again, closer now.",
+      "hl": [
+        "closer"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "hale",
+      "hold": 0.6,
+      "text": "\"I was the one who tapped once,\" he whispered. \"I am hiding on the fourth floor.\"",
+      "hl": [
+        "fourth floor"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "hale",
+      "text": "\"I can take you to the roof. But the door below me just came open.\"",
+      "hl": [
+        "came open"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "cam": "push",
+      "sfx": [
+        "scratch@0.8"
+      ],
+      "text": "Then Biscuit stood up, stared at our door, and began to growl.",
+      "hl": [
+        "growl"
+      ]
+    }
+  ]
+}

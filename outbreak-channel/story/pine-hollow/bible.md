@@ -63,15 +63,20 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 1
-- **Day:** 1, around midnight, in the cabin
-- **Who:** Nora and Ava are together and unhurt, with the fire out and the lights off.
-- **Supplies:** a full pantry for a week, the ranger radio, the pickup with half a tank, the canoe.
-- **Known:** Cedar Falls called for help, then went silent. Grace told them not to come to the city.
-- **Open threads:** the infected man at the window wears a ranger's uniform. Who is he?
+- **After:** part 3
+- **Day:** 3, dusk, at the cabin
+- **Who:** Nora and Ava unhurt. Walt, the infected ranger, wandered off after a thrown can. An unknown person took the
+  canoe and is paddling a small canoe with a red scarf toward the cabin.
+- **Supplies:** a pantry for a week minus a few cans, the ranger radio, the pickup with half a tank. The canoe is gone.
+- **Known:** Tess says they cannot swim and that someone landed on the south shore, followed by about a dozen of them.
+- **Open threads:** who is the person with the red scarf? Will the dozen reach the cabin? Where did Walt go?
 
 ## Episode log
 
 - **Part 1 (Day 1) The Quiet Town:** the birds go silent. The radio fills with Cedar Falls calling for help, then
   nothing. Grace's message gets through. At midnight something walks out of the trees and stops at the cabin window,
   wearing a ranger's uniform.
+- **Part 2 (Day 2) The Ranger at the Glass:** the infected ranger is Walt, the trail keeper. Tess says to go to the water.
+  Ava lures Walt away with a thrown can, and the canoe is gone from the dock.
+- **Part 3 (Day 3) Who Took the Canoe:** small boot prints show a child or a scared person took it. At dusk it drifts
+  with a red scarf, and a dozen of them follow its trail to the cabin.

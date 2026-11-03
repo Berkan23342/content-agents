@@ -1,0 +1,122 @@
+{
+  "episode": 2,
+  "title": "Security",
+  "ambience": "wind",
+  "summary": "Maya meets the man with the flashlight and learns what is waiting in the dark.",
+  "beats": [
+    {
+      "scene": "office",
+      "light": "off",
+      "flashlight": true,
+      "cam": "push",
+      "text": "Day two. The flashlight stopped right by my desk.",
+      "hl": [
+        "flashlight"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "off",
+      "guest": "dev",
+      "flashlight": true,
+      "cam": "left",
+      "text": "\"Easy,\" he said. \"I am Dev, night security.\" He had a limp and a hum.",
+      "hl": [
+        "Dev"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "guest": "dev",
+      "cam": "push",
+      "text": "He pulled me up. I counted his keycards. Eleven.",
+      "hl": [
+        "Eleven"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "sfx": [
+        "groan@1.0"
+      ],
+      "text": "\"The lobby is gone,\" said Dev. \"They are in the stairwells. Stay quiet.\"",
+      "hl": [
+        "gone"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "doors": "closed",
+      "floor": 41,
+      "power": false,
+      "alarm": true,
+      "cam": "still",
+      "text": "The elevators stopped. The lights turned a dim red.",
+      "hl": [
+        "red"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "push",
+      "sfx": [
+        "click@0.5",
+        "click@1.2"
+      ],
+      "text": "Dev locked every door with his master card. Click, click.",
+      "hl": [
+        "Click"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 14,
+      "fire": true,
+      "cam": "pull",
+      "text": "Outside, the city burned in a dozen places.",
+      "hl": [
+        "burned"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "cam": "still",
+      "sfx": [
+        "static@0.3"
+      ],
+      "text": "Dev switched on his radio. \"Who else is out there?\""
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "cam": "push",
+      "text": "A woman's voice cut through, thin and frightened."
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "ruth",
+      "hold": 0.8,
+      "text": "\"Is anyone there? This is Ruth, floor twelve. They are outside my door.\"",
+      "hl": [
+        "floor twelve"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "sfx": [
+        "thud@1.6"
+      ],
+      "text": "Twenty-nine floors below, Ruth was alive. And so was everything else.",
+      "hl": [
+        "Twenty-nine floors"
+      ]
+    }
+  ]
+}
