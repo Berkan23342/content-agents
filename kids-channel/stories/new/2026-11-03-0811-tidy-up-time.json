@@ -1,0 +1,74 @@
+{
+  "title": "Tidy Up Time",
+  "lesson": "Tidying up together is quick and fun",
+  "summary": "Sheep, Bunny and Dog find the farm in a toy mess and tidy up three colorful toys together.",
+  "cast": ["sheep", "bunny", "dog"],
+  "calm": false,
+  "shots": [
+    {"bg": "farm",
+     "actors": [{"name": "sheep", "x": 900}],
+     "props": [
+       {"id": "ball", "icon": "ball", "color": "#2F8CFF", "x": 1250, "y": 830, "size": 140},
+       {"id": "star", "icon": "star", "color": "#FFC92E", "x": 1450, "y": 830, "size": 140},
+       {"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 1650, "y": 830, "size": 140}
+     ],
+     "steps": [
+       {"say": "Once upon a time, Sheep woke up on a sunny farm."},
+       {"say": "Oh dear! Toys were all over the ground."},
+       {"line": "sheep", "text": "Baa! What a big mess. I need help.", "bubble": "I need help!", "act": "shake"},
+       {"enter": "bunny", "x": 500, "side": "left", "speed": 650},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Hello, Sheep! I can help you tidy up.", "bubble": "I can help!", "act": "wave"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "sheep", "x": 900}, {"name": "bunny", "x": 500}],
+     "props": [
+       {"id": "ball", "icon": "ball", "color": "#2F8CFF", "x": 1250, "y": 830, "size": 140},
+       {"id": "star", "icon": "star", "color": "#FFC92E", "x": 1450, "y": 830, "size": 140},
+       {"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 1650, "y": 830, "size": 140}
+     ],
+     "steps": [
+       {"say": "Bunny hopped to the blue ball. One!"},
+       {"prop_move": "ball", "x": 700, "y": 420, "dur": 0.9},
+       {"sfx": "pop"},
+       {"line": "bunny", "text": "Hop, hop! One blue ball.", "bubble": "One blue ball!", "act": "jump"},
+       {"enter": "dog", "x": 1400, "side": "right", "speed": 650},
+       {"say": "Then Dog came running to help. Woof, woof!"},
+       {"line": "bunny", "text": "Hello, Dog! Do you want to help us?", "bubble": "Help us?", "act": "wave"},
+       {"arrive": "dog"},
+       {"line": "dog", "text": "Woof! I will pick up the yellow star.", "bubble": "Yellow star!", "act": "wave"},
+       {"prop_move": "star", "x": 1400, "y": 420, "dur": 0.9},
+       {"sfx": "pop"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "sheep", "x": 900}, {"name": "bunny", "x": 500}, {"name": "dog", "x": 1400}],
+     "props": [
+       {"id": "ball", "icon": "ball", "color": "#2F8CFF", "x": 500, "y": 420, "size": 140},
+       {"id": "star", "icon": "star", "color": "#FFC92E", "x": 1400, "y": 420, "size": 140},
+       {"id": "kite", "icon": "kite", "color": "#FF3B3B", "x": 1650, "y": 830, "size": 140}
+     ],
+     "steps": [
+       {"say": "One toy left. The red kite! Who will get it?"},
+       {"line": "bunny", "text": "Hop, hop! Two toys are tidy now.", "bubble": "Two toys tidy!", "act": "jump"},
+       {"line": "sheep", "text": "Baa! I will get the red kite.", "bubble": "Red kite!", "act": "jump"},
+       {"prop_move": "kite", "x": 900, "y": 420, "dur": 0.9},
+       {"sfx": "pop"},
+       {"line": "dog", "text": "Woof! One, two, three toys. All tidy!", "bubble": "One, two, three!", "act": "spin"},
+       {"sfx": "sparkle"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "sheep", "x": 900}, {"name": "bunny", "x": 500}, {"name": "dog", "x": 1400}],
+     "props": [{"id": "heart", "icon": "heart", "color": "#FF6FB5", "x": 950, "y": 300, "size": 160, "float": true}],
+     "steps": [
+       {"say": "Together, they put every toy in the toy box."},
+       {"act": "all", "kind": "jump"},
+       {"line": "sheep", "text": "Baa! Tidying up is fast with friends.", "bubble": "Thank you, friends!", "act": "wave"},
+       {"line": "bunny", "text": "Hop, hop! Let us tidy up every day!", "bubble": "Tidy every day!", "act": "spin"},
+       {"say": "The farm was neat, and everyone was happy. The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
