@@ -1,0 +1,74 @@
+{
+  "title": "Lion and Little Bunny",
+  "lesson": "Even small friends can help, and kindness comes back",
+  "summary": "Big Lion is kind to tiny Bunny, then Bunny helps Lion get his golden crown down from a tree.",
+  "cast": ["lion", "bunny", "duck"],
+  "calm": false,
+  "shots": [
+    {"bg": "forest",
+     "actors": [{"name": "lion", "x": 1000}],
+     "props": [],
+     "steps": [
+       {"say": "Once upon a time, a big lion walked in the forest."},
+       {"say": "Lion was big, but he was very kind."},
+       {"enter": "bunny", "x": 500, "side": "left", "speed": 600},
+       {"say": "Look! A little bunny was lost and sad."},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Oh no. I am so small. I cannot find home.", "bubble": "I am lost!", "act": "shake"},
+       {"line": "lion", "text": "Roar, do not worry. I will help you.", "bubble": "I will help!", "act": "wave"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "forest",
+     "actors": [{"name": "lion", "x": 1000}, {"name": "bunny", "x": 500}],
+     "props": [],
+     "steps": [
+       {"say": "Lion walked with Bunny. Step, step, step."},
+       {"move": "bunny", "x": 700, "speed": 300},
+       {"say": "Soon Bunny saw her house. Hooray!"},
+       {"line": "bunny", "text": "Thank you, Lion! Someday I will help you too.", "bubble": "Thank you!", "act": "jump"},
+       {"line": "lion", "text": "Roar! You are small, but you are kind.", "bubble": "You are kind!", "act": "spin"},
+       {"sfx": "sparkle"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "lion", "x": 700}],
+     "props": [{"id": "crown", "icon": "crown", "color": "#FFC92E", "x": 1760, "y": 250, "size": 160}],
+     "steps": [
+       {"say": "The next day, the wind blew. Whoosh!"},
+       {"sfx": "whoosh"},
+       {"say": "Lion's golden crown flew up into a tall tree."},
+       {"line": "lion", "text": "Roar! My crown is stuck. I am too big.", "bubble": "Crown stuck!", "act": "shake"},
+       {"enter": "duck", "x": 1250, "side": "right", "speed": 600},
+       {"arrive": "duck"},
+       {"line": "duck", "text": "Quack! I cannot reach it. I cannot fly.", "bubble": "Too high!", "act": "shake"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "lion", "x": 700}, {"name": "duck", "x": 1250}],
+     "props": [{"id": "crown", "icon": "crown", "color": "#FFC92E", "x": 1760, "y": 250, "size": 160}],
+     "steps": [
+       {"say": "Then, hop, hop, hop! Here came Bunny."},
+       {"enter": "bunny", "x": 1000, "side": "left", "speed": 700},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Hello, Lion! Now I can help you.", "bubble": "I can help!", "act": "wave"},
+       {"say": "Little Bunny hopped up, up, up the tree."},
+       {"prop_move": "crown", "x": 1000, "y": 420, "dur": 1.2},
+       {"sfx": "boing"},
+       {"line": "bunny", "text": "Hop, hop! I got your crown.", "bubble": "Got it!", "act": "jump"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "lion", "x": 700}, {"name": "bunny", "x": 1000}, {"name": "duck", "x": 1300}],
+     "props": [{"id": "crown", "icon": "crown", "color": "#FFC92E", "x": 1000, "y": 420, "size": 160}],
+     "steps": [
+       {"prop_move": "crown", "x": 700, "y": 420, "dur": 1.0},
+       {"sfx": "ding"},
+       {"line": "lion", "text": "Roar! Thank you, Bunny. You are a good friend.", "bubble": "Thank you!", "act": "spin"},
+       {"line": "duck", "text": "Quack! Small friends can do big things.", "bubble": "Big things!", "act": "jump"},
+       {"act": "all", "kind": "jump"},
+       {"sfx": "sparkle"},
+       {"say": "Kind friends help each other. The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
