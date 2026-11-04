@@ -1,0 +1,70 @@
+{
+  "title": "Cat Tells the Truth",
+  "lesson": "Telling the truth, even when it is hard",
+  "summary": "Cat nibbles one of Dog's three cookies, then bravely tells the truth, and Dog shares the rest.",
+  "cast": ["cat", "dog", "bunny"],
+  "calm": false,
+  "shots": [
+    {"bg": "park",
+     "actors": [{"name": "dog", "x": 600}],
+     "props": [
+       {"id": "c1", "icon": "cookie", "color": "#C98A3C", "x": 780, "y": 830, "size": 130},
+       {"id": "c2", "icon": "cookie", "color": "#C98A3C", "x": 945, "y": 830, "size": 130},
+       {"id": "c3", "icon": "cookie", "color": "#C98A3C", "x": 1110, "y": 830, "size": 130}
+     ],
+     "steps": [
+       {"say": "Once upon a time, Dog baked three yummy cookies."},
+       {"line": "dog", "text": "Woof, woof! One, two, three cookies!", "bubble": "Three cookies!", "act": "jump"},
+       {"say": "Dog went to fetch some milk."},
+       {"line": "dog", "text": "I will be back soon. Woof!", "bubble": "Back soon!", "act": "wave"},
+       {"leave": "dog", "side": "left"},
+       {"pause": 0.5},
+       {"enter": "cat", "x": 1350, "side": "right", "speed": 600},
+       {"say": "Along came Cat. Sniff, sniff. What a yummy smell!"},
+       {"arrive": "cat"},
+       {"line": "cat", "text": "Meow. Just one little nibble.", "bubble": "Just a nibble!", "act": "jump"},
+       {"hide": "c3"},
+       {"sfx": "pop"},
+       {"say": "Munch, munch, munch. One cookie was gone!"},
+       {"line": "cat", "text": "Oh no. Dog will be sad. Meow.", "bubble": "Oh no...", "act": "shake"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "cat", "x": 1350}],
+     "props": [
+       {"id": "c1", "icon": "cookie", "color": "#C98A3C", "x": 780, "y": 830, "size": 130},
+       {"id": "c2", "icon": "cookie", "color": "#C98A3C", "x": 945, "y": 830, "size": 130}
+     ],
+     "steps": [
+       {"say": "Then Bunny hopped by."},
+       {"enter": "bunny", "x": 950, "side": "left", "speed": 600},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Hello, Cat! Where is the third cookie?", "bubble": "Third cookie?", "act": "wave"},
+       {"line": "cat", "text": "Um, I do not know. Meow.", "bubble": "I do not know...", "act": "shake"},
+       {"say": "But Cat had a tummy ache. A worried tummy ache."},
+       {"line": "bunny", "text": "Telling the truth feels better, Cat.", "bubble": "Tell the truth!"},
+       {"line": "cat", "text": "You are right, Bunny. Meow.", "bubble": "You are right!", "act": "jump"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "cat", "x": 1350}, {"name": "bunny", "x": 950}],
+     "props": [
+       {"id": "c1", "icon": "cookie", "color": "#C98A3C", "x": 780, "y": 830, "size": 130},
+       {"id": "c2", "icon": "cookie", "color": "#C98A3C", "x": 1110, "y": 830, "size": 130}
+     ],
+     "steps": [
+       {"enter": "dog", "x": 500, "side": "left", "speed": 600},
+       {"say": "Dog came back with the milk."},
+       {"arrive": "dog"},
+       {"line": "dog", "text": "Woof? I see only two cookies.", "bubble": "Only two?", "act": "shake"},
+       {"line": "cat", "text": "I ate one. I am very sorry, Dog. Meow.", "bubble": "I am sorry!", "act": "shake"},
+       {"say": "Dog was quiet. Then Dog smiled."},
+       {"line": "dog", "text": "Thank you for telling the truth, Cat.", "bubble": "Thank you, Cat!", "act": "wave"},
+       {"line": "dog", "text": "Let us share. One for each friend!", "bubble": "Let us share!", "act": "jump"},
+       {"prop_move": "c1", "x": 950, "y": 830, "dur": 0.9},
+       {"sfx": "sparkle"},
+       {"act": "all", "kind": "spin"},
+       {"line": "bunny", "text": "Yum, yum! Telling the truth is brave.", "bubble": "Be brave!", "act": "jump"},
+       {"say": "And Cat felt happy, with no more tummy ache. The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
