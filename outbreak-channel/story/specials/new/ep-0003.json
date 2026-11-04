@@ -1,0 +1,117 @@
+{
+  "episode": 3,
+  "title": "Hush Hour",
+  "narrator": "ruth",
+  "ambience": "rain",
+  "inspired_by": "https://youtu.be/vH0pd4SomN8 (premise only: fooling a crowd of infected with a clever trick)",
+  "summary": "A bus driver hides forty strangers in the dark and keeps them silent with one rule: no sound.",
+  "beats": [
+    {
+      "scene": "street",
+      "zombies": 4,
+      "tone": "dusk",
+      "rain": true,
+      "text": "I drive the number nine bus. That night I had forty passengers.",
+      "hl": [
+        "forty"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 12,
+      "rain": true,
+      "sfx": [
+        "groan@0.8"
+      ],
+      "text": "A crowd stepped out of the rain and stood in front of the bus.",
+      "hl": [
+        "stood"
+      ]
+    },
+    {
+      "scene": "truck",
+      "zombies": 8,
+      "lights": false,
+      "cam": "push",
+      "text": "I killed the engine and lights. I whispered one rule: no sound.",
+      "hl": [
+        "no sound"
+      ]
+    },
+    {
+      "scene": "truck",
+      "zombies": 8,
+      "lights": false,
+      "sfx": [
+        "heartbeat@0.2"
+      ],
+      "text": "A baby began to cry in the back. The mother smothered it in a blanket.",
+      "hl": [
+        "cry"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 12,
+      "alarm": true,
+      "cam": "push",
+      "text": "The crowd turned its heads, all at once, toward our dark windows.",
+      "hl": [
+        "heads"
+      ]
+    },
+    {
+      "scene": "truck",
+      "zombies": 8,
+      "lights": false,
+      "sfx": [
+        "siren@0.6"
+      ],
+      "text": "I did the only thing I could think of. I pressed the horn of the bus.",
+      "hl": [
+        "horn"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 12,
+      "cam": "left",
+      "text": "The horn echoed down the road. They turned and followed it, away from us.",
+      "hl": [
+        "followed"
+      ]
+    },
+    {
+      "scene": "truck",
+      "zombies": 0,
+      "tone": "dawn",
+      "lights": false,
+      "text": "Nobody said a word until the sun came up.",
+      "hl": [
+        "sun"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 0,
+      "tone": "dawn",
+      "text": "I opened the doors. Forty seats, forty people, all breathing.",
+      "hl": [
+        "breathing"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 0,
+      "tone": "dawn",
+      "hold": 1.0,
+      "sfx": [
+        "sting@1.2"
+      ],
+      "text": "Then I checked the ticket machine. It had printed forty-one.",
+      "hl": [
+        "forty-one"
+      ]
+    }
+  ]
+}

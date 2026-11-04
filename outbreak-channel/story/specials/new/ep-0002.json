@@ -1,0 +1,122 @@
+{
+  "episode": 2,
+  "title": "The Third Knock",
+  "narrator": "tess",
+  "ambience": "rain",
+  "inspired_by": "https://youtu.be/ZjwA6rH1Clg (premise only: a game with a monster that has strict rules)",
+  "summary": "A woman in Port Ellis learns the rule of the knocks, and what to do when the rule is broken.",
+  "beats": [
+    {
+      "scene": "door",
+      "banging": false,
+      "sfx": [
+        "knock@2.8"
+      ],
+      "text": "I live alone on the fifth floor. Last week, someone knocked three times.",
+      "hl": [
+        "three times"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": false,
+      "text": "I looked through the peephole. Nobody. Just the hallway light, humming.",
+      "hl": [
+        "Nobody"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "tone": "dusk",
+      "text": "The radio gave a rule. One knock, a neighbour. Two, a friend.",
+      "hl": [
+        "Two"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "sfx": [
+        "knock@1.2"
+      ],
+      "text": "Three knocks, never open.",
+      "hl": [
+        "Three knocks"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "text": "I stayed still four days, eating crackers, counting knocks.",
+      "hl": [
+        "counted"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "message",
+      "lines": [
+        "Mr. Baker",
+        "It's me. Open up.",
+        "I'm hurt. Please."
+      ],
+      "cam": "still",
+      "sfx": [
+        "buzz@0.1"
+      ],
+      "text": "On the fifth night Mr. Baker texted: open up, I'm hurt.",
+      "hl": [
+        "hurt"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "sfx": [
+        "knock@0.2"
+      ],
+      "text": "Then came a knock. One. Two. I breathed out.",
+      "hl": [
+        "Two"
+      ]
+    },
+    {
+      "scene": "door",
+      "sfx": [
+        "click@1.0"
+      ],
+      "text": "I put my hand on the chain. The phone buzzed again in my pocket.",
+      "hl": [
+        "chain"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "message",
+      "lines": [
+        "Mr. Baker",
+        "Still on the third floor.",
+        "Who is at your door?"
+      ],
+      "cam": "still",
+      "text": "Mr. Baker again: I'm still on the third floor.",
+      "hl": [
+        "third floor"
+      ]
+    },
+    {
+      "scene": "door",
+      "banging": true,
+      "alarm": true,
+      "hold": 0.7,
+      "sfx": [
+        "knock@0.2"
+      ],
+      "text": "The knock came again. A slow, patient third.",
+      "hl": [
+        "third"
+      ]
+    }
+  ]
+}

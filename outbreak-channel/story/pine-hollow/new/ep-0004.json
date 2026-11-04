@@ -1,0 +1,119 @@
+{
+  "episode": 4,
+  "title": "The Girl With the Scarf",
+  "ambience": "night",
+  "summary": "The stranger in the canoe reaches the dock, and the lake has to do some work.",
+  "beats": [
+    {
+      "scene": "forest",
+      "cabin": true,
+      "tone": "dawn",
+      "sfx": [
+        "thud@1.5"
+      ],
+      "text": "Day four. The canoe bumped our dock at first light.",
+      "hl": [
+        "canoe"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "tone": "dawn",
+      "cam": "left",
+      "text": "The scarf belonged to a girl of about ten. She shook so hard the paddle rattled.",
+      "hl": [
+        "girl"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "text": "Her name was Pip. Ava wrapped her in a blanket and said nothing sarcastic.",
+      "hl": [
+        "Pip"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 12,
+      "fog": true,
+      "tone": "dawn",
+      "sfx": [
+        "groan@0.5"
+      ],
+      "text": "Then I heard dragging feet in the pines. The dozen had followed her trail.",
+      "hl": [
+        "dozen"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "speaker": "ava",
+      "text": "\"They can't swim,\" Ava whispered. I had an idea, and I hated it.",
+      "hl": [
+        "swim"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 6,
+      "cam": "push",
+      "sfx": [
+        "bang@0.4"
+      ],
+      "text": "I stood at the end of the dock and banged a pot with a spoon.",
+      "hl": [
+        "banged"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 12,
+      "fog": true,
+      "sfx": [
+        "whoosh@0.8"
+      ],
+      "text": "They turned toward the noise, and walked into the cold water.",
+      "hl": [
+        "cold water"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "fog": true,
+      "hold": 0.9,
+      "text": "The lake closed over them. Ripples, and then nothing.",
+      "hl": [
+        "nothing"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "cam": "push",
+      "text": "But they were still walking down there, along the bottom.",
+      "hl": [
+        "bottom"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "hold": 1.0,
+      "sfx": [
+        "sting@1.5"
+      ],
+      "text": "Pip finally spoke. \"Please,\" she said. \"My brother is still on the island.\"",
+      "hl": [
+        "island"
+      ]
+    }
+  ]
+}

@@ -63,13 +63,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 3
-- **Day:** 3, dusk, at the cabin
-- **Who:** Nora and Ava unhurt. Walt, the infected ranger, wandered off after a thrown can. An unknown person took the
-  canoe and is paddling a small canoe with a red scarf toward the cabin.
-- **Supplies:** a pantry for a week minus a few cans, the ranger radio, the pickup with half a tank. The canoe is gone.
-- **Known:** Tess says they cannot swim and that someone landed on the south shore, followed by about a dozen of them.
-- **Open threads:** who is the person with the red scarf? Will the dozen reach the cabin? Where did Walt go?
+- **After:** part 4
+- **Day:** 4, morning, at the cabin
+- **Who:** Nora, Ava and Pip (about ten, red scarf) unhurt. The dozen walked into the lake on the banged pot's noise.
+- **Supplies:** a pantry for a week minus a few cans, the ranger radio, the pickup with half a tank. The canoe is back at the dock.
+- **Known:** the dozen are probably still walking along the lake bottom toward the shore. Pip says her brother is still on the island.
+- **Open threads:** where do the drowned ones come out? Who is Pip's brother and what is on the island? Where did Walt go?
 
 ## Episode log
 
@@ -80,3 +79,4 @@ Same rules as every Outbreak Diary story:
   Ava lures Walt away with a thrown can, and the canoe is gone from the dock.
 - **Part 3 (Day 3) Who Took the Canoe:** small boot prints show a child or a scared person took it. At dusk it drifts
   with a red scarf, and a dozen of them follow its trail to the cabin.
+- **Part 4 (Day 4) The Girl With the Scarf:** Pip lands at the dock with the dozen behind her. Nora lures them into the lake with a banged pot. Pip says her brother is still on the island.
