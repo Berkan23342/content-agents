@@ -1,0 +1,59 @@
+{
+  "title": "Frog Finds a Friend",
+  "lesson": "Being brave and kind helps you make a new friend",
+  "summary": "Shy Frog is new at the park, and Chick and Sheep invite him to play with colorful balls.",
+  "cast": ["frog", "chick", "sheep"],
+  "calm": false,
+  "shots": [
+    {"bg": "park",
+     "actors": [{"name": "frog", "x": 1300}],
+     "props": [],
+     "steps": [
+       {"say": "Once upon a time, a little frog came to a new park."},
+       {"line": "frog", "text": "Ribbit. I do not know anyone here.", "bubble": "No friends...", "act": "shake"},
+       {"say": "Frog felt shy and a little sad."},
+       {"enter": "chick", "x": 650, "side": "left", "speed": 600},
+       {"say": "Then, peep, peep! Chick came skipping by."},
+       {"arrive": "chick"},
+       {"line": "chick", "text": "Peep, peep! Hello! I am Chick.", "bubble": "Hello! Peep!", "act": "wave"},
+       {"line": "frog", "text": "Ribbit. Hello. I am Frog.", "bubble": "Hello, Chick!", "act": "wave"},
+       {"line": "chick", "text": "Do you want to play with me?", "bubble": "Want to play?", "act": "jump"},
+       {"line": "frog", "text": "Yes, please! Ribbit, ribbit!", "bubble": "Yes, please!", "act": "spin"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "chick", "x": 600}, {"name": "frog", "x": 1300}],
+     "props": [
+       {"id": "b1", "icon": "ball", "color": "#FF3B3B", "x": 800, "y": 830, "size": 130},
+       {"id": "b2", "icon": "ball", "color": "#2F8CFF", "x": 965, "y": 830, "size": 130},
+       {"id": "b3", "icon": "ball", "color": "#FFC92E", "x": 1130, "y": 830, "size": 130}
+     ],
+     "steps": [
+       {"say": "Chick had three balls. One red, one blue, one yellow."},
+       {"line": "chick", "text": "Red, blue, yellow! Let us play!", "bubble": "Let us play!", "act": "jump"},
+       {"prop_move": "b1", "x": 1250, "y": 600, "dur": 0.8},
+       {"sfx": "boing"},
+       {"line": "frog", "text": "Boing, boing! Ribbit! This is fun!", "bubble": "So much fun!", "act": "jump"},
+       {"prop_move": "b1", "x": 800, "y": 830, "dur": 0.8},
+       {"enter": "sheep", "x": 1650, "side": "right", "speed": 600},
+       {"say": "Baa, baa! Sheep saw them and came to look."},
+       {"arrive": "sheep"},
+       {"line": "sheep", "text": "Baa. May I play too?", "bubble": "May I play?", "act": "wave"}
+     ]},
+    {"bg": "park",
+     "actors": [{"name": "chick", "x": 500}, {"name": "frog", "x": 1000}, {"name": "sheep", "x": 1500}],
+     "props": [
+       {"id": "h", "icon": "heart", "color": "#FF6FB5", "x": 1000, "y": 400, "size": 150}
+     ],
+     "steps": [
+       {"line": "frog", "text": "Yes! Come and play, Sheep. Ribbit!", "bubble": "Come and play!", "act": "wave"},
+       {"line": "chick", "text": "Now we are three friends! Peep!", "bubble": "Three friends!", "act": "spin"},
+       {"line": "sheep", "text": "Baa, baa! Friends are the best.", "bubble": "Friends are best!", "act": "jump"},
+       {"sfx": "sparkle"},
+       {"line": "frog", "text": "I said hello, and it was easy. Ribbit!", "bubble": "Hello was easy!", "act": "spin"},
+       {"say": "Frog was brave and said hello, and now he had two friends."},
+       {"act": "all", "kind": "jump"},
+       {"say": "The end!"},
+       {"pause": 0.6}
+     ]}
+  ]
+}
