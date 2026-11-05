@@ -1,0 +1,58 @@
+{
+  "title": "Bear Brushes His Teeth",
+  "lesson": "Brushing our teeth keeps them healthy",
+  "summary": "Sleepy Bear forgets to brush his teeth, until Bunny and Duck show him a fun counting song to brush.",
+  "cast": ["bear", "bunny", "duck"],
+  "calm": false,
+  "shots": [
+    {"bg": "dusk",
+     "actors": [{"name": "bear", "x": 900}],
+     "props": [
+       {"id": "c1", "icon": "cookie", "color": "#C98A4B", "x": 1150, "y": 830, "size": 130},
+       {"id": "c2", "icon": "cookie", "color": "#C98A4B", "x": 1315, "y": 830, "size": 130}
+     ],
+     "steps": [
+       {"say": "Once upon a time, a big bear ate two sweet cookies."},
+       {"line": "bear", "text": "Yum, yum! Now I am sleepy. Good night!", "bubble": "Good night!", "act": "jump"},
+       {"hide": "c1"},
+       {"hide": "c2"},
+       {"enter": "bunny", "x": 450, "side": "left", "speed": 600},
+       {"say": "Hop, hop! Bunny came by with her toothbrush."},
+       {"arrive": "bunny"},
+       {"line": "bunny", "text": "Bear, did you brush your teeth?", "bubble": "Brush your teeth?", "act": "wave"},
+       {"line": "bear", "text": "Grr, no. Brushing is boring.", "bubble": "Boring!", "act": "shake"}
+     ]},
+    {"bg": "dusk",
+     "actors": [{"name": "bear", "x": 900}, {"name": "bunny", "x": 450}],
+     "props": [],
+     "steps": [
+       {"say": "Bunny knew a fun way to brush."},
+       {"enter": "duck", "x": 1400, "side": "right", "speed": 600},
+       {"say": "Quack, quack! Duck waddled over to help."},
+       {"arrive": "duck"},
+       {"line": "duck", "text": "Quack! Brush and count with us!", "bubble": "Brush and count!", "act": "jump"},
+       {"line": "bunny", "text": "One, two, three. Brush, brush, brush!", "bubble": "Brush, brush, brush!", "act": "spin"},
+       {"line": "duck", "text": "One, two, three. Brush, brush, brush!", "bubble": "Brush, brush, brush!", "act": "spin"},
+       {"line": "bear", "text": "One, two, three. Brush, brush, brush! Hee hee!", "bubble": "Brush, brush, brush!", "act": "spin"},
+       {"say": "Up and down, up and down, they brushed all the sticky crumbs away."},
+       {"line": "bunny", "text": "Now do the back teeth too. One, two, three!", "bubble": "Back teeth too!", "act": "jump"},
+       {"line": "bear", "text": "Brush, brush, brush! Tickle, tickle, tickle!", "bubble": "Tickle, tickle!", "act": "shake"},
+       {"say": "Then Bear rinsed with a big, bubbly splash."},
+       {"sfx": "splash"},
+       {"sfx": "sparkle"},
+       {"pause": 0.5}
+     ]},
+    {"bg": "night",
+     "actors": [{"name": "bear", "x": 900}, {"name": "bunny", "x": 450}, {"name": "duck", "x": 1400}],
+     "props": [{"id": "s1", "icon": "star", "color": "#FFC92E", "x": 960, "y": 280, "size": 140}],
+     "steps": [
+       {"say": "Bear's teeth were clean and shiny."},
+       {"line": "bear", "text": "My teeth feel good. Thank you, friends!", "bubble": "Thank you!", "act": "wave"},
+       {"line": "duck", "text": "Quack! Brush every morning and night.", "bubble": "Every day!", "act": "jump"},
+       {"line": "bunny", "text": "Good night, Bear. Sleep tight!", "bubble": "Sleep tight!", "act": "wave"},
+       {"act": "bear", "kind": "sleep"},
+       {"sfx": "ding"},
+       {"say": "Clean teeth, happy smiles. The end!"}
+     ]}
+  ]
+}
