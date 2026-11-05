@@ -1,0 +1,121 @@
+{
+  "episode": 7,
+  "title": "The Fourth Floor",
+  "summary": "On Day seven, Sam and Mrs. Okafor decide how to reach the roof key.",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "door",
+      "cam": "push",
+      "text": "Day seven. Biscuit growled at the door all night, so I opened it.",
+      "hl": [
+        "growled"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "cam": "push",
+      "text": "Empty hallway. Wet footprints ended at the stairwell door.",
+      "hl": [
+        "footprints"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "dog": "alert",
+      "guest": "okafor",
+      "text": "\"Two days to the last boat,\" said Mrs. Okafor. \"We need Hale's key.\"",
+      "hl": [
+        "key"
+      ]
+    },
+    {
+      "scene": "room",
+      "light": "candle",
+      "dog": "alert",
+      "guest": "leo",
+      "text": "Leo raised his bat. \"I volunteer Biscuit.\" Nobody laughed.",
+      "hl": [
+        "bat"
+      ]
+    },
+    {
+      "scene": "phone",
+      "screen": "message",
+      "lines": [
+        "Hale",
+        "Fourth floor.",
+        "Back stairs. Come at noon.",
+        "Come quiet."
+      ],
+      "text": "The walkie crackled. Hale said: back stairs, noon, quiet.",
+      "hl": [
+        "noon"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "pull",
+      "text": "Noon meant daylight, when they are slow. Still, I heard them shuffle.",
+      "hl": [
+        "shuffle"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "cans": 3,
+      "text": "We packed light. Mrs. Okafor stayed to guard the door.",
+      "hl": [
+        "stayed"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "cam": "push",
+      "text": "Leo and I started down. Biscuit stopped on the sixth step.",
+      "hl": [
+        "stopped"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "still",
+      "hold": 1.0,
+      "text": "Every shape at the bottom turned toward us.",
+      "hl": [
+        "turned"
+      ],
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "Hale whispered, \"Whatever you do, do not let the dog bark.\"",
+      "speaker": "hale",
+      "hl": [
+        "bark"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "text": "Biscuit opened his mouth. I did not breathe.",
+      "hl": [
+        "mouth"
+      ],
+      "sfx": [
+        "heartbeat"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "episode": 5,
+  "title": "The Island",
+  "summary": "On Day five, Pip tells Nora and Ava what is waiting on the island.",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "text": "Day five. Pip finally told us about the island.",
+      "hl": [
+        "island"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "text": "Her brother Jonah is twelve. Their dad rowed them there when the town fell.",
+      "hl": [
+        "Jonah"
+      ]
+    },
+    {
+      "scene": "forest",
+      "cabin": true,
+      "zombies": 0,
+      "cam": "pull",
+      "text": "Their dad went back for supplies. He never returned.",
+      "hl": [
+        "never"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "text": "\"Jonah has a lantern,\" Pip said. \"He lights it every night.\"",
+      "hl": [
+        "lantern"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "At dusk I climbed the roof with binoculars.",
+      "hl": [
+        "binoculars"
+      ]
+    },
+    {
+      "scene": "forest",
+      "cam": "push",
+      "text": "Far out on the island, a tiny light flickered. Three times.",
+      "hl": [
+        "light"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "text": "\"He is alive,\" Ava said, gripping the paddle.",
+      "speaker": "ava",
+      "hl": [
+        "alive"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 6,
+      "cam": "left",
+      "text": "But six heads broke the water near the dock.",
+      "hl": [
+        "heads"
+      ],
+      "sfx": [
+        "drip"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "\"Nora, they come out where it is shallow. Do not use the dock.\"",
+      "speaker": "tess",
+      "hl": [
+        "shallow"
+      ]
+    },
+    {
+      "scene": "forest",
+      "fog": true,
+      "cam": "push",
+      "hold": 1.0,
+      "text": "The little light went dark. A second one lit, much closer.",
+      "hl": [
+        "closer"
+      ]
+    }
+  ]
+}

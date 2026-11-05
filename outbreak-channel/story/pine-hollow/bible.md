@@ -63,12 +63,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 4
-- **Day:** 4, morning, at the cabin
-- **Who:** Nora, Ava and Pip (about ten, red scarf) unhurt. The dozen walked into the lake on the banged pot's noise.
-- **Supplies:** a pantry for a week minus a few cans, the ranger radio, the pickup with half a tank. The canoe is back at the dock.
-- **Known:** the dozen are probably still walking along the lake bottom toward the shore. Pip says her brother is still on the island.
-- **Open threads:** where do the drowned ones come out? Who is Pip's brother and what is on the island? Where did Walt go?
+- **After:** part 5
+- **Day:** 5, dusk, at the cabin
+- **Who:** Nora, Ava and Pip unhurt.
+- **Supplies:** same as before; the canoe is at the dock.
+- **Known:** Pip's brother Jonah, twelve, is on the island with a lantern; their dad went for supplies and never returned. Six drowned ones surfaced near the dock; Tess says they come out in the shallows.
+- **Open threads:** who lit the second light close by? Where is Pip's dad? Where did Walt go?
 
 ## Episode log
 
@@ -80,3 +80,4 @@ Same rules as every Outbreak Diary story:
 - **Part 3 (Day 3) Who Took the Canoe:** small boot prints show a child or a scared person took it. At dusk it drifts
   with a red scarf, and a dozen of them follow its trail to the cabin.
 - **Part 4 (Day 4) The Girl With the Scarf:** Pip lands at the dock with the dozen behind her. Nora lures them into the lake with a banged pot. Pip says her brother is still on the island.
+- **Part 5 (Day 5) The Island:** Pip explains about Jonah and the lantern. A light blinks on the island, then goes dark, and a second light appears much closer.

@@ -1,0 +1,114 @@
+{
+  "episode": 4,
+  "title": "The Number Is Climbing",
+  "summary": "On Day four, whatever rides the service elevator reaches floor 41.",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "elevator",
+      "floor": 38,
+      "power": false,
+      "doors": "closed",
+      "text": "Day four. The numbers kept climbing. Thirty-eight. Thirty-nine. Forty.",
+      "hl": [
+        "climbing"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "cam": "push",
+      "text": "I counted desks to stay calm. Forty-four.",
+      "hl": [
+        "counted"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "power": false,
+      "doors": "closed",
+      "hold": 1.0,
+      "text": "It stopped on forty-one. A soft ding. The doors stayed shut.",
+      "hl": [
+        "ding"
+      ],
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "off",
+      "cam": "still",
+      "text": "Dev raised a finger. We knelt behind my model of the city.",
+      "hl": [
+        "model"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "gap",
+      "power": false,
+      "text": "The doors slid open a hand's width. Something tapped.",
+      "hl": [
+        "tapped"
+      ],
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "text": "Then they opened fully. The car was empty, except for a ringing phone.",
+      "hl": [
+        "ringing"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "Ruth's desk phone, taped to the wall. Someone had carried it up.",
+      "hl": [
+        "carried"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "text": "\"Them? They do not carry phones, Maya. Someone is playing with us.\"",
+      "speaker": "dev",
+      "hl": [
+        "playing"
+      ]
+    },
+    {
+      "scene": "window",
+      "survivor": true,
+      "text": "Across the gap, in Calder Tower, a torch flashed three times.",
+      "hl": [
+        "torch"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "text": "The phone stopped ringing. Someone had answered it.",
+      "hl": [
+        "answered"
+      ],
+      "sfx": [
+        "click"
+      ]
+    }
+  ]
+}

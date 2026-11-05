@@ -68,14 +68,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 3 (published 2026-11-04 or later because of YouTube's upload limit)
-- **Day:** 3, on floor 41
-- **Who:** Maya and Dev are unhurt; Dev's knee hurts. Ruth, on floor 12, has gone silent after the service elevator
-  opened on her floor.
-- **Supplies:** Dev's radio and eleven keycards, a desk drawer of snacks, a phone at about 60%.
-- **Known:** the main elevators are dead and the emergency lights are red. Dev locked all doors on 41. Something rode the
-  service elevator up from floor 12 and the numbers are climbing.
-- **Open threads:** what is in the service elevator? Is Ruth alive? Who flashes a torch from Calder Tower?
+- **After:** part 4
+- **Day:** 4, on floor 41
+- **Who:** Maya and Dev unhurt; Dev's knee hurts.
+- **Supplies:** Dev's radio and eleven keycards, snacks, a phone at about 60%.
+- **Known:** the service elevator arrived on 41 empty except for Ruth's taped-up desk phone, which someone answered. A torch flashed three times from Calder Tower.
+- **Open threads:** who answered the phone? Is Ruth alive? Who is signalling from Calder Tower?
 
 ## Episode log
 
@@ -84,3 +82,4 @@ Same rules as every Outbreak Diary story:
 - **Part 2 (Day 2) Security:** Dev is real. He locks the floor, the elevators die, and Ruth calls on the radio from floor 12.
 - **Part 3 (Day 3) Ruth on Twelve:** Maya and Dev call the service elevator for Ruth. Ruth screams and goes silent, and
   the elevator climbs toward 41.
+- **Part 4 (Day 4) The Number Is Climbing:** the elevator stops on 41. It is empty except for Ruth's ringing phone, which stops when someone answers. A torch flashes from Calder Tower.
