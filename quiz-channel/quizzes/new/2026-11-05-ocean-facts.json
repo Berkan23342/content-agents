@@ -1,0 +1,11 @@
+{
+  "type": "truefalse",
+  "title": "Ocean Facts",
+  "questions": [
+    {"q": "Most of Earth's surface is covered by ocean.", "answer": true, "note": "Oceans cover about 70% of our planet."},
+    {"q": "Whales are a type of fish.", "answer": false, "note": "Whales are mammals that breathe air."},
+    {"q": "Sharks have a skeleton made of cartilage.", "answer": true, "note": "Cartilage is the same flexible stuff in your ears."},
+    {"q": "Male seahorses are the ones that give birth.", "answer": true, "note": "Dad carries the eggs and delivers the babies."},
+    {"q": "Jellyfish are older than the dinosaurs.", "answer": true, "note": "They have drifted in the sea for 500+ million years."}
+  ]
+}
