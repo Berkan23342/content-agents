@@ -1,0 +1,242 @@
+{
+ "title": "Pig and Slow Turtle",
+ "lesson": "Patience: waiting for a friend is kind",
+ "summary": "Fast Pig hurries ahead of slow Turtle, then waits for her and together they find a rainbow after the rain.",
+ "cast": [
+  "pig",
+  "turtle",
+  "duck"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Once upon a time, Pig and Turtle went for a walk."
+    },
+    {
+     "line": "pig",
+     "text": "Oink, oink! I am fast. Fast, fast, fast!",
+     "bubble": "Fast, fast, fast!",
+     "act": "jump"
+    },
+    {
+     "line": "turtle",
+     "text": "I am slow. Slow, slow, slow.",
+     "bubble": "Slow, slow, slow.",
+     "act": "wave"
+    },
+    {
+     "say": "Pig ran ahead. Turtle walked slowly."
+    },
+    {
+     "move": "pig",
+     "x": 1500,
+     "speed": 700
+    },
+    {
+     "move": "turtle",
+     "x": 1000,
+     "speed": 80
+    },
+    {
+     "line": "pig",
+     "text": "Hurry up, Turtle! Oink!",
+     "bubble": "Hurry up!",
+     "act": "shake"
+    },
+    {
+     "line": "turtle",
+     "text": "I am trying. Step by step.",
+     "bubble": "Step by step.",
+     "act": "shake"
+    },
+    {
+     "say": "Pig stopped. He looked back at his friend."
+    },
+    {
+     "line": "pig",
+     "text": "Oink. Why is it so slow?",
+     "bubble": "So slow...",
+     "act": "shake"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "rain",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 1500
+    },
+    {
+     "name": "turtle",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "um",
+     "icon": "umbrella",
+     "color": "#FF6FB5",
+     "x": 1500,
+     "y": 420,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "sfx": "thunder"
+    },
+    {
+     "say": "Drip, drop! Rain began to fall."
+    },
+    {
+     "line": "pig",
+     "text": "Oh no! Rain! Oink!",
+     "bubble": "Oh no! Rain!",
+     "act": "shake"
+    },
+    {
+     "say": "Pig looked back. Turtle was all alone."
+    },
+    {
+     "move": "pig",
+     "x": 1250,
+     "speed": 500
+    },
+    {
+     "line": "pig",
+     "text": "I will wait for you, Turtle.",
+     "bubble": "I will wait.",
+     "act": "wave"
+    },
+    {
+     "prop_move": "um",
+     "x": 1130,
+     "y": 420,
+     "dur": 1.0
+    },
+    {
+     "line": "turtle",
+     "text": "Thank you, Pig. Now we are dry.",
+     "bubble": "Thank you!",
+     "act": "jump"
+    },
+    {
+     "say": "They walked together, nice and slow."
+    },
+    {
+     "line": "turtle",
+     "text": "Slow and steady keeps me going.",
+     "bubble": "Slow and steady.",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "turtle",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "rb",
+     "icon": "rainbow",
+     "color": "#FF8A1F",
+     "x": 960,
+     "y": 280,
+     "size": 360
+    }
+   ],
+   "steps": [
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "The rain stopped. Look up! A big, bright rainbow!"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Wow! We saw it together. Oink!",
+     "bubble": "Wow! Rainbow!",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "Waiting was worth it, Pig.",
+     "bubble": "Worth the wait!",
+     "act": "wave"
+    },
+    {
+     "enter": "duck",
+     "x": 1500,
+     "side": "right",
+     "speed": 600
+    },
+    {
+     "say": "Duck waddled over to see the rainbow too."
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! So many colors! Red, orange, yellow!",
+     "bubble": "So many colors!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Slow friends see lovely things. Oink!",
+     "bubble": "Lovely things!",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack! Let us all walk home.",
+     "bubble": "Walk home!",
+     "act": "wave"
+    },
+    {
+     "say": "So Pig, Turtle and Duck walked home together, happy and warm."
+    },
+    {
+     "say": "Fast or slow, friends go together. The end!"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  }
+ ]
+}
