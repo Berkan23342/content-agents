@@ -64,12 +64,12 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 
 ## Current state
 
-- **After:** part 7
-- **Day:** 7, noon, on the back stairs between floors 9 and 4 (Sam, Leo, Biscuit); Mrs. Okafor guards 9C
-- **Who:** all unhurt. Mr. Hale waits on the 4th floor with the roof key.
-- **Supplies:** same as Day 6, lightly packed.
-- **Known:** last boat leaves Day 9. The shapes in the stairwell have turned toward Sam and Leo.
-- **Open threads:** will Biscuit bark? Where is Leo's sister? Can they reach Hale and the roof by Day 9?
+- **After:** part 8
+- **Day:** 8, dusk, 4th floor with Mr. Hale (Sam, Leo, Biscuit); Mrs. Okafor in 7B
+- **Who:** all unhurt. Sam holds the roof key.
+- **Supplies:** same as Day 7.
+- **Known:** the roof door is on floor 12; last boat leaves Day 9 at dawn. They plan to climb tonight in the rain. Someone knocked three slow knocks on Mrs. Okafor's door.
+- **Open threads:** who knocked? Where is Leo's sister? Can they climb to 12?
 
 ## Episode log
 
@@ -85,3 +85,4 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 - **Part 6 (Day 6) The Last Horn:** the boat's horn sounds at dawn and they miss it. The radio promises a last boat in
   three days. Hale says he tapped once and offers the roof, but a door below him just opened. Biscuit growls at the door.
 - **Part 7 (Day 7) The Fourth Floor:** Hale asks them to come down the back stairs at noon. Sam and Leo descend; the shapes below turn toward them and Biscuit opens his mouth.
+- **Part 8 (Day 8) Hale's Key:** Biscuit yawns silently and the shapes drift off. Hale gives Sam the roof key; they plan to climb to 12 in the rain. Mrs. Okafor reports three slow knocks at her door.

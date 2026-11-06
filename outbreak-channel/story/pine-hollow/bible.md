@@ -63,12 +63,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 5
-- **Day:** 5, dusk, at the cabin
+- **After:** part 6
+- **Day:** 6, dawn, at the cabin
 - **Who:** Nora, Ava and Pip unhurt.
-- **Supplies:** same as before; the canoe is at the dock.
-- **Known:** Pip's brother Jonah, twelve, is on the island with a lantern; their dad went for supplies and never returned. Six drowned ones surfaced near the dock; Tess says they come out in the shallows.
-- **Open threads:** who lit the second light close by? Where is Pip's dad? Where did Walt go?
+- **Supplies:** same as before; the canoe is at the dock; a strange lantern and rowboat from the reeds.
+- **Known:** the lantern has no blue ribbon, so it is not Jonah's. Fresh boot prints lead from the reeds to the porch, where a board creaked. Tess warns someone knew where the cabin was.
+- **Open threads:** who is on the porch? Where is Pip's dad? Where did Walt go?
 
 ## Episode log
 
@@ -81,3 +81,4 @@ Same rules as every Outbreak Diary story:
   with a red scarf, and a dozen of them follow its trail to the cabin.
 - **Part 4 (Day 4) The Girl With the Scarf:** Pip lands at the dock with the dozen behind her. Nora lures them into the lake with a banged pot. Pip says her brother is still on the island.
 - **Part 5 (Day 5) The Island:** Pip explains about Jonah and the lantern. A light blinks on the island, then goes dark, and a second light appears much closer.
+- **Part 6 (Day 6) The Lantern in the Reeds:** Nora finds a warm lantern and an empty rowboat. It is not Jonah's. Boot prints lead to the porch and a board creaks.

@@ -1,0 +1,105 @@
+{
+  "episode": 5,
+  "title": "Ruth Answers",
+  "summary": "On Day five, Maya picks up the phone that someone answered.",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "text": "Day five. I lifted the phone before Dev could stop me.",
+      "hl": [
+        "phone"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "static",
+      "text": "Silence. Then a crackle, and a voice I knew.",
+      "hl": [
+        "voice"
+      ],
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "\"Maya? It is Ruth. I am alive.\"",
+      "speaker": "ruth",
+      "hl": [
+        "alive"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "text": "I laughed and cried at the same time. Dev just closed his eyes.",
+      "hl": [
+        "cried"
+      ]
+    },
+    {
+      "scene": "tower",
+      "zombies": 3,
+      "text": "She was in Calder Tower. She crossed the skybridge on thirty when the lobby fell.",
+      "hl": [
+        "skybridge"
+      ]
+    },
+    {
+      "scene": "window",
+      "survivor": true,
+      "text": "\"The torch is mine,\" she said. \"I flash it every night to find you.\"",
+      "speaker": "ruth",
+      "hl": [
+        "torch"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "text": "\"Ask her about the scream,\" Dev said, very quietly.",
+      "speaker": "dev",
+      "hl": [
+        "scream"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "\"I screamed to pull them away from me. Then I ran. Maya, I never sent that elevator.\"",
+      "speaker": "ruth",
+      "hl": [
+        "never"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "hold": 1.0,
+      "text": "We stared at the empty car. Nobody had called it.",
+      "hl": [
+        "empty"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "closed",
+      "power": false,
+      "text": "The doors slid shut by themselves, and the number began to fall.",
+      "hl": [
+        "fall"
+      ],
+      "sfx": [
+        "click"
+      ]
+    }
+  ]
+}

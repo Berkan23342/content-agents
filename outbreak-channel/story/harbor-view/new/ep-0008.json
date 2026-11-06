@@ -1,0 +1,109 @@
+{
+  "episode": 8,
+  "title": "Hale's Key",
+  "summary": "On Day eight, Sam and Leo reach Mr. Hale and the key to the roof.",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "still",
+      "text": "Day eight. Biscuit yawned, a huge yawn, and not one sound came out.",
+      "hl": [
+        "yawn"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "pull",
+      "text": "The shapes lost interest and shuffled away. Leo grinned. \"Good boy,\" he mouthed.",
+      "hl": [
+        "lost interest"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "cam": "push",
+      "text": "We slipped through the fourth floor door, and a hand pulled us inside.",
+      "hl": [
+        "hand"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "push",
+      "text": "Mr. Hale was tired and grey, with a ring of keys on his belt.",
+      "hl": [
+        "keys"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "items": [
+        "keys"
+      ],
+      "text": "\"Roof key,\" he said, and pressed it into my palm. \"We climb tonight.\"",
+      "speaker": "hale",
+      "hl": [
+        "tonight"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "off",
+      "text": "The roof door was on twelve. Three floors above my flat, and the stairs were full.",
+      "hl": [
+        "twelve"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 8,
+      "cam": "pull",
+      "tone": "dusk",
+      "rain": true,
+      "text": "At dusk, the rain began. Rain hides sound. It was our best chance.",
+      "hl": [
+        "rain"
+      ],
+      "sfx": [
+        "thunder"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "Then the walkie hissed. Mrs. Okafor, whispering from 7B.",
+      "hl": [
+        "whispering"
+      ],
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "\"Sam. Someone just knocked on my door. Three slow knocks.\"",
+      "speaker": "okafor",
+      "hl": [
+        "knocks"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "cam": "push",
+      "hold": 1.0,
+      "text": "The infected bang. They do not knock three times and wait.",
+      "hl": [
+        "wait"
+      ],
+      "sfx": [
+        "knock"
+      ]
+    }
+  ]
+}

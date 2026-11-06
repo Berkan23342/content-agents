@@ -1,0 +1,102 @@
+{
+  "episode": 6,
+  "title": "The Lantern in the Reeds",
+  "summary": "On Day six, Nora finds the second light and learns it is not who they hoped.",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "forest",
+      "fog": true,
+      "cam": "push",
+      "text": "Day six. At first light I found a lantern in the reeds. Still warm.",
+      "hl": [
+        "warm"
+      ]
+    },
+    {
+      "scene": "forest",
+      "cam": "left",
+      "text": "A little rowboat was tied beside it. Empty.",
+      "hl": [
+        "Empty"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 0,
+      "text": "Pip ran to it. \"Jonah!\" she shouted, and the birds burst from the pines.",
+      "hl": [
+        "shouted"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 3,
+      "cam": "still",
+      "text": "I clamped a hand over her mouth. Far off, feet dragged through the needles.",
+      "hl": [
+        "dragged"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 3,
+      "cam": "pull",
+      "text": "They drifted away. Not yet, I thought. Not yet.",
+      "hl": [
+        "Not yet"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "text": "Inside, Pip turned the lantern over and her face fell.",
+      "hl": [
+        "fell"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "fire",
+      "guest": "ava",
+      "text": "\"Jonah's lantern has a blue ribbon,\" she whispered. \"This one has none.\"",
+      "hl": [
+        "none"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "text": "\"Nora, someone rowed that boat across in the dark. Someone who knew where you were.\"",
+      "speaker": "tess",
+      "hl": [
+        "knew"
+      ],
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "forest",
+      "cabin": true,
+      "cam": "push",
+      "text": "Fresh boot prints ran from the reeds to our porch.",
+      "hl": [
+        "boot prints"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "hold": 1.0,
+      "text": "Ava turned off the lamp. On the porch, a board creaked.",
+      "hl": [
+        "creaked"
+      ],
+      "sfx": [
+        "creak"
+      ]
+    }
+  ]
+}
