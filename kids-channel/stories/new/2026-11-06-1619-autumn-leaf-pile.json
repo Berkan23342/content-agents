@@ -1,0 +1,269 @@
+{
+ "title": "The Autumn Leaf Pile",
+ "lesson": "Helping each other and trying again",
+ "summary": "Bunny and Duck count red, orange and yellow leaves into a pile, the wind blows it away, and Owl helps them try again.",
+ "cast": [
+  "bunny",
+  "duck",
+  "owl"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "l1",
+     "icon": "leaf",
+     "color": "#FF3B3B",
+     "x": 300,
+     "y": 830,
+     "size": 120
+    },
+    {
+     "id": "l2",
+     "icon": "leaf",
+     "color": "#FF8A1F",
+     "x": 800,
+     "y": 830,
+     "size": 120
+    },
+    {
+     "id": "l3",
+     "icon": "leaf",
+     "color": "#FFC92E",
+     "x": 1300,
+     "y": 830,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Once upon a time, it was autumn in the forest."
+    },
+    {
+     "say": "Red, orange and yellow leaves fell down, down, down."
+    },
+    {
+     "line": "bunny",
+     "text": "Oh my! So many leaves on the ground!",
+     "bubble": "So many leaves!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Let us make a big leaf pile.",
+     "bubble": "A leaf pile!",
+     "act": "wave"
+    },
+    {
+     "prop_move": "l1",
+     "x": 850,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "bunny",
+     "text": "One red leaf for the pile.",
+     "bubble": "One red leaf"
+    },
+    {
+     "prop_move": "l2",
+     "x": 900,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "duck",
+     "text": "Two. One orange leaf too.",
+     "bubble": "Two! Orange!"
+    },
+    {
+     "prop_move": "l3",
+     "x": 950,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "bunny",
+     "text": "Three. One yellow leaf. Hooray!",
+     "bubble": "Three! Yellow!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 850
+    }
+   ],
+   "props": [
+    {
+     "id": "pile",
+     "icon": "leaf",
+     "color": "#FF8A1F",
+     "x": 1250,
+     "y": 830,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "But the wind went whoosh! The leaves flew away."
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "hide": "pile"
+    },
+    {
+     "line": "duck",
+     "text": "Oh no. The pile is gone.",
+     "bubble": "Oh no!",
+     "act": "shake"
+    },
+    {
+     "enter": "owl",
+     "x": 1300,
+     "side": "right",
+     "speed": 600
+    },
+    {
+     "say": "Then Owl glided in to help."
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Hoot! Do not be sad. Let us try again.",
+     "bubble": "Try again!",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "We can do it together!",
+     "bubble": "Together!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 850
+    },
+    {
+     "name": "owl",
+     "x": 1250
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Bunny, Duck and Owl picked up leaves, one by one."
+    },
+    {
+     "prop": "p1",
+     "icon": "leaf",
+     "color": "#FF3B3B",
+     "x": 1550,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "prop": "p2",
+     "icon": "leaf",
+     "color": "#FF8A1F",
+     "x": 1550,
+     "y": 780,
+     "size": 150
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "prop": "p3",
+     "icon": "leaf",
+     "color": "#FFC92E",
+     "x": 1550,
+     "y": 730,
+     "size": 150
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "owl",
+     "text": "Hoot! Now we make the pile higher.",
+     "bubble": "Higher pile!"
+    },
+    {
+     "say": "This time, they patted it down so the wind could not blow it."
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! We did it, friends!",
+     "bubble": "We did it!",
+     "act": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "bunny",
+     "text": "Helping is fun. Let us jump in!",
+     "bubble": "Jump in!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "say": "Friends who help each other can do big things. The end!"
+    }
+   ]
+  }
+ ]
+}
