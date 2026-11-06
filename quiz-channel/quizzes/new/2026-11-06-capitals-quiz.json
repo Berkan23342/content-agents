@@ -1,0 +1,12 @@
+{
+  "type": "trivia",
+  "title": "Capitals Quiz",
+  "inspired_by": "https://youtu.be/ox1mQCuLf2M (topic only)",
+  "questions": [
+    {"q": "What is the capital of Japan?", "options": ["Osaka", "Kyoto", "Tokyo", "Seoul"], "answer": 2},
+    {"q": "What is the capital of Italy?", "options": ["Rome", "Milan", "Venice", "Naples"], "answer": 0},
+    {"q": "Which city is the capital of Egypt?", "options": ["Alexandria", "Cairo", "Luxor", "Giza"], "answer": 1},
+    {"q": "What is the capital of Canada?", "options": ["Toronto", "Vancouver", "Montreal", "Ottawa"], "answer": 3},
+    {"q": "What is the capital of Brazil?", "options": ["Rio de Janeiro", "Sao Paulo", "Brasilia", "Salvador"], "answer": 2}
+  ]
+}
