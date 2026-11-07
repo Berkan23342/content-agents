@@ -1,0 +1,11 @@
+{
+  "type": "trivia",
+  "title": "Dinosaur Quiz",
+  "questions": [
+    {"q": "What do we call scientists who study fossils?", "options": ["Paleontologists", "Astronomers", "Geologists only", "Botanists"], "answer": 0},
+    {"q": "Which dinosaur had three horns on its face?", "options": ["Stegosaurus", "Triceratops", "Brachiosaurus", "Spinosaurus"], "answer": 1},
+    {"q": "Today's birds descend from which group?", "options": ["Dinosaurs", "Bats", "Lizards", "Crocodiles only"], "answer": 0},
+    {"q": "What was the first period of the dinosaur age?", "options": ["Cretaceous", "Jurassic", "Triassic", "Permian"], "answer": 2},
+    {"q": "Which lived closer in time to us?", "options": ["Stegosaurus", "Brachiosaurus", "Allosaurus", "Tyrannosaurus rex"], "answer": 3}
+  ]
+}

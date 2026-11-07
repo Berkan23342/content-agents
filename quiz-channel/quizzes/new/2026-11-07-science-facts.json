@@ -1,0 +1,11 @@
+{
+  "type": "truefalse",
+  "title": "Science Facts",
+  "questions": [
+    {"q": "Diamonds are made of carbon.", "answer": true, "note": "Carbon atoms packed under huge pressure."},
+    {"q": "Humans only use 10% of their brains.", "answer": false, "note": "We use virtually all of our brain."},
+    {"q": "Sound travels faster in water than in air.", "answer": true, "note": "About four times faster."},
+    {"q": "Lightning is hotter than the Sun's surface.", "answer": true, "note": "Up to about 30,000 °C, five times hotter."},
+    {"q": "Glass is a slow-flowing liquid.", "answer": false, "note": "Glass is an amorphous solid."}
+  ]
+}
