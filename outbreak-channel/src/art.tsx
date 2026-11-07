@@ -121,8 +121,9 @@ export const FireGlow: React.FC<{x: number; y: number; r: number; frame: number}
 );
 
 // ---------------------------------------------------------------- characters
-/** A shambling infected, seen from the side; (x, y) is between the feet. */
-export const Walker: React.FC<{x: number; y: number; h: number; frame: number; seed?: number; flip?: boolean; color?: string; eyes?: boolean}> = ({
+/** A shambling infected, seen from the side; (x, y) is between the feet. The seed gives each one its own build,
+ * lean, arms and coat, and about one in ten crawls (when crawl is allowed), so a crowd never looks copy-pasted. */
+export const Walker: React.FC<{x: number; y: number; h: number; frame: number; seed?: number; flip?: boolean; color?: string; eyes?: boolean; crawl?: boolean}> = ({
 	x,
 	y,
 	h,
@@ -131,39 +132,69 @@ export const Walker: React.FC<{x: number; y: number; h: number; frame: number; s
 	flip = false,
 	color = C.ink,
 	eyes = false,
+	crawl = true,
 }) => {
-	const u = h / 100;
-	const ph = frame * 0.09 + seed * 2.1;
+	const r = (k: number) => hash(seed * 7.31 + k);
+	const u = (h / 100) * (0.9 + r(1) * 0.18);
+	const wide = 0.85 + r(2) * 0.45;
+	const lean = 0.6 + r(3) * 0.9;
+	const arms = Math.floor(r(4) * 3); // 0: one reaching, 1: both reaching, 2: both hanging
+	const coat = r(5) < 0.25;
+	const tilt = (r(6) - 0.5) * 14;
+	const speed = 0.07 + r(7) * 0.05;
+	const ph = frame * speed + seed * 2.1;
+	if (crawl && r(8) < 0.1) {
+		const reach = Math.sin(ph * 1.4);
+		return (
+			<g transform={`translate(${x} ${y}) scale(${flip ? -1 : 1} 1)`}>
+				<g stroke={color} strokeLinecap="round" strokeLinejoin="round" fill="none">
+					<path d={`M${-4 * u} ${-10 * u} L${-34 * u} ${-6 * u} L${-58 * u} ${-2 * u}`} strokeWidth={8 * u} />
+					<path d={`M${30 * u} ${-18 * u} L${48 * u + reach * 8 * u} ${-8 * u} L${62 * u + reach * 12 * u} 0`} strokeWidth={6.5 * u} />
+					<path d={`M${26 * u} ${-17 * u} L${40 * u - reach * 8 * u} ${-6 * u} L${52 * u - reach * 10 * u} 0`} strokeWidth={6.5 * u} />
+				</g>
+				<path d={`M${-8 * u} ${-4 * u} L${-6 * u} ${-18 * u} L${34 * u} ${-26 * u} L${36 * u} ${-12 * u} Z`} fill={color} />
+				<circle cx={44 * u} cy={-22 * u - Math.abs(reach) * 2 * u} r={8 * u} fill={color} />
+				{eyes ? <circle cx={49 * u} cy={-23 * u} r={1.3 * u} fill="#e8f0d0" opacity={0.85} /> : null}
+			</g>
+		);
+	}
 	const a = Math.sin(ph) * 0.32;
 	const bob = Math.abs(Math.sin(ph)) * 1.6 * u;
 	const hip = {x: 0, y: -48 * u - bob};
-	const leg = (s: number) => {
-		const ang = a * s;
+	const leg = (k: number) => {
+		const ang = a * k;
 		const kx = hip.x + Math.sin(ang) * 25 * u;
 		const ky = hip.y + Math.cos(ang) * 25 * u;
 		const fx = kx + Math.sin(ang * 0.4 - 0.08) * 24 * u;
 		return `M${hip.x} ${hip.y} L${kx} ${ky} L${fx} ${-bob * 0.2}`;
 	};
 	const swing = Math.sin(ph * 0.5 + 1) * 3 * u;
+	const sx = (v: number) => v * lean; // forward lean of the upper body
+	const shoulder = {x: sx(10) * u, y: -77 * u - bob};
+	const reaching = `M${shoulder.x} ${shoulder.y} L${shoulder.x + 25 * u} ${-70 * u - bob + swing} L${shoulder.x + 41 * u} ${-67 * u - bob + swing * 1.3}`;
+	const hanging = (dx: number) => `M${shoulder.x - 3 * u} ${shoulder.y + u} L${shoulder.x + dx * u} ${-56 * u - bob - swing * 0.4} L${shoulder.x + (dx + 4) * u} ${-40 * u - bob}`;
+	const hem = coat ? -30 : -46;
 	return (
 		<g transform={`translate(${x} ${y}) scale(${flip ? -1 : 1} 1) rotate(${Math.sin(ph * 0.5) * 3})`}>
 			<g stroke={color} strokeLinecap="round" strokeLinejoin="round" fill="none">
-				<path d={leg(1)} strokeWidth={9 * u} />
-				<path d={leg(-1)} strokeWidth={9 * u} />
-				<path d={`M${9 * u} ${-77 * u - bob} L${34 * u} ${-70 * u - bob + swing} L${50 * u} ${-67 * u - bob + swing * 1.3}`} strokeWidth={7 * u} />
-				<path d={`M${6 * u} ${-76 * u - bob} L${12 * u} ${-56 * u - bob - swing * 0.4} L${16 * u} ${-40 * u - bob}`} strokeWidth={7 * u} />
+				<path d={leg(1)} strokeWidth={9 * u * Math.min(1.15, wide)} />
+				<path d={leg(-1)} strokeWidth={9 * u * Math.min(1.15, wide)} />
+				<path d={arms === 2 ? hanging(5) : reaching} strokeWidth={7 * u} />
+				<path d={arms === 1 ? reaching : hanging(3)} strokeWidth={7 * u} transform={arms === 1 ? `translate(${-4 * u} ${5 * u})` : undefined} />
 			</g>
 			<path
-				d={`M${-8 * u} ${-46 * u - bob} L${-3 * u} ${-41 * u - bob} L${2 * u} ${-47 * u - bob} L${7 * u} ${-42 * u - bob} L${10 * u} ${-48 * u - bob} L${16 * u} ${-80 * u - bob} L${0} ${-83 * u - bob} Z`}
+				d={`M${-8 * u * wide} ${hem * u - bob} L${-3 * u} ${(hem + 5) * u - bob} L${2 * u} ${(hem - 1) * u - bob} L${7 * u * wide} ${(hem + 4) * u - bob} L${10 * u * wide} ${(hem - 2) * u - bob} L${shoulder.x + 6 * u * wide} ${-80 * u - bob} L${shoulder.x - 10 * u * wide} ${-83 * u - bob} Z`}
 				fill={color}
 			/>
-			<circle cx={17 * u} cy={-90 * u - bob} r={8.5 * u} fill={color} />
-			{eyes ? (
-				<>
-					<circle cx={21 * u} cy={-91 * u - bob} r={1.3 * u} fill="#e8f0d0" opacity={0.85} />
-					<circle cx={24.5 * u} cy={-90.5 * u - bob} r={1.1 * u} fill="#e8f0d0" opacity={0.7} />
-				</>
-			) : null}
+			<g transform={`rotate(${tilt} ${shoulder.x + 7 * u} ${-84 * u - bob})`}>
+				<circle cx={shoulder.x + 7 * u} cy={-90 * u - bob} r={8.5 * u} fill={color} />
+				{eyes ? (
+					<>
+						<circle cx={shoulder.x + 11 * u} cy={-91 * u - bob} r={1.3 * u} fill="#e8f0d0" opacity={0.85} />
+						<circle cx={shoulder.x + 14.5 * u} cy={-90.5 * u - bob} r={1.1 * u} fill="#e8f0d0" opacity={0.7} />
+					</>
+				) : null}
+			</g>
 		</g>
 	);
 };

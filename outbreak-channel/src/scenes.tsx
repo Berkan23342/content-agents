@@ -1,10 +1,13 @@
 import React from 'react';
 import {C, Dog, FireGlow, H, Moon, Sitter, Skyline, Smoke, Stars, TopWalker, W, Walker, clamp, flicker, hash, lerp} from './art';
 import {Cabin, Elevator, Forest, Office, Tower, Truck} from './scenes2';
+import {GasStation, Hospital, Lake, Lobby, School, Skybridge, Subway, Supermarket} from './scenes3';
 
 // Every scene is an SVG drawing of the full 1080x1920 frame. `p` holds the beat's parameters (see scripts/diarycheck.py).
 export type Params = Record<string, unknown>;
-type SceneProps = {p: Params; f: number};
+// s: this part's seed, so crowds and details change between parts; place: the same for every part of a story, so
+// its doors, radio, lift and office stay recognisable while another story's look different
+type SceneProps = {p: Params; f: number; s?: number; place?: number};
 
 const num = (v: unknown, d: number) => (typeof v === 'number' ? v : d);
 const str = (v: unknown, d: string) => (typeof v === 'string' ? v : d);
@@ -18,7 +21,7 @@ const Svg: React.FC<{children: React.ReactNode}> = ({children}) => (
 
 // ---------------------------------------------------------------- outside
 /** Our building at night, seen from across the street. Our window (9th floor, middle) is the lit one. */
-export const Building: React.FC<SceneProps> = ({p, f}) => {
+export const Building: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 0);
 	const floorH = 136;
 	const top = 600;
@@ -30,7 +33,7 @@ export const Building: React.FC<SceneProps> = ({p, f}) => {
 			<Moon x={210} y={260} r={70} />
 			{p.fire ? <FireGlow x={900} y={1180} r={420} frame={f} /> : null}
 			<Smoke frame={f} xs={p.fire ? [880, 140] : [140]} base={1250} />
-			<Skyline base={1300} seed={3} color={C.far} maxH={520} lit={0.05} />
+			<Skyline base={1300} seed={3 + (s % 50)} color={C.far} maxH={520} lit={0.05} />
 			<Skyline base={1500} seed={11} color={C.near} maxH={420} lit={0.04} />
 			<rect x={250} y={top - 40} width={580} height={H} fill="#1a2036" />
 			<rect x={240} y={top - 60} width={600} height={26} fill="#151a2c" />
@@ -44,7 +47,7 @@ export const Building: React.FC<SceneProps> = ({p, f}) => {
 				cols.map((x, c) => {
 					const y = top + row * floorH + 22;
 					const ours = row === 1 && c === 1;
-					const tv = !ours && hash(row * 3 + c + 5) < 0.12;
+					const tv = !ours && hash(row * 3 + c + 5 + s) < 0.12;
 					const lit = ours && p.lit !== false;
 					return (
 						<g key={`${row}-${c}`}>
@@ -62,14 +65,14 @@ export const Building: React.FC<SceneProps> = ({p, f}) => {
 				}),
 			)}
 			{Array.from({length: zombies}, (_, i) => (
-				<Walker key={i} x={((hash(i + 3) * 1300 + f * (0.4 + hash(i) * 0.4)) % 1300) - 110} y={1905 - hash(i + 9) * 30} h={110} frame={f} seed={i} flip={i % 2 === 1} />
+				<Walker key={i} x={((hash(i + 3) * 1300 + f * (0.4 + hash(i) * 0.4)) % 1300) - 110} y={1905 - hash(i + 9) * 30} h={110} frame={f} seed={i + s} flip={i % 2 === 1} />
 			))}
 		</Svg>
 	);
 };
 
 /** Looking down at the street from the 9th floor window: the road, cars and the infected from above. */
-export const WindowView: React.FC<SceneProps> = ({p, f}) => {
+export const WindowView: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 4);
 	const cars: [number, number, number, string][] = [
 		[160, 820, 8, '#3b4a63'],
@@ -100,7 +103,7 @@ export const WindowView: React.FC<SceneProps> = ({p, f}) => {
 				</g>
 			))}
 			{cars.map(([x, y, rot, color], i) => (
-				<g key={i} transform={`translate(${x} ${y}) rotate(${rot})`}>
+				<g key={i} transform={`translate(${(x + hash(i + s) * 260) % 1000} ${y}) rotate(${rot + (hash(i + s + 9) - 0.5) * 30})`}>
 					<rect x={-115} y={-55} width={230} height={110} rx={30} fill={color} />
 					<rect x={-60} y={-44} width={110} height={88} rx={16} fill="#11151f" opacity={0.85} />
 					<rect x={46} y={-44} width={26} height={88} rx={8} fill="#2a3346" />
@@ -114,10 +117,10 @@ export const WindowView: React.FC<SceneProps> = ({p, f}) => {
 				</>
 			) : null}
 			{Array.from({length: zombies}, (_, i) => {
-				const x0 = hash(i + 20) * 1000 + 40;
-				const y0 = 640 + hash(i + 31) * 760;
+				const x0 = hash(i + 20 + s) * 1000 + 40;
+				const y0 = 640 + hash(i + 31 + s) * 760;
 				const dx = Math.sin(f / (90 + i * 7) + i) * 30 + f * 0.15 * (hash(i) - 0.5);
-				return <TopWalker key={i} x={x0 + dx} y={y0 + Math.cos(f / 70 + i) * 14} s={1.7} frame={f} seed={i} />;
+				return <TopWalker key={i} x={x0 + dx} y={y0 + Math.cos(f / 70 + i) * 14} s={1.7} frame={f} seed={i + s} />;
 			})}
 			{p.survivor ? (
 				<g transform={`translate(${-120 + ((f * 9) % 1400)} 980)`}>
@@ -145,14 +148,14 @@ export const WindowView: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** Street level, looking down the road to the harbour. */
-export const Street: React.FC<SceneProps> = ({p, f}) => {
+export const Street: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 3);
 	const hz = 1000;
 	return (
 		<Svg>
 			<rect width={W} height={H} fill="url(#nightSky)" />
 			<Stars frame={f} n={40} maxY={600} seed={9} />
-			<Skyline base={hz} seed={21} color={C.far} maxH={340} lit={0.04} />
+			<Skyline base={hz} seed={21 + (s % 50)} color={C.far} maxH={340} lit={0.04} />
 			{p.fire ? <FireGlow x={760} y={hz - 60} r={360} frame={f} /> : null}
 			<Smoke frame={f} xs={[760, 240]} base={hz} />
 			<path d={`M0 ${hz - 520} L340 ${hz - 120} L340 ${hz + 40} L0 ${H}`} fill="#121828" />
@@ -182,13 +185,13 @@ export const Street: React.FC<SceneProps> = ({p, f}) => {
 				<rect x={-60} y={-90} width={120} height={180} rx={14} fill="#2f3a3a" />
 			</g>
 			{Array.from({length: zombies}, (_, i) => {
-				const depth = 0.25 + hash(i + 4) * 0.75;
+				const depth = 0.25 + hash(i + 4 + s) * 0.75;
 				const y = lerp(hz + 60, 1880, depth);
 				const h = lerp(120, 560, depth);
 				const dir = hash(i + 8) < 0.5 ? 1 : -1;
 				const x = ((hash(i + 6) * 1400 + f * dir * (0.3 + depth * 0.8)) % 1400 + 1400) % 1400 - 160;
 				const color = depth < 0.45 ? '#232a3d' : depth < 0.7 ? '#131722' : C.ink;  // far ones fade into the fog
-				return <Walker key={i} x={x} y={y} h={h} frame={f} seed={i} flip={dir < 0} eyes={depth > 0.6} color={color} />;
+				return <Walker key={i} x={x} y={y} h={h} frame={f} seed={i + s} flip={dir < 0} eyes={depth > 0.6} color={color} />;
 			})}
 			<rect x={0} y={hz - 120} width={W} height={300} fill="#3a4258" opacity={0.18} filter="url(#blur24)" />
 		</Svg>
@@ -196,7 +199,7 @@ export const Street: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** The roof: water tank, antenna, and the city burning on the horizon. */
-export const Rooftop: React.FC<SceneProps> = ({p, f}) => {
+export const Rooftop: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const heliX = -300 + ((f * 4) % 1800);
 	return (
 		<Svg>
@@ -205,12 +208,12 @@ export const Rooftop: React.FC<SceneProps> = ({p, f}) => {
 			<Moon x={860} y={280} r={56} />
 			{p.fire !== false ? (
 				<>
-					<FireGlow x={300} y={1150} r={380} frame={f} />
-					<FireGlow x={880} y={1180} r={260} frame={f + 20} />
+					<FireGlow x={150 + hash(s) * 400} y={1150} r={380} frame={f} />
+					<FireGlow x={650 + hash(s + 1) * 350} y={1180} r={260} frame={f + 20} />
 				</>
 			) : null}
 			<Smoke frame={f} xs={[300, 880, 600]} base={1150} />
-			<Skyline base={1250} seed={31} color={C.far} maxH={380} lit={0.05} />
+			<Skyline base={1250} seed={31 + (s % 50)} color={C.far} maxH={380} lit={0.05} />
 			{p.heli ? (
 				<g transform={`translate(${heliX} 430)`}>
 					<path d={`M0 0 L-${260} 820 L${260} 820 Z`} fill="#fff7d6" opacity={0.08} transform={`rotate(${Math.sin(f / 30) * 18})`} />
@@ -311,7 +314,10 @@ export const Room: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** The inside of our front door. shadow: feet moving in the light under the door. banging: someone pounding. */
-export const Door: React.FC<SceneProps> = ({p, f}) => {
+const DOORS = [[C.wood, C.wood2], ['#2f4a3a', '#243a2d'], ['#5a2a2a', '#452020'], ['#4a4f58', '#3b3f47']];
+
+export const Door: React.FC<SceneProps> = ({p, f, place = 0}) => {
+	const [door, panel] = DOORS[place % DOORS.length];
 	const bang = p.banging ? Math.max(0, Math.sin(f * 0.55)) ** 8 : 0;
 	const feetX = 470 + Math.sin(f / 22) * 40;
 	return (
@@ -320,9 +326,9 @@ export const Door: React.FC<SceneProps> = ({p, f}) => {
 			<rect y={1770} width={W} height={150} fill="#101219" />
 			<rect x={200} y={210} width={680} height={1570} fill="#151823" />
 			<g transform={`translate(${bang * 6} ${bang * -3}) rotate(${bang * 0.4} 540 1000)`}>
-				<rect x={230} y={240} width={620} height={1512} fill={C.wood} />
-				<rect x={290} y={310} width={500} height={560} rx={10} fill={C.wood2} />
-				<rect x={290} y={960} width={500} height={700} rx={10} fill={C.wood2} />
+				<rect x={230} y={240} width={620} height={1512} fill={door} />
+				<rect x={290} y={310} width={500} height={560} rx={10} fill={panel} />
+				<rect x={290} y={960} width={500} height={700} rx={10} fill={panel} />
 				<circle cx={540} cy={640} r={16} fill="#8c7350" />
 				<circle cx={540} cy={640} r={7} fill="#0b0b0b" />
 				<rect x={760} y={960} width={60} height={110} rx={12} fill="#8c7350" />
@@ -404,7 +410,7 @@ export const Peephole: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** The 9th floor corridor. light: on, flicker or off. zombie: a figure at the far end that gets closer. */
-export const Hallway: React.FC<SceneProps> = ({p, f}) => {
+export const Hallway: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const light = str(p.light, 'flicker');
 	const vx0 = 420;
 	const vx1 = 660;
@@ -447,14 +453,15 @@ export const Hallway: React.FC<SceneProps> = ({p, f}) => {
 					</g>
 				);
 			})}
-			{p.zombie ? <Walker x={540} y={lerp(vy1 - 6, 1500, z * z)} h={lerp(230, 900, z * z)} frame={f} seed={2} eyes /> : null}
+			{p.zombie ? <Walker x={540} y={lerp(vy1 - 6, 1500, z * z)} h={lerp(230, 900, z * z)} frame={f} seed={2 + s} eyes crawl={false} /> : null}
 			<rect width={W} height={H} fill="#02030a" opacity={0.75 - 0.55 * on} />
 		</Svg>
 	);
 };
 
 /** Looking down the stairwell, nine floors to the bottom. zombies: shapes moving far below. */
-export const Stairwell: React.FC<SceneProps> = ({p, f}) => {
+export const Stairwell: React.FC<SceneProps> = ({p, f, place = 0}) => {
+	const rail = ['#7c3b2c', '#8a7a2c', '#2c6a4a', '#5a5f6a'][place % 4];
 	const rings = 9;
 	return (
 		<Svg>
@@ -470,7 +477,7 @@ export const Stairwell: React.FC<SceneProps> = ({p, f}) => {
 					return (
 						<g key={i}>
 							<rect x={x} y={y} width={w} height={h} fill={`rgb(${shade},${shade + 3},${shade + 10})`} />
-							<rect x={x} y={y} width={w} height={h} fill="none" stroke="#7c3b2c" strokeWidth={lerp(22, 4, t)} />
+							<rect x={x} y={y} width={w} height={h} fill="none" stroke={rail} strokeWidth={lerp(22, 4, t)} />
 							{i < rings - 1 ? (
 								<text x={x + lerp(60, 14, t)} y={y + lerp(140, 30, t)} fill="#c9c4b4" opacity={0.5 - t * 0.4} fontSize={lerp(110, 20, t)} fontFamily="monospace">
 									{9 - i}
@@ -611,7 +618,10 @@ export const Phone: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** An old portable radio. mode: static or voice. */
-export const Radio: React.FC<SceneProps> = ({p, f}) => {
+const RADIOS = [['#3b2e26', '#4a3a2f'], ['#6e2420', '#8a2e28'], ['#2f3a2a', '#3d4a35'], ['#2a2d33', '#3a3e46']];
+
+export const Radio: React.FC<SceneProps> = ({p, f, place = 0}) => {
+	const [shell, face] = RADIOS[place % RADIOS.length];
 	const voice = str(p.mode, 'static') === 'voice';
 	const needle = voice ? 610 : 560 + Math.sin(f / 6) * 50 + Math.sin(f / 2.3) * 12;
 	return (
@@ -620,8 +630,8 @@ export const Radio: React.FC<SceneProps> = ({p, f}) => {
 			<rect y={1240} width={W} height={680} fill="#2a2019" />
 			<circle cx={540} cy={1000} r={700} fill="url(#warmGlow)" opacity={0.18} />
 			<g transform="translate(140 700)">
-				<rect x={0} y={0} width={800} height={540} rx={50} fill="#3b2e26" />
-				<rect x={20} y={20} width={760} height={500} rx={40} fill="#4a3a2f" />
+				<rect x={0} y={0} width={800} height={540} rx={50} fill={shell} />
+				<rect x={20} y={20} width={760} height={500} rx={40} fill={face} />
 				<path d="M160 0 Q400 -200 640 0" stroke="#2a201b" strokeWidth={24} fill="none" />
 				<circle cx={230} cy={290} r={170} fill="#2a211c" />
 				{Array.from({length: 11}, (_, r) =>
@@ -822,27 +832,47 @@ export const SCENES: Record<string, React.FC<SceneProps>> = {
 	forest: Forest,
 	cabin: Cabin,
 	truck: Truck,
+	lake: Lake,
+	gas_station: GasStation,
+	supermarket: Supermarket,
+	hospital: Hospital,
+	school: School,
+	subway: Subway,
+	skybridge: Skybridge,
+	lobby: Lobby,
 };
 
-/** Where the camera pushes in for each scene (the interesting point). */
-export const FOCUS: Record<string, [number, number]> = {
-	building: [540, 780],
-	window: [540, 980],
-	street: [540, 1100],
-	rooftop: [540, 1100],
-	room: [560, 1200],
-	door: [540, 1000],
-	peephole: [540, 900],
-	hallway: [540, 860],
-	stairwell: [540, 960],
-	kitchen: [700, 1100],
-	phone: [540, 900],
-	radio: [540, 980],
-	supplies: [540, 900],
-	tower: [540, 500],
-	office: [540, 1000],
-	elevator: [540, 900],
-	forest: [540, 1250],
-	cabin: [600, 1200],
-	truck: [540, 900],
+/** Where the camera can look in each scene: the first point is the wide shot's centre, the others are close-ups
+ * (a face, a door, a dial...). Consecutive beats in one scene cut between them, so a scene never sits still. */
+export const SHOTS: Record<string, [number, number][]> = {
+	building: [[540, 900], [540, 700], [540, 1720]],
+	window: [[540, 960], [320, 820], [760, 1200]],
+	street: [[540, 1100], [330, 1480], [780, 1380]],
+	rooftop: [[540, 1100], [320, 1100], [840, 1000]],
+	room: [[560, 1200], [300, 1150], [640, 1640], [540, 600]],
+	door: [[540, 1000], [540, 640], [790, 960], [540, 1700]],
+	peephole: [[540, 900]],
+	hallway: [[540, 860], [540, 720], [300, 1150]],
+	stairwell: [[540, 960], [540, 940]],
+	kitchen: [[700, 1100], [300, 1080], [880, 1050]],
+	phone: [[540, 900], [540, 760]],
+	radio: [[540, 980], [430, 1000], [770, 900]],
+	supplies: [[540, 900], [380, 700], [700, 1100]],
+	tower: [[540, 900], [540, 500], [540, 1760]],
+	office: [[540, 1000], [300, 1300], [880, 1100]],
+	elevator: [[540, 900], [540, 350], [540, 1000], [940, 950]],
+	forest: [[540, 1250], [540, 1500], [300, 1380]],
+	cabin: [[600, 1200], [270, 600], [830, 1300], [220, 1400]],
+	truck: [[540, 900], [540, 1000], [700, 1450]],
+	lake: [[540, 1100], [540, 1400], [760, 1420]],
+	gas_station: [[540, 1100], [330, 1300], [880, 900]],
+	supermarket: [[540, 960], [300, 1000], [780, 1000]],
+	hospital: [[540, 960], [820, 1450], [540, 860]],
+	school: [[540, 960], [260, 1000], [540, 1650]],
+	subway: [[540, 960], [540, 860], [250, 1200]],
+	skybridge: [[540, 960], [540, 760], [260, 640]],
+	lobby: [[540, 960], [540, 860], [140, 900], [950, 900]],
 };
+
+/** Outdoor scenes without writing in them can be mirrored from part to part, which changes the whole composition. */
+export const FLIPPABLE = new Set(['building', 'window', 'street', 'rooftop', 'forest', 'tower', 'hallway', 'lake', 'gas_station', 'supermarket', 'skybridge']);

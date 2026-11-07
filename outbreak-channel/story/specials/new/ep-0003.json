@@ -39,13 +39,10 @@
       ]
     },
     {
-      "scene": "truck",
-      "zombies": 8,
-      "lights": false,
-      "sfx": [
-        "heartbeat@0.2"
-      ],
-      "text": "A baby began to cry in the back. The mother smothered it in a blanket.",
+      "scene": "subway",
+      "light": "off",
+      "zombies": 0,
+      "text": "A baby began to cry in the back. Its mother hushed it under her coat.",
       "hl": [
         "cry"
       ]
@@ -82,18 +79,17 @@
       ]
     },
     {
-      "scene": "truck",
-      "zombies": 0,
+      "scene": "subway",
+      "light": "on",
       "tone": "dawn",
-      "lights": false,
       "text": "Nobody said a word until the sun came up.",
       "hl": [
         "sun"
       ]
     },
     {
-      "scene": "street",
-      "zombies": 0,
+      "scene": "subway",
+      "light": "on",
       "tone": "dawn",
       "text": "I opened the doors. Forty seats, forty people, all breathing.",
       "hl": [
@@ -101,8 +97,8 @@
       ]
     },
     {
-      "scene": "street",
-      "zombies": 0,
+      "scene": "subway",
+      "light": "flicker",
       "tone": "dawn",
       "hold": 1.0,
       "sfx": [

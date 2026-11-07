@@ -3,7 +3,9 @@ import {C, FireGlow, H, Moon, Sitter, Skyline, Smoke, Stars, W, Walker, flicker,
 import type {Params} from './scenes';
 
 // Scenes for the Floor 41 (Meridian Tower) and Pine Hollow (lake cabin) stories. Same conventions as scenes.tsx.
-type SceneProps = {p: Params; f: number};
+// s: this part's seed, so crowds and details change between parts; place: the same for every part of a story, so
+// its doors, radio, lift and office stay recognisable while another story's look different
+type SceneProps = {p: Params; f: number; s?: number; place?: number};
 
 const num = (v: unknown, d: number) => (typeof v === 'number' ? v : d);
 const str = (v: unknown, d: string) => (typeof v === 'string' ? v : d);
@@ -23,7 +25,7 @@ const Pine: React.FC<{x: number; y: number; h: number; color: string}> = ({x, y,
 
 // ---------------------------------------------------------------- Floor 41
 /** Meridian Tower from the street: a glass skyscraper with one lit floor (41) near the top. */
-export const Tower: React.FC<SceneProps> = ({p, f}) => {
+export const Tower: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 0);
 	const top = 140;
 	const litY = 470;
@@ -36,7 +38,7 @@ export const Tower: React.FC<SceneProps> = ({p, f}) => {
 			<rect x={-40} y={420} width={300} height={H} fill="#121a30" />
 			<rect x={830} y={600} width={300} height={H} fill="#10172b" />
 			{Array.from({length: 30}, (_, i) => (
-				<rect key={i} x={i % 2 ? 860 + hash(i) * 200 : hash(i) * 220} y={460 + hash(i + 9) * 1200} width={14} height={20} fill="#e8c27a" opacity={hash(i + 3) < 0.25 ? 0.5 : 0} />
+				<rect key={i} x={i % 2 ? 860 + hash(i + s) * 200 : hash(i + s) * 220} y={460 + hash(i + 9 + s) * 1200} width={14} height={20} fill="#e8c27a" opacity={hash(i + 3) < 0.25 ? 0.5 : 0} />
 			))}
 			<path d={`M300 ${top} L780 ${top + 60} L780 ${H} L300 ${H} Z`} fill="#16223f" />
 			{Array.from({length: 9}, (_, i) => (
@@ -62,7 +64,7 @@ export const Tower: React.FC<SceneProps> = ({p, f}) => {
 			<rect x={300} y={1640} width={480} height={280} fill="#0d1322" />
 			<rect x={420} y={1680} width={240} height={240} fill="#9fb8e8" opacity={0.12 + 0.05 * flicker(f, 5)} />
 			{Array.from({length: zombies}, (_, i) => (
-				<Walker key={i} x={((hash(i + 3) * 1300 + f * (0.4 + hash(i) * 0.4)) % 1300) - 110} y={1900 - hash(i + 9) * 40} h={130} frame={f} seed={i} flip={i % 2 === 1} />
+				<Walker key={i} x={((hash(i + 3) * 1300 + f * (0.4 + hash(i) * 0.4)) % 1300) - 110} y={1900 - hash(i + 9) * 40} h={130} frame={f} seed={i + s} flip={i % 2 === 1} />
 			))}
 		</Svg>
 	);
@@ -70,7 +72,9 @@ export const Tower: React.FC<SceneProps> = ({p, f}) => {
 
 /** The open-plan office on floor 41: desks with glowing screens and the burning city behind the glass.
  * light: on, flicker or off. zombie: a shape behind the frosted glass of the meeting room. guest: dev at a desk. */
-export const Office: React.FC<SceneProps> = ({p, f}) => {
+export const Office: React.FC<SceneProps> = ({p, f, place = 0}) => {
+	const screen = ['#6fa8ff', '#7fe0c0', '#ffb36f'][place % 3];
+	const glassX = place % 2 ? 0 : 720; // the meeting room is on one side or the other
 	const light = str(p.light, 'off');
 	const on = light === 'on' ? 1 : light === 'off' ? 0 : flicker(f, 11, 0.6);
 	return (
@@ -92,11 +96,11 @@ export const Office: React.FC<SceneProps> = ({p, f}) => {
 			<rect y={1120} width={W} height={800} fill="#1c1f2a" />
 			{p.zombie ? (
 				<g>
-					<rect x={720} y={760} width={360} height={720} fill="#9fb0c8" opacity={0.18} />
+					<rect x={glassX} y={760} width={360} height={720} fill="#9fb0c8" opacity={0.18} />
 					<g opacity={0.6} filter="url(#blur8)">
-						<Walker x={880 + Math.sin(f / 40) * 40} y={1460} h={560} frame={f} seed={4} color="#05070c" />
+						<Walker x={glassX + 160 + Math.sin(f / 40) * 40} y={1460} h={560} frame={f} seed={4 + place} color="#05070c" crawl={false} />
 					</g>
-					<rect x={720} y={760} width={360} height={720} fill="none" stroke="#0d111c" strokeWidth={10} />
+					<rect x={glassX} y={760} width={360} height={720} fill="none" stroke="#0d111c" strokeWidth={10} />
 				</g>
 			) : null}
 			{[1260, 1560].map((y, row) =>
@@ -106,7 +110,7 @@ export const Office: React.FC<SceneProps> = ({p, f}) => {
 						<rect x={x + 10} y={y + 24} width={14} height={140} fill="#2a2e38" />
 						<rect x={x + 276} y={y + 24} width={14} height={140} fill="#2a2e38" />
 						<rect x={x + 90} y={y - 120} width={130} height={90} rx={6} fill="#0a0d16" />
-						<rect x={x + 96} y={y - 114} width={118} height={78} fill="#6fa8ff" opacity={0.35 + 0.25 * flicker(f, row * 2 + k + 50, 0.8)} />
+						<rect x={x + 96} y={y - 114} width={118} height={78} fill={screen} opacity={0.35 + 0.25 * flicker(f, row * 2 + k + 50, 0.8)} />
 						<rect x={x + 148} y={y - 30} width={14} height={30} fill="#0a0d16" />
 						<circle cx={x + 155} cy={y - 75} r={120} fill="url(#coolGlow)" opacity={0.4} />
 					</g>
@@ -120,21 +124,24 @@ export const Office: React.FC<SceneProps> = ({p, f}) => {
 
 /** Inside a lift. doors: closed, open or gap (hands reaching through). floor: the number on the display.
  * power: false gives only the red emergency light. */
-export const Elevator: React.FC<SceneProps> = ({p, f}) => {
+const LIFTS = [['#4a515c', '#5d6570', '#7c838d', '#747b85'], ['#4a3526', '#5c4330', '#8a6a4a', '#7f6243'], ['#2a2f3a', '#3a4150', '#5d6675', '#566070']];
+
+export const Elevator: React.FC<SceneProps> = ({p, f, place = 0}) => {
+	const [wall, line, doorL, doorR] = LIFTS[place % LIFTS.length];
 	const doors = str(p.doors, 'closed');
 	const power = p.power !== false;
 	const open = doors === 'open' ? 260 : doors === 'gap' ? 40 + Math.sin(f / 6) * 6 : 0;
 	return (
 		<Svg>
-			<rect width={W} height={H} fill="#4a515c" />
+			<rect width={W} height={H} fill={wall} />
 			{Array.from({length: 24}, (_, i) => (
-				<rect key={i} x={i * 46} y={0} width={2} height={H} fill="#5d6570" opacity={0.6} />
+				<rect key={i} x={i * 46} y={0} width={2} height={H} fill={line} opacity={0.6} />
 			))}
 			<rect y={1700} width={W} height={220} fill="#2a2d33" />
 			<rect x={0} y={1180} width={W} height={18} fill="#8a919b" />
 			<rect x={240} y={420} width={600} height={1300} fill="#05060a" />
-			<rect x={540 - open - 290} y={440} width={290} height={1260} fill="#7c838d" />
-			<rect x={540 + open} y={440} width={290} height={1260} fill="#747b85" />
+			<rect x={540 - open - 290} y={440} width={290} height={1260} fill={doorL} />
+			<rect x={540 + open} y={440} width={290} height={1260} fill={doorR} />
 			{doors === 'gap'
 				? [0, 1, 2].map((i) => (
 						<path
@@ -162,16 +169,16 @@ export const Elevator: React.FC<SceneProps> = ({p, f}) => {
 
 // ---------------------------------------------------------------- Pine Hollow
 /** Night woods around the lake. zombies: walkers between the trees. cabin: the cabin's lit window far away. */
-export const Forest: React.FC<SceneProps> = ({p, f}) => {
+export const Forest: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 0);
 	return (
 		<Svg>
 			<rect width={W} height={H} fill="url(#nightSky)" />
 			<Stars frame={f} n={80} maxY={900} seed={12} />
-			<Moon x={760} y={330} r={66} />
+			<Moon x={220 + hash(s) * 640} y={250 + hash(s + 1) * 200} r={50 + hash(s + 2) * 30} />
 			{p.fire ? <FireGlow x={300} y={1150} r={380} frame={f} /> : null}
 			{Array.from({length: 14}, (_, i) => (
-				<Pine key={`a${i}`} x={i * 85 - 20 + hash(i) * 40} y={1250} h={420 + hash(i + 3) * 260} color="#121a2a" />
+				<Pine key={`a${i}`} x={i * 85 - 20 + hash(i + s) * 40} y={1250} h={420 + hash(i + 3 + s) * 260} color="#121a2a" />
 			))}
 			{p.cabin ? (
 				<g>
@@ -181,16 +188,16 @@ export const Forest: React.FC<SceneProps> = ({p, f}) => {
 				</g>
 			) : null}
 			{Array.from({length: 9}, (_, i) => (
-				<Pine key={`b${i}`} x={i * 135 - 40 + hash(i + 20) * 60} y={1500} h={760 + hash(i + 8) * 300} color="#0b111c" />
+				<Pine key={`b${i}`} x={i * 135 - 40 + hash(i + 20 + s) * 60} y={1500} h={760 + hash(i + 8 + s) * 300} color="#0b111c" />
 			))}
 			<rect y={1240} width={W} height={680} fill="#0a0e16" />
 			<path d={`M420 1920 Q560 1600 520 1260 L560 1260 Q640 1600 700 1920 Z`} fill="#1a1f2a" />
 			{Array.from({length: zombies}, (_, i) => {
-				const depth = 0.3 + hash(i + 14) * 0.7;
+				const depth = 0.3 + hash(i + 14 + s) * 0.7;
 				const y = lerp(1300, 1880, depth);
 				const dir = hash(i + 2) < 0.5 ? 1 : -1;
 				const x = ((hash(i + 5) * 1400 + f * dir * (0.3 + depth * 0.6)) % 1400 + 1400) % 1400 - 160;
-				return <Walker key={i} x={x} y={y} h={lerp(160, 520, depth)} frame={f} seed={i + 3} flip={dir < 0} eyes={depth > 0.6} color={depth < 0.5 ? '#1d2436' : C.ink} />;
+				return <Walker key={i} x={x} y={y} h={lerp(160, 520, depth)} frame={f} seed={i + 3 + s} flip={dir < 0} eyes={depth > 0.6} color={depth < 0.5 ? '#1d2436' : C.ink} />;
 			})}
 			<Pine x={60} y={1980} h={1500} color="#05070c" />
 			<Pine x={1040} y={2000} h={1400} color="#05070c" />
@@ -218,7 +225,7 @@ export const Cabin: React.FC<SceneProps> = ({p, f}) => {
 				{[0, 1, 2, 3].map((i) => (
 					<Pine key={i} x={110 + i * 100} y={820} h={260 + hash(i) * 120} color="#0a0e18" />
 				))}
-				{p.zombie ? <Walker x={230 + Math.sin(f / 50) * 30} y={860} h={330} frame={f} seed={6} eyes /> : null}
+				{p.zombie ? <Walker x={230 + Math.sin(f / 50) * 30} y={860} h={330} frame={f} seed={6 + s} eyes crawl={false} /> : null}
 				<rect x={90} y={360} width={360} height={460} fill="none" stroke="#2a1a10" strokeWidth={24} />
 				<rect x={260} y={360} width={20} height={460} fill="#2a1a10" />
 				<rect x={90} y={580} width={360} height={18} fill="#2a1a10" />
@@ -258,7 +265,7 @@ export const Cabin: React.FC<SceneProps> = ({p, f}) => {
 };
 
 /** Inside Nora's old pickup at night: the road in the headlights. zombies: walkers in the lights. wipers: on. */
-export const Truck: React.FC<SceneProps> = ({p, f}) => {
+export const Truck: React.FC<SceneProps> = ({p, f, s = 0}) => {
 	const zombies = num(p.zombies, 0);
 	const lights = p.lights !== false;
 	const wipe = p.wipers ? Math.abs(((f % 40) / 20) - 1) : 0;
@@ -267,7 +274,7 @@ export const Truck: React.FC<SceneProps> = ({p, f}) => {
 		<Svg>
 			<rect width={W} height={1300} fill="url(#nightSky)" />
 			{[0, 1, 2, 3, 4].map((i) => (
-				<Pine key={`l${i}`} x={60 + i * 70} y={hz + 30 + i * 40} h={420 - i * 40} color="#0b101b" />
+				<Pine key={`l${i}`} x={60 + i * 70 + hash(i + s) * 30} y={hz + 30 + i * 40} h={(420 - i * 40) * (0.8 + hash(i + s + 4) * 0.4)} color="#0b101b" />
 			))}
 			{[0, 1, 2, 3, 4].map((i) => (
 				<Pine key={`r${i}`} x={1020 - i * 70} y={hz + 30 + i * 40} h={420 - i * 40} color="#0b101b" />
@@ -282,7 +289,7 @@ export const Truck: React.FC<SceneProps> = ({p, f}) => {
 				const depth = ((hash(i + 7) + f * 0.004) % 1) * 0.8 + 0.1;
 				const y = lerp(hz + 30, 1260, depth);
 				const x = 540 + (hash(i + 2) - 0.5) * lerp(200, 900, depth);
-				return <Walker key={i} x={x} y={y} h={lerp(90, 520, depth)} frame={f} seed={i + 9} flip={hash(i) < 0.5} eyes color={lights ? '#2a2f3a' : C.ink} />;
+				return <Walker key={i} x={x} y={y} h={lerp(90, 520, depth)} frame={f} seed={i + 9 + s} flip={hash(i + s) < 0.5} eyes color={lights ? '#2a2f3a' : C.ink} crawl={false} />;
 			})}
 			<path d={`M0 0 L${W} 0 L${W} 200 Q540 120 0 200 Z`} fill="#0a0b0f" />
 			<path d={`M0 0 L120 0 L60 1300 L0 1300 Z`} fill="#0a0b0f" />

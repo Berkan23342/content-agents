@@ -65,6 +65,7 @@ Same rules as every Outbreak Diary story:
 - **Scenes to use:** `tower`, `office`, `elevator`, `window` (the street far below), `hallway`, `stairwell`, `rooftop`,
   `kitchen` (the break room), `phone`, `radio` (Dev's radio), `supplies`, `door`. Never use `building`, `room` or
   `peephole` (those are Sam's apartment).
+- **New places to visit often:** `skybridge` (to Calder Tower on floor 30), `lobby` (the tower lobby), `supermarket` (the cafeteria's store room), `hospital` (the first-aid room).
 
 ## Current state
 

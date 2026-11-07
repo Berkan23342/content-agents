@@ -54,7 +54,7 @@
       ]
     },
     {
-      "scene": "forest",
+      "scene": "lake",
       "fog": true,
       "cam": "left",
       "text": "At noon I followed boot prints to the water. They stopped at the reeds.",
@@ -72,27 +72,27 @@
       ]
     },
     {
-      "scene": "forest",
-      "zombies": 4,
-      "cabin": true,
+      "scene": "lake",
+      "zombies": 2,
       "text": "At dusk, a small light waited on the island shore. It blinked twice.",
       "hl": [
         "light"
       ]
     },
     {
-      "scene": "forest",
-      "zombies": 4,
+      "scene": "lake",
+      "zombies": 3,
       "cam": "push",
       "speaker": "ava",
       "text": "Ava was already in the canoe. \"You are not going alone,\" she said.",
       "hl": [
         "alone"
-      ]
+      ],
+      "canoe": true
     },
     {
-      "scene": "forest",
-      "zombies": 6,
+      "scene": "lake",
+      "zombies": 5,
       "fog": true,
       "hold": 1.0,
       "sfx": [
@@ -101,7 +101,8 @@
       "text": "Halfway across, the lantern lit a face. A man in Walt's ranger jacket.",
       "hl": [
         "Walt's ranger jacket"
-      ]
+      ],
+      "canoe": true
     }
   ]
 }

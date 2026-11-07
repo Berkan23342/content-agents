@@ -60,6 +60,7 @@ Same rules as every Outbreak Diary story:
 - **Scenes to use:** `forest`, `cabin`, `truck`, `radio` (the ranger radio), `phone`, `supplies`, `door`, `street`
   (Cedar Falls), `rooftop` (the fire tower). Never use `building`, `room`, `peephole` or `window` (those are city
   apartments).
+- **New places to visit often:** `lake`, `gas_station`, `supermarket` and `school` (Cedar Falls), `hospital` (the clinic).
 
 ## Current state
 

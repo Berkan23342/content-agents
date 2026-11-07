@@ -62,6 +62,11 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 - PG-13: tension and danger, never gore, no swearing, no cruelty to animals.
 - Every part moves the story forward a little: one new problem, one discovery, or one decision.
 
+## Places
+
+- Scenes to use: Sam's apartment and building (`room`, `door`, `peephole`, `hallway`, `stairwell`, `kitchen`,
+  `window`, `building`, `rooftop`), plus `lobby` (Harbor View's lobby), `school`, `supermarket`, `hospital` and `subway` (trips outside). Go somewhere new every few parts.
+
 ## Current state
 
 - **After:** part 9

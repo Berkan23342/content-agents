@@ -21,6 +21,7 @@ import subprocess
 import sys
 import tempfile
 import wave
+import zlib
 
 import numpy as np
 import soundfile as sf
@@ -40,6 +41,8 @@ SERIES = {s["id"]: s for s in json.load(open(os.path.join(STORY, "series.json"))
 VOICES = os.path.join(ROOT, "voices")
 CB_PYTHON = os.environ.get("CB_PYTHON", os.path.join(ROOT, ".venv-cb", "bin", "python"))
 EXAGGERATION = 0.55  # Chatterbox: how dramatic the delivery is
+FLIPPABLE = {"building", "window", "street", "rooftop", "forest", "tower", "hallway", "lake", "gas_station", "supermarket",
+             "skybridge"}  # keep in step with FLIPPABLE in src/scenes.tsx
 CFG = 0.45  # Chatterbox: lower is slower and more deliberate
 GAP = 0.35  # silence after each beat
 END_CARD = 2.8
@@ -139,6 +142,11 @@ def build(spec, series):
         return len(c) / SR
 
     beats, chunks = [], []
+    # Variety: details change per part (seed); a story keeps its own doors, lift and radio (place), while every special
+    # is a new place; repeated scenes cut between wide and close shots; some outdoor scenes are mirrored per part.
+    crc = lambda text: zlib.crc32(text.encode()) % 997  # noqa: E731
+    place = crc(f"{series['id']}-{spec['episode']}" if series.get("label") else series["id"])
+    runs, shot, prev = {}, 0, None
     b.sfx.append((0.05, "thud"))
     cur = 0.3
     scenes = [x["scene"] for x in spec["beats"]]
@@ -146,6 +154,13 @@ def build(spec, series):
     for i, beat in enumerate(spec["beats"]):
         start = cur
         voice, text = lines[i]
+        scene = beat["scene"]
+        if scene != prev:
+            runs[scene] = runs.get(scene, 0) + 1
+            shot = runs[scene] - 1  # the first visit opens wide, a return opens on a close-up
+        else:
+            shot += 1
+        prev = scene
         d = say(start + 0.1, voice, text)
         chunks += chunks_for(text, beat.get("hl", []), start + 0.12, start + 0.1 + d, b.f, "speaker" in beat)
         hits = []
@@ -169,7 +184,9 @@ def build(spec, series):
                       "cam": beat.get("cam", "push"), "tone": beat.get("tone", "night"), "rain": bool(beat.get("rain")),
                       "fog": bool(beat.get("fog")), "flashlight": bool(beat.get("flashlight")),
                       "alarm": bool(beat.get("alarm")), "cutIn": i == 0 or scenes[i - 1] != beat["scene"],
-                      "cutOut": not last and scenes[i + 1] != beat["scene"], "hits": hits})
+                      "cutOut": not last and scenes[i + 1] != beat["scene"], "hits": hits,
+                      "seed": crc(f"{series['id']}-{spec['episode']}-{scene}"), "place": place, "shot": shot,
+                      "flip": scene in FLIPPABLE and crc(f"{series['id']}-{spec['episode']}-{scene}-flip") % 2 == 1})
         cur = end
     b.t = cur
     b.mutes = [(sting_at - 0.6, sting_at)]  # the score drops out just before the final hit
@@ -178,7 +195,8 @@ def build(spec, series):
                                                          None if ambience == "none" else ambience, 0.5))]
     b.music_gain = 0.2
     n = spec["episode"]
-    props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"), "title": spec["title"],
+    props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"),
+             "grade": series.get("grade"), "title": spec["title"],
              "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
     title = video_title(series, n, spec["title"])
     meta = {

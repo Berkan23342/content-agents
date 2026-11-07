@@ -35,6 +35,14 @@ SCENES = {  # scene: {param: allowed values, a (min, max) range, BOOL, or "lines
     "forest": {"zombies": (0, 12), "cabin": BOOL, "fire": BOOL},
     "cabin": {"light": {"fire", "lantern", "off"}, "guest": {"ava"}, "zombie": BOOL},
     "truck": {"zombies": (0, 8), "lights": BOOL, "wipers": BOOL},
+    "lake": {"zombies": (0, 8), "canoe": BOOL},
+    "gas_station": {"zombies": (0, 10), "light": {"on", "flicker", "off"}, "car": BOOL},
+    "supermarket": {"zombies": (0, 5), "light": {"on", "flicker", "off"}, "empty": BOOL},
+    "hospital": {"zombies": (0, 5), "light": {"on", "flicker", "off"}},
+    "school": {"zombies": (0, 5), "light": {"on", "flicker", "off"}},
+    "subway": {"zombies": (0, 5), "light": {"on", "flicker", "off"}, "moving": BOOL},
+    "skybridge": {"zombies": (0, 5), "light": {"on", "flicker", "off"}, "cracks": BOOL},
+    "lobby": {"zombies": (0, 4), "light": {"on", "flicker", "off"}, "broken": BOOL},
 }
 ITEMS = {"can", "water", "dogfood", "flashlight", "candle", "radio", "battery", "medkit", "map", "rope", "bat", "backpack",
          "keys", "walkie"}
@@ -182,6 +190,33 @@ def check_against(path, spec):
             raise DiaryError(f"too similar to {os.path.relpath(p, ROOT)} ({score:.0%} of phrases repeat); write something new")
 
 
+def check_variety(path, spec):
+    """For the writers: a part has to look different from the last one. At least 4 places (3 in a special), no place
+    in more than 40% of the beats, and not the same set of places as the story's previous part. Raises DiaryError."""
+    scenes = [b["scene"] for b in spec["beats"]]
+    special = "specials" in os.path.abspath(path).split(os.sep)
+    need = 3 if special else 4
+    if len(set(scenes)) < need:
+        raise DiaryError(f"only {len(set(scenes))} different scenes; use at least {need} so the part does not look the same throughout")
+    top = max(set(scenes), key=scenes.count)
+    if scenes.count(top) > max(3, int(len(scenes) * 0.4)):
+        raise DiaryError(f"'{top}' fills {scenes.count(top)} of {len(scenes)} beats; spread the part over more places")
+    story = os.path.dirname(os.path.dirname(os.path.abspath(path)))
+    if story.endswith("used"):
+        story = os.path.dirname(story)
+    earlier = []
+    for p in glob.glob(os.path.join(story, "new", "*.json")) + glob.glob(os.path.join(story, "used", "*", "*.json")):
+        if os.path.abspath(p) != os.path.abspath(path):
+            o = json.load(open(p))
+            if o["episode"] < spec["episode"]:
+                earlier.append(o)
+    if earlier and not special:
+        last = {b["scene"] for b in max(earlier, key=lambda o: o["episode"])["beats"]}
+        mine = set(scenes)
+        if len(mine & last) / len(mine | last) >= 0.8:
+            raise DiaryError(f"almost the same places as the previous part ({sorted(last)}); take the story somewhere new")
+
+
 def estimate_seconds(total_words):
     return total_words * 0.5 + 3.5  # measured on parts 1-3, with the pauses and the end card
 
@@ -203,6 +238,8 @@ def main():
             spec = json.load(open(path))
             total = check_episode(spec, cast_for(path))
             check_against(path, spec)
+            if os.sep + "new" + os.sep in os.path.abspath(path):  # only parts still being written; published ones stand
+                check_variety(path, spec)
         except (DiaryError, json.JSONDecodeError) as e:
             raise SystemExit(f"episode error in {path}: {e}")
         print(f"ok: {path} ({total} words, about {estimate_seconds(total):.0f} s)")

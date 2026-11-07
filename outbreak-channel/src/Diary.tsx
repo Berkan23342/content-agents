@@ -4,7 +4,7 @@ import {loadFont as loadAnton} from '@remotion/google-fonts/Anton';
 import {loadFont as loadElite} from '@remotion/google-fonts/SpecialElite';
 import {loadFont as loadInter} from '@remotion/google-fonts/Inter';
 import {C, Defs, H, W, clamp, hash} from './art';
-import {FOCUS, Params, SCENES} from './scenes';
+import {Params, SCENES, SHOTS} from './scenes';
 
 const anton = loadAnton('normal', {weights: ['400'], subsets: ['latin']}).fontFamily;
 const elite = loadElite('normal', {weights: ['400'], subsets: ['latin']}).fontFamily;
@@ -26,6 +26,10 @@ export type Beat = {
 	cutIn: boolean;
 	cutOut: boolean;
 	hits: number[];
+	seed?: number; // changes crowds and details from part to part
+	place?: number; // the same in every part of a story: its doors, lift, radio...
+	shot?: number; // which of the scene's SHOTS the camera frames: 0 is wide
+	flip?: boolean; // mirror the scene
 };
 export type DiaryProps = {
 	durationInFrames: number;
@@ -33,6 +37,7 @@ export type DiaryProps = {
 	day: number;
 	series: string;
 	label?: string | null; // a one-part special shows this instead of "DAY N"
+	grade?: string | null; // the story's colour, laid softly over every scene
 	title: string;
 	beats: Beat[];
 	chunks: Chunk[];
@@ -87,14 +92,25 @@ const BeatView: React.FC<{b: Beat}> = ({b}) => {
 	const f = useCurrentFrame();
 	const t = f / Math.max(1, b.duration);
 	const Scene = SCENES[b.scene];
-	let s = 1.03;
-	let tx = 0;
-	if (b.cam === 'push') s = 1 + 0.09 * t;
-	if (b.cam === 'pull') s = 1.09 - 0.09 * t;
+	let move = 1.03;
+	let pan = 0;
+	if (b.cam === 'push') move = 1 + 0.09 * t;
+	if (b.cam === 'pull') move = 1.09 - 0.09 * t;
 	if (b.cam === 'left' || b.cam === 'right') {
-		s = 1.08;
-		tx = (b.cam === 'left' ? 1 : -1) * (50 - 100 * t);
+		move = 1.08;
+		pan = (b.cam === 'left' ? 1 : -1) * (50 - 100 * t);
 	}
+	// the shot: wide, or a close-up centred on one of the scene's points of interest
+	const points = SHOTS[b.scene] ?? [[540, 960]];
+	const shot = (b.shot ?? 0) % points.length;
+	const [px0, py] = points[shot];
+	const px = b.flip ? W - px0 : px0;
+	const zoom = shot === 0 ? 1 : (b.shot ?? 0) % 2 ? 1.32 : 1.55;
+	const s = zoom * move;
+	// move the point towards the centre, but never so far that the edge of the picture shows
+	const keep = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+	const tx = keep((shot === 0 ? 0 : 540 - px) + pan, W - px - (W - px) * s, px * s - px);
+	const ty = keep(shot === 0 ? 0 : 960 - py, H - py - (H - py) * s, py * s - py);
 	let sx = 0;
 	let sy = 0;
 	for (const h of b.hits) {
@@ -105,18 +121,17 @@ const BeatView: React.FC<{b: Beat}> = ({b}) => {
 			sy += Math.cos(d * 2.7) * k;
 		}
 	}
-	const [ox, oy] = FOCUS[b.scene] ?? [540, 960];
 	const fade = Math.max(b.cutIn ? 1 - clamp(f / 7) : 0, b.cutOut ? clamp((f - (b.duration - 5)) / 5) : 0);
 	const lx = 540 + Math.sin(f / 23) * 260 + Math.sin(f / 9) * 30;
 	const ly = 980 + Math.cos(f / 31) * 380;
 	const tone = TONES[b.tone];
 	return (
 		<AbsoluteFill style={{overflow: 'hidden', background: '#000'}}>
-			<AbsoluteFill style={{transform: `translate(${tx + sx}px, ${sy}px) scale(${s})`, transformOrigin: `${ox}px ${oy}px`}}>
+			<AbsoluteFill style={{transform: `translate(${tx + sx}px, ${ty + sy}px) scale(${s})`, transformOrigin: `${px}px ${py}px`}}>
 				<svg width={0} height={0} style={{position: 'absolute'}}>
 					<Defs />
 				</svg>
-				{Scene ? <Scene p={b.p} f={f} /> : null}
+				<AbsoluteFill style={{transform: b.flip ? 'scaleX(-1)' : undefined}}>{Scene ? <Scene p={b.p} f={f} s={b.seed ?? 0} place={b.place ?? 0} /> : null}</AbsoluteFill>
 				{b.fog ? <Fog f={f} /> : null}
 				{b.rain ? <Rain f={f} /> : null}
 			</AbsoluteFill>
@@ -203,7 +218,7 @@ const EndCard: React.FC<{day: number; endAt: number; label?: string | null}> = (
 };
 
 // ---------------------------------------------------------------- composition
-export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, title, endAt}) => {
+export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, grade, title, endAt}) => {
 	const f = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
@@ -212,6 +227,7 @@ export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, 
 					<BeatView b={b} />
 				</Sequence>
 			))}
+			{grade ? <AbsoluteFill style={{background: grade, mixBlendMode: 'soft-light', opacity: 0.5}} /> : null}
 			<Vignette />
 			<Grain f={f} />
 			{f < 70 ? <Intro day={day} series={series} label={label} title={title} /> : <TopLabel day={day} series={series} label={label} />}

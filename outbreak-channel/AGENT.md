@@ -137,6 +137,21 @@ in Harbor View.
 | `forest` | Pine woods at night around the lake. | `zombies` 0-12 between the trees, `cabin` (the cabin's lit window far away), `fire` |
 | `cabin` | The ranger cabin: log walls, a stone fireplace, a window on the woods. | `light` fire/lantern/off, `guest` ava, `zombie` (a figure outside the window) |
 | `truck` | Inside Nora's pickup at night, the road in the headlights. | `zombies` 0-8 in the lights, `lights` (headlights, default true), `wipers` |
+| `lake` | The lake at night: far shore, a dock, the moon on the water. | `zombies` 0-8 (heads rising from the water), `canoe` |
+| `gas_station` | A gas station on an empty road at night. | `zombies` 0-10, `light` on/flicker/off, `car` |
+| `supermarket` | A supermarket aisle. | `zombies` 0-5 down the aisle, `light` on/flicker/off, `empty` (bare shelves) |
+| `hospital` | A hospital corridor with a gurney and swing doors. | `zombies` 0-5, `light` on/flicker/off |
+| `school` | A school corridor lined with lockers. | `zombies` 0-5, `light` on/flicker/off |
+| `subway` | Inside a subway car (works as a bus or train too). | `zombies` 0-5, `light` on/flicker/off (off = red emergency light), `moving` |
+| `skybridge` | A glass bridge between two towers, high over the city. | `zombies` 0-5, `light` on/flicker/off, `cracks` |
+| `lobby` | An apartment lobby: mailboxes, the lift, glass front doors. | `zombies` 0-4 (pressing on the glass), `light` on/flicker/off, `broken` |
 
-Use the same scene for two or three beats in a row when the action stays in one place: the camera keeps moving and it
-feels like one shot. Change the scene when Sam looks at something new.
+**Variety.**
+- Use the same scene for two or three beats in a row when the action stays in one place. The video cuts between a wide
+  shot and close-ups, so this feels like one scene filmed from several angles.
+- Change the scene when the narrator looks at something new.
+- A part needs at least 4 different scenes (a special at least 3), and no scene may fill more than 40% of the beats.
+- A part must not use almost the same set of places as the story's previous part. The checker enforces all of this.
+- Take the characters somewhere new often: the lake, the gas station, the supermarket, the school, the hospital, the
+  subway, the skybridge or the lobby. Each place is drawn a little differently in every part, and every story has its
+  own colour.
