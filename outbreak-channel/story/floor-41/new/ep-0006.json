@@ -1,0 +1,109 @@
+{
+  "episode": 6,
+  "title": "The Number Falls",
+  "summary": "On Day six, Maya and Dev follow the service elevator down to find who called it.",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "elevator",
+      "floor": 30,
+      "power": false,
+      "doors": "closed",
+      "text": "Day six. The number fell all night. Forty. Thirty-nine. Thirty. Then it stopped.",
+      "hl": [
+        "Thirty"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "speaker": "dev",
+      "text": "\"Thirty is the skybridge,\" said Dev. \"Ruth's way across.\"",
+      "hl": [
+        "skybridge"
+      ]
+    },
+    {
+      "scene": "window",
+      "survivor": true,
+      "text": "A torch flashed from Calder Tower. Two long. Three short. Over and over.",
+      "hl": [
+        "Two long"
+      ]
+    },
+    {
+      "scene": "office",
+      "light": "flicker",
+      "text": "I pinned the pattern on my city model. Two long, three short. Twenty-three.",
+      "hl": [
+        "twenty-three"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "dev",
+      "text": "\"That is not Ruth's code,\" said Dev. \"Somebody is borrowing her torch.\"",
+      "hl": [
+        "borrowing"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 30,
+      "power": false,
+      "doors": "closed",
+      "sfx": [
+        "click"
+      ],
+      "text": "At noon the elevator rang. Thirty. It was coming back up.",
+      "hl": [
+        "coming back up"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "off",
+      "text": "Dev took the keycards and braced his bad knee against the service door.",
+      "hl": [
+        "knee"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "text": "The doors opened on forty-one. A wet handprint marked the glass inside.",
+      "hl": [
+        "handprint"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "ruth",
+      "sfx": [
+        "buzz"
+      ],
+      "text": "My phone buzzed. Ruth: \"Do not take the elevator. It is not empty.\"",
+      "hl": [
+        "not empty"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "floor": 41,
+      "doors": "open",
+      "power": false,
+      "hold": 1.0,
+      "sfx": [
+        "click"
+      ],
+      "text": "The car looked empty. Then its floor lamp slowly turned on.",
+      "hl": [
+        "turned on"
+      ]
+    }
+  ]
+}

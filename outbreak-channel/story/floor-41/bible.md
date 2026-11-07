@@ -68,12 +68,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 5
-- **Day:** 5, on floor 41
+- **After:** part 6
+- **Day:** 6, on floor 41
 - **Who:** Maya and Dev unhurt; Dev's knee hurts.
-- **Supplies:** Dev's radio and eleven keycards, snacks, a phone at about 60%.
-- **Known:** Ruth is alive in Calder Tower (crossed the skybridge on 30) and flashes the torch. She says she never sent the service elevator. Dev is wary.
-- **Open threads:** who sent the elevator and answered the phone? Where is the elevator going down?
+- **Supplies:** same as Day 5.
+- **Known:** the elevator went to 30 and came back; a torch signals a code that is not Ruth's; Ruth texts that it is not empty.
+- **Open threads:** what is in the elevator? Who borrowed Ruth's torch?
 
 ## Episode log
 
@@ -84,3 +84,4 @@ Same rules as every Outbreak Diary story:
   the elevator climbs toward 41.
 - **Part 4 (Day 4) The Number Is Climbing:** the elevator stops on 41. It is empty except for Ruth's ringing phone, which stops when someone answers. A torch flashes from Calder Tower.
 - **Part 5 (Day 5) Ruth Answers:** Maya answers the phone. Ruth is alive in Calder Tower and says she never sent the elevator. The doors shut and the number starts to fall.
+- **Part 6 (Day 6) The Number Falls:** the elevator drops to 30 and returns. A false torch code appears. Ruth warns the car is not empty, and its lamp turns on.

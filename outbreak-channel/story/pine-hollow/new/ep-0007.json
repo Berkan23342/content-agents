@@ -1,0 +1,107 @@
+{
+  "episode": 7,
+  "title": "Someone on the Porch",
+  "summary": "On Day seven, Nora faces the visitor who knew where the cabin was.",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "door",
+      "shadow": true,
+      "sfx": [
+        "creak"
+      ],
+      "text": "Day seven. The porch board creaked again, and Pip gripped my sleeve.",
+      "hl": [
+        "creaked"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "speaker": "ava",
+      "text": "Ava lifted the poker. \"If it knocks, we are not home,\" she whispered.",
+      "hl": [
+        "not home"
+      ]
+    },
+    {
+      "scene": "door",
+      "shadow": true,
+      "text": "It did not knock. A folded paper slid under the door.",
+      "hl": [
+        "paper"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "items": [
+        "map",
+        "candle"
+      ],
+      "text": "Neat handwriting. \"I mean no harm. I have Jonah. Row out alone at dusk.\"",
+      "hl": [
+        "Jonah"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "light": "lantern",
+      "guest": "ava",
+      "text": "Pip burst into tears. Ava wanted the canoe immediately. I said no.",
+      "hl": [
+        "no"
+      ]
+    },
+    {
+      "scene": "forest",
+      "fog": true,
+      "cam": "left",
+      "text": "At noon I followed boot prints to the water. They stopped at the reeds.",
+      "hl": [
+        "stopped"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "tess",
+      "text": "\"Nobody rows across at night, Nora. The lake is crowded there,\" said Tess.",
+      "hl": [
+        "crowded"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 4,
+      "cabin": true,
+      "text": "At dusk, a small light waited on the island shore. It blinked twice.",
+      "hl": [
+        "light"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 4,
+      "cam": "push",
+      "speaker": "ava",
+      "text": "Ava was already in the canoe. \"You are not going alone,\" she said.",
+      "hl": [
+        "alone"
+      ]
+    },
+    {
+      "scene": "forest",
+      "zombies": 6,
+      "fog": true,
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ],
+      "text": "Halfway across, the lantern lit a face. A man in Walt's ranger jacket.",
+      "hl": [
+        "Walt's ranger jacket"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "episode": 9,
+  "title": "The Roof Door",
+  "summary": "On Day nine, the climb to the roof begins in the rain.",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ],
+      "text": "Day nine. \"Sam, it is a girl,\" whispered Mrs. Okafor. \"She says she is Leo's sister.\"",
+      "hl": [
+        "sister"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "flicker",
+      "text": "Leo went white. \"Dara knocks three slow times. Mum taught her, so they cannot copy it.\"",
+      "hl": [
+        "three slow times"
+      ]
+    },
+    {
+      "scene": "radio",
+      "mode": "voice",
+      "speaker": "okafor",
+      "text": "\"She is not bitten. I checked,\" said Mrs. Okafor. \"She comes with us.\"",
+      "hl": [
+        "not bitten"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "push",
+      "text": "We climbed in the dark, rain loud on the glass. Five. Six. Seven.",
+      "hl": [
+        "rain"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "zombies": true,
+      "cam": "still",
+      "text": "On seven, Mrs. Okafor opened her door. Dara stood behind her, soaked and shaking.",
+      "hl": [
+        "Dara"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "light": "off",
+      "text": "Leo just hugged her, and Biscuit wagged without a sound.",
+      "hl": [
+        "hugged"
+      ]
+    },
+    {
+      "scene": "door",
+      "cam": "push",
+      "sfx": [
+        "click"
+      ],
+      "text": "On twelve, my key slid into the roof lock, and it was already open.",
+      "hl": [
+        "already open"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "fire": true,
+      "flare": true,
+      "tone": "dawn",
+      "text": "The roof was empty, only a red flare burning. Dawn glowed on the harbour.",
+      "hl": [
+        "flare"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "hold": 1.0,
+      "heli": false,
+      "flare": true,
+      "sfx": [
+        "sting"
+      ],
+      "text": "A man's voice behind us said, \"You are late. The last boat left an hour ago.\"",
+      "hl": [
+        "late"
+      ]
+    }
+  ]
+}

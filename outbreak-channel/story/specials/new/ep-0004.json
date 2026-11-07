@@ -1,0 +1,112 @@
+{
+  "episode": 4,
+  "title": "Stay in the Water",
+  "narrator": "nicole",
+  "ambience": "rain",
+  "inspired_by": "https://youtu.be/GAT92irZekM (premise only: everyone must stay in water to survive)",
+  "summary": "A lifeguard keeps a crowd safe in a swimming pool, because the infected will not step into water. Until the pump stops.",
+  "beats": [
+    {
+      "scene": "street",
+      "zombies": 8,
+      "rain": true,
+      "tone": "dusk",
+      "text": "I am a lifeguard. The night it began, sixty people ran into my pool.",
+      "hl": [
+        "sixty"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "sfx": [
+        "groan@0.5"
+      ],
+      "text": "Soaked and scared, they watched the infected press against the glass.",
+      "hl": [
+        "press"
+      ]
+    },
+    {
+      "scene": "door",
+      "banging": true,
+      "sfx": [
+        "bang"
+      ],
+      "text": "But they would not come in. Not one stepped into the water.",
+      "hl": [
+        "water"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "rain": true,
+      "text": "My one rule: everybody stays in the water, even to sleep.",
+      "hl": [
+        "stays in the water"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "cans": 4,
+      "cam": "still",
+      "text": "We ate floating crackers from the snack bar. A grandmother taught us to float.",
+      "hl": [
+        "float"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "cam": "pull",
+      "text": "The infected waited three days, feet shuffling in the rain.",
+      "hl": [
+        "waited"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "power": false,
+      "sfx": [
+        "click@1.0"
+      ],
+      "text": "On the fourth night, the filter pump rattled and died.",
+      "hl": [
+        "died"
+      ]
+    },
+    {
+      "scene": "window",
+      "zombies": 12,
+      "sfx": [
+        "drip"
+      ],
+      "text": "The water began to sink an inch every hour.",
+      "hl": [
+        "sink"
+      ]
+    },
+    {
+      "scene": "street",
+      "zombies": 12,
+      "tone": "dawn",
+      "alarm": true,
+      "text": "By dawn it was knee deep. The infected edged toward the doorway.",
+      "hl": [
+        "knee deep"
+      ]
+    },
+    {
+      "scene": "door",
+      "hold": 1.0,
+      "sfx": [
+        "sting@1.2"
+      ],
+      "text": "The last inch drained. Behind me, someone whispered, \"I am not bitten.\" I had counted sixty. Sixty-one voices answered.",
+      "hl": [
+        "Sixty-one"
+      ]
+    }
+  ]
+}
