@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {FloatingBalloon, PopWord, RAINBOW, blinkAt, textStyle} from './common';
-import {Bg, DanceScene, EggScene, FunScene, Scenery, ShadowScene, StoryScene, TitleCard} from './Fun';
+import {FloatingBalloon, Look, PopWord, RAINBOW, Season, blinkAt, textStyle} from './common';
+import {Bg, DanceScene, EggScene, FunScene, Scenery, ShadowScene, StoryScene, TitleCard, storyCam} from './Fun';
 import {Hero, HeroView, Pop} from './hero';
 import {mix} from './shapes';
 
@@ -31,6 +31,8 @@ export type EpisodeProps = {
 	audio: string;
 	scenes: Scene[];
 	thumb: {title: string[]; heroes: Hero[]; bg?: Bg};
+	season?: Season; // from the video's date
+	look?: number; // a seed: sky, sun and small details differ from video to video
 };
 
 // ---------------------------------------------------------------- building blocks
@@ -209,13 +211,19 @@ const Outro: React.FC<{byeAt: number; top?: string}> = ({byeAt, top = 'Great job
 );
 
 // ---------------------------------------------------------------- compositions
-export const Episode: React.FC<EpisodeProps> = ({scenes, audio}) => {
+export const Episode: React.FC<EpisodeProps> = ({scenes, audio, season = 'spring', look = 0}) => {
 	const frame = useCurrentFrame();
 	const current = scenes.find((s) => frame >= s.from && frame < s.from + s.duration);
 	const tint = current && current.type === 'focus' ? current.tint : null;
 	const bg: Bg = (current && 'bg' in current && current.bg) || 'day';
+	// in a story, the camera leans in towards whoever is speaking, and back out between lines
+	const cam = current && current.type === 'story' ? storyCam(current.cam, frame - current.from) : {x: 960, lean: 0};
+	const z = 1 + 0.22 * cam.lean;
+	const tx = Math.min(0, Math.max(1920 - 1920 * z, 960 - cam.x * z));
+	const ty = Math.min(0, Math.max(1080 - 1080 * z, 540 - 560 * z));
 	return (
-		<AbsoluteFill>
+		<Look.Provider value={{season, seed: look}}>
+		<AbsoluteFill style={{transform: `translate(${tx}px, ${ty}px) scale(${z})`, transformOrigin: '0 0'}}>
 			<Scenery bg={bg} tint={tint} />
 			{scenes.map((s, i) => (
 				<Sequence key={i} from={s.from} durationInFrames={s.duration}>
@@ -233,12 +241,14 @@ export const Episode: React.FC<EpisodeProps> = ({scenes, audio}) => {
 			))}
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
+		</Look.Provider>
 	);
 };
 
-export const EpisodeThumbnail: React.FC<EpisodeProps> = ({thumb}) => {
+export const EpisodeThumbnail: React.FC<EpisodeProps> = ({thumb, season = 'spring', look = 0}) => {
 	const n = thumb.heroes.length;
 	return (
+		<Look.Provider value={{season, seed: look}}>
 		<AbsoluteFill>
 			<Scenery bg={thumb.bg ?? 'day'} tint={null} />
 			{thumb.title.map((line, i) => (
@@ -259,5 +269,6 @@ export const EpisodeThumbnail: React.FC<EpisodeProps> = ({thumb}) => {
 				<span style={textStyle('#2F8CFF', 60)}>Bubbly Kids TV</span>
 			</div>
 		</AbsoluteFill>
+		</Look.Provider>
 	);
 };

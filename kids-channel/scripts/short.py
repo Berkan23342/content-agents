@@ -13,7 +13,7 @@ import datetime as dt
 import os
 import random
 
-from episode import BUILD, COUNTABLES, GENTLE_SONGS, NUMBER_WORDS, PALETTE, Builder, an, write_audio, write_json
+from episode import BUILD, COUNTABLES, GENTLE_SONGS, NUMBER_WORDS, PALETTE, Builder, an, look_for, write_audio, write_json
 from fun import ACCENTS, CAST, COLOR_WORDS, CRITTERS, EGG_PATTERNS, HINTS, TOYS, icon
 
 GAMES = ["shadow", "egg", "count"]
@@ -142,7 +142,9 @@ def game_count(b, rng):
 
 GAME = {"shadow": game_shadow, "egg": game_egg, "count": game_count}
 HEADER = {"shadow": "Guess the Shadow", "egg": "Surprise Eggs", "count": "Count with me"}
-BACKGROUNDS = {"shadow": ["day", "park", "dusk"], "egg": ["day", "night", "park"], "count": ["day", "park", "farm"]}
+BACKGROUNDS = {"shadow": ["day", "park", "dusk", "garden", "playground", "beach", "bedroom"],
+               "egg": ["day", "night", "park", "garden", "playground", "beach", "underwater", "bedroom"],
+               "count": ["day", "park", "farm", "garden", "playground", "beach", "underwater", "bedroom"]}
 TITLES = {
     "shadow": ["Guess the Shadow! Who Is Hiding? 🔍", "Can You Guess Who I Am? 🐾 Shadow Game", "Who Am I? Guess the Shadow 🔍"],
     "egg": ["Surprise Eggs! What's Inside? 🥚", "Open the Surprise Eggs! 🥚 Animals & Toys", "What's Inside the Egg? 🥚 Surprise!"],
@@ -186,7 +188,8 @@ def build(day, slot, game):
         ]),
         "tags": TAGS[game] + ["kids shorts", "toddler learning", "preschool", "bubbly kids tv"],
     }
-    props = {"bg": rng.choice(BACKGROUNDS[game]), "header": HEADER[game]}
+    season, look = look_for(day, f"short{slot}")
+    props = {"bg": rng.choice(BACKGROUNDS[game]), "header": HEADER[game], "season": season, "look": look}
     return b, props, meta
 
 

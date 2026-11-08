@@ -2,31 +2,44 @@
 
 You run once a day, unattended, as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`.
 Write **one new, original story script** for the Bubbly Kids TV YouTube channel (English, for toddlers and preschoolers)
-into `kids-channel/stories/new/`. The fun-video pipeline
-(`scripts/fun.py`, rendered and uploaded every day at 18:00 by `.github/workflows/kids-video.yml`) plays scripts from that folder before its
-built-in stories, so every story video gets fresh plots. Nobody can answer questions during the run; decide yourself.
+into `kids-channel/stories/new/`.
+
+- **Your story is the whole daily video.** Since 2026-11-08 the channel publishes one new story a day at 17:00, rendered by
+  `scripts/fun.py --daily` in `.github/workflows/kids-video.yml`, plus a vertical Short cut from it at 20:00.
+- **Why the stories must differ.** YouTube does not monetise channels whose videos look alike, so every story must be
+  clearly different from the ones before: a new plot, new places, new characters together and a new learning thread.
+- If no story is waiting, there is no video that day. Built-in stories are never repeated.
+
+Nobody can answer questions during the run; decide yourself.
 
 ## Steps
 
 1. `cd kids-channel`.
-2. If `stories/new/` already holds 8 or more scripts, do not write a story. Instead write the current date and time
+2. If `stories/new/` already holds 3 or more scripts, do not write a story. Instead write the current date and time
    into `stories/new/.heartbeat`, commit only that file and push it to `main` (step 7). Every push to `stories/new/`
    starts the video job, so the push matters even without a new story.
 3. See what exists, so you never repeat a plot:
    - titles and summaries in `stories/new/*.json` and `stories/used/*/*.json`,
    - the built-in plots: lost balloon, sharing food, rainy day with umbrella, tortoise-and-hare race, bedtime on the farm.
-4. Pick a new idea:
+4. Pick a new idea. If `ideas/approved.md` (repository root) lists approved kids ideas that are not used yet, take the
+   first of them: the channel owner chose those.
    - **Plot:** original, or a retelling of a public-domain fable (Aesop and similar). Never use characters, songs or
      plots from modern shows or books, such as Peppa, Bluey, Cocomelon or "Goodnight Moon".
    - **Lesson:** one small lesson. For example: kindness, sharing, taking turns, being brave, trying again, honesty,
      saying sorry, helping, patience, healthy habits, tidying up, making a new friend, gratitude.
-   - **Learning** (optional): weave in counting, colors, shapes, opposites, weather or seasons.
+   - **Learning** (always): weave a learning thread through the plot: count things together, name colors or shapes,
+     opposites, days of the week, weather, seasons, sounds of animals... Characters ask the viewer ("Can you count
+     them with me?") and answer.
+   - **Length and places:** 180-300 seconds, 6-10 shots, in at least 2 different places. Use the backgrounds widely:
+     beach, garden, playground, bedroom and underwater as well as the old ones. Do not open in the place the previous
+     story opened in.
    - **Bedtime:** about one story in five may be a calm bedtime story. Set `"calm": true` and use `dusk`/`night`.
 5. Write `stories/new/<YYYY-MM-DD>-<slug>.json` with the format below.
 6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`. It also refuses a title used before or a
    story too close to an earlier one.
    - It must print `ok`; fix any `story error` it reports.
-   - The estimate should be 70–150 seconds.
+   - The estimate should be 180–300 seconds.
+   - It also refuses a story that stays in one place, or opens where the previous story opened.
    - Re-read your positions against the stage geometry below: characters at least ~280 px apart, land animals out of
      the pond, and speakers on screen.
 7. Commit only the new file and push it to `main`: `git push origin HEAD:main`. If the push is rejected, run
@@ -122,6 +135,14 @@ Props that are on screen from the start of a shot go in the shot's `props` list,
 | `dusk` | Sunset. |
 | `night` | Moon, stars and fireflies. |
 | `rain` | Falling rain and puddles. |
+| `beach` | Sea, sand, a striped umbrella, a bucket and starfish. Feet on the sand at y=900. |
+| `garden` | Picket fence, a row of carrots, a watering can (right). |
+| `playground` | A slide on the left (x≈180-560) and swings on the right (x≈1340-1880). Stand in between. |
+| `bedroom` | Indoors: window with the moon, bed on the right (x≈1260-1860), bookshelf left (x≈260-480). Calm and bedtime stories. |
+| `underwater` | Under the sea: fish, bubbles, seaweed and coral. For an adventure or a dream; land animals still stand on the sand at y=900. |
+
+The look also changes by itself: the season follows the video's date (autumn leaves, winter snow, spring flowers) and
+the sky and sun vary from day to day. The camera leans towards whoever is speaking.
 
 **Props** (`icon`): `apple`, `heart`, `carrot`, `pumpkin`, `sun`, `star`, `leaf`, `fish`, `drop`, `grapes`, `flower`,
 `icecream`, `ball`, `gift`, `cake`, `banana`, `strawberry`, `orange`, `cookie`, `egg`, `jellyfish`, `kite`, `moon`,

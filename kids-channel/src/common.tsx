@@ -73,6 +73,26 @@ export type LandColors = {
 	flowers: boolean;
 };
 
+// ---------------------------------------------------------------- the look of a video: season and a seed
+// Every video gets a season from its date and a seed, so skies, hills and trees are not the same picture every day.
+export type Season = 'spring' | 'summer' | 'autumn' | 'winter';
+export const Look = React.createContext<{season: Season; seed: number}>({season: 'spring', seed: 0});
+
+/** Leaf colours for trees and bushes in each season. */
+export const LEAVES: Record<Season, string[]> = {
+	spring: ['#3fae4f', '#36a04a', '#5cc24b'],
+	summer: ['#2f9e44', '#279038', '#3cb04a'],
+	autumn: ['#e8963a', '#d9612f', '#e9b53a'],
+	winter: ['#7fa58f', '#6d957f', '#8fb39c'],
+};
+
+const SKIES: Record<Season, string[]> = {
+	spring: ['linear-gradient(#5cbdff 0%, #a6e0ff 55%, #e8f8ff 100%)', 'linear-gradient(#7aa8ff 0%, #ffc9d9 70%, #ffe9c9 100%)', 'linear-gradient(#4aa8f0 0%, #ffd9a0 80%, #fff0d0 100%)'],
+	summer: ['linear-gradient(#3fb0ff 0%, #8fd8ff 60%, #e0f6ff 100%)', 'linear-gradient(#4aa8f0 0%, #ffd9a0 80%, #fff0d0 100%)'],
+	autumn: ['linear-gradient(#6fb8f0 0%, #ffd8a8 70%, #fff0d8 100%)', 'linear-gradient(#89b9e0 0%, #f6d6b8 70%, #fdeede 100%)', 'linear-gradient(#5cbdff 0%, #ffe0b0 75%, #fff4e0 100%)'],
+	winter: ['linear-gradient(#9fc9ee 0%, #dcecf8 60%, #f6fbff 100%)', 'linear-gradient(#b8c9e0 0%, #e8eef6 70%, #ffffff 100%)'],
+};
+
 export const DAY_LAND: LandColors = {
 	far: '#b9e6c9',
 	farTree: '#93d3a8',
@@ -80,6 +100,37 @@ export const DAY_LAND: LandColors = {
 	front: ['#62c74f', '#43a83a'],
 	tuft: '#3f9e36',
 	flowers: true,
+};
+
+const SEASON_LAND: Record<Season, LandColors> = {
+	spring: DAY_LAND,
+	summer: {far: '#a8e0a0', farTree: '#7cc98c', mid: ['#7fd35a', '#5cbf43'], front: ['#4cb83f', '#349a30'], tuft: '#2f8a2a', flowers: true},
+	autumn: {far: '#ead2a2', farTree: '#d9a05b', mid: ['#e2b552', '#c99536'], front: ['#c9a440', '#a8812e'], tuft: '#8a6a2a', flowers: false},
+	winter: {far: '#eef4fb', farTree: '#b9cbe0', mid: ['#ffffff', '#e8f0f8'], front: ['#fbfdff', '#e2ebf5'], tuft: '#b7c8da', flowers: false},
+};
+
+/** Leaves drifting down (autumn) or snow falling (winter) over the whole picture. */
+export const Weather: React.FC<{season: Season; frame: number}> = ({season, frame}) => {
+	if (season !== 'autumn' && season !== 'winter') return null;
+	const n = season === 'winter' ? 70 : 16;
+	return (
+		<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+			{Array.from({length: n}, (_, i) => {
+				const r = (k: number) => {
+					const x = Math.sin((i + k * 31) * 127.1 + 311.7) * 43758.5453;
+					return x - Math.floor(x);
+				};
+				const speed = season === 'winter' ? 1.2 + r(1) * 1.4 : 1.6 + r(1) * 1.2;
+				const y = ((r(2) * 1200 + frame * speed) % 1200) - 80;
+				const x = r(3) * 1920 + Math.sin(frame / (30 + r(4) * 30) + i) * 50;
+				return season === 'winter' ? (
+					<circle key={i} cx={x} cy={y} r={3 + r(5) * 5} fill="#ffffff" opacity={0.85} />
+				) : (
+					<path key={i} d="M0 0 Q12 -12 24 0 Q12 12 0 0Z" fill={LEAVES.autumn[i % 3]} transform={`translate(${x} ${y}) rotate(${frame * 3 + i * 40})`} />
+				);
+			})}
+		</svg>
+	);
 };
 
 const Tulip: React.FC<{x: number; y: number; c: string}> = ({x, y, c}) => (
@@ -190,6 +241,8 @@ const Butterflies: React.FC<{frame: number}> = ({frame}) => (
 export const Background: React.FC<{tint: string | null}> = ({tint}) => {
 	const frame = useCurrentFrame();
 	const {width} = useVideoConfig();
+	const {season, seed} = React.useContext(Look);
+	const skies = SKIES[season];
 	const clouds = [
 		{y: 60, s: 1.1, speed: 0.6, off: 100},
 		{y: 200, s: 0.7, speed: 0.9, off: 900},
@@ -197,8 +250,8 @@ export const Background: React.FC<{tint: string | null}> = ({tint}) => {
 		{y: 290, s: 0.6, speed: 0.75, off: 600},
 	];
 	return (
-		<AbsoluteFill style={{background: 'linear-gradient(#5cbdff 0%, #a6e0ff 55%, #e8f8ff 100%)'}}>
-			<Sun x={1730} y={150} frame={frame} />
+		<AbsoluteFill style={{background: skies[seed % skies.length]}}>
+			<Sun x={[1730, 260, 1460][seed % 3]} y={150 + (seed % 2) * 40} frame={frame} />
 			{clouds.map((c, i) => {
 				const span = width + 400;
 				const x = ((c.off + frame * c.speed) % span) - 300;
@@ -210,8 +263,8 @@ export const Background: React.FC<{tint: string | null}> = ({tint}) => {
 					style={{background: `radial-gradient(circle at 50% 55%, ${mix(tint, '#ffffff', 0.35)} 0%, transparent 55%)`, opacity: 0.55}}
 				/>
 			) : null}
-			<Land c={DAY_LAND} />
-			<Butterflies frame={frame} />
+			<Land c={SEASON_LAND[season]} />
+			{season === 'spring' || season === 'summer' ? <Butterflies frame={frame} /> : <Weather season={season} frame={frame} />}
 		</AbsoluteFill>
 	);
 };

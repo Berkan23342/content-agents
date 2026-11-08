@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "shared"))
 from novelty import overlap  # noqa: E402
 
 CHARACTERS = {"chick", "bunny", "duck", "cat", "pig", "sheep", "frog", "dog", "cow", "lion", "owl", "turtle", "bear"}
-SCRIPT_BGS = {"day", "park", "farm", "forest", "pond", "dusk", "night", "rain"}
+SCRIPT_BGS = {"day", "park", "farm", "forest", "pond", "dusk", "night", "rain", "beach", "garden", "playground", "bedroom", "underwater"}
 SCRIPT_ACTS = {"jump", "shake", "spin", "sleep", "wake", "wave"}
 SCRIPT_SFX = {"whoop", "pop", "tick", "ding", "sparkle", "whoosh", "boing", "thunder", "splash"}
 PROP_ICONS = {"apple", "heart", "carrot", "pumpkin", "sun", "star", "leaf", "fish", "drop", "grapes", "flower", "icecream",
@@ -99,6 +99,23 @@ def check_against(path, spec):
             raise StoryError(f"too similar to {os.path.basename(p)} ({score:.0%} of phrases repeat); write a new plot")
 
 
+def check_variety(path, spec):
+    """For the writer: a story moves between places, and does not open where the last story opened. Raises StoryError."""
+    bgs = [shot["bg"] for shot in spec["shots"]]
+    if len(spec["shots"]) >= 3 and len(set(bgs)) < 2:
+        raise StoryError("the whole story stays in one place; move part of it somewhere else")
+    top = max(set(bgs), key=bgs.count)
+    if len(bgs) >= 4 and bgs.count(top) > len(bgs) * 0.6:
+        raise StoryError(f"'{top}' is used for {bgs.count(top)} of {len(bgs)} shots; spread the story over more places")
+    path = os.path.abspath(path)
+    others = sorted(p for p in glob.glob(os.path.join(ROOT, "stories", "new", "*.json")) + glob.glob(os.path.join(ROOT, "stories", "used", "*", "*.json"))
+                    if os.path.abspath(p) != path and os.path.basename(p) < os.path.basename(path))
+    if others:
+        last = json.load(open(max(others, key=os.path.basename)))
+        if last["shots"][0]["bg"] == bgs[0]:
+            raise StoryError(f"the previous story also opened in '{bgs[0]}'; open somewhere else")
+
+
 def estimate_seconds(spec):
     """Rough length: speech at ~2.4 words/s plus pauses, walks and shot transitions."""
     t = 0.0
@@ -124,12 +141,14 @@ def main():
     try:
         check_story(spec)
         check_against(sys.argv[1], spec)
+        if os.sep + "new" + os.sep in os.path.abspath(sys.argv[1]):  # stories still waiting; published ones stand
+            check_variety(sys.argv[1], spec)
     except StoryError as e:
         raise SystemExit(f"story error: {e}")
     t = estimate_seconds(spec)
     print(f"ok: {spec['title']!r}, about {t:.0f} s, {len(spec['shots'])} shots")
-    if not 60 <= t <= 170:
-        print("warning: aim for 70-150 seconds")
+    if not 150 <= t <= 320:
+        print("warning: aim for 180-300 seconds (the daily video is one story)")
 
 
 if __name__ == "__main__":

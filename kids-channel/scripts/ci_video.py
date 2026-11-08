@@ -1,11 +1,12 @@
-"""Makes and uploads one Bubbly Kids TV video on a server (GitHub Actions); the Mac version is scripts/daily.sh.
+"""Makes and uploads the day's Bubbly Kids TV videos on a server (GitHub Actions).
 
-  python3 scripts/ci_video.py learn|fun|short1|short2|auto [--date YYYY-MM-DD] [--no-upload]
-  python3 scripts/ci_video.py due        prints the videos that are due and not uploaded yet ("learn short1", or nothing)
+  python3 scripts/ci_video.py story|story-short|auto [--date YYYY-MM-DD] [--no-upload]
+  python3 scripts/ci_video.py due        prints the videos that are due and not uploaded yet ("story story-short", or nothing)
 
-`auto` makes whatever is due: the learning video and the first Short any time of day, the fun video and the second
-Short from 16:00 Istanbul time. Each video is uploaded as soon as it is ready and YouTube publishes it at 10:00 (learn),
-13:00 (short1), 18:00 (fun) or 21:00 (short2) Istanbul time. If that time has already passed, it is published right away.
+Since 2026-11-08 a day is one new story (scripts/fun.py --daily) and a vertical Short cut from it (--short): fewer
+videos, each one different, because YouTube does not monetise template-made look-alikes. YouTube publishes them at
+17:00 and 20:00 Istanbul time; if that time has already passed, the video goes out right away. The old daily formats
+(learn, fun, short1, short2) can still be made by hand.
 """
 import argparse
 import datetime as dt
@@ -16,8 +17,8 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TZ = ZoneInfo("Europe/Istanbul")
-PUBLISH_HOUR = {"learn": 10, "short1": 13, "fun": 18, "short2": 21}
-FUN_FROM_HOUR = 16  # the fun video and the second Short are made in the afternoon run
+PUBLISH_HOUR = {"story": 17, "story-short": 20, "learn": 10, "short1": 13, "fun": 18, "short2": 21}
+DAILY = ("story", "story-short")
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 
 
@@ -30,10 +31,7 @@ def video_id(kind, date):
 
 
 def due(date):
-    now = dt.datetime.now(TZ)
-    afternoon = date < now.date().isoformat() or now.hour >= FUN_FROM_HOUR
-    return [k for k in ("learn", "short1", "fun", "short2")
-            if not uploaded(video_id(k, date)) and (k in ("learn", "short1") or afternoon)]
+    return [k for k in DAILY if not uploaded(video_id(k, date))]
 
 
 def run(*cmd, tries=1):
@@ -50,15 +48,21 @@ def make(kind, date, upload):
         print(f"{vid} already uploaded")
         return
     py = sys.executable
-    short = kind.startswith("short")
-    if short:
+    short = kind.startswith("short") or kind == "story-short"
+    if kind == "story":
+        run(py, "scripts/fun.py", "--date", date, "--daily")
+    elif kind == "story-short":
+        if not os.path.exists(os.path.join(ROOT, "build", f"{date}-story", "props.json")):  # a later run: rebuild the story
+            run(py, "scripts/fun.py", "--date", date, "--daily")
+        run(py, "scripts/fun.py", "--date", date, "--short")
+    elif short:
         run(py, "scripts/short.py", "--date", date, "--slot", kind[-1])
     else:
         run(py, "scripts/episode.py" if kind == "learn" else "scripts/fun.py", "--date", date)
     os.makedirs(os.path.join(ROOT, "out", "episodes"), exist_ok=True)
     mp4, jpg, props = f"out/episodes/{vid}.mp4", f"out/episodes/{vid}.jpg", f"--props=build/{vid}/props.json"
-    run("npx", "remotion", "render", "src/index.tsx", "Short" if short else "Episode", mp4, props, "--timeout=120000",
-        "--log=error", tries=3)
+    composition = "StoryShort" if kind == "story-short" else "Short" if short else "Episode"
+    run("npx", "remotion", "render", "src/index.tsx", composition, mp4, props, "--timeout=120000", "--log=error", tries=3)
     if not short:  # YouTube shows no custom thumbnails in the Shorts feed
         run("npx", "remotion", "still", "src/index.tsx", "Thumbnail", jpg, props, "--image-format=jpeg", "--scale=0.6667",
             "--timeout=120000", "--log=error", tries=3)
@@ -79,7 +83,7 @@ def make(kind, date, upload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("kind", choices=["learn", "fun", "short1", "short2", "auto", "due"])
+    p.add_argument("kind", choices=["story", "story-short", "learn", "fun", "short1", "short2", "auto", "due"])
     p.add_argument("--date", default="")
     p.add_argument("--no-upload", action="store_true")
     a = p.parse_args()

@@ -1,13 +1,13 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {Background, Birds, Cloud, Land, LandColors, PopWord, RAINBOW, blinkAt, textStyle} from './common';
+import {Background, Birds, Cloud, LEAVES, Land, LandColors, Look, PopWord, RAINBOW, Weather, blinkAt, textStyle} from './common';
 import {Pose} from './critter';
 import {Character, EggView, Hero, HeroView, Pop, SpeechBubble} from './hero';
 import {Icon} from './library';
 import {mix} from './shapes';
 
 // ---------------------------------------------------------------- scene data (written by scripts/fun.py)
-export type Bg = 'day' | 'park' | 'farm' | 'forest' | 'pond' | 'dusk' | 'night' | 'rain' | 'party';
+export type Bg = 'day' | 'park' | 'farm' | 'forest' | 'pond' | 'dusk' | 'night' | 'rain' | 'party' | 'beach' | 'garden' | 'playground' | 'bedroom' | 'underwater';
 type Key = {t: number; x: number; y: number};
 type Act = {t: number; kind: 'jump' | 'shake' | 'spin' | 'sleep' | 'wake' | 'wave'};
 type Actor = {hero: Hero; size: number; keys: Key[]; acts: Act[]; fly?: boolean; from?: number; until?: number; talk?: {at: number; m: string}[]};
@@ -26,6 +26,7 @@ export type FunScene =
 			props: Prop[];
 			bubbles: Bubble[];
 			title?: {text: string; at: number; until: number} | null;
+			cam?: CamKey[];
 	  }
 	| {type: 'egg'; from: number; duration: number; bg: Bg; egg: Hero; ticks: number[]; openAt: number; hero: Hero; name: Timed; bubble?: Timed | null}
 	| {type: 'shadow'; from: number; duration: number; bg: Bg; hero: Hero; counts: number[]; revealAt: number; name: Timed; bubble?: Timed | null}
@@ -42,6 +43,29 @@ export type FunScene =
 			callouts: Timed[];
 			freezes: {at: number; until: number}[];
 	  };
+
+/** While a line is spoken, the camera leans towards the speaker standing at x (written by scripts/fun.py). */
+export type CamKey = {at: number; until: number; x: number};
+
+/** Where the camera looks (x) and how much it leans in (0-1) at frame f of a story shot, eased so it never jumps. */
+export const storyCam = (keys: CamKey[] | undefined, f: number): {x: number; lean: number} => {
+	if (!keys || keys.length === 0) return {x: 960, lean: 0};
+	let x = keys[0].x;
+	let prevX = keys[0].x;
+	let since = 1e9;
+	let talking = 0;
+	for (const k of keys) {
+		if (k.at > f) break;
+		prevX = x;
+		x = k.x;
+		since = f - k.at;
+		talking = f < k.until + 10 ? 1 : Math.max(0, 1 - (f - k.until - 10) / 20);
+	}
+	const e = Math.min(1, since / 14);
+	const s = e * e * (3 - 2 * e);
+	const into = Math.min(1, since / 14);
+	return {x: prevX + (x - prevX) * s, lean: talking * into};
+};
 
 // ---------------------------------------------------------------- helpers
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -75,8 +99,11 @@ const Stars: React.FC<{count: number; frame: number; maxY?: number}> = ({count, 
 	</>
 );
 
-/** A round leafy tree; (x, y) is the bottom of the trunk. */
-const Tree: React.FC<{x: number; y: number; s: number; color?: string}> = ({x, y, s, color = '#3fae4f'}) => (
+/** A round leafy tree; (x, y) is the bottom of the trunk. Outside spring its leaves take the season's colours. */
+const Tree: React.FC<{x: number; y: number; s: number; color?: string}> = ({x, y, s, color: given = '#3fae4f'}) => {
+	const {season} = React.useContext(Look);
+	const color = season === 'spring' ? given : LEAVES[season][Math.round(x) % 3];
+	return (
 	<svg style={{position: 'absolute', left: x - 130 * s, top: y - 380 * s, overflow: 'visible'}} width={260 * s} height={380 * s} viewBox="0 0 260 380">
 		<path d="M112 380 L116 220 Q100 190 84 176 M146 380 L142 220 Q160 196 178 186" stroke="#7a4a28" strokeWidth={14} fill="none" strokeLinecap="round" />
 		<path d="M108 380 Q114 300 112 210 L148 210 Q144 300 152 380 Z" fill="#8a5a33" />
@@ -93,27 +120,38 @@ const Tree: React.FC<{x: number; y: number; s: number; color?: string}> = ({x, y
 			[170, 110],
 			[140, 190],
 		].map(([cx, cy]) => (
-			<circle key={cx} cx={cx} cy={cy} r={9} fill="#ff4f5e" />
+			<circle key={cx} cx={cx} cy={cy} r={9} fill={season === 'autumn' ? '#ffcf3f' : season === 'winter' ? '#ffffff' : '#ff4f5e'} />
 		))}
+		{season === 'winter' ? <path d="M40 92 Q130 0 220 92 Q130 60 40 92 Z" fill="#ffffff" /> : null}
 	</svg>
-);
+	);
+};
 
-const PineTree: React.FC<{x: number; y: number; s: number; color: string}> = ({x, y, s, color}) => (
-	<svg style={{position: 'absolute', left: x - 90 * s, top: y - 300 * s}} width={180 * s} height={300 * s} viewBox="0 0 180 300">
-		<rect x={80} y={240} width={20} height={60} fill="#6e4424" />
-		<path d="M90 0 L150 110 L120 110 L170 190 L130 190 L180 260 L0 260 L50 190 L10 190 L60 110 L30 110 Z" fill={color} />
-	</svg>
-);
+const PineTree: React.FC<{x: number; y: number; s: number; color: string}> = ({x, y, s, color}) => {
+	const {season} = React.useContext(Look);
+	return (
+		<svg style={{position: 'absolute', left: x - 90 * s, top: y - 300 * s}} width={180 * s} height={300 * s} viewBox="0 0 180 300">
+			<rect x={80} y={240} width={20} height={60} fill="#6e4424" />
+			<path d="M90 0 L150 110 L120 110 L170 190 L130 190 L180 260 L0 260 L50 190 L10 190 L60 110 L30 110 Z" fill={color} />
+			{season === 'winter' ? <path d="M90 0 L118 52 L90 40 L62 52 Z M60 110 L120 110 L104 130 L76 130 Z" fill="#ffffff" /> : null}
+		</svg>
+	);
+};
 
-const Bush: React.FC<{x: number; y: number; s: number; color?: string}> = ({x, y, s, color = '#4cb944'}) => (
+const Bush: React.FC<{x: number; y: number; s: number; color?: string}> = ({x, y, s, color: given = '#4cb944'}) => {
+	const {season} = React.useContext(Look);
+	const color = season === 'spring' ? given : LEAVES[season][(Math.round(x) + 1) % 3];
+	return (
 	<svg style={{position: 'absolute', left: x - 90 * s, top: y - 80 * s}} width={180 * s} height={80 * s} viewBox="0 0 180 80">
 		<circle cx={50} cy={50} r={36} fill={mix(color, '#000000', 0.1)} />
 		<circle cx={130} cy={50} r={36} fill={mix(color, '#000000', 0.1)} />
 		<circle cx={90} cy={40} r={40} fill={color} />
 		<rect x={20} y={50} width={140} height={30} rx={15} fill={color} />
 		<circle cx={76} cy={26} r={10} fill="#fff" opacity={0.18} />
+		{season === 'winter' ? <ellipse cx={90} cy={14} rx={46} ry={12} fill="#ffffff" /> : null}
 	</svg>
-);
+	);
+};
 
 const Mushroom: React.FC<{x: number; y: number}> = ({x, y}) => (
 	<svg style={{position: 'absolute', left: x - 40, top: y - 70}} width={80} height={70} viewBox="0 0 80 70">
@@ -334,6 +372,151 @@ export const Scenery: React.FC<{bg: Bg; tint: string | null}> = ({bg, tint}) => 
 			</AbsoluteFill>
 		);
 	}
+	const tintLayer = tint ? <AbsoluteFill style={{background: `radial-gradient(circle at 50% 55%, ${mix(tint, '#ffffff', 0.35)} 0%, transparent 55%)`, opacity: 0.5}} /> : null;
+	if (bg === 'beach') {
+		return (
+			<AbsoluteFill style={{background: 'linear-gradient(#4ab4ff 0%, #bfe9ff 60%, #fff6dc 100%)'}}>
+				{[0, 1, 2].map((i) => (
+					<Cloud key={i} x={((i * 700 + frame * 0.5) % 2300) - 300} y={70 + i * 60} s={0.9 - i * 0.15} />
+				))}
+				<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+					<defs>
+						<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stopColor="#3fb7e8" />
+							<stop offset="100%" stopColor="#1f8fd0" />
+						</linearGradient>
+					</defs>
+					<circle cx={1650} cy={170} r={80} fill="#ffd23f" />
+					<rect y={600} width={1920} height={240} fill="url(#sea)" />
+					{[0, 1, 2, 3].map((k) => (
+						<path key={k} d={`M${-200 + ((frame * (1 + k * 0.3) + k * 300) % 400)} ${640 + k * 45} q50 -16 100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0`} fill="none" stroke="#ffffff" strokeWidth={4} opacity={0.5} />
+					))}
+					<g transform={`translate(${300 + Math.sin(frame / 60) * 20} 590)`}>
+						<path d="M-50 0 L50 0 L36 18 L-36 18 Z" fill="#ff6b4a" />
+						<path d="M0 0 L0 -90 L44 -6 Z" fill="#ffffff" />
+					</g>
+					<path d={`M0 790 Q480 ${760 + Math.sin(frame / 20) * 8} 960 785 T1920 780 L1920 1080 L0 1080 Z`} fill="#e8c784" />
+					<path d="M0 820 Q480 800 960 818 T1920 812 L1920 1080 L0 1080 Z" fill="#f6dca0" />
+					<g transform="translate(1620 900)">
+						<rect x={-6} y={-330} width={12} height={330} fill="#8a6a4a" />
+						<path d="M-200 -300 Q0 -420 200 -300 Z" fill="#ff4f5e" />
+						<path d="M-120 -335 Q-60 -395 0 -405 L0 -300 Z M60 -390 Q120 -360 200 -300 L120 -300 Z" fill="#ffffff" />
+						<rect x={-230} y={-10} width={200} height={40} rx={8} fill="#2f8cff" transform="rotate(-6)" />
+					</g>
+					<g transform="translate(300 980)">
+						<path d="M-30 -60 L30 -60 L22 0 L-22 0 Z" fill="#ffc92e" />
+						<path d="M-30 -60 Q0 -100 30 -60" stroke="#ff8a1f" strokeWidth={6} fill="none" />
+					</g>
+					{[
+						[560, 1000, '#ff8a6a'],
+						[1200, 1030, '#ffb0d0'],
+						[900, 1050, '#ffd27a'],
+					].map(([x, y, c], i) => (
+						<path key={i} d={`M${x} ${(y as number) - 22} L${(x as number) + 7} ${(y as number) - 7} L${(x as number) + 22} ${(y as number) - 5} L${(x as number) + 10} ${(y as number) + 5} L${(x as number) + 14} ${(y as number) + 20} L${x} ${(y as number) + 11} L${(x as number) - 14} ${(y as number) + 20} L${(x as number) - 10} ${(y as number) + 5} L${(x as number) - 22} ${(y as number) - 5} L${(x as number) - 7} ${(y as number) - 7} Z`} fill={c as string} />
+					))}
+				</svg>
+				<Birds frame={frame} color="#ffffff" />
+				{tintLayer}
+			</AbsoluteFill>
+		);
+	}
+	if (bg === 'underwater') {
+		return (
+			<AbsoluteFill style={{background: 'linear-gradient(#5fd0f0 0%, #2a9ad8 55%, #1c6fb0 100%)'}}>
+				<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+					{[0, 1, 2, 3, 4].map((k) => (
+						<path key={k} d={`M${200 + k * 380 + Math.sin(frame / 40 + k) * 40} 0 L${300 + k * 380} 0 L${420 + k * 380 + Math.sin(frame / 40 + k) * 60} 1080 L${260 + k * 380} 1080 Z`} fill="#ffffff" opacity={0.07} />
+					))}
+					<path d="M0 900 Q480 870 960 895 T1920 890 L1920 1080 L0 1080 Z" fill="#f0d9a0" />
+					{[120, 300, 1500, 1700, 1850].map((x, i) => (
+						<path key={x} d={`M${x} 960 Q${x + Math.sin(frame / 18 + i) * 30} 860 ${x + Math.sin(frame / 22 + i) * 20} ${740 - (i % 2) * 60} Q${x + 30 + Math.sin(frame / 15 + i) * 30} 860 ${x + 20} 960 Z`} fill={i % 2 ? '#3cc75a' : '#2f9e44'} />
+					))}
+					{[
+						[480, 930, '#ff6fb5'],
+						[1300, 940, '#ff8a1f'],
+					].map(([x, y, c]) => (
+						<g key={x as number} fill={c as string}>
+							<circle cx={x as number} cy={y as number} r={34} />
+							<circle cx={(x as number) - 30} cy={(y as number) - 30} r={22} />
+							<circle cx={(x as number) + 28} cy={(y as number) - 34} r={20} />
+						</g>
+					))}
+					{Array.from({length: 4}, (_, i) => {
+						const dir = i % 2 ? -1 : 1;
+						const x = ((i * 520 + frame * (2 + i * 0.6) * dir) % 2300 + 2300) % 2300 - 200;
+						const y = 220 + i * 140 + Math.sin(frame / 20 + i) * 20;
+						const c = ['#ffc92e', '#ff6b4a', '#9b5cff', '#ff6fb5'][i];
+						return (
+							<g key={i} transform={`translate(${x} ${y}) scale(${dir} 1)`}>
+								<ellipse cx={0} cy={0} rx={40} ry={24} fill={c} />
+								<path d={`M-36 0 L-66 ${-20 + Math.sin(frame / 4 + i) * 6} L-66 ${20 + Math.sin(frame / 4 + i) * 6} Z`} fill={c} />
+								<circle cx={18} cy={-6} r={6} fill="#ffffff" />
+								<circle cx={20} cy={-6} r={3} fill="#2b2b3a" />
+							</g>
+						);
+					})}
+					{Array.from({length: 14}, (_, i) => {
+						const p = ((frame * (1 + (i % 4) * 0.4) + i * 90) % 1100) / 1100;
+						return <circle key={`b${i}`} cx={100 + i * 135 + Math.sin(frame / 15 + i) * 12} cy={1050 - p * 1150} r={6 + (i % 3) * 4} fill="none" stroke="#ffffff" strokeWidth={3} opacity={0.6} />;
+					})}
+				</svg>
+				{tintLayer}
+			</AbsoluteFill>
+		);
+	}
+	if (bg === 'bedroom') {
+		return (
+			<AbsoluteFill style={{background: '#ffe7d6'}}>
+				<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+					{Array.from({length: 60}, (_, i) => (
+						<circle key={i} cx={(i % 12) * 170 + 60 + (Math.floor(i / 12) % 2) * 85} cy={Math.floor(i / 12) * 150 + 60} r={8} fill="#ffcfb3" />
+					))}
+					<rect y={820} width={1920} height={260} fill="#d9a873" />
+					{Array.from({length: 8}, (_, i) => (
+						<line key={i} x1={i * 260} y1={820} x2={i * 260 - 80} y2={1080} stroke="#c4925e" strokeWidth={4} />
+					))}
+					<rect x={760} y={150} width={400} height={360} rx={20} fill="#1c2a5e" />
+					<circle cx={1060} cy={240} r={44} fill="#fff6c4" />
+					<circle cx={1078} cy={228} r={40} fill="#1c2a5e" />
+					{Array.from({length: 9}, (_, i) => (
+						<circle key={i} cx={790 + ((i * 97) % 340)} cy={180 + ((i * 61) % 300)} r={3 + (i % 3)} fill="#fff6c4" opacity={0.5 + 0.5 * Math.abs(Math.sin(frame / 20 + i))} />
+					))}
+					<rect x={760} y={150} width={400} height={360} rx={20} fill="none" stroke="#ffffff" strokeWidth={14} />
+					<path d="M720 130 Q760 330 730 540 L800 540 Q780 330 800 130 Z" fill="#9b5cff" />
+					<path d="M1200 130 Q1160 330 1190 540 L1120 540 Q1140 330 1120 130 Z" fill="#9b5cff" />
+					<ellipse cx={960} cy={960} rx={420} ry={70} fill="#ff9fc4" opacity={0.8} />
+					<g transform="translate(1260 560)">
+						<rect x={0} y={0} width={70} height={340} rx={20} fill="#c9875a" />
+						<rect x={0} y={170} width={600} height={140} rx={30} fill="#2f8cff" />
+						{Array.from({length: 6}, (_, i) => (
+							<path key={i} d={`M${100 + i * 80} 220 l8 16 l18 2 l-13 12 l4 18 l-17 -9 l-17 9 l4 -18 l-13 -12 l18 -2 Z`} fill="#ffd23f" />
+						))}
+						<rect x={60} y={130} width={160} height={60} rx={28} fill="#ffffff" />
+					</g>
+					<g transform="translate(260 640)">
+						<rect x={0} y={0} width={220} height={260} fill="#c9875a" />
+						{[0, 1, 2].map((r) => (
+							<g key={r}>
+								<rect x={10} y={20 + r * 84} width={200} height={10} fill="#a86c44" />
+								{[0, 1, 2, 3, 4].map((k) => (
+									<rect key={k} x={20 + k * 36} y={r * 84 - 40 + 20} width={26} height={58} fill={RAINBOW[(r * 5 + k) % 7]} />
+								))}
+							</g>
+						))}
+					</g>
+					{[
+						[560, 960, '#ff3b3b'],
+						[620, 960, '#2f8cff'],
+						[590, 910, '#ffc92e'],
+					].map(([x, y, c], i) => (
+						<rect key={i} x={x as number} y={y as number} width={50} height={50} rx={8} fill={c as string} />
+					))}
+					<circle cx={1880} cy={560} r={220} fill="#fff2b0" opacity={0.25} />
+				</svg>
+				{tintLayer}
+			</AbsoluteFill>
+		);
+	}
 	return (
 		<AbsoluteFill>
 			<Background tint={tint} />
@@ -367,6 +550,55 @@ export const Scenery: React.FC<{bg: Bg; tint: string | null}> = ({bg, tint}) => 
 						);
 					})}
 				</>
+			) : null}
+			{bg === 'garden' ? (
+				<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+					{Array.from({length: 26}, (_, i) => (
+						<g key={i}>
+							<rect x={i * 76} y={720} width={16} height={130} fill="#ffffff" />
+							<path d={`M${i * 76} 720 l8 -16 l8 16 Z`} fill="#ffffff" />
+						</g>
+					))}
+					<rect y={760} width={1920} height={12} fill="#ffffff" />
+					<rect y={800} width={1920} height={12} fill="#ffffff" />
+					{Array.from({length: 11}, (_, i) => (
+						<g key={`c${i}`} transform={`translate(${120 + i * 165} 868)`}>
+							<path d="M0 0 L-8 -40 M0 0 L0 -46 M0 0 L8 -40" stroke="#3cc75a" strokeWidth={8} strokeLinecap="round" />
+							<path d="M-8 0 L8 0 L0 26 Z" fill="#ff8a1f" />
+						</g>
+					))}
+					<g transform="translate(1760 900)">
+						<path d="M-50 -60 L40 -60 L50 0 L-60 0 Z" fill="#2f8cff" />
+						<path d="M40 -50 L100 -90" stroke="#2f8cff" strokeWidth={12} strokeLinecap="round" />
+					</g>
+				</svg>
+			) : null}
+			{bg === 'playground' ? (
+				<svg style={{position: 'absolute', inset: 0}} width={1920} height={1080}>
+					<g transform="translate(180 880)">
+						<rect x={0} y={-360} width={14} height={360} fill="#ff3b3b" />
+						<rect x={80} y={-360} width={14} height={360} fill="#ff3b3b" />
+						{Array.from({length: 7}, (_, k) => (
+							<rect key={k} x={0} y={-50 - k * 46} width={94} height={8} fill="#ff3b3b" />
+						))}
+						<rect x={-10} y={-372} width={114} height={20} fill="#ffc92e" />
+						<path d="M94 -360 Q260 -260 380 -20 L410 -20 Q290 -280 104 -380 Z" fill="#2f8cff" />
+					</g>
+					<g transform="translate(1340 880)">
+						<path d="M0 0 L60 -380 L120 0 M420 0 L480 -380 L540 0" stroke="#9b5cff" strokeWidth={16} fill="none" />
+						<rect x={50} y={-392} width={440} height={18} fill="#9b5cff" />
+						{[180, 360].map((x, k) => {
+							const a = Math.sin(frame / 18 + k * 2) * 18;
+							return (
+								<g key={x} transform={`rotate(${a} ${x} -380)`}>
+									<line x1={x - 30} y1={-380} x2={x - 30} y2={-140} stroke="#5a4a3a" strokeWidth={5} />
+									<line x1={x + 30} y1={-380} x2={x + 30} y2={-140} stroke="#5a4a3a" strokeWidth={5} />
+									<rect x={x - 44} y={-146} width={88} height={16} rx={6} fill="#ff8a1f" />
+								</g>
+							);
+						})}
+					</g>
+				</svg>
 			) : null}
 			{bg === 'park' ? (
 				<>

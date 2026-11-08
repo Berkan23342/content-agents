@@ -3,6 +3,7 @@ import {Composition, registerRoot} from 'remotion';
 import {Episode, EpisodeProps, EpisodeThumbnail} from './Episode';
 import {Logo} from './Brand';
 import {Short, ShortProps} from './Short';
+import {StoryShort, StoryShortProps} from './StoryShort';
 
 // Real props come from build/<date>/props.json via `--props`; this is only a Studio placeholder.
 const placeholder: EpisodeProps = {
@@ -13,6 +14,12 @@ const placeholder: EpisodeProps = {
 };
 
 const shortPlaceholder: ShortProps = {durationInFrames: 150, audio: '', bg: 'day', header: 'Guess the Shadow', scenes: []};
+const storyShortPlaceholder: StoryShortProps = {
+	durationInFrames: 150,
+	audio: '',
+	title: 'A Story',
+	scenes: [{type: 'story', from: 0, duration: 150, bg: 'park', actors: [], props: [], bubbles: [], title: null, cam: []}],
+};
 
 const Root: React.FC = () => (
 	<>
@@ -30,6 +37,16 @@ const Root: React.FC = () => (
 			id="Short"
 			component={Short}
 			defaultProps={shortPlaceholder}
+			calculateMetadata={({props}) => ({durationInFrames: props.durationInFrames})}
+			durationInFrames={150}
+			fps={30}
+			width={1080}
+			height={1920}
+		/>
+		<Composition
+			id="StoryShort"
+			component={StoryShort}
+			defaultProps={storyShortPlaceholder}
 			calculateMetadata={({props}) => ({durationInFrames: props.durationInFrames})}
 			durationInFrames={150}
 			fps={30}

@@ -509,6 +509,16 @@ def seg_abc(b, rng, ep_no, count):
 SEGMENT_NAMES = {"colors": "Colors", "numbers": "Numbers", "shapes": "Shapes", "animals": "Animals", "abc": "ABC"}
 
 
+SEASONS = {12: "winter", 1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: "spring", 6: "summer", 7: "summer",
+           8: "summer", 9: "autumn", 10: "autumn", 11: "autumn"}
+SEGMENT_BGS = ["garden", "playground", "park", "beach", "farm", "day", "underwater"]  # each segment in its own place
+
+
+def look_for(day, salt=""):
+    """The season (from the date) and a seed for the sky and small details, so no two days look the same."""
+    return SEASONS[day.month], (day.toordinal() * 7 + sum(map(ord, salt))) % 997
+
+
 def build(day: dt.date, sizes):
     ep_no = (day - FIRST_EPISODE).days + 1
     rng = random.Random(f"bubbly-{ep_no}")
@@ -547,6 +557,10 @@ def build(day: dt.date, sizes):
         else:
             summary[seg] = seg_abc(b, rng, ep_no, sizes["letters"])
         b.music.append((0 if i == 0 else seg_start, b.t, songs[i % len(songs)]))
+        place = SEGMENT_BGS[(i + ep_no) % len(SEGMENT_BGS)]
+        for sc in b.scenes:
+            if sc["from"] >= b.f(seg_start) and "bg" not in sc:
+                sc["bg"] = place
 
     # outro
     start = b.t
@@ -691,6 +705,8 @@ def main():
         "audio": wav_rel,
         "scenes": b.scenes,
         "thumb": {"title": ["Learn & Play!", " • ".join(pretty[:3])], "heroes": thumb_heroes},
+        "season": look_for(day)[0],
+        "look": look_for(day)[1],
     }
     write_json(work, props, metadata(b, order, summary, ep_no))
     print(f"episode {ep_no} {a.date}: {b.t:.1f}s, order={order}, {len(b.voices)} lines")

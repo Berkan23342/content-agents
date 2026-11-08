@@ -18,10 +18,11 @@ import os
 import random
 
 import numpy as np
+import soundfile as sf
 
-from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_against, check_story
+from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_against, check_story, estimate_seconds
 from episode import (ANIMALS, BUILD, DANCE_BPM, FIRST_EPISODE, FPS, GENTLE_SONGS, MIN_SECONDS, NUMBER_WORDS, PALETTE, SR,
-                     Builder, an, fmt, write_audio, write_json)
+                     Builder, an, fmt, look_for, write_audio, write_json)
 
 FORMATS = ["story", "eggs", "dance", "story", "shadow"]
 
@@ -85,6 +86,7 @@ class Shot:
         self.start = b.t
         self.cur = 0.5
         self.actors, self.names, self.props, self.bubbles = [], {}, [], []
+        self.cam = []  # {"at", "until", "x"}: the camera leans towards whoever is speaking
 
     @staticmethod
     def fr(sec):
@@ -130,9 +132,20 @@ class Shot:
         self.cur += d + gap
         return d
 
+    def x_at(self, name, sec):
+        """Where an actor stands at a moment (linear between its keys; close enough for the camera)."""
+        keys, f = self.actors[self.names[name]]["keys"], self.fr(sec)
+        if f <= keys[0]["t"]:
+            return keys[0]["x"]
+        for a, b in zip(keys, keys[1:]):
+            if f < b["t"]:
+                return a["x"] + (b["x"] - a["x"]) * (f - a["t"]) / max(1, b["t"] - a["t"])
+        return keys[-1]["x"]
+
     def line(self, name, text, bubble=None, act=None, gap=0.35, gain=1.0):
         voice, pitch, _, color = CAST[name]
         d = self.b.say(self.start + self.cur, text, voice=voice, speed=0.9, pitch=pitch, gain=gain)
+        self.cam.append({"at": self.fr(self.cur), "until": self.fr(self.cur + d), "x": round(self.x_at(name, self.cur))})
         self.actors[self.names[name]]["talk"].append({"at": self.fr(self.cur), "m": mouth(self.b.voices[-1][1])})
         if bubble:
             self.bubbles.append({"actor": self.names[name], "text": bubble, "color": color,
@@ -167,7 +180,8 @@ class Shot:
 
     def done(self, tail=0.6):
         end = self.start + self.cur + tail
-        self.b.scene(self.start, end, type="story", bg=self.bg, actors=self.actors, props=self.props, bubbles=self.bubbles, title=None)
+        self.b.scene(self.start, end, type="story", bg=self.bg, actors=self.actors, props=self.props, bubbles=self.bubbles, title=None,
+                     cam=self.cam)
         self.b.t = end
 
 
@@ -711,6 +725,54 @@ def fmt_story(b, rng, ep_no, size):
     return meta, thumb
 
 
+def fmt_daily(b, rng, ep_no, specs):
+    """The daily video since 2026-11-08: new stories from the story writer, told from start to end. Usually one long
+    story; while short stories from before the change are waiting, two or three of them. (The rotation of eggs, dance and
+    shadow templates was dropped: YouTube treats look-alike videos as inauthentic.)"""
+    outdoor = lambda bg: bg if bg not in ("night", "bedroom", "underwater") else "day"  # noqa: E731
+    calm = bool(specs[-1].get("calm"))
+    first_bg = specs[0]["shots"][0]["bg"]
+    titles = [s["title"] for s in specs]
+    heroes = [body(icon(c)) for c in dict.fromkeys(c for s in specs for c in s.get("cast", [])[:2])][:3]
+    intro(b, outdoor(first_bg), [titles[0]] if len(specs) == 1 else ["Story Time!"], heroes,
+          ["Hello, friends! Welcome to Bubbly Kids TV!",
+           f"Today's story is called: {titles[0]}! Let's begin." if len(specs) == 1
+           else f"Today we have {len(specs)} new stories: {', and '.join(titles)}. Let's go!"])
+    b.music = [(0, b.t, rng.choice(GENTLE_SONGS), "gentle")]
+    infos = []
+    b.stories = []  # (title, start, end) of each story, so the day's Short can name the story it comes from
+    for i, spec in enumerate(specs):
+        start = b.t
+        b.chapters.append((start, spec["title"]))
+        if len(specs) > 1:
+            b.sfx.append((start + 0.2, "sparkle"))
+            d = b.say(start + 0.6, f"Story number {NUMBER_WORDS[i + 1].lower()}: {spec['title']}!")
+            b.scene(start, start + d + 1.6, type="title", bg=outdoor(spec["shots"][0]["bg"]), top=f"Story {i + 1}",
+                    title=[spec["title"]], heroes=[body(icon(c)) for c in spec.get("cast", [])[:3]])
+            b.t = start + d + 1.6
+        infos.append(story_script(spec)(b, rng))
+        b.stories.append({"title": spec["title"], "from": b.f(start), "until": b.f(b.t)})
+        if i:
+            b.music.append((start, b.t, "twinkle" if spec.get("calm") else rng.choice(GENTLE_SONGS),
+                            "lullaby" if spec.get("calm") else "gentle"))
+        else:
+            b.music[0] = (0, b.t, "twinkle" if spec.get("calm") else b.music[0][2], "lullaby" if spec.get("calm") else "gentle")
+    outro(b, "dusk" if calm else outdoor(specs[-1]["shots"][-1]["bg"]), "The end!")
+    s0, _, song, style = b.music[-1]
+    b.music[-1] = (s0, b.t, song, style)
+    b.music_gain = 0.24
+    meta = {
+        "title": f"{' & '.join(titles)} | Animated Story for Kids | Bubbly Kids TV",
+        "lines": [f"📖 {s['title']}: {s['summary']} ({s['lesson']}.)" for s in specs],
+        "intro": f"Brand-new animated {'story' if len(specs) == 1 else 'stories'} from Bubbly Kids TV for toddlers and preschoolers. 🎈",
+        "tags": ["kids stories", "story time", "animated stories for kids", "stories for toddlers", "moral stories",
+                 "preschool", "cartoon for kids", "bubbly kids tv"],
+    }
+    thumb = {"title": [titles[0]] if len(specs) == 1 else ["Story Time!", titles[0]],
+             "heroes": [body(icon(c)) for c in infos[0]["cast"][:3]], "bg": outdoor(first_bg)}
+    return meta, thumb
+
+
 EGG_PATTERNS = [("dots", "dots"), ("stripes", "stripes"), ("zigzag", "zigzags"), ("stars", "stars"), ("hearts", "hearts")]
 ACCENTS = [("white", "#FFFFFF"), ("yellow", "#FFE14D"), ("pink", "#FFA8D2"), ("blue", "#8CCBFF"), ("green", "#9BE89B")]
 TOYS = [  # icon, name, colour, line, bubble
@@ -731,6 +793,10 @@ TOYS = [  # icon, name, colour, line, bubble
     ("cookie", "cookie", "#C98B55", "Crunch, crunch! Yummy!", "Crunch!"),
     ("watermelon", "watermelon", "#3CC75A", "Big and juicy!", "Yum!"),
 ]
+
+
+EGG_BGS = ["day", "garden", "playground", "beach", "park", "underwater", "bedroom", "farm"]
+SHADOW_BGS = ["day", "park", "garden", "playground", "beach", "bedroom"]  # light places, so the shadow stands out
 
 
 def fmt_eggs(b, rng, ep_no, count):
@@ -774,7 +840,7 @@ def fmt_eggs(b, rng, ep_no, count):
         cur += b.say(start + cur, f"It's {an(name)} {name}!") + 0.3
         bubble_at = cur
         cur += b.say(start + cur, line) + 0.9
-        b.scene(start, start + cur, type="egg", bg="day", egg={"kind": "egg", "value": f"{pattern}|{ahex}", "color": chex},
+        b.scene(start, start + cur, type="egg", bg=EGG_BGS[(i + ep_no) % len(EGG_BGS)], egg={"kind": "egg", "value": f"{pattern}|{ahex}", "color": chex},
                 ticks=ticks, openAt=b.f(open_at), hero=hero, name={"text": name.upper(), "color": color, "at": b.f(name_at)},
                 bubble={"text": bubble, "color": color, "at": b.f(bubble_at)})
         b.t = start + cur
@@ -866,7 +932,7 @@ def fmt_shadow(b, rng, ep_no, count):
         else:
             cur += 1.4
         hero = icon(ic, color)
-        b.scene(start, start + cur, type="shadow", bg="day", hero=hero, counts=counts, revealAt=b.f(reveal),
+        b.scene(start, start + cur, type="shadow", bg=SHADOW_BGS[(i + ep_no) % len(SHADOW_BGS)], hero=hero, counts=counts, revealAt=b.f(reveal),
                 name={"text": name.upper(), "color": color, "at": b.f(name_at)},
                 bubble={"text": bubble, "color": color, "at": b.f(bubble_at)})
         b.t = start + cur
@@ -1002,9 +1068,15 @@ def main():
     p.add_argument("--date", default=dt.date.today().isoformat())
     p.add_argument("--format", choices=sorted(set(FORMATS)), help="override the daily rotation")
     p.add_argument("--check-story", help="build just this story script into build/check-story (for previews)")
+    p.add_argument("--daily", action="store_true", help="the daily video: one new story, into build/<date>-story")
+    p.add_argument("--short", action="store_true", help="the vertical Short cut from the day's story, into build/<date>-story-short")
     a = p.parse_args()
     if a.check_story:
         return check_only(a.check_story)
+    if a.daily:
+        return daily(a.date)
+    if a.short:
+        return story_short(a.date)
     day = dt.date.fromisoformat(a.date)
     ep_no = (day - FIRST_EPISODE).days + 1
     kind = a.format or FORMATS[(ep_no - 1) % len(FORMATS)]
@@ -1022,7 +1094,8 @@ def main():
         size += step
 
     wav_rel = write_audio(b, work, name)
-    props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb}
+    season, look = look_for(day, "fun")
+    props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb, "season": season, "look": look}
     write_json(work, props, {"title": meta["title"][:100], "description": description(b, meta, ep_no), "tags": meta["tags"]})
     if kind == "story":  # archive the scripts this video used
         used = os.path.join(STORY_DIR, "used", a.date)
@@ -1031,6 +1104,88 @@ def main():
                 os.makedirs(used, exist_ok=True)
                 os.rename(path, os.path.join(used, os.path.basename(path)))
     print(f"fun {kind} {ep_no} {a.date}: {b.t:.1f}s, {len(b.scenes)} scenes, {len(b.voices)} lines")
+
+
+def daily(date):
+    day = dt.date.fromisoformat(date)
+    ep_no = (day - FIRST_EPISODE).days + 1
+    scripts = scripted_stories(date, 3)
+    if not scripts:  # better no video than a repeat of a built-in story
+        raise SystemExit("no new story waiting in stories/new")
+    picked = []
+    for path, spec in scripts:  # one long story, or a few short ones until the video is about three minutes
+        picked.append((path, spec))
+        if sum(estimate_seconds(s) for _, s in picked) >= 150:
+            break
+    name = f"{date}-story"
+    work = os.path.join(BUILD, name)
+    os.makedirs(work, exist_ok=True)
+    b = Builder()
+    meta, thumb = fmt_daily(b, random.Random(f"daily-{date}"), ep_no, [s for _, s in picked])
+    wav_rel = write_audio(b, work, name)
+    season, look = look_for(day, "story")
+    props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb, "season": season, "look": look,
+             "stories": b.stories}
+    write_json(work, props, {"title": meta["title"][:100], "description": description(b, meta, ep_no), "tags": meta["tags"]})
+    used = os.path.join(STORY_DIR, "used", date)
+    for path, _ in picked:
+        if os.path.dirname(path) != used:
+            os.makedirs(used, exist_ok=True)
+            os.rename(path, os.path.join(used, os.path.basename(path)))
+    print(f"daily story {date}: {[s['title'] for _, s in picked]}, {b.t:.1f}s, {len(b.scenes)} scenes")
+
+
+SHORT_SECONDS = (30, 58)
+
+
+def story_short(date):
+    """A vertical Short from the day's story: the run of shots (30-58 s) with the most talking, ending if possible on
+    the story's last shot. The video follows whoever is speaking (src/StoryShort.tsx). Each Short is a different
+    moment of a different story, never a template."""
+    src = os.path.join(BUILD, f"{date}-story")
+    props = json.load(open(os.path.join(src, "props.json")))
+    shots = [s for s in props["scenes"] if s["type"] == "story"]
+    lo, hi = SHORT_SECONDS[0] * FPS, SHORT_SECONDS[1] * FPS
+    best = None
+    for i in range(len(shots)):
+        total = 0
+        for j in range(i, len(shots)):
+            total += shots[j]["duration"]
+            if total > hi:
+                break
+            if total >= lo:
+                score = sum(len(s.get("cam", [])) for s in shots[i:j + 1]) + (3 if j == len(shots) - 1 else 0)
+                if best is None or score > best[0]:
+                    best = (score, i, j)
+    if best:
+        pick = shots[best[1]:best[2] + 1]
+    else:  # one long shot: its first 58 seconds
+        pick = [max(shots, key=lambda s: s["duration"])]
+    t0 = pick[0]["from"]
+    t1 = min(pick[-1]["from"] + pick[-1]["duration"], t0 + hi)
+    scenes = []
+    for s in pick:
+        s = dict(s, **{"from": s["from"] - t0})
+        s["duration"] = min(s["duration"], t1 - t0 - s["from"])
+        scenes.append(s)
+    data, sr = sf.read(os.path.join(os.path.dirname(BUILD), "public", props["audio"]), dtype="float32")
+    clip = data[int(t0 / FPS * sr):int(t1 / FPS * sr)].copy()
+    ramp = int(0.3 * sr)
+    clip[:ramp] *= np.linspace(0, 1, ramp)[:, None]
+    clip[-ramp:] *= np.linspace(1, 0, ramp)[:, None]
+    name = f"{date}-story-short"
+    work = os.path.join(BUILD, name)
+    os.makedirs(work, exist_ok=True)
+    sf.write(os.path.join(os.path.dirname(BUILD), "public", "audio", f"{name}.wav"), clip, sr, subtype="PCM_16")
+    title = next((s["title"] for s in props.get("stories", []) if s["from"] <= t0 < s["until"]), props["thumb"]["title"][-1])
+    short = {"durationInFrames": t1 - t0, "audio": f"audio/{name}.wav", "title": title, "scenes": scenes,
+             "season": props.get("season"), "look": props.get("look")}
+    meta = {"title": f"{title} 🎈 Kids Story #shorts"[:100],
+            "description": "\n".join([f"A moment from today's story, {title}. Watch the whole story on Bubbly Kids TV!", "",
+                                       "#shorts #kidsstories #toddlers #preschool #bubblykidstv"]),
+            "tags": ["kids story", "kids shorts", "story time", "toddler", "preschool", "bubbly kids tv"]}
+    write_json(work, short, meta)
+    print(f"story short {date}: {(t1 - t0) / FPS:.1f}s from {t0 / FPS:.1f}s, {len(scenes)} shots")
 
 
 def check_only(path):

@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {PopWord, RAINBOW, blinkAt, textStyle} from './common';
+import {Look, PopWord, RAINBOW, Season, blinkAt, textStyle} from './common';
 import {Bg, Confetti, Rays, Scenery, Shards} from './Fun';
 import {EggView, Hero, HeroView, Pop, SpeechBubble} from './hero';
 
@@ -21,6 +21,8 @@ export type ShortProps = {
 	bg: Bg;
 	header: string;
 	scenes: ShortScene[];
+	season?: Season;
+	look?: number;
 };
 
 const CX = 540;
@@ -245,11 +247,12 @@ const End: React.FC<{scene: Extract<ShortScene, {type: 'end'}>}> = ({scene}) => 
 };
 
 // ---------------------------------------------------------------- composition
-export const Short: React.FC<ShortProps> = ({scenes, audio, bg, header}) => {
+export const Short: React.FC<ShortProps> = ({scenes, audio, bg, header, season = 'spring', look = 0}) => {
 	const frame = useCurrentFrame();
 	const rounds = scenes.filter((s) => s.type !== 'end');
 	const round = rounds.filter((s) => frame >= s.from).length;
 	return (
+		<Look.Provider value={{season, seed: look}}>
 		<AbsoluteFill style={{background: '#8fd3ff'}}>
 			<Backdrop bg={bg} />
 			{scenes.map((s, i) => (
@@ -263,5 +266,6 @@ export const Short: React.FC<ShortProps> = ({scenes, audio, bg, header}) => {
 			<Header text={header} round={round} rounds={rounds.length} />
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
+		</Look.Provider>
 	);
 };
