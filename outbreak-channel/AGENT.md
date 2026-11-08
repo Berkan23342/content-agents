@@ -42,6 +42,15 @@ days in one part or one day in two parts. A first line that names the day says "
    rejected, run `git pull --rebase origin main` and push again.
 8. Final message: one line per new part, giving the story, part number, title and what happens.
 
+## Approved ideas
+
+`ideas/approved.md` (repository root) lists ideas the channel owner approved each week. An `outbreak-...` idea is
+either a premise for a special or a direction for one of the serials (the idea says which). Use approved ideas before
+your own:
+- Write the first approved idea that no script uses yet, as the next special or as the next part of that serial.
+- Keep the serial's continuity.
+- Record it in the script as `"idea": "<id>"`.
+
 ## Specials and trends
 
 - **Trends.** `trends/latest.md` (at the repository root) lists the fastest-growing zombie and horror Shorts of the

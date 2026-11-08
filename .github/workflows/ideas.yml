@@ -1,0 +1,59 @@
+# Weekly idea approval: a new proposal file opens a GitHub issue with a checkbox per idea; ticking boxes in the issue
+# writes the approved ideas to ideas/approved.md, which the writer agents read first.
+name: Ideas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ideas/proposals/**"
+  issues:
+    types: [edited]
+
+concurrency:
+  group: ideas
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  open-issue:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Open an issue for each new proposal
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create ideas --color FBCA04 --description "Weekly idea approval" --force
+          for f in $(git diff --name-only --diff-filter=A HEAD~1 HEAD -- ideas/proposals/); do
+            week=$(basename "$f" .md)
+            python3 ideas/sync.py issue "$f" > body.md
+            gh issue create --title "Haftalık fikirler – $week" --label ideas --body-file body.md
+          done
+
+  approve:
+    if: github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'ideas')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Write the ticked ideas to ideas/approved.md
+        env:
+          TITLE: ${{ github.event.issue.title }}
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          week="${TITLE##* }"
+          printf '%s' "$BODY" | python3 ideas/sync.py approve "$week"
+          git config user.name "content-bot"
+          git config user.email "content-bot@users.noreply.github.com"
+          git add ideas/approved.md
+          git diff --cached --quiet && exit 0
+          git commit -q -m "ideas: approved for $week"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done

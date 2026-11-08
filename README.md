@@ -17,3 +17,10 @@ Daily, fully automatic content for four projects. It runs in the cloud, so no co
 
 Credentials live only in GitHub Actions secrets: `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_TOKEN` (Bubbly Kids TV), `QUIZ_YOUTUBE_TOKEN` (Brain Snack Quiz), `OUTBREAK_YOUTUBE_TOKEN` (Outbreak Diary), `INSTAGRAM_JSON`, `TIKTOK_JSON`.
 A channel token is made once on a Mac with `kids-channel/.venv/bin/python kids-channel/scripts/upload_youtube.py --sign-in --token <file>` (pick the channel on Google's page), then `gh secret set <NAME> < <file>`.
+
+## Weekly idea approval
+
+Every Sunday a Claude routine writes `ideas/proposals/<year>-W<week>.md`: six ideas each for the kids channel and for
+Outbreak Diary, each with a short Turkish summary. `.github/workflows/ideas.yml` opens it as a GitHub issue ("Haftalık
+fikirler") with a checkbox per idea. Ticking boxes, for example in the GitHub phone app, writes the approved ideas to
+`ideas/approved.md`. The writer agents use approved ideas first; with nothing approved they decide for themselves.
