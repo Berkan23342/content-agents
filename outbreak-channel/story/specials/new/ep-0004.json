@@ -1,7 +1,6 @@
 {
   "episode": 4,
   "title": "Stay in the Water",
-  "narrator": "nicole",
   "ambience": "rain",
   "inspired_by": "https://youtu.be/GAT92irZekM (premise only: everyone must stay in water to survive)",
   "summary": "A lifeguard keeps a crowd safe in a swimming pool, because the infected will not step into water. Until the pump stops.",
@@ -108,5 +107,8 @@
         "Sixty-one"
       ]
     }
-  ]
+  ],
+  "event": "trap",
+  "kind": "found",
+  "narrator": "tess"
 }

@@ -2,6 +2,7 @@
   "episode": 10,
   "title": "The Pilot",
   "summary": "On Day ten, the stranger on the roof offers a way off the coast, for a price.",
+  "event": "stranger",
   "ambience": "rain",
   "beats": [
     {

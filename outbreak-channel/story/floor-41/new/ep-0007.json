@@ -2,6 +2,7 @@
   "episode": 7,
   "title": "Lamp in the Lift",
   "summary": "On Day seven, Maya and Dev find out what turned on the elevator lamp.",
+  "event": "discovery",
   "ambience": "none",
   "beats": [
     {

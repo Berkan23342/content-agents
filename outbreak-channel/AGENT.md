@@ -59,18 +59,35 @@ your own:
   ideas in our own stories.
 - **Never copy.** Never reuse anyone's script, title, characters, pictures or music. Never retell another video's plot
   beat by beat. Take a premise or a hook and build something new in our world.
-- **Specials** (`story/specials/`) are one-part stories, complete in about a minute. They are published on Tuesdays and
-  Fridays; keep 2 waiting like every story.
+- **Specials** (`story/specials/`) are one-part stories, complete in about a minute. They are published on Tuesdays;
+  keep 2 waiting like every story.
   - Each special has its own narrator (always a woman) and its own characters, in the same rainy city of Port Ellis or
     near it.
   - The idea starts from a trending premise in `trends/latest.md`, made our own. Record it in
     `"inspired_by": "<link> (premise only: ...)"`.
-  - Set `"narrator"` to one of `heart`, `isabella`, `nicole`, `grace`, `ruth`, `tess`, a different one from the last
-    special.
+  - Set `"narrator"` to one of `grace`, `ruth`, `tess` (the serials keep `nicole`, `isabella`, `heart`), a different
+    one from the last special.
+  - Set `"kind"`, how the special is told, a different one from the last special. Each kind has its own look:
+    - `story`: a survivor tells it, like the serials (the diary look).
+    - `broadcast`: the narrator is a radio or TV presenter on an emergency broadcast. Her voice sounds like a radio, the
+      screen shows LIVE, EMERGENCY BROADCAST and a news ticker. Write it as a broadcast that slowly goes wrong.
+    - `found`: a phone recording someone left behind (REC light, timecode). The narrator talks to the camera.
+    - `journal`: pages of a handwritten journal someone found (paper edges, handwriting). Dated entries, short.
   - Speakers in specials are `man`, `woman`, `boy`, `girl` and `announcer`.
   - The video shows "SPECIAL" instead of a day. The first line is a strong hook and the last line a twist; the video
     ends with "THE END...?". The specials have no bible; read the earlier ones in `story/specials/` so you never repeat
     an idea.
+
+## Every part is about something different
+
+- Set `"event"` to what the part is mostly about: `supplies`, `shelter`, `escape`, `rescue`, `stranger`, `sickness`,
+  `weather`, `signal`, `loss`, `discovery`, `trap`, `horde`, `journey`, `repair`, `plan`, `quiet`, `split`,
+  `reunion`.
+- Never the same event as the story's previous part. The checker also refuses an event that 3 of the waiting or
+  recently published parts (all stories) already have: then the channel would tell the same day twice.
+- Each story has its own look (story/series.json `frame`): Harbor View is a diary, Floor 41 a phone recording (REC,
+  timecode), Pine Hollow a handwritten journal. Write in a way that fits: Floor 41's narrator can talk to the phone,
+  Pine Hollow's writes short dated entries.
 
 ## Writing rules
 
@@ -95,6 +112,7 @@ your own:
   "title": "Footsteps Upstairs",
   "summary": "One sentence for the YouTube description, without spoilers for the ending.",
   "ambience": "rain",
+  "event": "stranger",
   "beats": [
     {"scene": "room", "light": "candle", "guest": "okafor", "dog": "sleep", "cam": "push",
      "text": "Day four. That night, someone walked across the ceiling.", "hl": ["ceiling"], "sfx": ["steps@1.0"]},
@@ -108,6 +126,8 @@ your own:
 | `episode` | The part number, which is also the day. There is no separate `day` field. |
 | `title` | At most 28 characters. It is shown under "DAY N" and in the YouTube title. |
 | `ambience` | The background bed: `rain`, `wind`, `night` or `none`. |
+| `event` | What the part is mostly about (see "Every part is about something different"). |
+| `kind`, `narrator` | Specials only: how it is told and who tells it (see Specials). |
 | `text` | What Sam says in this beat. It is also the caption. |
 | `hl` | Words from `text` to show in red. |
 | `sfx` | A list of sounds: `"name"` plays at the start of the beat, `"name@1.5"` 1.5 seconds in. |

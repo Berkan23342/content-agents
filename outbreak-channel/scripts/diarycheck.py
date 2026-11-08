@@ -53,6 +53,17 @@ CAMS = {"push", "pull", "left", "right", "still"}
 TONES = {"night", "dawn", "dusk"}
 AMBIENCE = {"rain", "wind", "night", "none"}
 NARRATORS = {"nicole", "isabella", "heart", "grace", "ruth", "tess"}  # women's voices in voices/
+# What a part is mostly about. A part never has the same event as its story's previous part, and no event fills more
+# than 3 of the parts waiting plus the last 6 published (all stories), so the channel does not tell the same day twice.
+EVENTS = {
+    "supplies", "shelter", "escape", "rescue", "stranger", "sickness", "weather", "signal", "loss", "discovery",
+    "trap", "horde", "journey", "repair", "plan", "quiet", "split", "reunion",
+}
+EVENT_LIMIT = 3
+RECENT_USED = 6
+# A special (a one-part story) is told in one of these ways; each has its own look (scripts/diary.py SPECIAL_FRAME).
+SPECIAL_KINDS = {"story", "broadcast", "found", "journal"}
+SPECIAL_NARRATORS = {"grace", "ruth", "tess"}  # the series keep nicole, isabella and heart
 MAX_BEAT_WORDS = 24
 WORDS = (85, 130)
 BEATS = (8, 16)
@@ -190,11 +201,36 @@ def check_against(path, spec):
             raise DiaryError(f"too similar to {os.path.relpath(p, ROOT)} ({score:.0%} of phrases repeat); write something new")
 
 
+def _recent(path):
+    """Scripts waiting in every story, plus the last few published (by publishing date), without `path`."""
+    waiting = glob.glob(os.path.join(ROOT, "story", "*", "new", "*.json"))
+    used = sorted(glob.glob(os.path.join(ROOT, "story", "*", "used", "*", "*.json")), key=lambda p: os.path.basename(os.path.dirname(p)))
+    out = []
+    for p in waiting + used[-RECENT_USED:]:
+        if os.path.abspath(p) != os.path.abspath(path):
+            try:
+                out.append((p, json.load(open(p))))
+            except json.JSONDecodeError:
+                continue
+    return out
+
+
 def check_variety(path, spec):
-    """For the writers: a part has to look different from the last one. At least 4 places (3 in a special), no place
-    in more than 40% of the beats, and not the same set of places as the story's previous part. Raises DiaryError."""
+    """For the writers: a part has to be different from the last ones. At least 4 places (3 in a special), no place
+    in more than 40% of the beats, not the same set of places as the story's previous part, an event that is not the
+    previous part's and not over-used lately; a special changes its kind and its narrator every time. Raises DiaryError."""
     scenes = [b["scene"] for b in spec["beats"]]
     special = "specials" in os.path.abspath(path).split(os.sep)
+    if spec.get("event") not in EVENTS:
+        raise DiaryError(f"'event' (what this part is mostly about) must be one of {sorted(EVENTS)}")
+    same = [os.path.relpath(p, ROOT) for p, o in _recent(path) if o.get("event") == spec["event"]]
+    if len(same) >= EVENT_LIMIT:
+        raise DiaryError(f"event '{spec['event']}' is already in {', '.join(same)}; pick another kind of day")
+    if special:
+        if spec.get("kind") not in SPECIAL_KINDS:
+            raise DiaryError(f"a special needs 'kind', one of {sorted(SPECIAL_KINDS)}")
+        if spec.get("narrator") not in SPECIAL_NARRATORS:
+            raise DiaryError(f"a special picks its own 'narrator', one of {sorted(SPECIAL_NARRATORS)}")
     need = 3 if special else 4
     if len(set(scenes)) < need:
         raise DiaryError(f"only {len(set(scenes))} different scenes; use at least {need} so the part does not look the same throughout")
@@ -210,11 +246,19 @@ def check_variety(path, spec):
             o = json.load(open(p))
             if o["episode"] < spec["episode"]:
                 earlier.append(o)
-    if earlier and not special:
-        last = {b["scene"] for b in max(earlier, key=lambda o: o["episode"])["beats"]}
+    previous = max(earlier, key=lambda o: o["episode"]) if earlier else None
+    if previous and not special:
+        last = {b["scene"] for b in previous["beats"]}
         mine = set(scenes)
         if len(mine & last) / len(mine | last) >= 0.8:
             raise DiaryError(f"almost the same places as the previous part ({sorted(last)}); take the story somewhere new")
+    if previous and previous.get("event") == spec["event"]:
+        raise DiaryError(f"the previous part was also '{spec['event']}'; make this day about something else")
+    if previous and special:
+        if previous.get("kind") == spec["kind"]:
+            raise DiaryError(f"the previous special was also a '{spec['kind']}'; tell this one another way")
+        if previous.get("narrator") == spec["narrator"]:
+            raise DiaryError(f"the previous special was also told by {spec['narrator']}; pick another narrator")
 
 
 def estimate_seconds(total_words):

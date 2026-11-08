@@ -5,6 +5,8 @@
   "ambience": "rain",
   "inspired_by": "https://youtu.be/vH0pd4SomN8 (premise only: fooling a crowd of infected with a clever trick)",
   "summary": "A bus driver hides forty strangers in the dark and keeps them silent with one rule: no sound.",
+  "event": "shelter",
+  "kind": "story",
   "beats": [
     {
       "scene": "street",

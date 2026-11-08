@@ -105,14 +105,38 @@ def take_episode(series, vid):
     return path
 
 
+# Each story has its own look (story/series.json "frame"); a special takes the look of its kind.
+SPECIAL_FRAME = {"story": "diary", "broadcast": "broadcast", "found": "camcorder", "journal": "journal"}
+
+
+def radio(c):
+    """A voice heard through a radio or a TV speaker: narrow band, a little crunch."""
+    from scipy.signal import butter, sosfilt
+
+    sos = butter(4, [320, 3300], btype="bandpass", fs=SR, output="sos")
+    y = sosfilt(sos, c, axis=0)
+    y = np.tanh(y * 2.2) / np.tanh(2.2)
+    peak = np.max(np.abs(y)) or 1.0
+    return (y / peak * np.max(np.abs(c))).astype(np.float32)
+
+
+def frame_for(spec, series):
+    if series.get("label"):
+        return SPECIAL_FRAME.get(spec.get("kind", "story"), "diary")
+    return series.get("frame", "diary")
+
+
 def build(spec, series):
     b = Builder()
     narrator = spec.get("narrator", series["narrator"])  # a special may pick its own narrator
     lines = [(beat.get("speaker", narrator), beat["text"]) for beat in spec["beats"]]
     speak_all(lines)
+    frame = frame_for(spec, series)
 
     def say(at, voice, text):
         c = clip(voice, text)
+        if frame == "broadcast" and voice == narrator:
+            c = radio(c)
         b.voices.append((at, c))
         return len(c) / SR
 
@@ -171,7 +195,7 @@ def build(spec, series):
     b.music_gain = 0.2
     n = spec["episode"]
     props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"),
-             "grade": series.get("grade"), "title": spec["title"],
+             "grade": series.get("grade"), "title": spec["title"], "frame": frame,
              "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
     title = video_title(series, n, spec["title"])
     meta = {
