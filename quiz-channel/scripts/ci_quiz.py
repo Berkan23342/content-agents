@@ -1,10 +1,12 @@
-"""Makes and uploads the day's two Brain Snack Quiz Shorts on a server (GitHub Actions).
+"""Makes and uploads the day's Brain Snack on a server (GitHub Actions).
 
-  python3 scripts/ci_quiz.py q1|q2|auto [--date YYYY-MM-DD] [--no-upload]
-  python3 scripts/ci_quiz.py due        prints the Shorts that are not uploaded yet ("q1 q2", or nothing)
+  python3 scripts/ci_quiz.py snack|auto [--date YYYY-MM-DD] [--no-upload]
+  python3 scripts/ci_quiz.py due        prints "snack" when today's Brain Snack is not uploaded yet, else nothing
 
-Both Shorts are made in one morning run. YouTube publishes them at 19:00 and 23:30 Istanbul time (lunch and
-afternoon in the US); if that time has already passed, the Short is published right away.
+Since 2026-11-08 the channel posts three different Brain Snacks a week instead of two template quizzes a day:
+Monday "Why?", Wednesday "Mystery", Friday "Real life" (see scripts/snack.py and AGENT.md). The video is made in the
+morning and YouTube publishes it at 19:00 Istanbul time (lunch in the US); if that time has passed, right away.
+A test render (--no-upload) leaves the script waiting in snacks/new.
 """
 import argparse
 import datetime as dt
@@ -16,10 +18,8 @@ from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
-PUBLISH_AT = {"q1": dt.time(19, 0), "q2": dt.time(23, 30)}
-# Paused on 2026-11-08: the template quiz is the format YouTube refuses to monetise ("inauthentic content"). The
-# channel comes back with a redesign; until then nothing is due.
-PAUSED = True
+PUBLISH_AT = dt.time(19, 0)
+DAYS = (0, 2, 4)  # Monday, Wednesday, Friday
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
 CHANNEL = "UCyuNuzwYO9UgNt5GP0UqePg"  # Brain Snack Quiz; the uploader refuses a token for any other channel
@@ -30,9 +30,9 @@ def uploaded(vid):
 
 
 def due(date):
-    if PAUSED:
+    if dt.date.fromisoformat(date).weekday() not in DAYS:
         return []
-    return [q for q in PUBLISH_AT if not uploaded(f"{date}-{q}")]
+    return [] if uploaded(f"{date}-snack") else ["snack"]
 
 
 def run(*cmd, tries=1):
@@ -43,23 +43,23 @@ def run(*cmd, tries=1):
     raise SystemExit(f"failed: {' '.join(cmd)}")
 
 
-def make(q, date, upload):
-    vid = f"{date}-{q}"
+def make(date, upload):
+    vid = f"{date}-snack"
     if uploaded(vid):
         print(f"{vid} already uploaded")
         return
     if upload and not (os.path.exists(TOKEN) and os.path.getsize(TOKEN)):
         raise SystemExit("no channel token: add the QUIZ_YOUTUBE_TOKEN secret (see README)")
     py = sys.executable
-    run(py, "scripts/quiz.py", "--date", date, "--slot", q[-1])
+    run(py, "scripts/snack.py", "--date", date, *([] if upload else ["--keep"]))
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     mp4 = f"out/{vid}.mp4"
-    run("npx", "remotion", "render", "src/index.tsx", "Quiz", mp4, f"--props=build/{vid}/props.json", "--timeout=120000",
+    run("npx", "remotion", "render", "src/index.tsx", "Snack", mp4, f"--props=build/{vid}/props.json", "--timeout=120000",
         "--log=error", tries=3)
     if not upload:
         print(f"rendered {mp4} (not uploaded)")
         return
-    publish = dt.datetime.combine(dt.date.fromisoformat(date), PUBLISH_AT[q], TZ)
+    publish = dt.datetime.combine(dt.date.fromisoformat(date), PUBLISH_AT, TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
             "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]
     if publish - dt.datetime.now(TZ) > dt.timedelta(minutes=15):
@@ -71,7 +71,7 @@ def make(q, date, upload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("kind", choices=["q1", "q2", "auto", "due"])
+    p.add_argument("kind", choices=["snack", "auto", "due"])
     p.add_argument("--date", default="")
     p.add_argument("--no-upload", action="store_true")
     a = p.parse_args()
@@ -79,8 +79,8 @@ def main():
     if a.kind == "due":
         print(" ".join(due(date)))
         return
-    for q in due(date) if a.kind == "auto" else [a.kind]:
-        make(q, date, not a.no_upload)
+    for _ in due(date) if a.kind == "auto" else ["snack"]:
+        make(date, not a.no_upload)
 
 
 if __name__ == "__main__":

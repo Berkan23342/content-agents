@@ -1,0 +1,129 @@
+{
+  "format": "why",
+  "title": "Why Is the Sky Blue?",
+  "summary": "Why is the sky blue and not purple or white? Sunlight, tiny air molecules and a surprise about sunsets on Mars.",
+  "beats": [
+    {
+      "text": "Why is the sky blue? It isn't paint, and it isn't the ocean reflecting.",
+      "visual": {
+        "kind": "hook",
+        "emoji": "🌤️",
+        "text": "Why is the sky blue?"
+      }
+    },
+    {
+      "text": "Sunlight looks white, but it's really every color of the rainbow mixed together.",
+      "hl": [
+        "every color"
+      ],
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "☀️",
+            "label": "White sunlight"
+          },
+          {
+            "emoji": "🌈",
+            "label": "= every color"
+          }
+        ]
+      }
+    },
+    {
+      "text": "To reach your eyes, that light has to crash through miles of air.",
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🌍",
+        "label": "Miles of air",
+        "motion": "float"
+      }
+    },
+    {
+      "text": "Quick guess! Which color gets bounced around the sky the most?",
+      "reveal": "Blue! Blue light gets scattered several times more than red.",
+      "hl": [
+        "Blue"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "Which color bounces around most?",
+        "options": [
+          {
+            "emoji": "🔴",
+            "label": "Red"
+          },
+          {
+            "emoji": "🔵",
+            "label": "Blue"
+          },
+          {
+            "emoji": "🟢",
+            "label": "Green"
+          }
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "text": "Blue light travels in short, choppy waves. Red light travels in long, lazy ones.",
+      "hl": [
+        "short"
+      ],
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🔵",
+          "label": "Short waves"
+        },
+        "b": {
+          "emoji": "🔴",
+          "label": "Long waves"
+        }
+      }
+    },
+    {
+      "text": "Tiny air molecules scatter the short blue waves in every direction, so blue reaches you from the whole sky.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🔵",
+            "label": "Blue hits air"
+          },
+          {
+            "emoji": "💥",
+            "label": "Scatters everywhere"
+          },
+          {
+            "emoji": "👀",
+            "label": "Blue sky!"
+          }
+        ]
+      }
+    },
+    {
+      "text": "At sunset, light travels through much more air. Most of the blue is scattered away, and reds are left.",
+      "hl": [
+        "reds"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🌅",
+        "label": "More air = red sky",
+        "motion": "zoom"
+      }
+    },
+    {
+      "text": "Bonus fact: on Mars it's the other way round. The day sky looks dusty orange, and sunsets look blue!",
+      "hl": [
+        "blue"
+      ],
+      "visual": {
+        "kind": "fact",
+        "emoji": "🚀",
+        "text": "On Mars, the sunset is blue!"
+      }
+    }
+  ]
+}

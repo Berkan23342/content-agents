@@ -1,13 +1,13 @@
-# Brain Snack Quiz: renders and uploads two quiz Shorts a day, no Mac needed.
-# Both are made in the morning; YouTube publishes them at 19:00 and 23:30 Istanbul time.
+# Brain Snack Quiz: renders and uploads a Brain Snack on Mondays (Why?), Wednesdays (Mystery) and Fridays (Real life),
+# no Mac needed. It is made in the morning; YouTube publishes it at 19:00 Istanbul time.
 name: Quiz video
 
 on:
-  # The quiz writer routine pushes new question packs in the morning: that starts the run.
+  # The snack writer routine pushes new scripts in the morning: that starts the run (on other days nothing is due).
   push:
     branches: [main]
     paths:
-      - "quiz-channel/quizzes/new/**"
+      - "quiz-channel/snacks/new/**"
   # Backups, because GitHub's scheduler can be hours late. A run with nothing due stops after a few seconds.
   schedule:
     - cron: "0 6 * * *"
@@ -17,7 +17,7 @@ on:
     inputs:
       kind:
         type: choice
-        options: [auto, q1, q2]
+        options: [auto, snack]
         default: auto
       upload:
         description: Upload to YouTube (off = render only, the video is kept as an artifact)
@@ -75,16 +75,18 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: kids-channel/requirements.txt
+          cache-dependency-path: |
+            kids-channel/requirements.txt
+            outbreak-channel/requirements-voice.txt
 
       - name: System packages
         if: steps.due.outputs.todo != ''
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq fluidsynth ffmpeg
+          sudo apt-get install -y -qq fluidsynth ffmpeg fonts-noto-color-emoji
           sudo apt-get install -y -qq libnss3 libgbm1 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libpango-1.0-0 libcairo2 || true
 
-      # the voice model and soundfont are shared with the kids channel (same cache)
+      # the soundfont (music) is shared with the kids channel (same cache)
       - name: Restore models and soundfont
         if: steps.due.outputs.todo != ''
         uses: actions/cache@v4
@@ -104,18 +106,34 @@ jobs:
           [ -f assets/kokoro/voices-v1.0.bin ] || curl -sSfL -o assets/kokoro/voices-v1.0.bin $base/voices-v1.0.bin
           [ -f assets/soundfont/GeneralUser-GS.sf2 ] || curl -sSfL -o assets/soundfont/GeneralUser-GS.sf2 https://raw.githubusercontent.com/mrbumpy409/GeneralUser-GS/main/GeneralUser-GS.sf2
 
-      - name: Restore voice cache
-        if: steps.due.outputs.todo != ''
-        uses: actions/cache@v4
-        with:
-          path: kids-channel/build/tts-cache
-          key: quiz-tts-${{ github.run_id }}
-          restore-keys: quiz-tts-
-
       - if: steps.due.outputs.todo != ''
         run: npm ci
       - if: steps.due.outputs.todo != ''
         run: pip install -q -r ../kids-channel/requirements.txt
+
+      # The host is voiced by Chatterbox (as on Outbreak Diary), which needs PyTorch: its own environment (CPU build).
+      - name: Voice engine
+        if: steps.due.outputs.todo != ''
+        run: |
+          python -m venv "$HOME/cb"
+          "$HOME/cb/bin/pip" install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          "$HOME/cb/bin/pip" install -q -r ../outbreak-channel/requirements-voice.txt
+          echo "CB_PYTHON=$HOME/cb/bin/python" >> "$GITHUB_ENV"
+
+      - name: Restore the voice model
+        if: steps.due.outputs.todo != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface/hub
+          key: chatterbox-0.1.7
+
+      - name: Restore host voice cache
+        if: steps.due.outputs.todo != ''
+        uses: actions/cache@v4
+        with:
+          path: quiz-channel/build/cb-cache
+          key: quiz-cb-${{ github.run_id }}
+          restore-keys: quiz-cb-
 
       - name: YouTube credentials
         if: steps.due.outputs.todo != ''
@@ -127,7 +145,7 @@ jobs:
           printf '%s' "$CLIENT" > secrets/client_secret.json
           printf '%s' "$TOKEN" > secrets/token.json
 
-      - name: Make the Shorts
+      - name: Make the Brain Snack
         if: steps.due.outputs.todo != ''
         run: python scripts/ci_quiz.py "$KIND" ${{ inputs.date && format('--date {0}', inputs.date) || '' }} ${{ env.UPLOAD != 'true' && '--no-upload' || '' }}
 
@@ -140,13 +158,13 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
-      - name: Save state (uploaded list, used packs)
+      - name: Save state (uploaded list, used scripts)
         if: always() && steps.due.outputs.todo != ''
         run: |
           rm -f secrets/*.json
           git config user.name "content-bot"
           git config user.email "content-bot@users.noreply.github.com"
-          git add logs/uploaded.txt quizzes
+          git add logs/uploaded.txt snacks
           git diff --cached --quiet && exit 0
           git commit -q -m "quiz: ${{ steps.due.outputs.todo }} $(TZ=Europe/Istanbul date +%F)"
           for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done

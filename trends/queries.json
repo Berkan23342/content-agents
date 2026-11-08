@@ -2,16 +2,37 @@
   "outbreak": {
     "name": "Outbreak Diary (zombie and survival story Shorts)",
     "short": true,
-    "queries": ["zombie apocalypse story", "zombie survival animation", "day 1 of zombie apocalypse", "survival story animation", "scary story animated", "apocalypse diary"]
+    "queries": [
+      "zombie apocalypse story",
+      "zombie survival animation",
+      "day 1 of zombie apocalypse",
+      "survival story animation",
+      "scary story animated",
+      "apocalypse diary"
+    ]
   },
   "quiz": {
-    "name": "Brain Snack Quiz (quiz Shorts)",
+    "name": "Brain Snack Quiz (Why? explainers, mystery riddles, what-would-you-do Shorts)",
     "short": true,
-    "queries": ["guess the flag quiz", "general knowledge quiz", "true or false quiz", "math quiz", "guess the country quiz", "emoji quiz"]
+    "queries": [
+      "why does explained for kids",
+      "science facts shorts",
+      "riddle mystery can you solve it",
+      "detective riddle shorts",
+      "what would you do life hack",
+      "fun facts you didn't know"
+    ]
   },
   "kids": {
     "name": "Bubbly Kids TV (toddlers and preschool)",
     "short": false,
-    "queries": ["surprise eggs for kids", "learn colors for toddlers", "guess the animal for kids", "kids story animation", "toddler learning video", "nursery rhymes for babies"]
+    "queries": [
+      "surprise eggs for kids",
+      "learn colors for toddlers",
+      "guess the animal for kids",
+      "kids story animation",
+      "toddler learning video",
+      "nursery rhymes for babies"
+    ]
   }
 }
