@@ -1,9 +1,9 @@
-# Brain Snack Quiz: renders and uploads a Brain Snack on Mondays (Why?), Wednesdays (Mystery) and Fridays (Real life),
+# Brain Snack Quiz: renders and uploads one Brain Snack a day (eight formats in turn, see quiz-channel/AGENT.md),
 # no Mac needed. It is made in the morning; YouTube publishes it at 19:00 Istanbul time.
 name: Quiz video
 
 on:
-  # The snack writer routine pushes new scripts in the morning: that starts the run (on other days nothing is due).
+  # The snack writer routine pushes new scripts in the morning: that starts the run (a later run the same day finds nothing due).
   push:
     branches: [main]
     paths:

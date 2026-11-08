@@ -1,9 +1,12 @@
-"""Checks a Brain Snack script (snacks/new/*.json) without rendering anything. Standard library only.
+"""Checks a Brain Snack script (snacks/new/*.json) without rendering anything, and plans the coming days. Standard
+library only.
 
-  python3 scripts/snackcheck.py snacks/new/2026-11-09-why-sky-blue.json
+  python3 scripts/snackcheck.py snacks/new/2026-11-09-why-sky-blue.json   "ok", or the first problem found
+  python3 scripts/snackcheck.py --plan [days]                             the format of each coming day, and its script
 
-Prints "ok" with a rough length estimate, or the first problem found. scripts/snack.py uses the same checks.
+scripts/snack.py uses the same checks and the same plan.
 """
+import datetime as dt
 import glob
 import json
 import os
@@ -14,7 +17,17 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(ROOT), "shared"))
 from novelty import overlap  # noqa: E402
 
-FORMATS = {"why", "mystery", "real"}
+# The formats take turns, one a day, so the same one comes back every 8 days and on a different weekday each time.
+ROTATION = ["why", "how", "mystery", "myth", "real", "whatif", "teaser", "origin"]
+FIRST_DAY = dt.date(2026, 11, 9)  # a "why" day
+FORMATS = set(ROTATION)
+# what a snack is about; the same topic at most twice among the waiting scripts and the last few used ones
+TOPICS = {
+    "body", "mind", "health", "space", "earth", "weather", "ocean", "nature", "animals", "food", "technology",
+    "home", "history", "language", "money", "travel", "sport", "music", "art", "work", "school", "city", "transport",
+}
+TOPIC_LIMIT = 2
+RECENT_USED = 6
 KINDS = {"hook", "emoji", "pair", "steps", "number", "choice", "fact", "scale", "clues", "suspects"}
 MOTIONS = {"bounce", "spin", "zoom", "shake", "float"}
 WORDS = (90, 160)
@@ -48,11 +61,13 @@ def _items(where, items, lo=2, hi=4):
 
 def check_snack(spec):
     """Raises SnackError when a script would not fit the video or the format."""
-    for key in ("format", "title", "summary", "beats"):
+    for key in ("format", "title", "summary", "topic", "beats"):
         if key not in spec:
             raise SnackError(f"missing '{key}'")
     if spec["format"] not in FORMATS:
         raise SnackError(f"format must be one of {sorted(FORMATS)}")
+    if spec["topic"] not in TOPICS:
+        raise SnackError(f"topic must be one of {sorted(TOPICS)}")
     if len(spec["title"]) > 60:
         raise SnackError("title is longer than 60 characters")
     beats = spec["beats"]
@@ -121,8 +136,16 @@ def check_snack(spec):
     for i in range(1, len(kinds)):
         if kinds[i] == kinds[i - 1]:
             raise SnackError(f"beats {i} and {i + 1} are both '{kinds[i]}': change one of them")
-    if spec["format"] in ("why", "real") and "choice" not in kinds:
-        raise SnackError("a why or real snack needs a 'choice' beat: the viewer guesses before the answer")
+    if "choice" not in kinds:
+        raise SnackError("every snack needs a 'choice' beat: the viewer guesses before the answer")
+    if spec["format"] == "how" and "steps" not in kinds:
+        raise SnackError("a how snack shows the mechanism as a 'steps' beat")
+    if spec["format"] == "myth" and "pair" not in kinds:
+        raise SnackError("a myth snack puts the belief against the truth in a 'pair' beat")
+    if spec["format"] in ("whatif", "teaser", "origin") and "steps" not in kinds:
+        raise SnackError({"whatif": "a what-if shows the chain of what would happen as a 'steps' beat",
+                          "teaser": "a teaser explains the solution step by step in a 'steps' beat",
+                          "origin": "an origin story shows how it changed over time in a 'steps' beat"}[spec["format"]])
     if spec["format"] == "why" and "fact" not in kinds:
         raise SnackError("a why snack ends with a 'fact' beat (the bonus fact)")
     if spec["format"] == "mystery":
@@ -139,11 +162,25 @@ def snack_text(spec):
     return spec["title"] + ". " + " ".join(b["text"] + " " + b.get("reveal", "") for b in spec["beats"])
 
 
-def check_against(path, spec):
-    """No title twice and no script too close to an earlier one. Raises SnackError."""
+def waiting():
+    return sorted(glob.glob(os.path.join(ROOT, "snacks", "new", "*.json")))
+
+
+def used():
+    """Used scripts, oldest first (by the date folder they were used on)."""
+    return sorted(glob.glob(os.path.join(ROOT, "snacks", "used", "*", "*.json")))
+
+
+def check_against(path, spec, topics=True):
+    """No title twice, no script too close to an earlier one, no topic over-used lately (only checked when writing).
+    Raises SnackError."""
     path = os.path.abspath(path)
     text = snack_text(spec)
-    for p in glob.glob(os.path.join(ROOT, "snacks", "new", "*.json")) + glob.glob(os.path.join(ROOT, "snacks", "used", "*", "*.json")):
+    recent = [p for p in waiting() + used()[-RECENT_USED:] if os.path.abspath(p) != path]
+    same = [os.path.basename(p) for p in recent if json.load(open(p)).get("topic") == spec["topic"]]
+    if topics and len(same) >= TOPIC_LIMIT:
+        raise SnackError(f"topic '{spec['topic']}' is already in {', '.join(same)}: pick another topic")
+    for p in waiting() + used():
         if os.path.abspath(p) == path:
             continue
         other = json.load(open(p))
@@ -154,7 +191,42 @@ def check_against(path, spec):
             raise SnackError(f"too similar to {os.path.basename(p)} ({score:.0%} of phrases repeat)")
 
 
+def format_for(date):
+    return ROTATION[(dt.date.fromisoformat(date) - FIRST_DAY).days % len(ROTATION)]
+
+
+def plan(start, days):
+    """[(date, format, script path or None)]: each coming day gets the oldest waiting script of its format."""
+    pool = {}
+    for p in waiting():
+        try:
+            pool.setdefault(json.load(open(p))["format"], []).append(p)
+        except (json.JSONDecodeError, KeyError):
+            continue
+    out = []
+    for i in range(days):
+        date = (dt.date.fromisoformat(start) + dt.timedelta(days=i)).isoformat()
+        fmt = format_for(date)
+        done = glob.glob(os.path.join(ROOT, "snacks", "used", date, "*.json"))
+        if done:
+            out.append((date, fmt, done[0]))
+        else:
+            out.append((date, fmt, pool[fmt].pop(0) if pool.get(fmt) else None))
+    return out
+
+
 def main():
+    if sys.argv[1:2] == ["--plan"]:
+        days = int(sys.argv[2]) if len(sys.argv) > 2 else len(ROTATION)
+        today = dt.datetime.now(dt.timezone(dt.timedelta(hours=3))).date().isoformat()  # Istanbul
+        for date, fmt, path in plan(max(today, FIRST_DAY.isoformat()), days):
+            print(f"{date} {fmt:8} {os.path.relpath(path, ROOT) if path else 'MISSING: write one'}")
+        topics = {}
+        for p in waiting() + used()[-RECENT_USED:]:
+            t = json.load(open(p)).get("topic")
+            topics[t] = topics.get(t, 0) + 1
+        print("recent topics (at most %d each): %s" % (TOPIC_LIMIT, ", ".join(f"{t} {n}" for t, n in sorted(topics.items(), key=str))))
+        return
     for path in sys.argv[1:]:
         try:
             spec = json.load(open(path))

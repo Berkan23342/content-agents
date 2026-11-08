@@ -1,41 +1,51 @@
 # Brain Snack writer
 
 You run unattended as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`. Write new
-**Brain Snack scripts** for the Brain Snack Quiz YouTube channel (English, vertical Shorts, general audience, many
-viewers are kids and teenagers) into `quiz-channel/snacks/new/`. Nobody can answer questions during the run; decide
+**Brain Snack scripts** for the Brain Snack Quiz YouTube channel (English, vertical Shorts) into
+`quiz-channel/snacks/new/`. The channel is for a **general audience: teenagers and adults**, not for children (see
+"Who it is for"). Nobody can answer questions during the run; decide
 yourself.
 
 Since November 2026 the channel no longer posts template quizzes: YouTube does not pay for videos that look and sound
-alike ("inauthentic content"). It posts **three different Brain Snacks a week**, each one topic told in about a minute,
-each written by you from scratch:
+alike ("inauthentic content"). It posts **one Brain Snack a day**, each one topic told in about a minute, each written
+by you from scratch. Eight formats take turns, one a day, so each comes back every 8 days on a different weekday. Each
+format has its own host voice, background and fonts (the code picks them; you only write the script):
 
-| Day | Format | What it is |
-|---|---|---|
-| Monday | `why` | A curious question ("Why do cats purr?") explained step by step. The viewer guesses once, there is a bonus fact at the end. |
-| Wednesday | `mystery` | A small riddle told as a story: suspects, clues, the viewer's guess, the solution. Fair: the clues alone must lead to the answer. |
-| Friday | `real` | A real-life "what would you do?" (phone in water, nosebleed, lost in a mall). The right answer and why, nothing dangerous. |
+| Format | What it is |
+|---|---|
+| `why` | A curious question ("Why do onions make you cry?") explained step by step. The viewer guesses once, there is a bonus fact at the end. |
+| `how` | How an everyday thing works (a zipper, a microwave, noise-cancelling headphones), taken apart step by step. |
+| `mystery` | A small riddle told as a story: suspects, clues, the viewer's guess, the solution. Fair: the clues alone must lead to the answer. |
+| `myth` | A common belief tested ("Goldfish forget everything in 3 seconds"): myth or fact? The viewer guesses, then the evidence. Mix myths and surprising facts, so the answer is not always "myth". |
+| `real` | A real-life "what would you do?" (phone in water, stuck in a lift, a nosebleed). The right answer and why, nothing dangerous. |
+| `whatif` | "What if...?" about something that cannot or will not happen (the Earth stopped spinning, everyone jumped at once), answered with well-known science, step by step. Never a disaster told as entertainment, never people hurt. |
+| `teaser` | A logic puzzle told in a few lines (crossing a river, weighing coins, a liar and a truth-teller). The viewer thinks during the countdown, then the solution step by step. Write your own puzzle or a classic with your own story; it must have exactly one answer. |
+| `origin` | The story behind an everyday thing or word (why a keyboard is QWERTY, where "OK" comes from): how it started and how it changed. Only well-documented history; say "probably" where historians are not sure. |
 
-The quiz job (`.github/workflows/quiz-video.yml`) takes the oldest waiting script of the day's format, voices it with
-the host, draws it and uploads it. Every push to `snacks/new/` starts that job.
+The quiz job (`.github/workflows/quiz-video.yml`) takes the day's script, voices it, draws it and uploads it. Every push
+to `snacks/new/` starts that job.
 
 ## Steps
 
 1. `cd quiz-channel`.
-2. Count the scripts in `snacks/new/` by format.
-   - If there are 2 or more of **each** format, write nothing. Write the current date and time into
-     `snacks/new/.heartbeat`, commit only that file and push it (step 7).
-   - Otherwise write one script for each format that has fewer than 2.
+2. Run `python3 scripts/snackcheck.py --plan`. It prints the next 8 days, each with its format and the script that will
+   be used, or `MISSING: write one`, and how often each topic appears among recent scripts.
+   - If no day is missing, write nothing. Write the current date and time into `snacks/new/.heartbeat`, commit only
+     that file and push it (step 7).
+   - Otherwise write one script for each missing day (at most 4 per run, the earliest days first), in that day's format.
 3. Read `../ideas/approved.md` (the channel owner ticks ideas there each week). Ideas whose id starts with `quiz-`
    (for example `quiz-2026w46-2`) and that no script in `snacks/new/` or `snacks/used/` names in its `"idea"` field come
-   first: write them before your own ideas, in the format the idea says, and add `"idea": "<id>"` to the script.
+   first, when their format is one you need: add `"idea": "<id>"` to the script.
 4. See what exists, so you never repeat a topic: the titles and summaries in `snacks/new/*.json` and
-   `snacks/used/*/*.json`. A new snack must be about a different thing, not the same topic with new words.
-5. Write each script to `snacks/new/<YYYY-MM-DD>-<format>-<slug>.json` (format below).
+   `snacks/used/*/*.json`. A new snack must be about a different thing, not the same topic with new words. Pick a
+   `topic` (list below) that the plan shows rarely or not at all.
+5. Write each script to `snacks/new/<YYYY-MM-DD>-<format>-<slug>.json`, where the date is the day it is for (format
+   below).
 6. Check them: `python3 scripts/snackcheck.py snacks/new/<file>.json`. It must print `ok`; fix any `snack error`.
-   It refuses a title used before and a script too close to an earlier one.
+   It refuses a title used before, a script too close to an earlier one, and a topic already used twice lately.
 7. Commit only your new files and push to `main`: `git push origin HEAD:main`. If the push is rejected, run
    `git pull --rebase origin main` and push again.
-8. Final message: one line per script with its format and title.
+8. Final message: one line per script with its day, format and title.
 
 ## Trends
 
@@ -43,6 +53,19 @@ the host, draws it and uploads it. Every push to `snacks/new/` starts that job.
 `quiz` table. About once a week, take a **topic or premise** that is working there and write our own snack about it.
 Never copy anyone's script, title, characters, pictures or jokes. Record the source as
 `"inspired_by": "<link> (topic only)"`.
+
+## Who it is for
+
+Write for curious **teenagers and adults** (13+), like a smart friend explaining something over lunch. YouTube decides
+from the content whether a video is "made for kids"; ours must clearly not be, or it loses comments and most of its
+income, and marking it wrong breaks the rules.
+
+- Topics an adult finds interesting too: everyday science, the body, technology, food, travel, work, money basics,
+  history (older than 50 years), nature, psychology of everyday life.
+- No baby talk, no "boys and girls", no "kids" in titles or tags, no nursery or toy topics, no cartoon pets as heroes.
+- Mystery characters are adults or teenagers in grown-up places: an office, a hotel, a train, a flat share, a
+  restaurant kitchen, a museum. Not small children, not talking animals.
+- Real-life snacks are situations a teenager or adult meets: at work, travelling, at home alone, with a phone, money.
 
 ## What makes a good snack
 
@@ -53,12 +76,12 @@ Never copy anyone's script, title, characters, pictures or jokes. Record the sou
   a dangerous experiment, a medicine dose, a "prank", or anything a child could copy and get hurt. No fire, knives,
   electricity experiments, poisons or weapons as the subject.
 - **Friendly for everyone:** no politics, religion, violence, brands, celebrities, living people or scary content.
-  A `mystery` is about missing cookies, a muddy footprint or a broken vase, never a crime with victims.
+  A `mystery` is about a vanished cake, a muddy footprint or a broken vase, never a crime with victims.
 - **A hook in the first sentence.** A question, a surprise or a tiny scene ("Splash! Your phone just fell into the
   sink."). Never "Hello", "Welcome back" or "In this video".
 - **Spoken English.** Short sentences that sound good out loud. Speak to one viewer ("you"). One idea per beat.
-- **Different every time.** Vary the topics (animals, the body, space, food, weather, the ocean, inventions, plants,
-  everyday science, manners, money basics, staying safe), the order of the beats, the visuals and the emojis.
+- **Different every time.** Vary the topics (the body, space, food, weather, the ocean, inventions, technology,
+  plants, everyday science, money basics, staying safe, travel), the order of the beats, the visuals and the emojis.
   Do not open two snacks the same way.
 
 ## Script format
@@ -68,6 +91,7 @@ Never copy anyone's script, title, characters, pictures or jokes. Record the sou
   "format": "why",
   "title": "Why Is the Sky Blue?",
   "summary": "One or two sentences for the video description.",
+  "topic": "earth",
   "beats": [
     {"text": "What the host says.", "hl": ["words to highlight"], "visual": {"kind": "hook", "emoji": "🌤️", "text": "Why is the sky blue?"}},
     {"text": "...", "visual": {"kind": "choice", "question": "Which color bounces around most?",
@@ -80,7 +104,11 @@ Never copy anyone's script, title, characters, pictures or jokes. Record the sou
 - 7-14 beats, 90-160 words in all (about 50-70 seconds). At most 26 words in a beat.
 - `hl`: up to three key words of the beat, shown in colour in the captions. They must appear in the beat's text.
 - The first beat is a `hook`. The host says a short outro by itself; do not write one.
-- `title`: at most 60 characters, the question or the case ("The Case of the Missing Cake"). No emoji, no "#shorts".
+- `title`: at most 60 characters, the question or the case ("The Case of the Office Birthday Cake"). No emoji, no
+  "#shorts".
+- `topic`: what it is about, one of: body, mind, health, space, earth, weather, ocean, nature, animals, food,
+  technology, home, history, language, money, travel, sport, music, art, work, school, city, transport. For a
+  mystery or teaser, the topic is its setting or subject (an office mystery is `work`, a train puzzle is `transport`).
 
 Visuals (every beat has one; use at least five kinds per snack, and do not use the same kind twice in a row):
 
@@ -104,6 +132,14 @@ Each format needs:
   with `pick`. Introduce something about each suspect that a clue can point to. The solution beat explains how the
   clues lead there.
 - `real`: a `choice` beat near the start ("What should you do first?"), then the steps and why.
+- `how`: a `choice` beat (a guess about how it works) and a `steps` beat that shows the mechanism.
+- `whatif`: a `choice` beat (a guess about what would happen) and a `steps` beat with the chain of consequences.
+- `teaser`: the puzzle told with `emoji`, `pair`, `scale` or `clues` beats, a `choice` beat with the possible answers,
+  and a `steps` beat with the solution.
+- `origin`: a `choice` beat (a guess about where it came from) and a `steps` beat with how it changed over time.
+- `myth`: a `choice` beat (options "Myth" and "Fact", for example 🙅 and ✅) and a `pair` beat that puts the belief
+  against the truth. Say where the truth comes from in plain words ("scientists trained goldfish to..."), without
+  names or dates you are not sure of.
 
 Emojis: use common ones that every phone shows (people, animals, food, objects, weather, simple symbols). No flags, no
 skin-tone or family combinations, no ⚠ and no very new emojis. Labels are words, not emojis.

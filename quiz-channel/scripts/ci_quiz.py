@@ -3,9 +3,9 @@
   python3 scripts/ci_quiz.py snack|auto [--date YYYY-MM-DD] [--no-upload]
   python3 scripts/ci_quiz.py due        prints "snack" when today's Brain Snack is not uploaded yet, else nothing
 
-Since 2026-11-08 the channel posts three different Brain Snacks a week instead of two template quizzes a day:
-Monday "Why?", Wednesday "Mystery", Friday "Real life" (see scripts/snack.py and AGENT.md). The video is made in the
-morning and YouTube publishes it at 19:00 Istanbul time (lunch in the US); if that time has passed, right away.
+Since 2026-11-08 the channel posts one Brain Snack a day instead of two template quizzes, rotating five formats
+(scripts/snack.py WEEKDAY_FORMAT, AGENT.md). The video is made in the morning and YouTube publishes it at 19:00
+Istanbul time (lunch in the US); if that time has passed, right away.
 A test render (--no-upload) leaves the script waiting in snacks/new.
 """
 import argparse
@@ -19,9 +19,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
 PUBLISH_AT = dt.time(19, 0)
-DAYS = (0, 2, 4)  # Monday, Wednesday, Friday
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
+START = "2026-11-09"  # the first Brain Snack day (the rotation in scripts/snackcheck.py starts here)
 CHANNEL = "UCyuNuzwYO9UgNt5GP0UqePg"  # Brain Snack Quiz; the uploader refuses a token for any other channel
 
 
@@ -30,7 +30,7 @@ def uploaded(vid):
 
 
 def due(date):
-    if dt.date.fromisoformat(date).weekday() not in DAYS:
+    if date < START:
         return []
     return [] if uploaded(f"{date}-snack") else ["snack"]
 

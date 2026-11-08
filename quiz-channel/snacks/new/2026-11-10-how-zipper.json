@@ -1,0 +1,115 @@
+{
+  "format": "how",
+  "title": "How Does a Zipper Actually Work?",
+  "summary": "Two rows of teeth and one little slider: here is the clever trick that holds every zipper together.",
+  "topic": "home",
+  "beats": [
+    {
+      "text": "You zip something up every day without thinking. But how does a zipper actually hold together?",
+      "visual": {
+        "kind": "hook",
+        "emoji": "🤐",
+        "text": "How does a zipper work?"
+      }
+    },
+    {
+      "text": "Look closely: a zipper is just two rows of tiny teeth and one little slider.",
+      "hl": [
+        "two rows"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "👖",
+        "label": "Two rows of teeth",
+        "motion": "float"
+      }
+    },
+    {
+      "text": "Quick guess. What locks the teeth together?",
+      "reveal": "Tiny hooks! Each tooth has a bump on top and a hollow underneath.",
+      "hl": [
+        "hooks"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "What locks the teeth together?",
+        "options": [
+          {
+            "emoji": "🧲",
+            "label": "Magnets"
+          },
+          {
+            "emoji": "🪝",
+            "label": "Tiny hooks"
+          },
+          {
+            "emoji": "🧴",
+            "label": "Glue"
+          }
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "text": "As the slider moves up, it pushes the two rows together at an angle. Each bump drops into the hollow above it.",
+      "hl": [
+        "angle"
+      ],
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "⬆️",
+            "label": "Slider goes up"
+          },
+          {
+            "emoji": "🤝",
+            "label": "Rows meet"
+          },
+          {
+            "emoji": "🔒",
+            "label": "Bumps lock in"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Bump into hollow, bump into hollow, all the way up. Together they hold like a tiny chain.",
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🔺",
+          "label": "Bump"
+        },
+        "b": {
+          "emoji": "🕳️",
+          "label": "Hollow"
+        },
+        "vs": false
+      }
+    },
+    {
+      "text": "Unzipping? Inside the slider sits a small wedge. It pries the teeth apart, one pair at a time.",
+      "hl": [
+        "wedge"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🔧",
+        "label": "The wedge inside",
+        "motion": "zoom"
+      }
+    },
+    {
+      "text": "Bonus tip: if your zipper splits open behind the slider, the slider has usually worn loose. A gentle squeeze with pliers can fix it.",
+      "hl": [
+        "worn loose"
+      ],
+      "visual": {
+        "kind": "fact",
+        "emoji": "🧥",
+        "text": "A zipper that splits behind the slider usually has a worn, loose slider."
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "format": "mystery",
+  "title": "The Case of the Office Birthday Cake",
+  "summary": "The birthday cake vanished from a locked office kitchen an hour before the party. Four suspects, three clues. Can you solve it?",
+  "topic": "work",
+  "beats": [
+    {
+      "text": "An hour before the office party, the birthday cake vanished. Somebody ate it. Who?",
+      "visual": {
+        "kind": "hook",
+        "emoji": "🎂",
+        "text": "Who ate the cake?"
+      }
+    },
+    {
+      "text": "It was in the kitchen fridge, and the kitchen door only opens with a key card.",
+      "hl": [
+        "key card"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🔐",
+        "label": "Key card door",
+        "motion": "shake"
+      }
+    },
+    {
+      "text": "Four suspects: Ben the night guard, who went home at eight, Priya the new intern, Leo the manager, and Mia from sales.",
+      "visual": {
+        "kind": "suspects",
+        "items": [
+          {
+            "emoji": "💂",
+            "label": "Ben"
+          },
+          {
+            "emoji": "👩",
+            "label": "Priya"
+          },
+          {
+            "emoji": "👨‍💼",
+            "label": "Leo"
+          },
+          {
+            "emoji": "👩‍🦰",
+            "label": "Mia"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Clue one: a key card opened the kitchen at ten. Two: interns have no key card yet. Three: Mia was on a client call all morning.",
+      "hl": [
+        "ten",
+        "no key card",
+        "client call"
+      ],
+      "visual": {
+        "kind": "clues",
+        "items": [
+          {
+            "emoji": "🕙",
+            "label": "Door opened at ten"
+          },
+          {
+            "emoji": "🪪",
+            "label": "Interns: no card yet"
+          },
+          {
+            "emoji": "📞",
+            "label": "Mia: on a call"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Your turn, detective. Who ate the cake?",
+      "reveal": "It was Leo, the manager!",
+      "hl": [
+        "Leo"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "Who ate the cake?",
+        "options": [
+          {
+            "emoji": "💂",
+            "label": "Ben"
+          },
+          {
+            "emoji": "👩",
+            "label": "Priya"
+          },
+          {
+            "emoji": "👨‍💼",
+            "label": "Leo"
+          },
+          {
+            "emoji": "👩‍🦰",
+            "label": "Mia"
+          }
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "text": "Ben had gone home at eight. Priya has no card. Mia was on a call. Only Leo could open that door at ten.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🌙",
+            "label": "Ben went home"
+          },
+          {
+            "emoji": "🪪",
+            "label": "Priya: no card"
+          },
+          {
+            "emoji": "📞",
+            "label": "Mia: on a call"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Leo said he was only checking the fridge. The chocolate frosting on his tie said otherwise.",
+      "hl": [
+        "frosting"
+      ],
+      "visual": {
+        "kind": "suspects",
+        "items": [
+          {
+            "emoji": "💂",
+            "label": "Ben"
+          },
+          {
+            "emoji": "👩",
+            "label": "Priya"
+          },
+          {
+            "emoji": "👨‍💼",
+            "label": "Leo"
+          },
+          {
+            "emoji": "👩‍🦰",
+            "label": "Mia"
+          }
+        ],
+        "pick": 2
+      }
+    }
+  ]
+}

@@ -1,13 +1,20 @@
 """Plans and voices one Brain Snack, the Brain Snack Quiz channel's format since 2026-11-08: one topic told in about a
-minute, never the same template twice in a row.
+minute, a different format every day.
 
-  why      a curious question explained step by step, with a guess and a bonus fact (Mondays)
-  mystery  a little riddle told as a story: suspects, clues, the viewer's guess, the solution (Wednesdays)
-  real     a real-life "what would you do?" with the right answer and why (Fridays)
+  why      a curious question explained step by step, with a guess and a bonus fact
+  how      how an everyday thing works, taken apart step by step
+  mystery  a little riddle told as a story: suspects, clues, the viewer's guess, the solution
+  myth     a common belief tested: myth or fact?
+  real     a real-life "what would you do?" with the right answer and why
+  whatif   "what if...?": what would really happen, step by step
+  teaser   a logic puzzle: the viewer thinks, then the solution step by step
+  origin   the story behind an everyday thing or word
+
+One format a day, in turns (scripts/snackcheck.py ROTATION); each has its own host, look and colours.
 
 Scripts come from snacks/new/ (written by the snack writer routine, see AGENT.md); after building, the script moves to
 snacks/used/<date>/. The host is voiced by Chatterbox (outbreak-channel/scripts/voice_cb.py in its own environment),
-copying voices/host.wav; the music, sounds and mix come from the kids channel's scripts.
+copying the host's voice in voices/ (one per format, see HOSTS); the music, sounds and mix come from the kids channel's scripts.
 
   ../kids-channel/.venv/bin/python scripts/snack.py --date 2026-11-09 [--file snacks/new/x.json] [--keep]
 """
@@ -35,43 +42,73 @@ import audio  # noqa: E402
 from captions import chunks_for  # noqa: E402
 from episode import SR, Builder, mix  # noqa: E402
 from quiz import quiz_music  # noqa: E402
-from snackcheck import SnackError, check_against, check_snack  # noqa: E402
+from snackcheck import SnackError, check_against, check_snack, format_for  # noqa: E402
 
 BUILD = os.path.join(ROOT, "build")
 SNACKS = os.path.join(ROOT, "snacks")
-VOICE = os.path.join(ROOT, "voices", "host.wav")
 CB_PYTHON = os.environ.get("CB_PYTHON", os.path.join(REPO, "outbreak-channel", ".venv-cb", "bin", "python"))
 VOICE_CB = os.path.join(REPO, "outbreak-channel", "scripts", "voice_cb.py")
-EXAGGERATION = 0.7  # a lively host
-CFG = 0.5
 THINK = 3.0  # seconds to guess
-WEEKDAY_FORMAT = {0: "why", 2: "mystery", 4: "real"}
-THEMES = {  # several colourings per format, so no two weeks look alike
+# Every format has its own host (a female voice made by scripts/make_voices.py, copied by Chatterbox), its own look and
+# its own colours; within a format, each snack still draws its colours, cards and transitions at random.
+HOSTS = {  # format -> (voice, exaggeration, cfg)
+    "why": ("bella", 0.7, 0.5), "how": ("sarah", 0.6, 0.5), "mystery": ("emma", 0.55, 0.45), "myth": ("aoede", 0.7, 0.5),
+    "real": ("kore", 0.6, 0.5), "whatif": ("sky", 0.65, 0.5), "teaser": ("alice", 0.6, 0.5), "origin": ("lily", 0.55, 0.45),
+}
+LOOKS = {  # format -> (background, heading fonts, caption fonts); see src/Snack.tsx
+    "why": ("blobs", ["lilita", "fredoka"], ["anton", "bebas"]),
+    "how": ("grid", ["righteous", "archivo"], ["bebas", "oswald"]),
+    "mystery": ("spotlight", ["elite", "archivo"], ["oswald", "bebas"]),
+    "myth": ("stripes", ["bangers", "lilita"], ["bangers", "anton"]),
+    "real": ("dots", ["fredoka", "lilita"], ["anton", "oswald"]),
+    "whatif": ("stars", ["righteous", "bungee"], ["bebas", "anton"]),
+    "teaser": ("chalk", ["marker", "fredoka"], ["marker", "anton"]),
+    "origin": ("paper", ["archivo", "elite"], ["oswald", "anton"]),
+}
+CARDS = ["round", "sticker", "square"]
+MOVES = ["rise", "slide", "zoom"]
+THEMES = {  # several colourings per format
     "why": [("#2563EB", "#7C3AED", "#FACC15"), ("#0EA5E9", "#2563EB", "#FDE047"), ("#4F46E5", "#DB2777", "#FCD34D")],
+    "how": [("#0B3B66", "#1D4ED8", "#FDE047"), ("#0F4C5C", "#155E75", "#FCD34D"), ("#1E3A8A", "#0E7490", "#FDBA74")],
     "mystery": [("#0F172A", "#4C1D95", "#F59E0B"), ("#134E4A", "#1E3A8A", "#FBBF24"), ("#3B0764", "#0F172A", "#F472B6")],
+    "myth": [("#BE185D", "#6D28D9", "#A3E635"), ("#1E40AF", "#BE123C", "#FDE047"), ("#065F46", "#7E22CE", "#FCD34D")],
     "real": [("#EA580C", "#DB2777", "#FDE047"), ("#16A34A", "#0D9488", "#FDE047"), ("#DC2626", "#9333EA", "#FCD34D")],
+    "whatif": [("#020617", "#312E81", "#38BDF8"), ("#0C0A09", "#4C1D95", "#F0ABFC"), ("#020617", "#164E63", "#FDE047")],
+    "teaser": [("#14532D", "#1C3D2A", "#FDE047"), ("#1F2937", "#111827", "#F9A8D4"), ("#1E3A2F", "#0F2A1F", "#93C5FD")],
+    "origin": [("#78350F", "#451A03", "#FCD34D"), ("#7C2D12", "#3F1D0B", "#FDBA74"), ("#57534E", "#292524", "#FDE68A")],
 }
 OUTRO = {  # the host's last line, then the end card
-    "why": "Did you guess right? Follow for a new Brain Snack every Monday, Wednesday and Friday!",
-    "mystery": "Did you crack the case? Follow for a new Brain Snack every Monday, Wednesday and Friday!",
-    "real": "Would you have done the same? Follow for a new Brain Snack every Monday, Wednesday and Friday!",
+    "why": "Did you guess right? Follow for a new Brain Snack every day!",
+    "how": "Now you know how it works. Follow for a new Brain Snack every day!",
+    "mystery": "Did you crack the case? Follow for a new Brain Snack every day!",
+    "myth": "Did you believe it? Follow for a new Brain Snack every day!",
+    "real": "Would you have done the same? Follow for a new Brain Snack every day!",
+    "whatif": "Wild, right? Follow for a new Brain Snack every day!",
+    "teaser": "Did you get it before the answer? Follow for a new Brain Snack every day!",
+    "origin": "Now you know the story. Follow for a new Brain Snack every day!",
 }
-TAGS = {"why": ["science for kids", "fun facts", "why", "explained"], "mystery": ["riddle", "mystery", "brain teaser", "can you solve it"],
-        "real": ["life hacks", "what would you do", "safety tips", "real life quiz"]}
+TAGS = {"why": ["science", "fun facts", "why", "explained"], "how": ["how it works", "how things work", "explained", "engineering"],
+        "myth": ["myth or fact", "myths busted", "true or false", "fun facts"], "mystery": ["riddle", "mystery", "detective", "can you solve it"],
+        "real": ["life hacks", "what would you do", "safety tips", "real life"], "whatif": ["what if", "science", "hypothetical", "explained"],
+        "teaser": ["brain teaser", "logic puzzle", "riddle", "can you solve it"], "origin": ["history", "origin story", "the story behind", "did you know"]}
+NAMES = {"why": "Why?", "how": "How it works", "mystery": "Mystery", "myth": "Myth or Fact", "real": "Real life",
+         "whatif": "What if?", "teaser": "Brain teaser", "origin": "The story behind"}
 
 
-def voice_cache(text):
-    key = hashlib.sha1(f"{EXAGGERATION}|{CFG}|{text}".encode()).hexdigest()[:16]
-    return os.path.join(BUILD, "cb-cache", "host", f"{key}.wav")
+def voice_cache(text, host):
+    name, ex, cfg = host
+    key = hashlib.sha1(f"{ex}|{cfg}|{text}".encode()).hexdigest()[:16]
+    return os.path.join(BUILD, "cb-cache", name, f"{key}.wav")
 
 
-def speak_all(texts):
+def speak_all(texts, host):
     jobs = []
     for text in dict.fromkeys(texts):
-        out = voice_cache(text)
+        out = voice_cache(text, host)
         if not os.path.exists(out):
             os.makedirs(os.path.dirname(out), exist_ok=True)
-            jobs.append({"text": text, "ref": VOICE, "out": out, "exaggeration": EXAGGERATION, "cfg": CFG, "seed": 11})
+            jobs.append({"text": text, "ref": os.path.join(ROOT, "voices", f"{host[0]}.wav"), "out": out,
+                         "exaggeration": host[1], "cfg": host[2], "seed": 11})
     if jobs:
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fh:
             json.dump(jobs, fh)
@@ -79,23 +116,23 @@ def speak_all(texts):
         os.remove(fh.name)
 
 
-def clip(text):
-    data, sr = sf.read(voice_cache(text), dtype="float32")
+def clip(text, host):
+    data, sr = sf.read(voice_cache(text, host), dtype="float32")
     return audio.voice(data, sr)
 
 
 def take_snack(date):
-    """The script this date already used (a re-run), else the oldest waiting one, preferring the weekday's format."""
+    """The script this date already used (a re-run), else the oldest waiting one, preferring the day's format."""
     used = sorted(glob.glob(os.path.join(SNACKS, "used", date, "*.json")))
     if used:
         return used[0]
-    want = WEEKDAY_FORMAT.get(dt.date.fromisoformat(date).weekday())
+    want = format_for(date)
     waiting = []
     for path in sorted(glob.glob(os.path.join(SNACKS, "new", "*.json"))):
         try:
             spec = json.load(open(path))
             check_snack(spec)
-            check_against(path, spec)
+            check_against(path, spec, topics=False)
         except (SnackError, json.JSONDecodeError) as e:
             print(f"skipping {os.path.basename(path)}: {e}")
             continue
@@ -107,12 +144,13 @@ def take_snack(date):
 
 def build(spec, seed):
     b = Builder()
+    host = HOSTS[spec["format"]]
     texts = [x for beat in spec["beats"] for x in (beat["text"], beat.get("reveal")) if x]
     outro = OUTRO[spec["format"]]
-    speak_all(texts + [outro])
+    speak_all(texts + [outro], host)
 
     def say(at, text):
-        c = clip(text)
+        c = clip(text, host)
         b.voices.append((at, c))
         return len(c) / SR
 
@@ -155,12 +193,15 @@ def build(spec, seed):
     b.music = [(0, b.t, lambda length, work: quiz_music(length, work, f"snack-{seed}"))]
     b.music_gain = 0.18
     a, c, accent = rng.choice(THEMES[spec["format"]])
+    bg, heads, caps = LOOKS[spec["format"]]
+    look = {"bg": bg, "head": rng.choice(heads), "caption": rng.choice(caps), "card": rng.choice(CARDS), "move": rng.choice(MOVES),
+            "seed": rng.randrange(1000)}
     props = {"durationInFrames": b.f(b.t), "format": spec["format"], "title": spec["title"],
-             "theme": {"a": a, "b": c, "accent": accent}, "beats": beats, "chunks": chunks, "endAt": b.f(end_at)}
+             "theme": {"a": a, "b": c, "accent": accent}, "look": look, "beats": beats, "chunks": chunks, "endAt": b.f(end_at)}
     meta = {
         "title": f"{spec['title']} 🧠 #shorts"[:100],
         "description": "\n".join([spec["summary"], "",
-                                  "A new Brain Snack every Monday (Why?), Wednesday (Mystery) and Friday (Real Life).",
+                                  f"Today's format: {NAMES[spec['format']]}. A new Brain Snack every day!",
                                   "Tell us in the comments what we should explain next!", "",
                                   "#shorts #brainsnack #" + TAGS[spec["format"]][0].replace(" ", "")]),
         "tags": TAGS[spec["format"]] + ["brain snack", "learn something new", "shorts"],
