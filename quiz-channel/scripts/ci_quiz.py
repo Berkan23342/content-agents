@@ -17,6 +17,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
 PUBLISH_AT = {"q1": dt.time(19, 0), "q2": dt.time(23, 30)}
+# Paused on 2026-11-08: the template quiz is the format YouTube refuses to monetise ("inauthentic content"). The
+# channel comes back with a redesign; until then nothing is due.
+PAUSED = True
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
 CHANNEL = "UCyuNuzwYO9UgNt5GP0UqePg"  # Brain Snack Quiz; the uploader refuses a token for any other channel
@@ -27,6 +30,8 @@ def uploaded(vid):
 
 
 def due(date):
+    if PAUSED:
+        return []
     return [q for q in PUBLISH_AT if not uploaded(f"{date}-{q}")]
 
 
