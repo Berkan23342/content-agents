@@ -1,0 +1,56 @@
+{
+  "title": "Chick Bakes a Cake",
+  "lesson": "Helping each other",
+  "summary": "Little Chick needs help to bake a cake, Duck and Cat are too busy, then they say sorry and all help to share the cake.",
+  "cast": ["chick", "duck", "cat"],
+  "calm": false,
+  "shots": [
+    {"bg": "farm",
+     "actors": [{"name": "chick", "x": 900}],
+     "props": [{"id": "egg", "icon": "egg", "color": "#FFC92E", "x": 1200, "y": 830, "size": 140}],
+     "steps": [
+       {"say": "Once upon a time, a little chick wanted to bake a cake."},
+       {"line": "chick", "text": "Cheep, cheep! I need help to bake.", "bubble": "Who can help?", "act": "wave"},
+       {"enter": "duck", "x": 1400, "side": "right", "speed": 700},
+       {"arrive": "duck"},
+       {"line": "chick", "text": "Duck, will you help me stir?", "bubble": "Help me stir?"},
+       {"line": "duck", "text": "Quack. Not now. I want to play.", "bubble": "Not now!", "act": "shake"},
+       {"say": "Chick felt a little sad."}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "chick", "x": 900}],
+     "props": [{"id": "egg", "icon": "egg", "color": "#FFC92E", "x": 1200, "y": 830, "size": 140}],
+     "steps": [
+       {"enter": "cat", "x": 1450, "side": "right", "speed": 700},
+       {"say": "Then Cat came by."},
+       {"arrive": "cat"},
+       {"line": "chick", "text": "Cat, will you help me stir?", "bubble": "Help me stir?"},
+       {"line": "cat", "text": "Meow. Not now. I want a nap.", "bubble": "Not now!", "act": "shake"},
+       {"say": "Chick was alone, but she did not give up."},
+       {"line": "chick", "text": "Then I will do it by myself.", "bubble": "I can try!", "act": "jump"},
+       {"prop": "cake", "icon": "cake", "color": "#FF6FB5", "x": 1200, "y": 830, "size": 200},
+       {"sfx": "sparkle"},
+       {"say": "Stir, stir, stir. Soon there was a lovely pink cake."}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "chick", "x": 900}, {"name": "duck", "x": 1400}, {"name": "cat", "x": 1700}],
+     "props": [{"id": "cake", "icon": "cake", "color": "#FF6FB5", "x": 1150, "y": 830, "size": 200}],
+     "steps": [
+       {"say": "Duck and Cat smelled the yummy cake."},
+       {"line": "duck", "text": "Quack. I am sorry, Chick. I should help.", "bubble": "I am sorry", "act": "shake"},
+       {"line": "cat", "text": "Meow. Me too. Can we help now?", "bubble": "Can we help?", "act": "shake"},
+       {"line": "chick", "text": "Yes! Helping is better together.", "bubble": "Yes, come!", "act": "spin"},
+       {"say": "Duck cleaned up. Cat set the table. Chick cut the cake."}
+     ]},
+    {"bg": "farm",
+     "actors": [{"name": "chick", "x": 900}, {"name": "duck", "x": 1400}, {"name": "cat", "x": 1700}],
+     "props": [{"id": "cake", "icon": "cake", "color": "#FF6FB5", "x": 1150, "y": 830, "size": 200}],
+     "steps": [
+       {"line": "duck", "text": "Quack, quack! Yummy cake!", "bubble": "Yummy!", "act": "jump"},
+       {"line": "cat", "text": "Meow, meow! Thank you, Chick.", "bubble": "Thank you!", "act": "jump"},
+       {"act": "all", "kind": "spin"},
+       {"sfx": "ding"},
+       {"say": "Friends who help together have the sweetest cake. The end!"}
+     ]}
+  ]
+}
