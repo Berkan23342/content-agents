@@ -64,12 +64,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 7
-- **Day:** 7, dusk, on the lake in the canoe (Nora, Ava; Pip at the cabin)
-- **Who:** all unhurt.
+- **After:** part 8
+- **Day:** 8, night, the island boathouse (Nora, Ava, Pip; Alder)
+- **Who:** all unhurt; Jonah is sick with a scratch on his wrist.
 - **Supplies:** same as before.
-- **Known:** a note says someone has Jonah; boot prints end at the reeds.
-- **Open threads:** the man in Walt's ranger jacket; Jonah's fate.
+- **Known:** Alder says Jonah has a fever from the rocks; Tess says bites look like scratches; Alder has locked the door.
+- **Open threads:** is Jonah bitten? What does Alder want?
 
 ## Episode log
 
@@ -84,3 +84,4 @@ Same rules as every Outbreak Diary story:
 - **Part 5 (Day 5) The Island:** Pip explains about Jonah and the lantern. A light blinks on the island, then goes dark, and a second light appears much closer.
 - **Part 6 (Day 6) The Lantern in the Reeds:** Nora finds a warm lantern and an empty rowboat. It is not Jonah's. Boot prints lead to the porch and a board creaks.
 - **Part 7 (Day 7) Someone on the Porch:** a note offers Jonah in return for rowing out alone at dusk. Nora and Ava paddle out and meet a man in Walt's ranger jacket.
+- **Part 8 (Day 8) The Man in the Jacket:** Alder says Jonah is safe in the boathouse but sick. Inside lie Jonah's ribbon and a scratch on his wrist, and Alder locks the door.

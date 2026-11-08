@@ -1,0 +1,105 @@
+{
+  "episode": 10,
+  "title": "The Pilot",
+  "summary": "On Day ten, the stranger on the roof offers a way off the coast, for a price.",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "Day ten. The stranger on the roof was Marek, a harbour pilot.",
+      "hl": [
+        "Marek"
+      ],
+      "flare": true,
+      "tone": "dawn"
+    },
+    {
+      "scene": "rooftop",
+      "text": "\"The big boat is gone,\" he said. \"But a fishing tug hides under Pier Four.\"",
+      "hl": [
+        "tug"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "window",
+      "text": "Below, the street crawled with them. Two miles to the water.",
+      "hl": [
+        "Two miles"
+      ],
+      "zombies": 14,
+      "rain": true
+    },
+    {
+      "scene": "supplies",
+      "text": "\"It has no fuel,\" Marek said. \"The diesel is in your basement generator.\"",
+      "hl": [
+        "diesel"
+      ],
+      "items": [
+        "can",
+        "water",
+        "dogfood",
+        "keys"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "Mrs. Okafor frowned. \"Hale has the generator key. And Hale never mentioned a pilot.\"",
+      "hl": [
+        "never mentioned"
+      ],
+      "mode": "voice",
+      "speaker": "okafor"
+    },
+    {
+      "scene": "kitchen",
+      "text": "Dara split our last can five ways. Leo pretended not to starve.",
+      "hl": [
+        "last can"
+      ],
+      "cans": 1,
+      "power": false
+    },
+    {
+      "scene": "rooftop",
+      "text": "Marek counted us twice. Then Biscuit, and he smiled wrongly.",
+      "hl": [
+        "twice"
+      ],
+      "tone": "dusk"
+    },
+    {
+      "scene": "lobby",
+      "text": "At dusk we crept to the lobby. The glass doors barely held.",
+      "hl": [
+        "barely"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "stairwell",
+      "text": "The basement door stood open. Cold air smelled of oil.",
+      "hl": [
+        "open"
+      ],
+      "zombies": true,
+      "hold": 0.8
+    },
+    {
+      "scene": "radio",
+      "text": "Then Hale's walkie crackled. \"Sam, do not trust the pilot. He is not alone.\"",
+      "hl": [
+        "not alone"
+      ],
+      "mode": "voice",
+      "speaker": "hale",
+      "hold": 1.0,
+      "sfx": [
+        "static",
+        "sting"
+      ]
+    }
+  ]
+}

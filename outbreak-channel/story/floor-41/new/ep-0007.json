@@ -1,0 +1,113 @@
+{
+  "episode": 7,
+  "title": "Lamp in the Lift",
+  "summary": "On Day seven, Maya and Dev find out what turned on the elevator lamp.",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "elevator",
+      "text": "Day seven. The lamp stayed lit, and something inside the car breathed.",
+      "hl": [
+        "breathed"
+      ],
+      "floor": 41,
+      "doors": "open",
+      "power": false
+    },
+    {
+      "scene": "hallway",
+      "text": "Dev slid the keycards into his fist. \"Nobody moves. Nobody breathes.\"",
+      "hl": [
+        "breathes"
+      ],
+      "light": "flicker",
+      "speaker": "dev"
+    },
+    {
+      "scene": "elevator",
+      "text": "A hand gripped the doorframe. A small one, with a bandaged wrist.",
+      "hl": [
+        "bandaged"
+      ],
+      "floor": 41,
+      "doors": "gap",
+      "power": false,
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "office",
+      "text": "A boy tumbled out, soaked, clutching Ruth's torch.",
+      "hl": [
+        "Ruth's torch"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "kitchen",
+      "text": "He drank three cups of water. He rode up from thirty.",
+      "hl": [
+        "thirty"
+      ],
+      "cans": 2,
+      "power": false
+    },
+    {
+      "scene": "radio",
+      "text": "\"Ruth told me to follow the lights,\" he whispered. \"She is not alone over there.\"",
+      "hl": [
+        "not alone"
+      ],
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Across the gap, Calder Tower flashed two long, three short. Twenty-three.",
+      "hl": [
+        "Twenty-three"
+      ],
+      "survivor": true
+    },
+    {
+      "scene": "supplies",
+      "text": "He said his mother vanished on Day two.",
+      "hl": [
+        "Day two"
+      ],
+      "items": [
+        "flashlight",
+        "walkie",
+        "keys",
+        "map"
+      ]
+    },
+    {
+      "scene": "skybridge",
+      "text": "\"The skybridge is open,\" he said. \"They want you to cross.\"",
+      "hl": [
+        "cross"
+      ],
+      "zombies": 2,
+      "light": "flicker",
+      "cracks": true
+    },
+    {
+      "scene": "radio",
+      "text": "Ruth's voice broke through the static. \"Maya, that boy died on Day two.\"",
+      "hl": [
+        "died"
+      ],
+      "mode": "voice",
+      "speaker": "ruth",
+      "hold": 1.0,
+      "sfx": [
+        "static",
+        "sting"
+      ]
+    }
+  ]
+}

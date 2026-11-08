@@ -1,0 +1,101 @@
+{
+  "episode": 8,
+  "title": "The Man in the Jacket",
+  "summary": "On Day eight, Nora and Ava learn what the man in the ranger jacket wants.",
+  "ambience": "night",
+  "beats": [
+    {
+      "scene": "lake",
+      "text": "Day eight. The man in Walt's jacket lowered the lantern. \"Stay in the boat.\"",
+      "hl": [
+        "Walt's jacket"
+      ],
+      "canoe": true
+    },
+    {
+      "scene": "lake",
+      "text": "He was Alder. Walt was his friend; he had found the jacket.",
+      "hl": [
+        "Alder"
+      ],
+      "canoe": true
+    },
+    {
+      "scene": "lake",
+      "text": "\"Jonah is in the old boathouse. He is safe,\" said Alder. \"But he is sick.\"",
+      "hl": [
+        "sick"
+      ],
+      "canoe": true
+    },
+    {
+      "scene": "cabin",
+      "text": "\"Sick how?\" Ava demanded.",
+      "hl": [
+        "Sick how"
+      ],
+      "speaker": "ava",
+      "light": "lantern"
+    },
+    {
+      "scene": "forest",
+      "text": "He showed a bandaged arm. \"A fever from the rocks. Not a bite.\"",
+      "hl": [
+        "fever"
+      ],
+      "cabin": true
+    },
+    {
+      "scene": "lake",
+      "text": "I wanted to believe him. I am bad at that.",
+      "hl": [
+        "believe"
+      ],
+      "zombies": 2
+    },
+    {
+      "scene": "radio",
+      "text": "\"Nora, check the wrist,\" said Tess. \"Bites look like scratches.\"",
+      "hl": [
+        "wrist"
+      ],
+      "mode": "voice",
+      "speaker": "tess",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "Alder led us to the boathouse, a cot beside a medicine chest.",
+      "hl": [
+        "boathouse"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "supplies",
+      "text": "Jonah's blue ribbon lay on the cot. Beside it, a small scratch.",
+      "hl": [
+        "blue ribbon"
+      ],
+      "items": [
+        "medkit",
+        "candle",
+        "rope"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "Behind us the boathouse door swung shut, and Alder turned the key.",
+      "hl": [
+        "key"
+      ],
+      "sfx": [
+        "click",
+        "sting"
+      ],
+      "hold": 1.0
+    }
+  ]
+}
