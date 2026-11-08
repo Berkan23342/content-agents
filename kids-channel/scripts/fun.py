@@ -20,7 +20,7 @@ import random
 import numpy as np
 import soundfile as sf
 
-from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_against, check_story, estimate_seconds
+from storycheck import CHARACTERS, PROP_ICONS, StoryError, check_against, check_story, estimate_seconds, kind_for
 from episode import (ANIMALS, BUILD, DANCE_BPM, FIRST_EPISODE, FPS, GENTLE_SONGS, MIN_SECONDS, NUMBER_WORDS, PALETTE, SR,
                      Builder, an, fmt, look_for, write_audio, write_json)
 
@@ -592,13 +592,19 @@ def load_script(path):
     return spec
 
 
-def scripted_stories(date, limit):
-    """Story scripts for a date: the ones already used for it, or the oldest waiting in stories/new."""
+def scripted_stories(date, limit, want=None):
+    """Story scripts for a date: the ones already used for it, or the oldest waiting in stories/new, those of the
+    day's kind (`want`) first."""
     used = os.path.join(STORY_DIR, "used", date)
     if os.path.isdir(used):
         paths = sorted(glob.glob(os.path.join(used, "*.json")))
     else:
-        paths = sorted(glob.glob(os.path.join(STORY_DIR, "new", "*.json")))[:limit]
+        def kind(p):
+            try:
+                return json.load(open(p)).get("kind")
+            except ValueError:
+                return None
+        paths = sorted(glob.glob(os.path.join(STORY_DIR, "new", "*.json")), key=lambda p: (kind(p) != want, p))[:limit]
     out = []
     for path in paths:
         try:
@@ -611,13 +617,13 @@ def scripted_stories(date, limit):
     return out
 
 
-def intro(b, bg, title, heroes, lines):
+def intro(b, bg, title, heroes, lines, top="Bubbly Kids TV", **style):
     b.sfx.append((0.2, "whoop"))
     cur = 1.2
     for text in lines:
         cur += b.say(cur, text) + 0.3
     end = cur + 0.6
-    b.scene(0, end, type="title", bg=bg, top="Bubbly Kids TV", title=title, heroes=heroes)
+    b.scene(0, end, type="title", bg=bg, top=top, title=title, heroes=heroes, **style)
     b.chapters.append((0, "Hello friends!"))
     b.t = end
 
@@ -725,7 +731,31 @@ def fmt_story(b, rng, ep_no, size):
     return meta, thumb
 
 
-def fmt_daily(b, rng, ep_no, specs):
+# Each kind of daily story (scripts/storycheck.py ROTATION) has its own narrator, opening and music.
+# narrators: Kokoro's best women's voices, in order of preference; a voice a character of the story uses is skipped
+KIND_STYLE = {
+    "adventure": dict(narrators=["af_heart", "af_nicole", "bf_emma"], label="Adventure Time!", color="#FF8A1F", rays="#FFE14D",
+                      songs=["yankee", "macdonald"], hello="Are you ready for an adventure?"),
+    "kindness": dict(narrators=["af_bella", "af_heart", "af_nicole"], label="A Kindness Story", color="#FF6FB5", rays="#FFD1E8",
+                     songs=["mary", "london"], hello="Today's story is about being kind."),
+    "learning": dict(narrators=["bf_emma", "af_nicole", "af_heart"], label="Let's Learn!", color="#2F8CFF", rays="#BDE3FF",
+                     songs=["ode", "frere"], hello="Let's learn something new together!"),
+    "funny": dict(narrators=["af_nicole", "af_bella", "af_heart"], label="A Funny Story", color="#3CC75A", rays="#D6F5C8",
+                  songs=["macdonald", "hotcross"], hello="Get ready to giggle!"),
+    "feelings": dict(narrators=["af_heart", "bf_emma", "af_bella"], label="A Feelings Story", color="#9B5CFF", rays="#E3D4FF",
+                     songs=["london", "twinkle"], hello="Today's story is about feelings."),
+    "bedtime": dict(narrators=["af_heart:0.6+bf_emma:0.4", "af_bella", "af_heart"], label="Bedtime Story", color="#5B6BFF",
+                    rays="#C9D2FF", songs=["twinkle"], hello="It's time for a calm bedtime story."),
+}
+
+
+def narrator_for(kind, specs):
+    cast = {CAST[c][0] for s in specs for c in s.get("cast", []) if c in CAST}
+    options = KIND_STYLE[kind]["narrators"]
+    return next((v for v in options if not set(p.partition(":")[0] for p in v.split("+")) & cast), options[-1])
+
+
+def fmt_daily(b, rng, ep_no, specs, kind=None):
     """The daily video since 2026-11-08: new stories from the story writer, told from start to end. Usually one long
     story; while short stories from before the change are waiting, two or three of them. (The rotation of eggs, dance and
     shadow templates was dropped: YouTube treats look-alike videos as inauthentic.)"""
@@ -734,11 +764,13 @@ def fmt_daily(b, rng, ep_no, specs):
     first_bg = specs[0]["shots"][0]["bg"]
     titles = [s["title"] for s in specs]
     heroes = [body(icon(c)) for c in dict.fromkeys(c for s in specs for c in s.get("cast", [])[:2])][:3]
+    style = KIND_STYLE.get(kind or specs[0].get("kind") or "adventure", KIND_STYLE["adventure"])
     intro(b, outdoor(first_bg), [titles[0]] if len(specs) == 1 else ["Story Time!"], heroes,
-          ["Hello, friends! Welcome to Bubbly Kids TV!",
+          ["Hello, friends! Welcome to Bubbly Kids TV!", style["hello"],
            f"Today's story is called: {titles[0]}! Let's begin." if len(specs) == 1
-           else f"Today we have {len(specs)} new stories: {', and '.join(titles)}. Let's go!"])
-    b.music = [(0, b.t, rng.choice(GENTLE_SONGS), "gentle")]
+           else f"Today we have {len(specs)} new stories: {', and '.join(titles)}. Let's go!"],
+          top=style["label"], topColor=style["color"], rays=style["rays"])
+    b.music = [(0, b.t, rng.choice(style["songs"]), "lullaby" if calm and len(specs) == 1 else "gentle")]
     infos = []
     b.stories = []  # (title, start, end) of each story, so the day's Short can name the story it comes from
     for i, spec in enumerate(specs):
@@ -1109,7 +1141,8 @@ def main():
 def daily(date):
     day = dt.date.fromisoformat(date)
     ep_no = (day - FIRST_EPISODE).days + 1
-    scripts = scripted_stories(date, 3)
+    kind = kind_for(date)
+    scripts = scripted_stories(date, 3, kind)
     if not scripts:  # better no video than a repeat of a built-in story
         raise SystemExit("no new story waiting in stories/new")
     picked = []
@@ -1121,7 +1154,9 @@ def daily(date):
     work = os.path.join(BUILD, name)
     os.makedirs(work, exist_ok=True)
     b = Builder()
-    meta, thumb = fmt_daily(b, random.Random(f"daily-{date}"), ep_no, [s for _, s in picked])
+    kind = picked[0][1].get("kind") or kind  # the look of the story itself, when the day had to take another kind
+    b.narrator = narrator_for(kind, [s for _, s in picked])
+    meta, thumb = fmt_daily(b, random.Random(f"daily-{date}"), ep_no, [s for _, s in picked], kind)
     wav_rel = write_audio(b, work, name)
     season, look = look_for(day, "story")
     props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb, "season": season, "look": look,

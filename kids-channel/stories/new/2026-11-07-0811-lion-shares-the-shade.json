@@ -1,52 +1,219 @@
 {
   "title": "Lion Shares the Shade",
   "lesson": "Sharing makes everyone feel cool and happy",
+  "kind": "kindness",
+  "theme": "sharing",
   "summary": "On a hot sunny day, Lion sits alone in the cool shade until hot Sheep and Duck come by, and he makes room for them.",
-  "cast": ["lion", "sheep", "duck"],
+  "cast": [
+    "lion",
+    "sheep",
+    "duck"
+  ],
   "calm": false,
   "shots": [
-    {"bg": "forest",
-     "actors": [{"name": "lion", "x": 700}],
-     "props": [{"id": "sun", "icon": "sun", "color": "#FFC92E", "x": 1100, "y": 220, "size": 200}],
-     "steps": [
-       {"say": "Once upon a time, it was a hot, hot, sunny day."},
-       {"say": "Lion sat in the cool, cool shade under a big tree."},
-       {"line": "lion", "text": "Roar! The shade is so nice and cool.", "bubble": "So nice and cool!", "act": "spin"},
-       {"enter": "sheep", "x": 1150, "side": "right", "speed": 500},
-       {"say": "Then, baa, baa! Sheep came walking slowly in the hot sun."},
-       {"arrive": "sheep"},
-       {"line": "sheep", "text": "Baa. I am so hot. Please, may I sit with you?", "bubble": "I am so hot!", "act": "shake"},
-       {"line": "lion", "text": "Roar. Hmm. This is my shade.", "bubble": "My shade...", "act": "shake"},
-       {"pause": 0.5}
-     ]},
-    {"bg": "forest",
-     "actors": [{"name": "lion", "x": 700}, {"name": "sheep", "x": 1150}],
-     "props": [{"id": "sun", "icon": "sun", "color": "#FFC92E", "x": 1100, "y": 220, "size": 200}],
-     "steps": [
-       {"say": "Lion looked at Sheep. Sheep was hot, hot, hot."},
-       {"line": "lion", "text": "Roar. Come in, Sheep. There is room for you.", "bubble": "Come in, Sheep!", "act": "wave"},
-       {"move": "sheep", "x": 1000, "speed": 400},
-       {"arrive": "sheep"},
-       {"line": "sheep", "text": "Baa, baa. Thank you! Now I am cool.", "bubble": "Now I am cool!", "act": "spin"},
-       {"enter": "duck", "x": 1450, "side": "right", "speed": 500},
-       {"say": "Then, quack, quack! Little Duck came waddling by."},
-       {"arrive": "duck"},
-       {"line": "duck", "text": "Quack. I am so hot. May I sit too?", "bubble": "I am so hot!", "act": "shake"}
-     ]},
-    {"bg": "forest",
-     "actors": [{"name": "lion", "x": 600}, {"name": "sheep", "x": 950}, {"name": "duck", "x": 1300}],
-     "props": [{"id": "sun", "icon": "sun", "color": "#FFC92E", "x": 1100, "y": 220, "size": 200}],
-     "steps": [
-       {"line": "lion", "text": "Roar. Come in, Duck. There is room for you.", "bubble": "Come in, Duck!", "act": "wave"},
-       {"line": "sheep", "text": "Baa. Yes, come in, Duck!", "bubble": "Come in!", "act": "wave"},
-       {"line": "duck", "text": "Quack, quack! Thank you! Now I am cool.", "bubble": "Now I am cool!", "act": "spin"},
-       {"say": "Hot sun outside. Cool shade inside. Sharing felt so good."},
-       {"prop": "heart", "icon": "heart", "color": "#FF6FB5", "x": 950, "y": 420, "size": 150, "float": true},
-       {"sfx": "sparkle"},
-       {"line": "lion", "text": "Roar. Sharing makes me happy too.", "bubble": "Sharing is fun!", "act": "spin"},
-       {"act": "all", "kind": "jump"},
-       {"say": "And they all sat together, cool and happy. The end!"},
-       {"pause": 0.6}
-     ]}
+    {
+      "bg": "forest",
+      "actors": [
+        {
+          "name": "lion",
+          "x": 700
+        }
+      ],
+      "props": [
+        {
+          "id": "sun",
+          "icon": "sun",
+          "color": "#FFC92E",
+          "x": 1100,
+          "y": 220,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "say": "Once upon a time, it was a hot, hot, sunny day."
+        },
+        {
+          "say": "Lion sat in the cool, cool shade under a big tree."
+        },
+        {
+          "line": "lion",
+          "text": "Roar! The shade is so nice and cool.",
+          "bubble": "So nice and cool!",
+          "act": "spin"
+        },
+        {
+          "enter": "sheep",
+          "x": 1150,
+          "side": "right",
+          "speed": 500
+        },
+        {
+          "say": "Then, baa, baa! Sheep came walking slowly in the hot sun."
+        },
+        {
+          "arrive": "sheep"
+        },
+        {
+          "line": "sheep",
+          "text": "Baa. I am so hot. Please, may I sit with you?",
+          "bubble": "I am so hot!",
+          "act": "shake"
+        },
+        {
+          "line": "lion",
+          "text": "Roar. Hmm. This is my shade.",
+          "bubble": "My shade...",
+          "act": "shake"
+        },
+        {
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "bg": "forest",
+      "actors": [
+        {
+          "name": "lion",
+          "x": 700
+        },
+        {
+          "name": "sheep",
+          "x": 1150
+        }
+      ],
+      "props": [
+        {
+          "id": "sun",
+          "icon": "sun",
+          "color": "#FFC92E",
+          "x": 1100,
+          "y": 220,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "say": "Lion looked at Sheep. Sheep was hot, hot, hot."
+        },
+        {
+          "line": "lion",
+          "text": "Roar. Come in, Sheep. There is room for you.",
+          "bubble": "Come in, Sheep!",
+          "act": "wave"
+        },
+        {
+          "move": "sheep",
+          "x": 1000,
+          "speed": 400
+        },
+        {
+          "arrive": "sheep"
+        },
+        {
+          "line": "sheep",
+          "text": "Baa, baa. Thank you! Now I am cool.",
+          "bubble": "Now I am cool!",
+          "act": "spin"
+        },
+        {
+          "enter": "duck",
+          "x": 1450,
+          "side": "right",
+          "speed": 500
+        },
+        {
+          "say": "Then, quack, quack! Little Duck came waddling by."
+        },
+        {
+          "arrive": "duck"
+        },
+        {
+          "line": "duck",
+          "text": "Quack. I am so hot. May I sit too?",
+          "bubble": "I am so hot!",
+          "act": "shake"
+        }
+      ]
+    },
+    {
+      "bg": "forest",
+      "actors": [
+        {
+          "name": "lion",
+          "x": 600
+        },
+        {
+          "name": "sheep",
+          "x": 950
+        },
+        {
+          "name": "duck",
+          "x": 1300
+        }
+      ],
+      "props": [
+        {
+          "id": "sun",
+          "icon": "sun",
+          "color": "#FFC92E",
+          "x": 1100,
+          "y": 220,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "line": "lion",
+          "text": "Roar. Come in, Duck. There is room for you.",
+          "bubble": "Come in, Duck!",
+          "act": "wave"
+        },
+        {
+          "line": "sheep",
+          "text": "Baa. Yes, come in, Duck!",
+          "bubble": "Come in!",
+          "act": "wave"
+        },
+        {
+          "line": "duck",
+          "text": "Quack, quack! Thank you! Now I am cool.",
+          "bubble": "Now I am cool!",
+          "act": "spin"
+        },
+        {
+          "say": "Hot sun outside. Cool shade inside. Sharing felt so good."
+        },
+        {
+          "prop": "heart",
+          "icon": "heart",
+          "color": "#FF6FB5",
+          "x": 950,
+          "y": 420,
+          "size": 150,
+          "float": true
+        },
+        {
+          "sfx": "sparkle"
+        },
+        {
+          "line": "lion",
+          "text": "Roar. Sharing makes me happy too.",
+          "bubble": "Sharing is fun!",
+          "act": "spin"
+        },
+        {
+          "act": "all",
+          "kind": "jump"
+        },
+        {
+          "say": "And they all sat together, cool and happy. The end!"
+        },
+        {
+          "pause": 0.6
+        }
+      ]
+    }
   ]
 }

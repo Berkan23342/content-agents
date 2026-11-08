@@ -1,60 +1,245 @@
 {
   "title": "Bunny's Big Jump",
   "lesson": "Being brave and trying",
+  "kind": "feelings",
+  "theme": "bravery",
   "summary": "Little Bunny is scared to jump over a small stream until Frog and Pig cheer, and she hops across on the third try.",
-  "cast": ["bunny", "frog", "pig"],
+  "cast": [
+    "bunny",
+    "frog",
+    "pig"
+  ],
   "calm": false,
   "shots": [
-    {"bg": "park",
-     "actors": [{"name": "bunny", "x": 500}],
-     "props": [{"id": "drop", "icon": "drop", "color": "#2F8CFF", "x": 960, "y": 830, "size": 200}],
-     "steps": [
-       {"say": "Once upon a time, a little bunny came to a puddle."},
-       {"say": "It was a big, wide puddle for a little bunny."},
-       {"line": "bunny", "text": "Oh dear. I cannot jump that far.", "bubble": "Too far!", "act": "shake"},
-       {"enter": "frog", "x": 1400, "side": "right", "speed": 700},
-       {"say": "Boing, boing! Along came Frog."},
-       {"arrive": "frog"},
-       {"line": "frog", "text": "Ribbit! Hello, Bunny. Why so sad?", "bubble": "Why so sad?", "act": "wave"},
-       {"line": "bunny", "text": "I am scared to jump. It is so big.", "bubble": "I am scared", "act": "shake"},
-       {"line": "frog", "text": "Try once. I will cheer for you!", "bubble": "I will cheer!", "act": "jump"}
-     ]},
-    {"bg": "park",
-     "actors": [{"name": "bunny", "x": 500}, {"name": "frog", "x": 1400}],
-     "props": [{"id": "drop", "icon": "drop", "color": "#2F8CFF", "x": 960, "y": 830, "size": 200}],
-     "steps": [
-       {"say": "Bunny took a deep breath. One, two, three, hop!"},
-       {"act": "bunny", "kind": "jump"},
-       {"sfx": "splash"},
-       {"say": "Oh no! Plop, right in the edge of the puddle."},
-       {"line": "frog", "text": "That is okay. Try again!", "bubble": "Try again!", "act": "jump"},
-       {"enter": "pig", "x": 200, "side": "left", "speed": 700},
-       {"arrive": "pig"},
-       {"line": "pig", "text": "Oink! I will cheer too. You can do it!", "bubble": "You can do it!", "act": "wave"},
-       {"say": "Bunny took another deep breath. One, two, three, hop!"},
-       {"act": "bunny", "kind": "jump"},
-       {"sfx": "boing"},
-       {"say": "Closer! But still a little splash."},
-       {"line": "bunny", "text": "I am a bit braver now.", "bubble": "Braver now!", "act": "spin"}
-     ]},
-    {"bg": "park",
-     "actors": [{"name": "bunny", "x": 500}, {"name": "frog", "x": 1400}, {"name": "pig", "x": 200}],
-     "props": [{"id": "drop", "icon": "drop", "color": "#2F8CFF", "x": 960, "y": 830, "size": 200}],
-     "steps": [
-       {"say": "Frog and Pig cheered, one, two, three!"},
-       {"line": "frog", "text": "One, two, three, you can do it!", "bubble": "One, two, three!", "act": "jump"},
-       {"line": "pig", "text": "Oink, oink! One, two, three, hop!", "bubble": "Hop, hop, hop!", "act": "jump"},
-       {"act": "bunny", "kind": "jump"},
-       {"move": "bunny", "x": 1100, "dur": 0.8},
-       {"sfx": "whoop"},
-       {"arrive": "bunny"},
-       {"say": "Whoosh! Bunny jumped right over the puddle."},
-       {"act": "all", "kind": "jump"},
-       {"prop": "star", "icon": "star", "color": "#FFC92E", "x": 1100, "y": 300, "size": 160},
-       {"sfx": "sparkle"},
-       {"line": "bunny", "text": "I did it! Trying is brave!", "bubble": "I did it!", "act": "spin"},
-       {"say": "Now Bunny was not scared at all. The end!"},
-       {"pause": 0.6}
-     ]}
+    {
+      "bg": "park",
+      "actors": [
+        {
+          "name": "bunny",
+          "x": 500
+        }
+      ],
+      "props": [
+        {
+          "id": "drop",
+          "icon": "drop",
+          "color": "#2F8CFF",
+          "x": 960,
+          "y": 830,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "say": "Once upon a time, a little bunny came to a puddle."
+        },
+        {
+          "say": "It was a big, wide puddle for a little bunny."
+        },
+        {
+          "line": "bunny",
+          "text": "Oh dear. I cannot jump that far.",
+          "bubble": "Too far!",
+          "act": "shake"
+        },
+        {
+          "enter": "frog",
+          "x": 1400,
+          "side": "right",
+          "speed": 700
+        },
+        {
+          "say": "Boing, boing! Along came Frog."
+        },
+        {
+          "arrive": "frog"
+        },
+        {
+          "line": "frog",
+          "text": "Ribbit! Hello, Bunny. Why so sad?",
+          "bubble": "Why so sad?",
+          "act": "wave"
+        },
+        {
+          "line": "bunny",
+          "text": "I am scared to jump. It is so big.",
+          "bubble": "I am scared",
+          "act": "shake"
+        },
+        {
+          "line": "frog",
+          "text": "Try once. I will cheer for you!",
+          "bubble": "I will cheer!",
+          "act": "jump"
+        }
+      ]
+    },
+    {
+      "bg": "park",
+      "actors": [
+        {
+          "name": "bunny",
+          "x": 500
+        },
+        {
+          "name": "frog",
+          "x": 1400
+        }
+      ],
+      "props": [
+        {
+          "id": "drop",
+          "icon": "drop",
+          "color": "#2F8CFF",
+          "x": 960,
+          "y": 830,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "say": "Bunny took a deep breath. One, two, three, hop!"
+        },
+        {
+          "act": "bunny",
+          "kind": "jump"
+        },
+        {
+          "sfx": "splash"
+        },
+        {
+          "say": "Oh no! Plop, right in the edge of the puddle."
+        },
+        {
+          "line": "frog",
+          "text": "That is okay. Try again!",
+          "bubble": "Try again!",
+          "act": "jump"
+        },
+        {
+          "enter": "pig",
+          "x": 200,
+          "side": "left",
+          "speed": 700
+        },
+        {
+          "arrive": "pig"
+        },
+        {
+          "line": "pig",
+          "text": "Oink! I will cheer too. You can do it!",
+          "bubble": "You can do it!",
+          "act": "wave"
+        },
+        {
+          "say": "Bunny took another deep breath. One, two, three, hop!"
+        },
+        {
+          "act": "bunny",
+          "kind": "jump"
+        },
+        {
+          "sfx": "boing"
+        },
+        {
+          "say": "Closer! But still a little splash."
+        },
+        {
+          "line": "bunny",
+          "text": "I am a bit braver now.",
+          "bubble": "Braver now!",
+          "act": "spin"
+        }
+      ]
+    },
+    {
+      "bg": "park",
+      "actors": [
+        {
+          "name": "bunny",
+          "x": 500
+        },
+        {
+          "name": "frog",
+          "x": 1400
+        },
+        {
+          "name": "pig",
+          "x": 200
+        }
+      ],
+      "props": [
+        {
+          "id": "drop",
+          "icon": "drop",
+          "color": "#2F8CFF",
+          "x": 960,
+          "y": 830,
+          "size": 200
+        }
+      ],
+      "steps": [
+        {
+          "say": "Frog and Pig cheered, one, two, three!"
+        },
+        {
+          "line": "frog",
+          "text": "One, two, three, you can do it!",
+          "bubble": "One, two, three!",
+          "act": "jump"
+        },
+        {
+          "line": "pig",
+          "text": "Oink, oink! One, two, three, hop!",
+          "bubble": "Hop, hop, hop!",
+          "act": "jump"
+        },
+        {
+          "act": "bunny",
+          "kind": "jump"
+        },
+        {
+          "move": "bunny",
+          "x": 1100,
+          "dur": 0.8
+        },
+        {
+          "sfx": "whoop"
+        },
+        {
+          "arrive": "bunny"
+        },
+        {
+          "say": "Whoosh! Bunny jumped right over the puddle."
+        },
+        {
+          "act": "all",
+          "kind": "jump"
+        },
+        {
+          "prop": "star",
+          "icon": "star",
+          "color": "#FFC92E",
+          "x": 1100,
+          "y": 300,
+          "size": 160
+        },
+        {
+          "sfx": "sparkle"
+        },
+        {
+          "line": "bunny",
+          "text": "I did it! Trying is brave!",
+          "bubble": "I did it!",
+          "act": "spin"
+        },
+        {
+          "say": "Now Bunny was not scared at all. The end!"
+        },
+        {
+          "pause": 0.6
+        }
+      ]
+    }
   ]
 }

@@ -9,15 +9,30 @@ into `kids-channel/stories/new/`.
 - **Why the stories must differ.** YouTube does not monetise channels whose videos look alike, so every story must be
   clearly different from the ones before: a new plot, new places, new characters together and a new learning thread.
 - If no story is waiting, there is no video that day. Built-in stories are never repeated.
+- **Six kinds of story take turns, one a day:** `adventure`, `kindness`, `learning`, `funny`, `feelings`, `bedtime`.
+  Each kind has its own narrator voice, opening card and music (the code picks them), so the days look and sound
+  different. You write the story the day's kind asks for:
+
+  | Kind | What it is |
+  |---|---|
+  | `adventure` | A trip or a quest through 3 or more places: looking for something, following a map, a visit. |
+  | `kindness` | Someone needs help or is left out; the friends find a kind way. |
+  | `learning` | The plot is built around learning: counting, colors, shapes, opposites, sizes, days, sounds. |
+  | `funny` | A silly mix-up or a mishap that goes wrong in a funny way and ends well. |
+  | `feelings` | A character feels something big (shy, sad, cross, scared, proud) and learns what to do with it. |
+  | `bedtime` | A calm, slow story at dusk or night that ends with sleep. Set `"calm": true` (only bedtime stories do). |
 
 Nobody can answer questions during the run; decide yourself.
 
 ## Steps
 
 1. `cd kids-channel`.
-2. If `stories/new/` already holds 3 or more scripts, do not write a story. Instead write the current date and time
-   into `stories/new/.heartbeat`, commit only that file and push it to `main` (step 7). Every push to `stories/new/`
-   starts the video job, so the push matters even without a new story.
+2. Run `python3 scripts/storycheck.py --plan`. It prints the next 5 days, each with its kind and the story it will
+   use, or `MISSING: write one`, and how often each theme appears lately.
+   - If no day is missing, do not write a story. Instead write the current date and time into
+     `stories/new/.heartbeat`, commit only that file and push it to `main` (step 7). Every push to `stories/new/`
+     starts the video job, so the push matters even without a new story.
+   - Otherwise write the story for the first missing day, in that day's kind (one story per run).
 3. See what exists, so you never repeat a plot:
    - titles and summaries in `stories/new/*.json` and `stories/used/*/*.json`,
    - the built-in plots: lost balloon, sharing food, rainy day with umbrella, tortoise-and-hare race, bedtime on the farm.
@@ -33,8 +48,11 @@ Nobody can answer questions during the run; decide yourself.
    - **Length and places:** 180-300 seconds, 6-10 shots, in at least 2 different places. Use the backgrounds widely:
      beach, garden, playground, bedroom and underwater as well as the old ones. Do not open in the place the previous
      story opened in.
-   - **Bedtime:** about one story in five may be a calm bedtime story. Set `"calm": true` and use `dusk`/`night`.
-5. Write `stories/new/<YYYY-MM-DD>-<slug>.json` with the format below.
+   - **Theme:** set `"theme"` to what the story is about, one of: sharing, kindness, friendship, helping, honesty,
+     patience, trying, bravery, manners, feelings, safety, nature, weather, seasons, food, colors, counting, shapes,
+     sounds, family, bedtime, play, animals, health, tidying, music. Pick one the plan shows rarely; the checker
+     refuses a theme already used twice among the waiting and recent stories.
+5. Write `stories/new/<YYYY-MM-DD>-<HHMM>-<slug>.json` (today's date and time in Istanbul) with the format below.
 6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`. It also refuses a title used before or a
    story too close to an earlier one.
    - It must print `ok`; fix any `story error` it reports.
@@ -72,6 +90,8 @@ songs. Record the source as `"inspired_by": "<link> (theme only)"` in the script
 {
   "title": "Duck's New Friend",
   "lesson": "Being kind to someone new",
+  "kind": "kindness",
+  "theme": "friendship",
   "summary": "Duck feels lonely at the pond until a new frog hops by.",
   "cast": ["duck", "frog"],
   "calm": false,

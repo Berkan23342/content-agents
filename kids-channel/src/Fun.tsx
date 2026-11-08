@@ -16,7 +16,7 @@ type Bubble = {actor: number; text: string; color: string; at: number; until: nu
 type Timed = {text: string; color: string; at: number};
 
 export type FunScene =
-	| {type: 'title'; from: number; duration: number; bg: Bg; top: string; title: string[]; heroes: Hero[]}
+	| {type: 'title'; from: number; duration: number; bg: Bg; top: string; title: string[]; heroes: Hero[]; topColor?: string; rays?: string}
 	| {
 			type: 'story';
 			from: number;
@@ -837,10 +837,10 @@ export const TitleCard: React.FC<{scene: Extract<FunScene, {type: 'title'}>}> = 
 	const feet = scene.title.length > 1 ? 1010 : 960;
 	return (
 		<AbsoluteFill>
-			<Rays x={960} y={360} r={900} color="#ffffff" opacity={0.28} frame={frame} count={16} />
+			<Rays x={960} y={360} r={900} color={scene.rays ?? '#ffffff'} opacity={scene.rays ? 0.4 : 0.28} frame={frame} count={16} />
 			<Pop at={0} outAt={out} bob={4}>
 				<div style={{position: 'absolute', top: 80, width: '100%'}}>
-					<PopWord text={scene.top} color="#2F8CFF" size={84} startFrame={2} />
+					<PopWord text={scene.top} color={scene.topColor ?? '#2F8CFF'} size={84} startFrame={2} />
 				</div>
 				{scene.title.map((line, i) => (
 					<div key={line} style={{position: 'absolute', top: 210 + i * 170, width: '100%'}}>

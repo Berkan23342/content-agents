@@ -1,9 +1,12 @@
-"""Checks a Bubbly Kids TV story script (stories/new/*.json) without rendering anything. Standard library only.
+"""Checks a Bubbly Kids TV story script (stories/new/*.json) without rendering anything, and plans the coming days.
+Standard library only.
 
-  python3 scripts/storycheck.py stories/new/2026-11-01-ducks-new-friend.json
+  python3 scripts/storycheck.py stories/new/2026-11-01-ducks-new-friend.json   "ok", or the first problem found
+  python3 scripts/storycheck.py --plan [days]                                  each coming day's kind and its story
 
-Prints "ok" with a rough length estimate, or the first problem found. scripts/fun.py uses the same checks.
+scripts/fun.py uses the same checks and the same plan.
 """
+import datetime as dt
 import glob
 import json
 import os
@@ -20,6 +23,21 @@ SCRIPT_SFX = {"whoop", "pop", "tick", "ding", "sparkle", "whoosh", "boing", "thu
 PROP_ICONS = {"apple", "heart", "carrot", "pumpkin", "sun", "star", "leaf", "fish", "drop", "grapes", "flower", "icecream",
               "ball", "gift", "cake", "banana", "strawberry", "orange", "cookie", "egg", "jellyfish", "kite", "moon", "nest",
               "crown", "rainbow", "tree", "umbrella", "van", "watermelon", "xylophone", "yoyo", "balloon"}
+
+
+# The daily story's kind takes turns, one a day; each kind has its own narrator, music and opening (scripts/fun.py
+# KIND_STYLE), so no two days in a row look and sound alike.
+ROTATION = ["adventure", "kindness", "learning", "funny", "feelings", "bedtime"]
+FIRST_DAY = dt.date(2026, 11, 9)
+KINDS = set(ROTATION)
+# what a story is about; the same theme at most twice among the waiting stories and the last few published
+THEMES = {
+    "sharing", "kindness", "friendship", "helping", "honesty", "patience", "trying", "bravery", "manners", "feelings",
+    "safety", "nature", "weather", "seasons", "food", "colors", "counting", "shapes", "sounds", "family", "bedtime",
+    "play", "animals", "health", "tidying", "music",
+}
+THEME_LIMIT = 2
+RECENT_USED = 6
 
 
 class StoryError(ValueError):
@@ -99,8 +117,32 @@ def check_against(path, spec):
             raise StoryError(f"too similar to {os.path.basename(p)} ({score:.0%} of phrases repeat); write a new plot")
 
 
+def waiting():
+    return sorted(glob.glob(os.path.join(ROOT, "stories", "new", "*.json")))
+
+
+def used():
+    """Published stories, oldest first (by the date they were used on)."""
+    return sorted(glob.glob(os.path.join(ROOT, "stories", "used", "*", "*.json")))
+
+
+def kind_for(date):
+    return ROTATION[(dt.date.fromisoformat(date) - FIRST_DAY).days % len(ROTATION)]
+
+
 def check_variety(path, spec):
-    """For the writer: a story moves between places, and does not open where the last story opened. Raises StoryError."""
+    """For the writer: a story has a kind and a theme, the theme is not over-used lately, a bedtime story is calm, the
+    story moves between places, and it does not open where the last story opened. Raises StoryError."""
+    if spec.get("kind") not in KINDS:
+        raise StoryError(f"'kind' must be one of {sorted(KINDS)} (the day's kind, see --plan)")
+    if spec.get("theme") not in THEMES:
+        raise StoryError(f"'theme' (what the story is about) must be one of {sorted(THEMES)}")
+    if (spec["kind"] == "bedtime") != bool(spec.get("calm")):
+        raise StoryError("a bedtime story sets \"calm\": true, and only a bedtime story does")
+    recent = [p for p in waiting() + used()[-RECENT_USED:] if os.path.abspath(p) != os.path.abspath(path)]
+    same = [os.path.basename(p) for p in recent if json.load(open(p)).get("theme") == spec["theme"]]
+    if len(same) >= THEME_LIMIT:
+        raise StoryError(f"theme '{spec['theme']}' is already in {', '.join(same)}; pick another theme")
     bgs = [shot["bg"] for shot in spec["shots"]]
     if len(spec["shots"]) >= 3 and len(set(bgs)) < 2:
         raise StoryError("the whole story stays in one place; move part of it somewhere else")
@@ -135,7 +177,38 @@ def estimate_seconds(spec):
     return t
 
 
+def plan(start, days):
+    """[(date, kind, story path or None)]: each coming day gets the oldest waiting story of its kind."""
+    pool = {}
+    for p in waiting():
+        try:
+            pool.setdefault(json.load(open(p)).get("kind"), []).append(p)
+        except json.JSONDecodeError:
+            continue
+    out = []
+    for i in range(days):
+        date = (dt.date.fromisoformat(start) + dt.timedelta(days=i)).isoformat()
+        kind = kind_for(date)
+        done = glob.glob(os.path.join(ROOT, "stories", "used", date, "*.json"))
+        if done:
+            out.append((date, kind, sorted(done)[0]))
+        else:
+            out.append((date, kind, pool[kind].pop(0) if pool.get(kind) else None))
+    return out
+
+
 def main():
+    if sys.argv[1:2] == ["--plan"]:
+        days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
+        today = dt.datetime.now(dt.timezone(dt.timedelta(hours=3))).date().isoformat()  # Istanbul
+        for date, kind, path in plan(max(today, FIRST_DAY.isoformat()), days):
+            print(f"{date} {kind:9} {os.path.relpath(path, ROOT) if path else 'MISSING: write one'}")
+        themes = {}
+        for p in waiting() + used()[-RECENT_USED:]:
+            t = json.load(open(p)).get("theme")
+            themes[t] = themes.get(t, 0) + 1
+        print("recent themes (at most %d each): %s" % (THEME_LIMIT, ", ".join(f"{t} {n}" for t, n in sorted(themes.items(), key=str))))
+        return
     with open(sys.argv[1]) as fh:
         spec = json.load(fh)
     try:

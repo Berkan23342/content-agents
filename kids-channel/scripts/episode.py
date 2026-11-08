@@ -339,9 +339,10 @@ class Builder:
         self.music = []  # (start, end, song, style)
         self.music_gain = 0.32
         self.mutes = []  # (start, end) of music silence
+        self.narrator = None  # the narrating voice when a line names none (default VOICE)
 
     def say(self, at, text, voice=None, speed=SPEED, pitch=1.0, gain=1.0):
-        clip = tts(text, voice, speed, pitch) * gain
+        clip = tts(text, voice or self.narrator, speed, pitch) * gain
         self.voices.append((at, clip))
         return len(clip) / SR
 

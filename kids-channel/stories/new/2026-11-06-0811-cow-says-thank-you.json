@@ -1,67 +1,272 @@
 {
   "title": "Cow Says Thank You",
   "lesson": "Saying thank you to friends who help us",
+  "kind": "kindness",
+  "theme": "manners",
   "summary": "Tired Cow gets a gift from each of three friends: friends bring a red apple, an orange carrot and a pink flower. Cow says thank you to each one.",
-  "cast": ["cow", "chick", "bunny", "duck"],
+  "cast": [
+    "cow",
+    "chick",
+    "bunny",
+    "duck"
+  ],
   "calm": false,
   "shots": [
-    {"bg": "farm",
-     "actors": [{"name": "cow", "x": 1000}],
-     "props": [],
-     "steps": [
-       {"say": "Once upon a time, Cow felt tired and sad on the farm."},
-       {"line": "cow", "text": "Moo. I worked all day. I am so tired.", "bubble": "So tired...", "act": "shake"},
-       {"enter": "chick", "x": 1450, "side": "right", "speed": 600},
-       {"say": "Then, peep, peep! Little Chick came running by."},
-       {"arrive": "chick"},
-       {"prop": "apple", "icon": "apple", "color": "#FF3B3B", "x": 1450, "y": 420, "size": 140},
-       {"line": "chick", "text": "Peep! Here is a red apple for you.", "bubble": "A red apple!", "act": "jump"},
-       {"prop_move": "apple", "x": 1100, "y": 420, "dur": 0.9},
-       {"sfx": "pop"},
-       {"line": "cow", "text": "Moo, moo! Thank you, Chick!", "bubble": "Thank you!", "act": "spin"}
-     ]},
-    {"bg": "farm",
-     "actors": [{"name": "cow", "x": 1000}, {"name": "chick", "x": 1500}],
-     "props": [],
-     "steps": [
-       {"say": "Cow felt better. But then, hop, hop, hop! Bunny came too."},
-       {"enter": "bunny", "x": 600, "side": "left", "speed": 650},
-       {"arrive": "bunny"},
-       {"prop": "carrot", "icon": "carrot", "color": "#FF8A1F", "x": 600, "y": 420, "size": 140},
-       {"line": "bunny", "text": "Here is an orange carrot for you.", "bubble": "An orange carrot!", "act": "wave"},
-       {"prop_move": "carrot", "x": 900, "y": 420, "dur": 0.9},
-       {"sfx": "pop"},
-       {"line": "cow", "text": "Moo, moo! Thank you, Bunny!", "bubble": "Thank you!", "act": "spin"},
-       {"line": "chick", "text": "Peep! You are welcome!", "bubble": "You are welcome!", "act": "jump"}
-     ]},
-    {"bg": "farm",
-     "actors": [{"name": "bunny", "x": 600}, {"name": "cow", "x": 1000}, {"name": "chick", "x": 1400}],
-     "props": [],
-     "steps": [
-       {"say": "Quack, quack! Duck waddled over with something pretty."},
-       {"enter": "duck", "x": 1700, "side": "right", "speed": 600},
-       {"arrive": "duck"},
-       {"prop": "flower", "icon": "flower", "color": "#FF6FB5", "x": 1700, "y": 420, "size": 140},
-       {"line": "duck", "text": "Quack. Here is a pink flower for you.", "bubble": "A pink flower!", "act": "wave"},
-       {"prop_move": "flower", "x": 1250, "y": 420, "dur": 1.0},
-       {"sfx": "sparkle"},
-       {"line": "cow", "text": "Moo, moo! Thank you, Duck!", "bubble": "Thank you!", "act": "spin"}
-     ]},
-    {"bg": "farm",
-     "actors": [{"name": "bunny", "x": 500}, {"name": "cow", "x": 900}, {"name": "chick", "x": 1300}, {"name": "duck", "x": 1650}],
-     "props": [
-       {"id": "h", "icon": "heart", "color": "#FF6FB5", "x": 900, "y": 300, "size": 160}
-     ],
-     "steps": [
-       {"say": "Cow looked at her three kind friends."},
-       {"line": "cow", "text": "Thank you, thank you, thank you! Moo!", "bubble": "Thank you all!", "act": "jump"},
-       {"line": "bunny", "text": "Friends help friends. That is what friends do.", "bubble": "Friends help!", "act": "wave"},
-       {"line": "duck", "text": "Quack. Now let us all play!", "bubble": "Let us play!", "act": "jump"},
-       {"sfx": "sparkle"},
-       {"act": "all", "kind": "spin"},
-       {"say": "Cow was not tired anymore. Her heart was full of thank yous."},
-       {"say": "The end!"},
-       {"pause": 0.6}
-     ]}
+    {
+      "bg": "farm",
+      "actors": [
+        {
+          "name": "cow",
+          "x": 1000
+        }
+      ],
+      "props": [],
+      "steps": [
+        {
+          "say": "Once upon a time, Cow felt tired and sad on the farm."
+        },
+        {
+          "line": "cow",
+          "text": "Moo. I worked all day. I am so tired.",
+          "bubble": "So tired...",
+          "act": "shake"
+        },
+        {
+          "enter": "chick",
+          "x": 1450,
+          "side": "right",
+          "speed": 600
+        },
+        {
+          "say": "Then, peep, peep! Little Chick came running by."
+        },
+        {
+          "arrive": "chick"
+        },
+        {
+          "prop": "apple",
+          "icon": "apple",
+          "color": "#FF3B3B",
+          "x": 1450,
+          "y": 420,
+          "size": 140
+        },
+        {
+          "line": "chick",
+          "text": "Peep! Here is a red apple for you.",
+          "bubble": "A red apple!",
+          "act": "jump"
+        },
+        {
+          "prop_move": "apple",
+          "x": 1100,
+          "y": 420,
+          "dur": 0.9
+        },
+        {
+          "sfx": "pop"
+        },
+        {
+          "line": "cow",
+          "text": "Moo, moo! Thank you, Chick!",
+          "bubble": "Thank you!",
+          "act": "spin"
+        }
+      ]
+    },
+    {
+      "bg": "farm",
+      "actors": [
+        {
+          "name": "cow",
+          "x": 1000
+        },
+        {
+          "name": "chick",
+          "x": 1500
+        }
+      ],
+      "props": [],
+      "steps": [
+        {
+          "say": "Cow felt better. But then, hop, hop, hop! Bunny came too."
+        },
+        {
+          "enter": "bunny",
+          "x": 600,
+          "side": "left",
+          "speed": 650
+        },
+        {
+          "arrive": "bunny"
+        },
+        {
+          "prop": "carrot",
+          "icon": "carrot",
+          "color": "#FF8A1F",
+          "x": 600,
+          "y": 420,
+          "size": 140
+        },
+        {
+          "line": "bunny",
+          "text": "Here is an orange carrot for you.",
+          "bubble": "An orange carrot!",
+          "act": "wave"
+        },
+        {
+          "prop_move": "carrot",
+          "x": 900,
+          "y": 420,
+          "dur": 0.9
+        },
+        {
+          "sfx": "pop"
+        },
+        {
+          "line": "cow",
+          "text": "Moo, moo! Thank you, Bunny!",
+          "bubble": "Thank you!",
+          "act": "spin"
+        },
+        {
+          "line": "chick",
+          "text": "Peep! You are welcome!",
+          "bubble": "You are welcome!",
+          "act": "jump"
+        }
+      ]
+    },
+    {
+      "bg": "farm",
+      "actors": [
+        {
+          "name": "bunny",
+          "x": 600
+        },
+        {
+          "name": "cow",
+          "x": 1000
+        },
+        {
+          "name": "chick",
+          "x": 1400
+        }
+      ],
+      "props": [],
+      "steps": [
+        {
+          "say": "Quack, quack! Duck waddled over with something pretty."
+        },
+        {
+          "enter": "duck",
+          "x": 1700,
+          "side": "right",
+          "speed": 600
+        },
+        {
+          "arrive": "duck"
+        },
+        {
+          "prop": "flower",
+          "icon": "flower",
+          "color": "#FF6FB5",
+          "x": 1700,
+          "y": 420,
+          "size": 140
+        },
+        {
+          "line": "duck",
+          "text": "Quack. Here is a pink flower for you.",
+          "bubble": "A pink flower!",
+          "act": "wave"
+        },
+        {
+          "prop_move": "flower",
+          "x": 1250,
+          "y": 420,
+          "dur": 1.0
+        },
+        {
+          "sfx": "sparkle"
+        },
+        {
+          "line": "cow",
+          "text": "Moo, moo! Thank you, Duck!",
+          "bubble": "Thank you!",
+          "act": "spin"
+        }
+      ]
+    },
+    {
+      "bg": "farm",
+      "actors": [
+        {
+          "name": "bunny",
+          "x": 500
+        },
+        {
+          "name": "cow",
+          "x": 900
+        },
+        {
+          "name": "chick",
+          "x": 1300
+        },
+        {
+          "name": "duck",
+          "x": 1650
+        }
+      ],
+      "props": [
+        {
+          "id": "h",
+          "icon": "heart",
+          "color": "#FF6FB5",
+          "x": 900,
+          "y": 300,
+          "size": 160
+        }
+      ],
+      "steps": [
+        {
+          "say": "Cow looked at her three kind friends."
+        },
+        {
+          "line": "cow",
+          "text": "Thank you, thank you, thank you! Moo!",
+          "bubble": "Thank you all!",
+          "act": "jump"
+        },
+        {
+          "line": "bunny",
+          "text": "Friends help friends. That is what friends do.",
+          "bubble": "Friends help!",
+          "act": "wave"
+        },
+        {
+          "line": "duck",
+          "text": "Quack. Now let us all play!",
+          "bubble": "Let us play!",
+          "act": "jump"
+        },
+        {
+          "sfx": "sparkle"
+        },
+        {
+          "act": "all",
+          "kind": "spin"
+        },
+        {
+          "say": "Cow was not tired anymore. Her heart was full of thank yous."
+        },
+        {
+          "say": "The end!"
+        },
+        {
+          "pause": 0.6
+        }
+      ]
+    }
   ]
 }
