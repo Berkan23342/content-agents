@@ -1,0 +1,595 @@
+{
+ "title": "Pig's Shape Hunt",
+ "lesson": "Finding circles, squares and triangles",
+ "kind": "learning",
+ "theme": "shapes",
+ "summary": "Pig and Duck hunt for shapes at the beach, under the sea, in the garden and at the playground, helping a turtle on the way.",
+ "cast": [
+  "pig",
+  "duck",
+  "turtle",
+  "cat"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "One sunny morning, Pig went to the beach with a big basket."
+    },
+    {
+     "enter": "duck",
+     "x": 1000,
+     "side": "right",
+     "speed": 600
+    },
+    {
+     "say": "Duck waddled over. Quack, quack!"
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Hello Pig! What is in your basket?",
+     "bubble": "What is it?",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Shapes! Let's go on a shape hunt today.",
+     "bubble": "Shape hunt!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Yes! Circles, squares and triangles. Let's find them!",
+     "bubble": "Let's find them!",
+     "act": "spin"
+    },
+    {
+     "say": "First, they looked at the sandy beach."
+    },
+    {
+     "prop": "sun",
+     "icon": "sun",
+     "color": "#FFC92E",
+     "x": 1500,
+     "y": 260,
+     "size": 200
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "pig",
+     "text": "Look! The sun is round, like a circle.",
+     "bubble": "Round sun!",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Circle! Can you draw a circle in the air?",
+     "bubble": "Draw a circle!",
+     "act": "jump"
+    },
+    {
+     "pause": 1.5
+    },
+    {
+     "say": "Well done! A circle goes round and round."
+    },
+    {
+     "prop": "c1",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "duck",
+     "text": "A red ball is a circle too!",
+     "bubble": "Circle ball!",
+     "act": "spin"
+    },
+    {
+     "hide": "c1"
+    },
+    {
+     "hide": "sun"
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 1100,
+     "size": 380
+    }
+   ],
+   "props": [
+    {
+     "id": "tri1",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 1000,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Then they found a bucket and a spade."
+    },
+    {
+     "line": "pig",
+     "text": "This bucket has four sides. All the same!",
+     "bubble": "Four sides!",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "That is a square! Count the sides with me.",
+     "bubble": "Count with me!"
+    },
+    {
+     "line": "pig",
+     "text": "One, two, three, four!",
+     "bubble": "1, 2, 3, 4!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Four sides. A square! Quack!",
+     "bubble": "Square!",
+     "act": "spin"
+    },
+    {
+     "say": "Suddenly, a little turtle came up from the sea."
+    },
+    {
+     "enter": "turtle",
+     "x": 1500,
+     "side": "right",
+     "speed": 500
+    },
+    {
+     "arrive": "turtle"
+    },
+    {
+     "line": "turtle",
+     "text": "Hello, friends. I lost my shell shapes.",
+     "bubble": "I lost shapes!",
+     "act": "shake"
+    },
+    {
+     "line": "pig",
+     "text": "Oh no! We will help you find them.",
+     "bubble": "We will help!",
+     "act": "jump"
+    },
+    {
+     "line": "turtle",
+     "text": "They are under the sea. Please come!",
+     "bubble": "Come under!",
+     "act": "wave"
+    },
+    {
+     "sfx": "whoosh"
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 900,
+     "size": 380
+    },
+    {
+     "name": "turtle",
+     "x": 1400,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Bubble, bubble! They splashed under the sea."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "It was blue and beautiful. Fish swam all around."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Look at the sea. Can you see a triangle?",
+     "bubble": "Find a triangle!",
+     "act": "wave"
+    },
+    {
+     "prop": "tri",
+     "icon": "tree",
+     "color": "#3CC75A",
+     "x": 1650,
+     "y": 560,
+     "size": 170
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "turtle",
+     "text": "A tree of seaweed! It has three sides.",
+     "bubble": "Three sides!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Triangle! Let's count the corners. One, two, three.",
+     "bubble": "1, 2, 3!",
+     "act": "spin"
+    },
+    {
+     "prop": "f1",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 500,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "prop": "f2",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 665,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "prop": "f3",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 830,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Three orange fish! Can you count them with me?"
+    },
+    {
+     "pause": 2.0
+    },
+    {
+     "say": "One, two, three orange fish!"
+    },
+    {
+     "line": "turtle",
+     "text": "Thank you! My shell has little shapes.",
+     "bubble": "Shell shapes!",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Your shell has big and small hexagons. Wow!",
+     "bubble": "Wow!",
+     "act": "spin"
+    },
+    {
+     "say": "The turtle was so happy. He gave them a shiny gift."
+    },
+    {
+     "prop": "g",
+     "icon": "gift",
+     "color": "#9B5CFF",
+     "x": 900,
+     "y": 830,
+     "size": 170
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 1000,
+     "size": 380
+    },
+    {
+     "name": "cat",
+     "x": 1500,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Back on land, they hurried to the garden."
+    },
+    {
+     "say": "Cat was waiting by the fence. Meow!"
+    },
+    {
+     "line": "cat",
+     "text": "Meow! I found a box of shapes. Can you help?",
+     "bubble": "Help me sort!",
+     "act": "wave"
+    },
+    {
+     "prop": "b1",
+     "icon": "ball",
+     "color": "#2F8CFF",
+     "x": 600,
+     "y": 300,
+     "size": 150
+    },
+    {
+     "prop": "b2",
+     "icon": "gift",
+     "color": "#FF6FB5",
+     "x": 765,
+     "y": 300,
+     "size": 150
+    },
+    {
+     "prop": "b3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 930,
+     "y": 300,
+     "size": 150
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "pig",
+     "text": "A blue ball. What shape is it? Circle!",
+     "bubble": "Blue circle!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "A pink box. Four sides. Square!",
+     "bubble": "Pink square!",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "A yellow star. It has five points. Meow!",
+     "bubble": "Yellow star!",
+     "act": "spin"
+    },
+    {
+     "say": "Can you name a shape? Tell your friends at home."
+    },
+    {
+     "pause": 2.0
+    },
+    {
+     "say": "Great! The garden is full of shapes."
+    },
+    {
+     "line": "pig",
+     "text": "The carrots look like little triangles!",
+     "bubble": "Carrot triangles!",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "And the watering can is round.",
+     "bubble": "Round can!",
+     "act": "jump"
+    },
+    {
+     "hide": "b1"
+    },
+    {
+     "hide": "b2"
+    },
+    {
+     "hide": "b3"
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 1000,
+     "size": 380
+    },
+    {
+     "name": "cat",
+     "x": 1400,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "They ran to the playground to play."
+    },
+    {
+     "line": "duck",
+     "text": "The slide is long. The seesaw is short!",
+     "bubble": "Long and short!",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Opposites! Long and short.",
+     "bubble": "Opposites!",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "Big wheel, small wheel. Can you find a big one?",
+     "bubble": "Big or small?",
+     "act": "spin"
+    },
+    {
+     "prop": "w1",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 800,
+     "y": 830,
+     "size": 240
+    },
+    {
+     "prop": "w2",
+     "icon": "ball",
+     "color": "#2F8CFF",
+     "x": 1000,
+     "y": 830,
+     "size": 100
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "say": "A big red ball and a small blue ball."
+    },
+    {
+     "line": "pig",
+     "text": "Big and small. Let's roll them!",
+     "bubble": "Let's roll!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "w1",
+     "x": 1200,
+     "y": 830,
+     "dur": 1.0
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 1000,
+     "size": 380
+    },
+    {
+     "name": "cat",
+     "x": 1400,
+     "size": 380
+    }
+   ],
+   "props": [
+    {
+     "id": "m",
+     "icon": "moon",
+     "color": "#FFC92E",
+     "x": 960,
+     "y": 250,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "The sun went down. The sky turned pink and orange."
+    },
+    {
+     "line": "duck",
+     "text": "Look! The moon is a circle tonight.",
+     "bubble": "Round moon!",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Circles, squares, triangles. We found them all!",
+     "bubble": "We found them!",
+     "act": "spin"
+    },
+    {
+     "line": "cat",
+     "text": "Shapes are everywhere. Thank you for hunting with us!",
+     "bubble": "Thank you!",
+     "act": "jump"
+    },
+    {
+     "say": "Now you know a circle, a square and a triangle."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! See you next time. Bye bye!",
+     "bubble": "Bye bye!",
+     "act": "wave"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "The end!"
+    }
+   ]
+  }
+ ]
+}
