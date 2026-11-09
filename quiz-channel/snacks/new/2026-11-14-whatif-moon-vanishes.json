@@ -1,0 +1,137 @@
+{
+  "format": "whatif",
+  "title": "What If the Moon Vanished Tonight?",
+  "summary": "The Moon does more than light up the night. Here is what would change on Earth if it suddenly disappeared.",
+  "topic": "space",
+  "beats": [
+    {
+      "text": "Tonight you look up, and the Moon is simply gone. What happens next?",
+      "visual": {
+        "kind": "hook",
+        "emoji": "🌙",
+        "text": "What if the Moon vanished?"
+      }
+    },
+    {
+      "text": "First, nights get darker. Without moonlight, only stars and city lights remain.",
+      "hl": [
+        "darker"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🌌",
+        "label": "Much darker nights",
+        "motion": "float"
+      }
+    },
+    {
+      "text": "Quick guess. What would change in the oceans?",
+      "reveal": "The tides! Most of their pull comes from the Moon, so they would shrink a lot.",
+      "hl": [
+        "oceans"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "What changes in the oceans?",
+        "options": [
+          {
+            "emoji": "🌊",
+            "label": "Tides shrink"
+          },
+          {
+            "emoji": "🧊",
+            "label": "Seas freeze"
+          },
+          {
+            "emoji": "🔥",
+            "label": "Seas boil"
+          }
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "text": "The Sun would still pull on the water, so tides stay, but they get weaker.",
+      "hl": [
+        "weaker"
+      ],
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🌙",
+          "label": "Moon tides"
+        },
+        "b": {
+          "emoji": "☀️",
+          "label": "Sun tides"
+        },
+        "vs": true
+      }
+    },
+    {
+      "text": "Here is the slow chain of changes over a very long time.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🌑",
+            "label": "Darker nights"
+          },
+          {
+            "emoji": "🌊",
+            "label": "Weaker tides"
+          },
+          {
+            "emoji": "🦀",
+            "label": "Shore life adapts"
+          },
+          {
+            "emoji": "🌍",
+            "label": "Tilt wobbles more"
+          }
+        ]
+      }
+    },
+    {
+      "text": "The Moon also helps keep Earth's tilt steady. Without it, the tilt could wander over millions of years.",
+      "hl": [
+        "tilt"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🌍",
+        "label": "A steadier tilt",
+        "motion": "spin"
+      }
+    },
+    {
+      "text": "Days would also stay a little shorter, because the Moon slowly drags on Earth's spin.",
+      "hl": [
+        "shorter"
+      ],
+      "visual": {
+        "kind": "number",
+        "value": 24,
+        "unit": "hours, give or take",
+        "emoji": "⏰"
+      }
+    },
+    {
+      "text": "So you would not notice much tomorrow, but the planet would change slowly and deeply.",
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🔭",
+        "label": "Slow change",
+        "motion": "bounce"
+      }
+    },
+    {
+      "text": "One more thing about our neighbour.",
+      "visual": {
+        "kind": "fact",
+        "emoji": "🌙",
+        "text": "The Moon is slowly drifting away from Earth, by about a few centimetres every year."
+      }
+    }
+  ]
+}

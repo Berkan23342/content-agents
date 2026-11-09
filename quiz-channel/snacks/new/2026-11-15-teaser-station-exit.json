@@ -1,0 +1,135 @@
+{
+  "format": "teaser",
+  "title": "The Station Exit Puzzle",
+  "summary": "Two staff members, one always lies, one always tells the truth. One question gets you out of the station.",
+  "topic": "transport",
+  "beats": [
+    {
+      "text": "You are lost in a train station at night. Two exits, two staff members. Which door is out?",
+      "visual": {
+        "kind": "hook",
+        "emoji": "🚉",
+        "text": "Which exit is the way out?"
+      }
+    },
+    {
+      "text": "One door leads outside. The other leads to a locked platform.",
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🚪",
+          "label": "Door A"
+        },
+        "b": {
+          "emoji": "🚪",
+          "label": "Door B"
+        },
+        "vs": true
+      }
+    },
+    {
+      "text": "One employee always tells the truth. The other always lies. You do not know who is who.",
+      "hl": [
+        "always lies"
+      ],
+      "visual": {
+        "kind": "clues",
+        "items": [
+          {
+            "emoji": "😇",
+            "label": "One tells the truth"
+          },
+          {
+            "emoji": "🤥",
+            "label": "One always lies"
+          },
+          {
+            "emoji": "❓",
+            "label": "Only one question"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Your question is: if I asked the other person which door is the exit, what would they say?",
+      "hl": [
+        "other person"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🗣️",
+        "label": "Ask about the other",
+        "motion": "bounce"
+      }
+    },
+    {
+      "text": "Think for a moment. Whatever they answer, which door do you take?",
+      "reveal": "The opposite door! Their answer is always a lie about the exit.",
+      "hl": [
+        "opposite"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "Which door do you take?",
+        "options": [
+          {
+            "emoji": "👍",
+            "label": "The one they name"
+          },
+          {
+            "emoji": "🔄",
+            "label": "The opposite one"
+          }
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "text": "If you ask the truth-teller, they honestly report what the liar would say: the wrong door.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "😇",
+            "label": "Truth-teller asked"
+          },
+          {
+            "emoji": "🗣️",
+            "label": "Reports the lie"
+          },
+          {
+            "emoji": "❌",
+            "label": "Names wrong door"
+          }
+        ]
+      }
+    },
+    {
+      "text": "If you ask the liar, they lie about what the truth-teller would say. That is also the wrong door.",
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "😈",
+          "label": "Liar asked"
+        },
+        "b": {
+          "emoji": "❌",
+          "label": "Names wrong door"
+        },
+        "vs": false
+      }
+    },
+    {
+      "text": "Either way, the answer points to the wrong door, so you take the other one. Fresh air at last.",
+      "hl": [
+        "wrong door"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🌃",
+        "label": "Outside at last",
+        "motion": "float"
+      }
+    }
+  ]
+}

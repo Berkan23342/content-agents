@@ -1,0 +1,125 @@
+{
+  "format": "origin",
+  "title": "Why Is Your Keyboard Laid Out Like That?",
+  "summary": "The odd QWERTY letter order comes from old typewriters. Here is how it probably started and why it stuck.",
+  "topic": "technology",
+  "beats": [
+    {
+      "text": "Look at your keyboard. Why is the top row Q, W, E, R, T, Y, and not just A, B, C?",
+      "visual": {
+        "kind": "hook",
+        "emoji": "⌨️",
+        "text": "Why is it QWERTY?"
+      }
+    },
+    {
+      "text": "Guess time. Where did this letter order come from?",
+      "reveal": "Old typewriters! The layout was designed for machines with metal arms, not for computers.",
+      "hl": [
+        "typewriters"
+      ],
+      "visual": {
+        "kind": "choice",
+        "question": "Where did QWERTY come from?",
+        "options": [
+          {
+            "emoji": "🖨️",
+            "label": "Old typewriters"
+          },
+          {
+            "emoji": "💻",
+            "label": "Early computers"
+          },
+          {
+            "emoji": "🎲",
+            "label": "Random choice"
+          }
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "text": "In the 1870s, typewriters had metal arms that swung up to hit the paper.",
+      "hl": [
+        "metal arms"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🖋️",
+        "label": "Swinging metal arms",
+        "motion": "shake"
+      }
+    },
+    {
+      "text": "Type two neighbouring letters too fast and the arms could jam together.",
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🔤",
+          "label": "Fast typing"
+        },
+        "b": {
+          "emoji": "🚧",
+          "label": "Jammed arms"
+        },
+        "vs": false
+      }
+    },
+    {
+      "text": "So the layout was probably arranged to separate common letter pairs and slow the jams down.",
+      "hl": [
+        "probably"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🧩",
+        "label": "Spread the pairs apart",
+        "motion": "spin"
+      }
+    },
+    {
+      "text": "Here is how the story went on.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🖨️",
+            "label": "1870s typewriter"
+          },
+          {
+            "emoji": "🏢",
+            "label": "Offices adopt it"
+          },
+          {
+            "emoji": "💻",
+            "label": "Computers copy it"
+          },
+          {
+            "emoji": "📱",
+            "label": "Phones keep it"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Typists had already learned it, so nobody wanted to start over. Habit won.",
+      "hl": [
+        "Habit"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🧠",
+        "label": "Habit beats logic",
+        "motion": "bounce"
+      }
+    },
+    {
+      "text": "Other layouts exist, but QWERTY stayed.",
+      "visual": {
+        "kind": "fact",
+        "emoji": "📱",
+        "text": "Your phone has no metal arms to jam, yet it still shows the same old letter order."
+      }
+    }
+  ]
+}
