@@ -1,0 +1,98 @@
+{
+  "episode": 8,
+  "title": "Ninety-One Degrees",
+  "summary": "On Day eight, Dev checks the boy's wrist and finds something that should not be there.",
+  "event": "sickness",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "office",
+      "text": "Day eight. The boy would not sleep. He watched the elevator.",
+      "hl": [
+        "elevator"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "hospital",
+      "text": "Dev took him to the first-aid room to check the wrist.",
+      "hl": [
+        "wrist"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "No bite. No fever. Dev held the thermometer up anyway, and frowned.",
+      "hl": [
+        "frowned"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "It read thirty-one degrees. Even the glass was warmer.",
+      "hl": [
+        "thirty-one"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "office",
+      "text": "\"Kid,\" Dev said softly. \"How long have you been this cold?\"",
+      "hl": [
+        "cold"
+      ],
+      "speaker": "dev"
+    },
+    {
+      "scene": "office",
+      "text": "\"Since the bridge,\" the boy said. \"Ruth told me I would warm up when you came.\"",
+      "hl": [
+        "Ruth"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "Dev peeled the bandage. No wound. Just a number inked there: forty-one.",
+      "hl": [
+        "forty-one"
+      ],
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Across the gap, Calder Tower flashed it back. Forty-one. Forty-one.",
+      "hl": [
+        "Forty-one"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "text": "Then the elevator woke. Thirty. Thirty-one. Climbing all by itself.",
+      "hl": [
+        "Climbing"
+      ],
+      "floor": 31,
+      "doors": "closed",
+      "power": false,
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "text": "The boy smiled for the first time. \"That's my ride,\" he said.",
+      "hl": [
+        "my ride"
+      ],
+      "doors": "gap",
+      "floor": 41,
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

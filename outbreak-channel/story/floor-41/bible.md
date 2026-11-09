@@ -69,12 +69,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 7
-- **Day:** 7, on floor 41
-- **Who:** Maya, Dev and a boy with a bandaged wrist, all in the studio.
+- **After:** part 8
+- **Day:** 8, on floor 41
+- **Who:** Maya, Dev and the cold boy in the studio.
 - **Supplies:** same as Day 5.
-- **Known:** the boy rode the car up from 30 with Ruth's torch; the skybridge is open; Ruth says the boy died on Day two.
-- **Open threads:** what is the boy? Who flashes Ruth's code?
+- **Known:** the boy is cold, marked 41, and says Ruth told him he would warm up when Maya came; the elevator is climbing to 41 by itself.
+- **Open threads:** what is in the lift? Who is Ruth in Calder Tower?
 
 ## Episode log
 
@@ -87,3 +87,4 @@ Same rules as every Outbreak Diary story:
 - **Part 5 (Day 5) Ruth Answers:** Maya answers the phone. Ruth is alive in Calder Tower and says she never sent the elevator. The doors shut and the number starts to fall.
 - **Part 6 (Day 6) The Number Falls:** the elevator drops to 30 and returns. A false torch code appears. Ruth warns the car is not empty, and its lamp turns on.
 - **Part 7 (Day 7) Lamp in the Lift:** a boy climbs out of the elevator holding Ruth's torch and says they want Maya to cross the skybridge. Ruth warns he died on Day two.
+- **Part 8 (Day 8) Ninety-One Degrees:** Dev finds the boy cold as glass with no wound, only 41 inked on his wrist. Calder Tower flashes 41 and the elevator climbs alone; the boy says it is his ride.

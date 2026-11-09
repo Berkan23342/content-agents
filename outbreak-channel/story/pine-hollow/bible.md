@@ -64,12 +64,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 8
-- **Day:** 8, night, the island boathouse (Nora, Ava, Pip; Alder)
-- **Who:** all unhurt; Jonah is sick with a scratch on his wrist.
+- **After:** part 9
+- **Day:** 9, night, the lake (Nora, Ava, Jonah, Alder? in the canoe)
+- **Who:** all unhurt; Jonah feverish but not bitten.
 - **Supplies:** same as before.
-- **Known:** Alder says Jonah has a fever from the rocks; Tess says bites look like scratches; Alder has locked the door.
-- **Open threads:** is Jonah bitten? What does Alder want?
+- **Known:** the lake dead stand on the dock; Grace is near the lake road.
+- **Open threads:** can they reach shore quietly? Where is Grace?
 
 ## Episode log
 
@@ -85,3 +85,4 @@ Same rules as every Outbreak Diary story:
 - **Part 6 (Day 6) The Lantern in the Reeds:** Nora finds a warm lantern and an empty rowboat. It is not Jonah's. Boot prints lead to the porch and a board creaks.
 - **Part 7 (Day 7) Someone on the Porch:** a note offers Jonah in return for rowing out alone at dusk. Nora and Ava paddle out and meet a man in Walt's ranger jacket.
 - **Part 8 (Day 8) The Man in the Jacket:** Alder says Jonah is safe in the boathouse but sick. Inside lie Jonah's ribbon and a scratch on his wrist, and Alder locks the door.
+- **Part 9 (Day 9) The Dock Is Full:** Jonah's scratch is not a bite; Alder locked the door against the lake dead. They escape by canoe under the dock, and the dead turn toward them as Grace messages that she is on the lake road.

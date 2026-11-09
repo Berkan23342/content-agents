@@ -1,0 +1,106 @@
+{
+  "episode": 9,
+  "title": "The Dock Is Full",
+  "summary": "On Day nine, locked in a boathouse with a sick boy, Nora sees what is waiting on the dock.",
+  "event": "escape",
+  "ambience": "night",
+  "beats": [
+    {
+      "scene": "door",
+      "text": "Day nine. Alder had locked us in with a sick boy. Ava pounded on the door.",
+      "hl": [
+        "locked"
+      ],
+      "sfx": [
+        "bang"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "Jonah slept on the cot, hot. The scratch was thin and clean.",
+      "hl": [
+        "scratch"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "\"That's not a bite,\" Ava whispered. \"Bites have teeth.\"",
+      "hl": [
+        "not a bite"
+      ],
+      "speaker": "ava"
+    },
+    {
+      "scene": "door",
+      "text": "Alder spoke through the wood. \"I locked it for the water.\"",
+      "hl": [
+        "the water"
+      ]
+    },
+    {
+      "scene": "lake",
+      "text": "Through the slats I saw heads rise from the lake.",
+      "hl": [
+        "heads"
+      ],
+      "zombies": 4,
+      "tone": "night"
+    },
+    {
+      "scene": "lake",
+      "text": "They climbed onto the dock and stood in a dripping row.",
+      "hl": [
+        "row"
+      ],
+      "zombies": 6,
+      "hold": 0.8
+    },
+    {
+      "scene": "hospital",
+      "text": "Alder lifted a floorboard. Under it, black water and a canoe.",
+      "hl": [
+        "canoe"
+      ],
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "lake",
+      "text": "We slid out under the dock in silence, Jonah between us.",
+      "hl": [
+        "silence"
+      ],
+      "canoe": true,
+      "zombies": 2
+    },
+    {
+      "scene": "lake",
+      "text": "Every head on the dock turned together, toward the canoe.",
+      "hl": [
+        "turned"
+      ],
+      "zombies": 6,
+      "canoe": true,
+      "hold": 0.8
+    },
+    {
+      "scene": "phone",
+      "text": "Then my phone buzzed. One bar, and a message from Grace.",
+      "hl": [
+        "Grace"
+      ],
+      "screen": "message",
+      "lines": [
+        "Grace",
+        "Nora, I am on the lake road. Almost there.",
+        "Where is Ava?"
+      ],
+      "battery": 14,
+      "sfx": [
+        "buzz",
+        "sting"
+      ]
+    }
+  ]
+}

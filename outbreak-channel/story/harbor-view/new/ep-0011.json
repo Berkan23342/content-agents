@@ -1,0 +1,115 @@
+{
+  "episode": 11,
+  "title": "The Generator Room",
+  "summary": "On Day eleven, a pilot's crew waits in the basement and the super is locked behind a steel door.",
+  "event": "trap",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "stairwell",
+      "text": "Day eleven. In the basement, a lantern clicked on. Three strangers stood by the generator.",
+      "hl": [
+        "strangers"
+      ],
+      "zombies": true,
+      "tone": "dusk"
+    },
+    {
+      "scene": "hallway",
+      "text": "Marek smiled. \"My crew. They were afraid to come up.\"",
+      "hl": [
+        "crew"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "door",
+      "text": "Behind a steel door, someone knocked twice. Hale, locked in.",
+      "hl": [
+        "locked in"
+      ],
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "\"The roof key also starts the tug, Sam. Do not hand it over.\"",
+      "hl": [
+        "Do not hand it over"
+      ],
+      "mode": "voice",
+      "speaker": "hale",
+      "hold": 0.8,
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "Marek held out his palm. \"Keys first.\"",
+      "hl": [
+        "Keys first"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "I smiled back and lied. \"The key is upstairs, in 9C.\"",
+      "hl": [
+        "lied"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "Mrs. Okafor kicked a tin. The clang rolled up the dark.",
+      "hl": [
+        "clang"
+      ],
+      "zombies": true,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "Shapes shuffled from the shadows. Marek's crew ran, shoving past us.",
+      "hl": [
+        "ran"
+      ],
+      "zombies": true,
+      "alarm": true
+    },
+    {
+      "scene": "door",
+      "text": "Leo slid the bolt. Hale stumbled out with the generator key clenched in his fist.",
+      "hl": [
+        "Hale"
+      ],
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "We hid behind the mailboxes until the shouting stopped.",
+      "hl": [
+        "stopped"
+      ],
+      "zombies": 1,
+      "light": "off"
+    },
+    {
+      "scene": "door",
+      "text": "Under the cupboard door, a pair of boots stopped. Marek whispered, \"Found you.\"",
+      "hl": [
+        "Found you"
+      ],
+      "shadow": true,
+      "hold": 1.0,
+      "sfx": [
+        "steps",
+        "sting"
+      ]
+    }
+  ]
+}

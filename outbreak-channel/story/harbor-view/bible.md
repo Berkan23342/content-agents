@@ -69,12 +69,12 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 
 ## Current state
 
-- **After:** part 10
-- **Day:** 10, dusk, Harbor View basement door (Sam, Leo, Dara, Mrs. Okafor, Biscuit, Marek; Hale below)
-- **Who:** all unhurt. Marek, a harbour pilot, joined from the roof.
+- **After:** part 11
+- **Day:** 11, night, Harbor View lobby (Sam, Leo, Dara, Mrs. Okafor, Biscuit, Hale; Marek outside)
+- **Who:** all unhurt; Hale freed with the generator key. Marek's crew scattered in the dark.
 - **Supplies:** one can left, shared.
-- **Known:** a fishing tug hides under Pier Four but has no fuel; the diesel is in the basement generator; Hale warns the pilot is not alone.
-- **Open threads:** who is with Marek? What waits in the basement?
+- **Known:** the roof key also starts the tug; Marek wants it; Sam lied that it is in 9C.
+- **Open threads:** where is the crew? Does Marek have the tug's real key?
 
 ## Episode log
 
@@ -93,3 +93,4 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 - **Part 8 (Day 8) Hale's Key:** Biscuit yawns silently and the shapes drift off. Hale gives Sam the roof key; they plan to climb to 12 in the rain. Mrs. Okafor reports three slow knocks at her door.
 - **Part 9 (Day 9) The Roof Door:** the three knocks were Leo's sister Dara. They climb to 12 and find the roof door already open and a stranger who says the last boat has gone.
 - **Part 10 (Day 10) The Pilot:** Marek offers a tug at Pier Four if they fetch diesel from the basement. Hale warns over the walkie that the pilot is not alone.
+- **Part 11 (Day 11) The Generator Room:** Marek's three-person crew waits in the basement; Hale is locked in the generator room. Mrs. Okafor's clang drives the crew off, Hale is freed, then boots stop outside Sam's hiding place and Marek whispers "Found you."
