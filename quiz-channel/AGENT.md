@@ -7,7 +7,7 @@ You run unattended as a Claude cloud routine on the GitHub repository `Berkan233
 yourself.
 
 Since November 2026 the channel no longer posts template quizzes: YouTube does not pay for videos that look and sound
-alike ("inauthentic content"). It posts **one Brain Snack a day**, each one topic told in about a minute, each written
+alike ("inauthentic content"). It posts **one Brain Snack a day**, each one topic told as a 35-45 second guessing game, each written
 by you from scratch. Eight formats take turns, one a day, so each comes back every 8 days on a different weekday. Each
 format has its own host voice, background and fonts (the code picks them; you only write the script):
 
@@ -77,8 +77,15 @@ income, and marking it wrong breaks the rules.
   electricity experiments, poisons or weapons as the subject.
 - **Friendly for everyone:** no politics, religion, violence, brands, celebrities, living people or scary content.
   A `mystery` is about a vanished cake, a muddy footprint or a broken vase, never a crime with victims.
-- **A hook in the first sentence.** A question, a surprise or a tiny scene ("Splash! Your phone just fell into the
-  sink."). Never "Hello", "Welcome back" or "In this video".
+- **Play along from the first second.** Our numbers (2026-11-10): the quizzes viewers could play along with
+  ("How many can you get?") got about 1,000 views each and were watched to 70%; explainers without a guess did far
+  worse, and two out of three viewers swipe away in the first second. So every snack is a game:
+  - Beat 1 (`hook`) asks the snack's question out loud, with a `?`, and the video already shows the `choice` beat's
+    answers from the first frame, under "PAUSE & GUESS". Name the options in the sentence when they are short
+    ("Is it the juice, a gas, or heat?"). Never "Hello", "Welcome back" or "In this video".
+  - Then one or more beats build towards the answer without giving it away (a clue, a picture, a detail).
+  - The `choice` beat repeats the question; the 3-second countdown runs and the answer is revealed.
+  - At most 3 short beats after it explain why and add the bonus fact. The video ends soon after the answer.
 - **Spoken English.** Short sentences that sound good out loud. Speak to one viewer ("you"). One idea per beat.
 - **Different every time.** Vary the topics (the body, space, food, weather, the ocean, inventions, technology,
   plants, everyday science, money basics, staying safe, travel), the order of the beats, the visuals and the emojis.
@@ -93,28 +100,33 @@ income, and marking it wrong breaks the rules.
   "summary": "One or two sentences for the video description.",
   "topic": "earth",
   "beats": [
-    {"text": "What the host says.", "hl": ["words to highlight"], "visual": {"kind": "hook", "emoji": "🌤️", "text": "Why is the sky blue?"}},
-    {"text": "...", "visual": {"kind": "choice", "question": "Which color bounces around most?",
+    {"text": "Why is the sky blue and not red or green? Pause and guess!", "visual": {"kind": "hook", "emoji": "🌤️", "text": "Why is the sky blue?"}},
+    {"text": "A clue that builds towards the answer, without giving it away.", "visual": {"kind": "emoji", "emoji": "☀️", "label": "Sunlight", "motion": "float"}},
+    {"text": "Time's up. Which color?", "visual": {"kind": "choice", "question": "Which color bounces around most?",
       "options": [{"emoji": "🔴", "label": "Red"}, {"emoji": "🔵", "label": "Blue"}, {"emoji": "🟢", "label": "Green"}],
       "answer": 1}, "reveal": "Blue! It bounces several times more than red."}
   ]
 }
 ```
 
-- 7-14 beats, 90-160 words in all (about 50-70 seconds). At most 26 words in a beat.
+- 5-9 beats, 70-100 words in all (about 35-45 seconds; our best quizzes were 35-42 seconds). At most 26 words in a
+  beat. Exactly one `choice` beat, with at least one beat between the hook and it, and at most 3 after it.
 - `hl`: up to three key words of the beat, shown in colour in the captions. They must appear in the beat's text.
-- The first beat is a `hook`. The host says a short outro by itself; do not write one.
-- `title`: at most 60 characters, the question or the case ("The Case of the Office Birthday Cake"). No emoji, no
-  "#shorts".
+- The first beat is a `hook` and its text asks the question. The host says a short outro by itself (it invites a
+  comment); do not write one.
+- `title`: at most 60 characters, a question to the viewer: it ends with `?` and says "you" or "your" ("Which Exit
+  Would You Take?", "Do You Think Goldfish Forget in 3 Seconds?", "Why Do Onions Make You Cry?"). It must not start
+  with the same two words as any of the 3 snacks before it; vary the opening (Can you, Would you, Which, Why do,
+  What would, Do you think...). No emoji, no "#shorts".
 - `topic`: what it is about, one of: body, mind, health, space, earth, weather, ocean, nature, animals, food,
   technology, home, history, language, money, travel, sport, music, art, work, school, city, transport. For a
   mystery or teaser, the topic is its setting or subject (an office mystery is `work`, a train puzzle is `transport`).
 
-Visuals (every beat has one; use at least five kinds per snack, and do not use the same kind twice in a row):
+Visuals (every beat has one; use at least four kinds per snack, and do not use the same kind twice in a row):
 
 | `kind` | Fields | Use it for |
 |---|---|---|
-| `hook` | `emoji`, `text` (40 chars) | The opening question, big. |
+| `hook` | `emoji`, `text` (40 chars) | The opening question, big, with the `choice` beat's answers under it (added automatically) and "PAUSE & GUESS". |
 | `emoji` | `emoji`, `label` (24), `motion`: bounce, spin, zoom, shake, float | One thing to look at. |
 | `pair` | `a`, `b` (each `emoji` + `label`), `vs` (true/false) | Two things compared or opposite. |
 | `steps` | `items`: 2-4 of `emoji` + `label` | A process or a list, shown one by one. |
@@ -127,11 +139,11 @@ Visuals (every beat has one; use at least five kinds per snack, and do not use t
 
 Each format needs:
 
-- `why`: a `choice` beat (before the full explanation) and a `fact` beat (normally last).
+- `why`: a `choice` beat (before the explanation) and a `fact` beat (normally last).
 - `mystery`: a `suspects` beat, a `clues` beat, a `choice` beat where the viewer guesses, and a final `suspects` beat
   with `pick`. Introduce something about each suspect that a clue can point to. The solution beat explains how the
   clues lead there.
-- `real`: a `choice` beat near the start ("What should you do first?"), then the steps and why.
+- `real`: a `choice` beat ("What should you do first?") after one beat that raises the stakes, then the steps and why.
 - `how`: a `choice` beat (a guess about how it works) and a `steps` beat that shows the mechanism.
 - `whatif`: a `choice` beat (a guess about what would happen) and a `steps` beat with the chain of consequences.
 - `teaser`: the puzzle told with `emoji`, `pair`, `scale` or `clues` beats, a `choice` beat with the possible answers,

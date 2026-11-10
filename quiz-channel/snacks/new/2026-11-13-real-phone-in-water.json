@@ -5,7 +5,7 @@
   "topic": "technology",
   "beats": [
     {
-      "text": "Splash! Your phone just fell into the sink. What do you do first?",
+      "text": "Splash! Your phone just fell in the sink. Rice, turn it off, or charge it: what do you do first?",
       "visual": {
         "kind": "hook",
         "emoji": "📱",
@@ -13,8 +13,20 @@
       }
     },
     {
-      "text": "Quick, pick one! What should you do first?",
-      "reveal": "Turn it off! Electricity plus water inside is what really breaks things.",
+      "text": "Most people do the wrong thing here, and it can cost them the phone.",
+      "hl": [
+        "wrong thing"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "😬",
+        "label": "Most get this wrong",
+        "motion": "shake"
+      }
+    },
+    {
+      "text": "Three seconds. What first?",
+      "reveal": "Turn it off! Power plus water inside is what really breaks things.",
       "hl": [
         "Turn it off"
       ],
@@ -39,36 +51,27 @@
       }
     },
     {
-      "text": "Then take off the case and gently wipe the outside dry with a soft cloth.",
+      "text": "Then take off the case, wipe it dry, and let it air dry, port facing down.",
       "visual": {
         "kind": "steps",
         "items": [
           {
-            "emoji": "📴",
-            "label": "Turn it off"
-          },
-          {
             "emoji": "🧤",
-            "label": "Take off the case"
+            "label": "Case off"
           },
           {
             "emoji": "🧻",
             "label": "Wipe it dry"
+          },
+          {
+            "emoji": "💧",
+            "label": "Port facing down"
           }
         ]
       }
     },
     {
-      "text": "Tap it gently with the charging port facing down, so water can drip out.",
-      "visual": {
-        "kind": "emoji",
-        "emoji": "💧",
-        "label": "Port facing down",
-        "motion": "bounce"
-      }
-    },
-    {
-      "text": "Now the hard part: wait. Let it air dry for hours before charging, a full day to be safest.",
+      "text": "And wait before charging. A full day is safest.",
       "hl": [
         "wait"
       ],
@@ -80,25 +83,7 @@
       }
     },
     {
-      "text": "Never use a hair dryer. Hot air can melt glue and push water deeper inside.",
-      "hl": [
-        "Never"
-      ],
-      "visual": {
-        "kind": "pair",
-        "a": {
-          "emoji": "🌬️",
-          "label": "Air dry: yes"
-        },
-        "b": {
-          "emoji": "🔥",
-          "label": "Hair dryer: no"
-        },
-        "vs": false
-      }
-    },
-    {
-      "text": "And the famous rice trick? Phone makers now say skip it. Tiny bits of rice can get stuck in the port.",
+      "text": "And the rice trick? Phone makers now say skip it. Bits of rice can get stuck in the port.",
       "hl": [
         "skip it"
       ],
@@ -106,29 +91,6 @@
         "kind": "fact",
         "emoji": "🍚",
         "text": "Rice doesn't help, and bits can get stuck inside."
-      }
-    },
-    {
-      "text": "So remember: off, dry, wait. Save this for the next splash!",
-      "hl": [
-        "off, dry, wait"
-      ],
-      "visual": {
-        "kind": "steps",
-        "items": [
-          {
-            "emoji": "📴",
-            "label": "Off"
-          },
-          {
-            "emoji": "🧻",
-            "label": "Dry"
-          },
-          {
-            "emoji": "⏳",
-            "label": "Wait"
-          }
-        ]
       }
     }
   ]

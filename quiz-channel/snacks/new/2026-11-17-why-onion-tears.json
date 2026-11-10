@@ -5,7 +5,7 @@
   "topic": "food",
   "beats": [
     {
-      "text": "You slice one onion, and suddenly your eyes are streaming. What did it do to you?",
+      "text": "You slice an onion and your eyes start streaming. Is it the juice, a gas, or heat?",
       "hl": [
         "streaming"
       ],
@@ -16,9 +16,9 @@
       }
     },
     {
-      "text": "Inside an onion, two things are kept apart in separate compartments. A knife breaks the walls between them.",
+      "text": "Inside an onion, two chemicals sit in separate pockets. A knife breaks the walls between them.",
       "hl": [
-        "apart"
+        "separate"
       ],
       "visual": {
         "kind": "pair",
@@ -34,8 +34,11 @@
       }
     },
     {
-      "text": "Once they mix, a quick reaction starts. Which one do you think reaches your eyes?",
-      "reveal": "A gas! The mix turns into a tiny cloud that floats up from the board.",
+      "text": "Once they mix, a quick reaction starts. What reaches your eyes?",
+      "reveal": "A gas! It floats up from the board and stings your eyes.",
+      "hl": [
+        "A gas"
+      ],
       "visual": {
         "kind": "choice",
         "question": "What reaches your eyes?",
@@ -57,7 +60,10 @@
       }
     },
     {
-      "text": "Here is the chain, in three steps.",
+      "text": "Your eyes sting, so they flood with tears to wash it away. Crying is a cleaning job.",
+      "hl": [
+        "cleaning"
+      ],
       "visual": {
         "kind": "steps",
         "items": [
@@ -66,71 +72,37 @@
             "label": "Cells break"
           },
           {
-            "emoji": "⚗️",
-            "label": "Chemicals mix"
-          },
-          {
             "emoji": "💨",
             "label": "Gas rises"
+          },
+          {
+            "emoji": "😢",
+            "label": "Tears wash it"
           }
         ]
       }
     },
     {
-      "text": "The gas lands on the wet surface of your eye and makes a mild irritant. Your eye feels a sting.",
+      "text": "Fewer tears? Chill the onion first. The cold slows the reaction down.",
       "hl": [
-        "sting"
+        "Chill"
       ],
       "visual": {
         "kind": "emoji",
-        "emoji": "👁️",
-        "label": "A stinging eye",
-        "motion": "shake"
+        "emoji": "🧊",
+        "label": "Chill it first",
+        "motion": "float"
       }
     },
     {
-      "text": "So your body floods the eye with tears to wash the irritant away. The crying is a cleaning job.",
+      "text": "Bonus fact: the gas is the onion's defence. Nothing wants to bite something that stings.",
       "hl": [
-        "cleaning"
+        "defence"
       ],
-      "visual": {
-        "kind": "pair",
-        "a": {
-          "emoji": "💨",
-          "label": "Irritant"
-        },
-        "b": {
-          "emoji": "😢",
-          "label": "Tears"
-        },
-        "vs": false
-      }
-    },
-    {
-      "text": "Fewer tears are likely if you chill the onion first, or cut it near a fan, because the reaction slows down and the gas blows away.",
-      "hl": [
-        "chill"
-      ],
-      "visual": {
-        "kind": "steps",
-        "items": [
-          {
-            "emoji": "🧊",
-            "label": "Chill the onion"
-          },
-          {
-            "emoji": "🌬️",
-            "label": "Use a fan"
-          }
-        ]
-      }
-    },
-    {
-      "text": "The onion does this to protect itself. Nothing wants to bite into something that stings its eyes.",
       "visual": {
         "kind": "fact",
         "emoji": "🌱",
-        "text": "BONUS: the onion's gas is a natural defence against animals that might eat it."
+        "text": "The onion's gas is a natural defence against animals that might eat it."
       }
     }
   ]

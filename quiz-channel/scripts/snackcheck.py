@@ -30,8 +30,9 @@ TOPIC_LIMIT = 2
 RECENT_USED = 6
 KINDS = {"hook", "emoji", "pair", "steps", "number", "choice", "fact", "scale", "clues", "suspects"}
 MOTIONS = {"bounce", "spin", "zoom", "shake", "float"}
-WORDS = (90, 160)
-BEATS = (7, 14)
+WORDS = (70, 100)  # with the guess timer and the outro: about 35-45 seconds (our best quizzes were 35-42 s)
+BEATS = (5, 9)
+TITLE_START = 2  # a title must not start with the same two words as any of the last 3 snacks
 TOO_SIMILAR = 0.2
 
 
@@ -70,6 +71,9 @@ def check_snack(spec):
         raise SnackError(f"topic must be one of {sorted(TOPICS)}")
     if len(spec["title"]) > 60:
         raise SnackError("title is longer than 60 characters")
+    if not spec["title"].rstrip().endswith("?") or not re.search(r"\byou(r|'re|'d)?\b", spec["title"], re.I):
+        raise SnackError("the title is a question to the viewer: it ends with '?' and says 'you' or 'your' "
+                         "(e.g. 'Which Exit Would You Take?')")
     beats = spec["beats"]
     if not BEATS[0] <= len(beats) <= BEATS[1]:
         raise SnackError(f"use {BEATS[0]}-{BEATS[1]} beats, this one has {len(beats)}")
@@ -131,8 +135,18 @@ def check_snack(spec):
                 raise SnackError(f"{where}: highlight {h!r} is not in the text")
     if kinds[0] != "hook":
         raise SnackError("the first beat is a 'hook'")
-    if len(set(kinds)) < 5:
-        raise SnackError(f"use at least 5 kinds of visual, this one has {len(set(kinds))}")
+    if "?" not in beats[0]["text"]:
+        raise SnackError("beat 1 asks the snack's question out loud (with '?'): the viewer starts guessing in the first "
+                         "second, while the choice's options are already on screen")
+    if kinds.count("choice") != 1:
+        raise SnackError("use exactly one 'choice' beat: the hook asks it, the choice reveals it")
+    at = kinds.index("choice")
+    if at < 2:
+        raise SnackError("put at least one beat between the hook and the 'choice', so the answer is earned")
+    if len(kinds) - 1 - at > 3:
+        raise SnackError("at most 3 beats after the 'choice': the video ends soon after the answer")
+    if len(set(kinds)) < 4:
+        raise SnackError(f"use at least 4 kinds of visual, this one has {len(set(kinds))}")
     for i in range(1, len(kinds)):
         if kinds[i] == kinds[i - 1]:
             raise SnackError(f"beats {i} and {i + 1} are both '{kinds[i]}': change one of them")
@@ -154,7 +168,7 @@ def check_snack(spec):
         if not any(b["visual"]["kind"] == "suspects" and b["visual"].get("pick") is not None for b in beats):
             raise SnackError("a mystery ends with a 'suspects' beat whose 'pick' is the culprit")
     if not WORDS[0] <= total <= WORDS[1]:
-        raise SnackError(f"{total} words in all, aim for {WORDS[0]}-{WORDS[1]} (about 50-70 seconds)")
+        raise SnackError(f"{total} words in all, aim for {WORDS[0]}-{WORDS[1]} (about 35-45 seconds)")
     return total
 
 
@@ -189,6 +203,19 @@ def check_against(path, spec, topics=True):
         score = overlap(text, snack_text(other))
         if score >= TOO_SIMILAR:
             raise SnackError(f"too similar to {os.path.basename(p)} ({score:.0%} of phrases repeat)")
+    start = lambda t: " ".join(words(t.lower())[:TITLE_START])  # noqa: E731
+    mine = date_of(path)
+    before = sorted((date_of(p), p) for p in waiting() + used() if os.path.abspath(p) != path and date_of(p) < mine)[-3:]
+    for _, p in before:
+        if start(json.load(open(p))["title"]) == start(spec["title"]):
+            raise SnackError(f"the title starts like {os.path.basename(p)}'s ('{start(spec['title'])} ...'); "
+                             "vary how titles open")
+
+
+def date_of(path):
+    """The day a script is for: snacks/new/<date>-..., or the folder snacks/used/<date>/."""
+    m = re.match(r"\d{4}-\d{2}-\d{2}", os.path.basename(path)) or re.match(r"\d{4}-\d{2}-\d{2}", os.path.basename(os.path.dirname(path)))
+    return m.group(0) if m else "9999"
 
 
 def format_for(date):
@@ -234,7 +261,7 @@ def main():
             check_against(path, spec)
         except (SnackError, json.JSONDecodeError) as e:
             raise SystemExit(f"snack error in {path}: {e}")
-        print(f"ok: {path} ({total} words, about {total * 0.45 + 8:.0f} s)")
+        print(f"ok: {path} ({total} words, about {total * 0.34 + 9:.0f} s)")
 
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ const FONTS: Record<string, string> = {
 // "real" is a real-life what-would-you-do. Every beat has its own visual; the host's words run as captions.
 type Item = {emoji: string; label?: string};
 export type Visual =
-	| {kind: 'hook'; emoji: string; text: string}
+	| {kind: 'hook'; emoji: string; text: string; options?: Item[]} // options: the choice's, shown from the first frame
 	| {kind: 'emoji'; emoji: string; label?: string; motion?: 'bounce' | 'spin' | 'zoom' | 'shake' | 'float'}
 	| {kind: 'pair'; a: Item; b: Item; vs?: boolean}
 	| {kind: 'steps'; items: Item[]}
@@ -128,6 +128,26 @@ const VisualView: React.FC<{v: Visual; duration: number; theme: SnackProps['them
 	const center: React.CSSProperties = {position: 'absolute', left: 60, right: 60, top: 300, height: 860, display: 'flex', alignItems: 'center', justifyContent: 'center'};
 	switch (v.kind) {
 		case 'hook':
+			if (v.options?.length) {
+				// the first second: the question and its answers are already there, so the viewer starts guessing at once
+				return (
+					<div style={{position: 'absolute', left: 70, right: 70, top: 280, height: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 34}}>
+						<div style={{display: 'flex', alignItems: 'center', gap: 26}}>
+							<Emoji e={v.emoji} size={170} style={{display: 'inline-block', transform: `rotate(${Math.sin(f / 9) * 6}deg)`}} />
+							<div style={{fontFamily: l.headFont, fontSize: 54, color: INK, background: theme.accent, padding: '8px 26px', borderRadius: 34, transform: `rotate(-3deg) scale(${1 + 0.05 * Math.sin(f / 5)})`, boxShadow: '0 8px 0 rgba(0,0,0,0.2)', whiteSpace: 'nowrap'}}>⏸ PAUSE &amp; GUESS</div>
+						</div>
+						<div style={{fontFamily: l.headFont, fontSize: v.text.length > 26 ? 86 : 100, color: '#fff', textAlign: 'center', lineHeight: 1.05, textShadow: '0 8px 0 rgba(0,0,0,0.25)'}}>{v.text}</div>
+						<div style={{display: 'flex', gap: 22, justifyContent: 'center', flexWrap: 'wrap'}}>
+							{v.options.map((o, i) => (
+								<div key={i} style={{width: v.options!.length > 3 ? 205 : 255, padding: '20px 10px', ...card(l, i), background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 12px 0 rgba(0,0,0,0.18)', transform: `translateY(${Math.sin(f / 10 + i) * 6}px)`}}>
+									<Emoji e={o.emoji} size={100} />
+									<div style={{fontFamily: body, fontWeight: 900, fontSize: 40, color: INK, marginTop: 8, textAlign: 'center', lineHeight: 1.1}}>{o.label}</div>
+								</div>
+							))}
+						</div>
+					</div>
+				);
+			}
 			return (
 				<div style={{...center, flexDirection: 'column'}}>
 					<In at={0}>

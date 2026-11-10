@@ -77,15 +77,15 @@ THEMES = {  # several colourings per format
     "teaser": [("#14532D", "#1C3D2A", "#FDE047"), ("#1F2937", "#111827", "#F9A8D4"), ("#1E3A2F", "#0F2A1F", "#93C5FD")],
     "origin": [("#78350F", "#451A03", "#FCD34D"), ("#7C2D12", "#3F1D0B", "#FDBA74"), ("#57534E", "#292524", "#FDE68A")],
 }
-OUTRO = {  # the host's last line, then the end card
-    "why": "Did you guess right? Follow for a new Brain Snack every day!",
-    "how": "Now you know how it works. Follow for a new Brain Snack every day!",
-    "mystery": "Did you crack the case? Follow for a new Brain Snack every day!",
-    "myth": "Did you believe it? Follow for a new Brain Snack every day!",
-    "real": "Would you have done the same? Follow for a new Brain Snack every day!",
-    "whatif": "Wild, right? Follow for a new Brain Snack every day!",
-    "teaser": "Did you get it before the answer? Follow for a new Brain Snack every day!",
-    "origin": "Now you know the story. Follow for a new Brain Snack every day!",
+OUTRO = {  # the host's last line (short, and it invites a comment), then the end card asks to follow
+    "why": "Did you guess right? Tell me below!",
+    "how": "Did you know that? Tell me below!",
+    "mystery": "Did you crack the case? Comment below!",
+    "myth": "Did you believe it? Be honest, below!",
+    "real": "What would you have done? Comment below!",
+    "whatif": "Wild, right? What should I imagine next?",
+    "teaser": "Did you solve it in time? Comment below!",
+    "origin": "Did you know that story? Tell me below!",
 }
 TAGS = {"why": ["science", "fun facts", "why", "explained"], "how": ["how it works", "how things work", "explained", "engineering"],
         "myth": ["myth or fact", "myths busted", "true or false", "fun facts"], "mystery": ["riddle", "mystery", "detective", "can you solve it"],
@@ -155,14 +155,18 @@ def build(spec, seed):
         return len(c) / SR
 
     beats, chunks = [], []
-    cur = 0.2
-    for beat in spec["beats"]:
+    choice = next(beat["visual"] for beat in spec["beats"] if beat["visual"]["kind"] == "choice")
+    cur = 0.0  # the hook starts at once: no title, the first frame already asks the question
+    for i, beat in enumerate(spec["beats"]):
         start = cur
         v = dict(beat["visual"])
+        if i == 0 and v["kind"] == "hook":  # the choice's answers are on screen from the first frame (not which is right)
+            v["options"] = [{"emoji": o["emoji"], "label": o.get("label", "")} for o in choice["options"]]
         b.sfx.append((start + 0.05, "whoosh"))
-        d = say(start + 0.15, beat["text"])
-        chunks += chunks_for(beat["text"], beat.get("hl", []), start + 0.17, start + 0.15 + d, b.f)
-        end = start + 0.15 + d + 0.35
+        lead = 0.05 if i == 0 else 0.15
+        d = say(start + lead, beat["text"])
+        chunks += chunks_for(beat["text"], beat.get("hl", []), start + lead + 0.02, start + lead + d, b.f)
+        end = start + lead + d + 0.35
         if v["kind"] in ("steps", "clues", "scale"):
             n = len(v["items"])
             for i in range(n):

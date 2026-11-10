@@ -1,11 +1,11 @@
 {
   "format": "mystery",
-  "title": "The Case of the Office Birthday Cake",
+  "title": "Can You Solve the Office Cake Mystery?",
   "summary": "The birthday cake vanished from a locked office kitchen an hour before the party. Four suspects, three clues. Can you solve it?",
   "topic": "work",
   "beats": [
     {
-      "text": "An hour before the office party, the birthday cake vanished. Somebody ate it. Who?",
+      "text": "Someone ate the office birthday cake an hour before the party. Ben, Priya, Leo or Mia: who did it?",
       "visual": {
         "kind": "hook",
         "emoji": "🎂",
@@ -13,7 +13,7 @@
       }
     },
     {
-      "text": "It was in the kitchen fridge, and the kitchen door only opens with a key card.",
+      "text": "The cake was in the kitchen, and that door only opens with a key card.",
       "hl": [
         "key card"
       ],
@@ -25,35 +25,9 @@
       }
     },
     {
-      "text": "Four suspects: Ben the night guard, who went home at eight, Priya the new intern, Leo the manager, and Mia from sales.",
-      "visual": {
-        "kind": "suspects",
-        "items": [
-          {
-            "emoji": "💂",
-            "label": "Ben"
-          },
-          {
-            "emoji": "👩",
-            "label": "Priya"
-          },
-          {
-            "emoji": "👨‍💼",
-            "label": "Leo"
-          },
-          {
-            "emoji": "👩‍🦰",
-            "label": "Mia"
-          }
-        ]
-      }
-    },
-    {
-      "text": "Clue one: a key card opened the kitchen at ten. Two: interns have no key card yet. Three: Mia was on a client call all morning.",
+      "text": "Clues: a card opened the door at ten. Ben left at eight. Interns have no card. Mia was on a call all morning.",
       "hl": [
-        "ten",
-        "no key card",
-        "client call"
+        "ten"
       ],
       "visual": {
         "kind": "clues",
@@ -63,8 +37,12 @@
             "label": "Door opened at ten"
           },
           {
+            "emoji": "🌙",
+            "label": "Ben left at eight"
+          },
+          {
             "emoji": "🪪",
-            "label": "Interns: no card yet"
+            "label": "Interns: no card"
           },
           {
             "emoji": "📞",
@@ -74,8 +52,8 @@
       }
     },
     {
-      "text": "Your turn, detective. Who ate the cake?",
-      "reveal": "It was Leo, the manager!",
+      "text": "Your turn, detective. Who ate it?",
+      "reveal": "Leo, the manager!",
       "hl": [
         "Leo"
       ],
@@ -85,46 +63,26 @@
         "options": [
           {
             "emoji": "💂",
-            "label": "Ben"
+            "label": "Ben, guard"
           },
           {
             "emoji": "👩",
-            "label": "Priya"
+            "label": "Priya, intern"
           },
           {
             "emoji": "👨‍💼",
-            "label": "Leo"
+            "label": "Leo, manager"
           },
           {
             "emoji": "👩‍🦰",
-            "label": "Mia"
+            "label": "Mia, sales"
           }
         ],
         "answer": 2
       }
     },
     {
-      "text": "Ben had gone home at eight. Priya has no card. Mia was on a call. Only Leo could open that door at ten.",
-      "visual": {
-        "kind": "steps",
-        "items": [
-          {
-            "emoji": "🌙",
-            "label": "Ben went home"
-          },
-          {
-            "emoji": "🪪",
-            "label": "Priya: no card"
-          },
-          {
-            "emoji": "📞",
-            "label": "Mia: on a call"
-          }
-        ]
-      }
-    },
-    {
-      "text": "Leo said he was only checking the fridge. The chocolate frosting on his tie said otherwise.",
+      "text": "Only Leo had a card and was there at ten. And the frosting on his tie? Case closed.",
       "hl": [
         "frosting"
       ],
@@ -133,19 +91,19 @@
         "items": [
           {
             "emoji": "💂",
-            "label": "Ben"
+            "label": "Ben, guard"
           },
           {
             "emoji": "👩",
-            "label": "Priya"
+            "label": "Priya, intern"
           },
           {
             "emoji": "👨‍💼",
-            "label": "Leo"
+            "label": "Leo, manager"
           },
           {
             "emoji": "👩‍🦰",
-            "label": "Mia"
+            "label": "Mia, sales"
           }
         ],
         "pick": 2

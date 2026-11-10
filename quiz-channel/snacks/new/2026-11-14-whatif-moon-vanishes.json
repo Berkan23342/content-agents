@@ -1,11 +1,11 @@
 {
   "format": "whatif",
-  "title": "What If the Moon Vanished Tonight?",
+  "title": "What Would You Notice If the Moon Vanished?",
   "summary": "The Moon does more than light up the night. Here is what would change on Earth if it suddenly disappeared.",
   "topic": "space",
   "beats": [
     {
-      "text": "Tonight you look up, and the Moon is simply gone. What happens next?",
+      "text": "Tonight you look up, and the Moon is gone. What happens to the oceans? Pause and guess!",
       "visual": {
         "kind": "hook",
         "emoji": "🌙",
@@ -13,7 +13,7 @@
       }
     },
     {
-      "text": "First, nights get darker. Without moonlight, only stars and city lights remain.",
+      "text": "First, nights get much darker. Only stars and city lights are left.",
       "hl": [
         "darker"
       ],
@@ -25,10 +25,10 @@
       }
     },
     {
-      "text": "Quick guess. What would change in the oceans?",
-      "reveal": "The tides! Most of their pull comes from the Moon, so they would shrink a lot.",
+      "text": "Time's up. What happens to the oceans?",
+      "reveal": "The tides shrink! Most of their pull comes from the Moon.",
       "hl": [
-        "oceans"
+        "tides shrink"
       ],
       "visual": {
         "kind": "choice",
@@ -51,7 +51,7 @@
       }
     },
     {
-      "text": "The Sun would still pull on the water, so tides stay, but they get weaker.",
+      "text": "The Sun still pulls on the water, so tides stay, just weaker.",
       "hl": [
         "weaker"
       ],
@@ -69,7 +69,10 @@
       }
     },
     {
-      "text": "Here is the slow chain of changes over a very long time.",
+      "text": "Over millions of years, Earth's tilt could also wobble more, without the Moon to steady it.",
+      "hl": [
+        "tilt"
+      ],
       "visual": {
         "kind": "steps",
         "items": [
@@ -82,10 +85,6 @@
             "label": "Weaker tides"
           },
           {
-            "emoji": "🦀",
-            "label": "Shore life adapts"
-          },
-          {
             "emoji": "🌍",
             "label": "Tilt wobbles more"
           }
@@ -93,44 +92,14 @@
       }
     },
     {
-      "text": "The Moon also helps keep Earth's tilt steady. Without it, the tilt could wander over millions of years.",
+      "text": "Bonus fact: the Moon is drifting away from us, about four centimetres every year.",
       "hl": [
-        "tilt"
+        "drifting away"
       ],
-      "visual": {
-        "kind": "emoji",
-        "emoji": "🌍",
-        "label": "A steadier tilt",
-        "motion": "spin"
-      }
-    },
-    {
-      "text": "Days would also stay a little shorter, because the Moon slowly drags on Earth's spin.",
-      "hl": [
-        "shorter"
-      ],
-      "visual": {
-        "kind": "number",
-        "value": 24,
-        "unit": "hours, give or take",
-        "emoji": "⏰"
-      }
-    },
-    {
-      "text": "So you would not notice much tomorrow, but the planet would change slowly and deeply.",
-      "visual": {
-        "kind": "emoji",
-        "emoji": "🔭",
-        "label": "Slow change",
-        "motion": "bounce"
-      }
-    },
-    {
-      "text": "One more thing about our neighbour.",
       "visual": {
         "kind": "fact",
         "emoji": "🌙",
-        "text": "The Moon is slowly drifting away from Earth, by about a few centimetres every year."
+        "text": "The Moon drifts about 3.8 cm farther from Earth every year."
       }
     }
   ]

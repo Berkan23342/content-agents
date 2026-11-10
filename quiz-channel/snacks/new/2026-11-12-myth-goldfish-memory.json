@@ -1,11 +1,11 @@
 {
   "format": "myth",
-  "title": "Do Goldfish Really Have a 3-Second Memory?",
+  "title": "Do You Think Goldfish Forget in 3 Seconds?",
   "summary": "Everyone has heard that goldfish forget everything in three seconds. Here is what experiments with real goldfish show.",
   "topic": "animals",
   "beats": [
     {
-      "text": "Everyone says a goldfish forgets everything in three seconds. Is that true?",
+      "text": "Everyone says goldfish forget everything in three seconds. Myth or fact? Pause and guess!",
       "visual": {
         "kind": "hook",
         "emoji": "🐟",
@@ -13,7 +13,16 @@
       }
     },
     {
-      "text": "Myth or fact? Make your guess.",
+      "text": "Picture a goldfish circling its bowl, greeting the same rock again and again.",
+      "visual": {
+        "kind": "emoji",
+        "emoji": "🔄",
+        "label": "Round and round",
+        "motion": "spin"
+      }
+    },
+    {
+      "text": "Time's up. Myth or fact?",
       "reveal": "Myth! Goldfish can remember things for months, not seconds.",
       "hl": [
         "months"
@@ -35,31 +44,7 @@
       }
     },
     {
-      "text": "The myth says three seconds. Real experiments show goldfish can remember for months.",
-      "visual": {
-        "kind": "pair",
-        "a": {
-          "emoji": "⏱️",
-          "label": "Myth: 3 seconds"
-        },
-        "b": {
-          "emoji": "📅",
-          "label": "Truth: months"
-        },
-        "vs": true
-      }
-    },
-    {
-      "text": "So where did the myth come from? Nobody knows for sure. Maybe a fish circling a small bowl just looks forgetful.",
-      "visual": {
-        "kind": "emoji",
-        "emoji": "🔄",
-        "label": "Round and round",
-        "motion": "spin"
-      }
-    },
-    {
-      "text": "Scientists played a sound every time they fed the fish. Soon the fish swam over at the sound alone, even with no food.",
+      "text": "Scientists rang a sound at every feeding. Soon the fish swam over at the sound alone.",
       "hl": [
         "sound alone"
       ],
@@ -82,19 +67,22 @@
       }
     },
     {
-      "text": "Goldfish can even learn to push a little lever to get food.",
-      "hl": [
-        "lever"
-      ],
+      "text": "So the myth says three seconds. Experiments say months.",
       "visual": {
-        "kind": "emoji",
-        "emoji": "🕹️",
-        "label": "Push for food",
-        "motion": "bounce"
+        "kind": "pair",
+        "a": {
+          "emoji": "⏱️",
+          "label": "Myth: 3 seconds"
+        },
+        "b": {
+          "emoji": "📅",
+          "label": "Truth: months"
+        },
+        "vs": true
       }
     },
     {
-      "text": "Bonus fact: goldfish see colors, and even ultraviolet light, which our eyes cannot see at all.",
+      "text": "Bonus fact: goldfish can even see ultraviolet light, which our eyes cannot.",
       "hl": [
         "ultraviolet"
       ],
