@@ -7,9 +7,9 @@
   "beats": [
     {
       "scene": "window",
-      "text": "Day thirteen. Rain drummed the glass. Marek's torch bobbed toward the harbour.",
+      "text": "Marek's torch bobbed toward the harbour, through the rain. He had my dog.",
       "hl": [
-        "torch"
+        "my dog"
       ],
       "zombies": 8,
       "rain": true,

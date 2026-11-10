@@ -617,9 +617,9 @@ def scripted_stories(date, limit, want=None):
     return out
 
 
-def intro(b, bg, title, heroes, lines, top="Bubbly Kids TV", **style):
+def intro(b, bg, title, heroes, lines, top="Bubbly Kids TV", start=1.2, **style):
     b.sfx.append((0.2, "whoop"))
-    cur = 1.2
+    cur = start
     for text in lines:
         cur += b.say(cur, text) + 0.3
     end = cur + 0.6
@@ -765,11 +765,12 @@ def fmt_daily(b, rng, ep_no, specs, kind=None):
     titles = [s["title"] for s in specs]
     heroes = [body(icon(c)) for c in dict.fromkeys(c for s in specs for c in s.get("cast", [])[:2])][:3]
     style = KIND_STYLE.get(kind or specs[0].get("kind") or "adventure", KIND_STYLE["adventure"])
+    badge = {"badge": style["label"], "badgeColor": style["color"], "rays": style["rays"]}  # for the thumbnail
+    # a short opening: viewers (and the suggested-videos panel) judge the first seconds, so one line and the title
     intro(b, outdoor(first_bg), [titles[0]] if len(specs) == 1 else ["Story Time!"], heroes,
-          ["Hello, friends! Welcome to Bubbly Kids TV!", style["hello"],
-           f"Today's story is called: {titles[0]}! Let's begin." if len(specs) == 1
-           else f"Today we have {len(specs)} new stories: {', and '.join(titles)}. Let's go!"],
-          top=style["label"], topColor=style["color"], rays=style["rays"])
+          [f"{style['hello']} Today's story is {titles[0]}!" if len(specs) == 1
+           else f"{style['hello']} We have {len(specs)} new stories today!"],
+          top=style["label"], topColor=style["color"], rays=style["rays"], start=0.5)
     b.music = [(0, b.t, rng.choice(style["songs"]), "lullaby" if calm and len(specs) == 1 else "gentle")]
     infos = []
     b.stories = []  # (title, start, end) of each story, so the day's Short can name the story it comes from
@@ -800,8 +801,8 @@ def fmt_daily(b, rng, ep_no, specs, kind=None):
         "tags": ["kids stories", "story time", "animated stories for kids", "stories for toddlers", "moral stories",
                  "preschool", "cartoon for kids", "bubbly kids tv"],
     }
-    thumb = {"title": [titles[0]] if len(specs) == 1 else ["Story Time!", titles[0]],
-             "heroes": [body(icon(c)) for c in infos[0]["cast"][:3]], "bg": outdoor(first_bg)}
+    thumb = {"title": [titles[0]], "heroes": [body(icon(c)) for c in infos[0]["cast"][:2]], "bg": outdoor(first_bg),
+             **badge}
     return meta, thumb
 
 

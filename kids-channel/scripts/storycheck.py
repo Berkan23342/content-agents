@@ -49,6 +49,8 @@ def check_story(spec):
     for key in ("title", "summary", "lesson", "shots"):
         if key not in spec:
             raise StoryError(f"missing '{key}'")
+    if len(spec["title"]) > 26 or len(spec["title"].split()) > 5:
+        raise StoryError("the title is written big on the thumbnail: at most 5 words and 26 characters")
     for i, shot in enumerate(spec["shots"]):
         where = f"shot {i + 1}"
         if shot.get("bg") not in SCRIPT_BGS:

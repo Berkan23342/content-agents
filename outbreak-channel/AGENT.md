@@ -8,13 +8,15 @@ Every day the video job (`.github/workflows/outbreak-video.yml`) publishes the n
 answer questions during the run; decide yourself.
 
 **Part N of a story is always Day N of that story.** The video shows "DAY N" from the part number, so never put two
-days in one part or one day in two parts. A first line that names the day says "Day N."
+days in one part or one day in two parts. The day is on screen from the first frame: **never open a part with
+"Day N."** The first second decides whether a viewer stays (see Shape below).
 
 ## Steps
 
-1. `cd outbreak-channel` and read `story/series.json`.
-2. For every story, count the scripts in `story/<id>/new/`. A story with 2 or more needs nothing. A story with fewer
-   needs parts until it has 2. If no story needs anything, write the current date and time into
+1. `cd outbreak-channel`, read `story/series.json` and run `python3 scripts/diarycheck.py --seasons`. It shows every
+   slot's story, how far it is, and whether a new story is due (see Seasons). Fix any `problem:` line it prints.
+2. For every story, count the scripts in `story/<id>/new/`. A story with 2 or more needs nothing, and so does a story
+   whose finale is already written. Any other story needs parts until it has 2 (never past its finale). If no story needs anything, write the current date and time into
    `story/harbor-view/new/.heartbeat`, commit only that file and push it (step 6). Every push to a `new/` folder starts
    the video job, so the push matters even without a new part.
 3. For each story that needs parts:
@@ -34,13 +36,45 @@ days in one part or one day in two parts. A first line that names the day says "
    - **Episode log:** add one line.
    Repeat steps 4-5 until every story has 2 parts waiting.
 6. Re-read the new parts once as a viewer:
-   - Is the first line a hook?
+   - Would someone who has never seen the story stop scrolling at the first line?
    - Is the last line a real cliffhanger?
    - Does every scene match the text?
    - Is part N really day N?
 7. Commit the new scripts and the updated bibles, and push to `main`: `git push origin HEAD:main`. If the push is
    rejected, run `git pull --rebase origin main` and push again.
 8. Final message: one line per new part, giving the story, part number, title and what happens.
+
+## Seasons: every story ends, and a new one begins
+
+Our numbers (2026-11-10): Day 1 of a story brings most of the views and nearly all the new subscribers (Harbor View
+Day 1: 1,255 views and 8 subscribers; later days 100-200 views). A viewer who lands on Day 9 often swipes away. So
+stories are short seasons of 10-15 days, and a fresh Day 1 arrives every week or two.
+
+- Every serial has `"finale": N` in `story/series.json`: Day N is its last part. The checker refuses Day N+1.
+- **Writing the finale.** Follow the bible's Season plan. Answer the big questions, give the characters a real
+  ending and close on one strong image. No cliffhanger that needs another day; the end card says THE END.
+- **The next story.** As soon as a story's finale script exists (`--seasons` says "the NEXT STORY ... is due now"),
+  create the story that takes over its slot, in the same run:
+  1. **Premise.** Use an approved `outbreak-...` idea for a new serial if there is one; else build one from
+     `trends/latest.md`, made our own (never copy). It must be clear in one line and grab in one second: a place, a
+     person, a rule or a threat ("the infected follow light, and my job is the lighthouse").
+  2. **Folder.** `story/<new-id>/` with `bible.md` (same sections as the other bibles: The world, The infected,
+     People, Season plan ending on its finale, Voices, Rules for every part, Places, Current state, Episode log) and
+     `new/`.
+  3. **series.json.** Append an entry after the ending story, with the same `slot`, `publish` and `weekdays`. Give it
+     its own `name`, `about`, `tagline` (one line of at most 42 characters, shown at the top of every part for viewers
+     who land in the middle), `finale` (10-15), `grade` (a colour unlike the others), and:
+     - `narrator`: one of `nicole`, `isabella`, `heart`, `grace`, `ruth`, `tess`, not one telling another running
+       story;
+     - `frame`: `diary`, `camcorder`, `journal` or `broadcast` (a narrator on air: her voice sounds like a radio), not
+       one another running story uses;
+     - `cast`: the speaking characters. Their voice files are in `voices/`; a new character borrows one with
+       `"voices": {"marta": "woman"}` (male characters may use male voices).
+  4. **Day 1 and Day 2.** Write both into `new/`. Day 1 must work for someone who knows nothing: the premise in the
+     first two beats, a strong hook first, and a cliffhanger last.
+  5. Run `--seasons` again: no `problem:` lines. A story's slot stays empty (and the video job fails loudly) if its
+     successor is missing when the finale is out, so never leave this for later.
+- The ending story keeps its folder; never delete it.
 
 ## Approved ideas
 
@@ -74,8 +108,8 @@ your own:
     - `found`: a phone recording someone left behind (REC light, timecode). The narrator talks to the camera.
     - `journal`: pages of a handwritten journal someone found (paper edges, handwriting). Dated entries, short.
   - Speakers in specials are `man`, `woman`, `boy`, `girl` and `announcer`.
-  - The video shows "SPECIAL" instead of a day. The first line is a strong hook and the last line a twist; the video
-    ends with "THE END...?". The specials have no bible; read the earlier ones in `story/specials/` so you never repeat
+  - The video shows the specials' name instead of a day. The first line is a strong hook and the last line a twist;
+    the video ends with "THE END...?". The specials have no bible; read the earlier ones in `story/specials/` so you never repeat
     an idea.
 
 ## Every part is about something different
@@ -96,8 +130,11 @@ your own:
 - **Length:** 100-125 words over 8-14 beats; each beat is one or two sentences, at most 24 words. A part lasts about a
   minute.
 - **Shape:**
-  - The first beat is a hook. It usually starts with "Day N." (N = the part number).
-  - The last beat is a cliffhanger. A final sting sound is added automatically.
+  - The first beat is the hook, heard in the first second, with no title card before it. Open on the moment itself:
+    danger, a sound, a choice, a question ("Marek opened the cupboard. Under his arm, wriggling, was Biscuit."). Never
+    start with "Day N."; the checker refuses it, because the day is on screen.
+  - The hook also has to work for a new viewer who missed earlier days: name what is at stake, not an in-joke.
+  - The last beat is a cliffhanger (on a finale: the ending). A final sting sound is added automatically.
   - Every part has one new problem, discovery or decision. Keep the season plan in mind, but surprise the viewer.
 - **Safe for everyone 13+:** tension and danger, never gore, blood or cruelty. No swearing. Animals never die. Real
   places, brands and people never appear.
@@ -115,7 +152,7 @@ your own:
   "event": "stranger",
   "beats": [
     {"scene": "room", "light": "candle", "guest": "okafor", "dog": "sleep", "cam": "push",
-     "text": "Day four. That night, someone walked across the ceiling.", "hl": ["ceiling"], "sfx": ["steps@1.0"]},
+     "text": "Someone was walking across my ceiling. I live on the top floor.", "hl": ["ceiling"], "sfx": ["steps@1.0"]},
     {"scene": "hallway", "light": "flicker", "zombie": true, "text": "...", "hl": ["..."]}
   ]
 }
@@ -124,7 +161,7 @@ your own:
 | Field | Meaning |
 |---|---|
 | `episode` | The part number, which is also the day. There is no separate `day` field. |
-| `title` | At most 28 characters. It is shown under "DAY N" and in the YouTube title. |
+| `title` | At most 28 characters. It goes into the YouTube title after "Day N:". |
 | `ambience` | The background bed: `rain`, `wind`, `night` or `none`. |
 | `event` | What the part is mostly about (see "Every part is about something different"). |
 | `kind`, `narrator` | Specials only: how it is told and who tells it (see Specials). |

@@ -7,9 +7,9 @@
   "beats": [
     {
       "scene": "office",
-      "text": "Day nine. The boy sat by the elevator all night, humming.",
+      "text": "All night the boy sat by the elevator, humming the same six notes.",
       "hl": [
-        "humming"
+        "six notes"
       ],
       "light": "flicker"
     },

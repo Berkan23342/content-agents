@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FloatingBalloon, Look, PopWord, RAINBOW, Season, blinkAt, textStyle} from './common';
-import {Bg, DanceScene, EggScene, FunScene, Scenery, ShadowScene, StoryScene, TitleCard, storyCam} from './Fun';
+import {Bg, DanceScene, EggScene, FunScene, Rays, Scenery, ShadowScene, StoryScene, TitleCard, storyCam} from './Fun';
 import {Hero, HeroView, Pop} from './hero';
 import {mix} from './shapes';
 
@@ -30,7 +30,8 @@ export type EpisodeProps = {
 	durationInFrames: number;
 	audio: string;
 	scenes: Scene[];
-	thumb: {title: string[]; heroes: Hero[]; bg?: Bg};
+	// badge: the story's kind ("A Kindness Story") in its colour; with a badge the thumbnail uses the story layout
+	thumb: {title: string[]; heroes: Hero[]; bg?: Bg; badge?: string; badgeColor?: string; rays?: string};
 	season?: Season; // from the video's date
 	look?: number; // a seed: sky, sun and small details differ from video to video
 };
@@ -245,7 +246,58 @@ export const Episode: React.FC<EpisodeProps> = ({scenes, audio, season = 'spring
 	);
 };
 
-export const EpisodeThumbnail: React.FC<EpisodeProps> = ({thumb, season = 'spring', look = 0}) => {
+/** The daily story's thumbnail: the main character big, the second one beside it, the title in two short lines and
+ *  the kind of story as a coloured badge, so every day's picture is different and readable on a small phone. */
+const StoryThumbnail: React.FC<EpisodeProps> = ({thumb, season = 'spring', look = 0}) => {
+	const [main, second] = thumb.heroes;
+	const words = thumb.title.join(' ').split(' ');
+	const cut = words.length > 2 ? Math.ceil(words.length / 2) : words.length;
+	const lines = [words.slice(0, cut).join(' '), words.slice(cut).join(' ')].filter(Boolean);
+	const longest = Math.max(...lines.map((l) => l.length));
+	const size = Math.min(170, Math.floor(1700 / Math.max(8, longest)));
+	return (
+		<Look.Provider value={{season, seed: look}}>
+			<AbsoluteFill>
+				<Scenery bg={thumb.bg ?? 'day'} tint={null} />
+				<AbsoluteFill style={{background: 'radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0) 35%, rgba(0,0,0,0.28) 100%)'}} />
+				<Rays x={560} y={700} r={760} color={thumb.rays ?? '#fff6b0'} opacity={0.55} frame={0} count={18} />
+				{second ? (
+					<div style={{position: 'absolute', inset: 0, transform: 'rotate(5deg)'}}>
+						<HeroView hero={second} x={1330} y={second.body ? 770 : 800} size={second.body ? 450 : 320} blink={1} />
+					</div>
+				) : null}
+				{main ? (
+					<div style={{position: 'absolute', inset: 0, transform: 'rotate(-4deg)'}}>
+						<HeroView hero={main} x={560} y={main.body ? 690 : 720} size={main.body ? 720 : 500} blink={1} />
+					</div>
+				) : null}
+				{thumb.badge ? (
+					<div style={{position: 'absolute', left: 50, top: 46, transform: 'rotate(-4deg)', background: thumb.badgeColor ?? '#FF8A1F', borderRadius: 60, padding: '14px 40px', border: '8px solid #fff', boxShadow: '0 10px 0 rgba(0,0,0,0.15)'}}>
+						<span style={{...textStyle('#ffffff', 64), WebkitTextStroke: '0px', filter: 'none'}}>{thumb.badge}</span>
+					</div>
+				) : null}
+				<div style={{position: 'absolute', right: 50, top: 190, width: 1050, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6}}>
+					{lines.map((line, i) => (
+						<div key={i} style={{display: 'flex', transform: `rotate(${i ? 2 : -2}deg)`}}>
+							{line.split('').map((ch, k) => (
+								<span key={k} style={{...textStyle(RAINBOW[(k + i * 3) % RAINBOW.length], size), WebkitTextStroke: `${Math.round(size / 7)}px #fff`, display: 'inline-block'}}>
+									{ch === ' ' ? '\u00a0' : ch}
+								</span>
+							))}
+						</div>
+					))}
+				</div>
+				<div style={{position: 'absolute', right: 40, bottom: 30}}>
+					<span style={textStyle('#2F8CFF', 56)}>Bubbly Kids TV</span>
+				</div>
+			</AbsoluteFill>
+		</Look.Provider>
+	);
+};
+
+export const EpisodeThumbnail: React.FC<EpisodeProps> = (props) => {
+	const {thumb, season = 'spring', look = 0} = props;
+	if (thumb.badge) return <StoryThumbnail {...props} />;
 	const n = thumb.heroes.length;
 	return (
 		<Look.Provider value={{season, seed: look}}>

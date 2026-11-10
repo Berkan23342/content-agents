@@ -65,6 +65,8 @@ export type DiaryProps = {
 	grade?: string | null; // the story's colour, laid softly over every scene
 	title: string;
 	frame?: Frame;
+	tagline?: string | null; // one line for viewers who land in the middle of a story
+	finale?: boolean; // the story's last day
 	beats: Beat[];
 	chunks: Chunk[];
 	endAt: number;
@@ -205,53 +207,35 @@ const Captions: React.FC<{chunks: Chunk[]; frame: Frame}> = ({chunks, frame}) =>
 	);
 };
 
-const Intro: React.FC<{day: number; series: string; label?: string | null; title: string; frame: Frame}> = ({day, series, label, title, frame}) => {
+// No title card: the first second decides whether a viewer stays, so the scene and the first line start at once and
+// the story's name, the day and a one-line premise sit small at the top.
+const Header: React.FC<{day: number; series: string; label?: string | null; tagline?: string | null; frame: Frame}> = ({day, series, label, tagline, frame}) => {
 	const f = useCurrentFrame();
-	const {fps} = useVideoConfig();
 	const st = FRAMES[frame];
-	const slam = spring({frame: f, fps, config: {damping: 12, stiffness: 220}});
-	const out = clamp((f - 54) / 10);
-	const big = label ?? `DAY ${day}`;
-	const head =
-		frame === 'camcorder' ? (
-			<div style={{fontFamily: vt, fontSize: 230, color: '#eaffea', lineHeight: 1, letterSpacing: 6, textShadow: '0 0 24px rgba(120,255,140,0.55)', opacity: f % 16 < 13 || f > 30 ? 1 : 0.2}}>{big}</div>
-		) : frame === 'journal' ? (
-			<div style={{fontFamily: rocksalt, fontSize: 150, color: st.paper, lineHeight: 1.3, transform: `rotate(-4deg) scale(${1.4 - 0.4 * slam})`, textShadow: '0 8px 24px rgba(0,0,0,0.9)'}}>{label ?? `Day ${day}`}</div>
-		) : frame === 'broadcast' ? (
-			<div style={{display: 'inline-block', fontFamily: archivo, fontSize: 120, color: '#fff', background: C.red, padding: '6px 40px', transform: `translateX(${(1 - slam) * -900}px)`}}>{label ? 'SPECIAL REPORT' : big}</div>
-		) : (
-			<div style={{fontFamily: anton, fontSize: 230, color: '#fff', lineHeight: 1.05, transform: `scale(${2 - slam})`, textShadow: '0 12px 30px rgba(0,0,0,0.9)'}}>{big}</div>
-		);
+	const own = frame === 'camcorder' || frame === 'broadcast'; // their overlays already show the day or LIVE
+	const tag = tagline ? clamp(1 - (f - 120) / 14) : 0;
 	return (
-		<div style={{position: 'absolute', top: frame === 'camcorder' || frame === 'broadcast' ? 300 : 200, width: '100%', textAlign: 'center', opacity: 1 - out}}>
-			<div style={{fontFamily: st.label, fontSize: frame === 'camcorder' ? 56 : 40, letterSpacing: frame === 'camcorder' ? 4 : 8, color: '#d9d2c0'}}>OUTBREAK DIARY · {series.toUpperCase()}</div>
-			{head}
-			{frame === 'diary' ? <div style={{width: 300 * slam, height: 12, background: C.red, margin: '0 auto'}} /> : null}
-			<div style={{fontFamily: st.title, fontSize: st.titleSize, color: st.paper, marginTop: 28, padding: '0 60px', textShadow: '0 6px 20px rgba(0,0,0,0.9)'}}>{title}</div>
+		<div style={{position: 'absolute', top: own ? 270 : 150, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
+			{own ? null : (
+				<div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{label ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}</div>
+			)}
+			{tag > 0 ? (
+				<div style={{fontSize: frame === 'camcorder' ? 50 : 36, letterSpacing: 2, marginTop: 10, opacity: 0.8 * tag, padding: '0 90px'}}>{tagline!.toUpperCase()}</div>
+			) : null}
 		</div>
 	);
 };
 
-const TopLabel: React.FC<{day: number; series: string; label?: string | null; frame: Frame}> = ({day, series, label, frame}) => {
-	const f = useCurrentFrame();
-	if (frame === 'camcorder' || frame === 'broadcast') return null; // their overlays carry the label
-	return (
-		<div style={{position: 'absolute', top: 118, width: '100%', textAlign: 'center', fontFamily: FRAMES[frame].label, fontSize: 36, letterSpacing: 4, color: '#e6dccb', opacity: 0.75 * clamp((f - 64) / 12)}}>
-			{label ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}
-		</div>
-	);
-};
-
-const EndCard: React.FC<{day: number; endAt: number; label?: string | null; frame: Frame}> = ({day, endAt, label, frame}) => {
+const EndCard: React.FC<{day: number; endAt: number; label?: string | null; frame: Frame; finale?: boolean}> = ({day, endAt, label, frame, finale}) => {
 	const f = useCurrentFrame() - endAt;
 	if (f < 0) return null;
-	const text = frame === 'broadcast' ? 'END OF TRANSMISSION' : frame === 'camcorder' ? 'RECORDING STOPPED' : label ? 'THE END...?' : 'TO BE CONTINUED...';
+	const text = finale ? 'THE END' : frame === 'broadcast' ? 'END OF TRANSMISSION' : frame === 'camcorder' ? 'RECORDING STOPPED' : label ? 'THE END...?' : 'TO BE CONTINUED...';
 	const shown = Math.floor(clamp(f / 30) * text.length);
 	return (
 		<AbsoluteFill style={{background: `rgba(0,0,0,${0.75 * clamp(f / 12)})`}}>
 			<div style={{position: 'absolute', top: 760, width: '100%', textAlign: 'center', fontFamily: FRAMES[frame].title, fontSize: 76, color: FRAMES[frame].paper}}>{text.slice(0, shown)}</div>
 			<div style={{position: 'absolute', top: 900, width: '100%', textAlign: 'center', fontFamily: anton, fontSize: 84, color: C.red, opacity: clamp((f - 34) / 8)}}>
-				{label ? 'FOLLOW FOR MORE STORIES' : `FOLLOW FOR DAY ${day + 1}`}
+				{label || finale ? 'FOLLOW FOR THE NEXT STORY' : `FOLLOW FOR DAY ${day + 1}`}
 			</div>
 		</AbsoluteFill>
 	);
@@ -325,7 +309,7 @@ const Broadcast: React.FC<{title: string}> = ({title}) => {
 };
 
 // ---------------------------------------------------------------- composition
-export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, grade, title, endAt, frame = 'diary'}) => {
+export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, grade, title, endAt, frame = 'diary', tagline, finale}) => {
 	const f = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
@@ -338,9 +322,9 @@ export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, 
 			<Vignette />
 			<Grain f={f} />
 			{frame === 'camcorder' ? <Camcorder day={day} label={label} /> : frame === 'journal' ? <Journal /> : frame === 'broadcast' ? <Broadcast title={title} /> : null}
-			{f < 70 ? <Intro day={day} series={series} label={label} title={title} frame={frame} /> : <TopLabel day={day} series={series} label={label} frame={frame} />}
+			<Header day={day} series={series} label={label} tagline={tagline} frame={frame} />
 			<Captions chunks={chunks} frame={frame} />
-			<EndCard day={day} endAt={endAt} label={label} frame={frame} />
+			<EndCard day={day} endAt={endAt} label={label} frame={frame} finale={finale} />
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
 	);

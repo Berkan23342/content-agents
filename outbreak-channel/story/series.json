@@ -16,7 +16,9 @@
       "announcer"
     ],
     "grade": "#3b6fb6",
-    "frame": "diary"
+    "frame": "diary",
+    "finale": 15,
+    "tagline": "Trapped on the 9th floor with my dog"
   },
   {
     "id": "floor-41",
@@ -40,7 +42,9 @@
       4,
       6
     ],
-    "frame": "camcorder"
+    "frame": "camcorder",
+    "finale": 12,
+    "tagline": "Trapped on the 41st floor of a skyscraper"
   },
   {
     "id": "pine-hollow",
@@ -64,7 +68,9 @@
       3,
       5
     ],
-    "frame": "journal"
+    "frame": "journal",
+    "finale": 11,
+    "tagline": "Hiding in a lake cabin with my niece"
   },
   {
     "id": "specials",

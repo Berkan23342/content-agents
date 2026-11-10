@@ -5,10 +5,12 @@
 
 story/series.json gives each story a slot and a publishing time (Istanbul time, possibly the next night). All parts are
 made in one morning run and YouTube publishes them at those times; if a time has already passed, the part goes out
-right away.
+right away. A story with a "finale" hands its slot to the next story with the same slot (later in series.json) once
+its last day has been published, so a fresh Day 1 comes along every week or two.
 """
 import argparse
 import datetime as dt
+import glob
 import json
 import os
 import subprocess
@@ -18,7 +20,8 @@ from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
-SERIES = {s["slot"]: s for s in json.load(open(os.path.join(ROOT, "story", "series.json")))}
+ALL = json.load(open(os.path.join(ROOT, "story", "series.json")))
+SLOTS = sorted({s["slot"] for s in ALL})
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
 CHANNEL = "UCtjcmQc9DV_sKh4_3UrToIQ"  # Outbreak Diary; the uploader refuses a token for any other channel
@@ -28,9 +31,30 @@ def uploaded(vid):
     return os.path.exists(LOG) and any(line.startswith(f"{vid}.mp4 ") for line in open(LOG))
 
 
+def published_before(sid, date):
+    """The highest part of a story published on an earlier day than `date` (0 if none)."""
+    days = glob.glob(os.path.join(ROOT, "story", sid, "used", "*"))
+    return max((json.load(open(p))["episode"] for d in days if os.path.basename(d) < date
+                for p in glob.glob(os.path.join(d, "*.json"))), default=0)
+
+
+def active(slot, date):
+    """The story that owns a slot on `date`: the first one in series.json whose finale is not yet behind it. A re-run on
+    the finale's own day still finds the finished story, so a failed upload is retried rather than skipped."""
+    for s in ALL:
+        if s["slot"] == slot and not (s.get("finale") and published_before(s["id"], date) >= s["finale"]):
+            return s
+    return None
+
+
 def due(date):
     weekday = dt.date.fromisoformat(date).weekday()  # some stories (the specials) only run on certain days
-    return [e for e in sorted(SERIES) if not uploaded(f"{date}-{e}") and weekday in SERIES[e].get("weekdays", range(7))]
+    out = []
+    for e in SLOTS:
+        s = active(e, date)  # None: the story ended and no next one is ready; make() then says so loudly
+        if not uploaded(f"{date}-{e}") and (s is None or weekday in s.get("weekdays", range(7))):
+            out.append(e)
+    return out
 
 
 def run(*cmd, tries=1):
@@ -50,8 +74,11 @@ def make(e, date, upload):
         raise SystemExit("set CHANNEL in scripts/ci_diary.py to the Outbreak Diary channel id first")
     if upload and not (os.path.exists(TOKEN) and os.path.getsize(TOKEN)):
         raise SystemExit("no channel token: add the OUTBREAK_YOUTUBE_TOKEN secret (see README)")
+    series = active(e, date)
+    if not series:
+        raise SystemExit(f"no story owns slot {e}: add the next story to story/series.json")
     py = sys.executable
-    run(py, "scripts/diary.py", "--series", SERIES[e]["id"], "--id", vid,
+    run(py, "scripts/diary.py", "--series", series["id"], "--id", vid,
         *([] if upload else ["--keep"]))  # a test render leaves the story where it is
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     mp4 = f"out/{vid}.mp4"
@@ -60,13 +87,13 @@ def make(e, date, upload):
     if not upload:
         print(f"rendered {mp4} (not uploaded)")
         return
-    days, at = SERIES[e]["publish"]
+    days, at = series["publish"]
     publish = dt.datetime.combine(dt.date.fromisoformat(date) + dt.timedelta(days=days), dt.time.fromisoformat(at), TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
             "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]
     if "https://www.googleapis.com/auth/youtube" in json.load(open(TOKEN)).get("scopes", []):  # token made with --manage
-        args += ["--playlist", f"{SERIES[e]['name']} | Outbreak Diary", "--playlist-description",
-                 f"{SERIES[e]['about']} Every day of the story, in order."]
+        args += ["--playlist", f"{series['name']} | Outbreak Diary", "--playlist-description",
+                 f"{series['about']} Every day of the story, in order."]
     if publish - dt.datetime.now(TZ) > dt.timedelta(minutes=15):
         args += ["--publish-at", publish.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
     else:
@@ -76,7 +103,7 @@ def make(e, date, upload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("kind", choices=sorted(SERIES) + ["auto", "due"])
+    p.add_argument("kind", choices=SLOTS + ["auto", "due"])
     p.add_argument("--date", default="")
     p.add_argument("--no-upload", action="store_true")
     a = p.parse_args()
@@ -89,7 +116,7 @@ def main():
         try:  # one story without a script must not stop the others
             make(e, date, not a.no_upload)
         except SystemExit as err:
-            print(f"{e} ({SERIES[e]['id']}): {err}", flush=True)
+            print(f"{e} ({(active(e, date) or {}).get('id')}): {err}", flush=True)
             failed.append(e)
     if failed:
         raise SystemExit(f"not made: {' '.join(failed)}")

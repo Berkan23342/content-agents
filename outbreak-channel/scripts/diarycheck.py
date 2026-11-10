@@ -1,6 +1,7 @@
 """Checks an Outbreak Diary episode script (story/new/*.json) without rendering anything. Standard library only.
 
   python3 scripts/diarycheck.py story/new/ep-0004.json
+  python3 scripts/diarycheck.py --seasons     every slot: which story runs, how far it is, and what to write next
 
 Prints "ok" with a rough length estimate, or the first problem found. scripts/diary.py uses the same checks.
 """
@@ -188,6 +189,9 @@ def check_against(path, spec):
     m = re.search(r"ep-(\d+)\.json$", path)
     if m and int(m.group(1)) != spec["episode"]:
         raise DiaryError(f"the file name says part {int(m.group(1))} but 'episode' is {spec['episode']}")
+    finale = (series_of(path) or {}).get("finale")
+    if finale and spec["episode"] > finale:
+        raise DiaryError(f"this story ends on Day {finale}; start the next story instead (see Seasons in AGENT.md)")
     for p, o in mine:
         if o["title"].strip().lower() == spec["title"].strip().lower():
             raise DiaryError(f"the title {spec['title']!r} was already used ({os.path.basename(p)})")
@@ -221,6 +225,9 @@ def check_variety(path, spec):
     previous part's and not over-used lately; a special changes its kind and its narrator every time. Raises DiaryError."""
     scenes = [b["scene"] for b in spec["beats"]]
     special = "specials" in os.path.abspath(path).split(os.sep)
+    if re.match(r"\s*day\b", spec["beats"][0]["text"], re.I):
+        raise DiaryError("beat 1 starts with the day; the day is on screen already, so open on the moment itself "
+                         "(the hook: danger, a sound, a question)")
     if spec.get("event") not in EVENTS:
         raise DiaryError(f"'event' (what this part is mostly about) must be one of {sorted(EVENTS)}")
     same = [os.path.relpath(p, ROOT) for p, o in _recent(path) if o.get("event") == spec["event"]]
@@ -265,18 +272,99 @@ def estimate_seconds(total_words):
     return total_words * 0.5 + 3.5  # measured on parts 1-3, with the pauses and the end card
 
 
-def cast_for(path):
-    """The speaking cast of the story a script belongs to (story/<id>/...)."""
-    series = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "story", "series.json")
+SERIES_FILE = os.path.join(ROOT, "story", "series.json")
+FRAMES = {"diary", "camcorder", "journal", "broadcast"}
+
+
+def series_of(path):
+    """The story/series.json entry of the story a script belongs to (story/<id>/...)."""
     parts = os.path.abspath(path).split(os.sep)
     story = parts[parts.index("story") + 1] if "story" in parts else None
-    for s in json.load(open(series)):
-        if s["id"] == story:
-            return s["cast"]
-    return None
+    return next((s for s in json.load(open(SERIES_FILE)) if s["id"] == story), None)
+
+
+def cast_for(path):
+    """The speaking cast of the story a script belongs to (story/<id>/...)."""
+    s = series_of(path)
+    return s["cast"] if s else None
+
+
+def published(sid):
+    return max((json.load(open(p))["episode"] for p in glob.glob(os.path.join(ROOT, "story", sid, "used", "*", "*.json"))),
+               default=0)
+
+
+def waiting(sid):
+    return sorted(json.load(open(p))["episode"] for p in glob.glob(os.path.join(ROOT, "story", sid, "new", "*.json")))
+
+
+def check_series():
+    """story/series.json: every story can be voiced and drawn, and the stories that run together look and sound
+    different. Returns a list of problems."""
+    problems, S = [], json.load(open(SERIES_FILE))
+    voices = {os.path.basename(p)[:-4] for p in glob.glob(os.path.join(ROOT, "voices", "*.wav"))}
+    for s in S:
+        for key in ("id", "name", "slot", "publish", "about", "narrator", "cast", "frame"):
+            if key not in s:
+                problems.append(f"{s.get('id')}: missing '{key}'")
+        if s.get("narrator") not in NARRATORS:
+            problems.append(f"{s.get('id')}: narrator must be one of {sorted(NARRATORS)}")
+        if s.get("frame") not in FRAMES:
+            problems.append(f"{s.get('id')}: frame must be one of {sorted(FRAMES)}")
+        for who in s.get("cast", []):
+            if s.get("voices", {}).get(who, who) not in voices:
+                problems.append(f"{s.get('id')}: cast member {who!r} has no voice; add \"voices\": {{\"{who}\": <one of {sorted(voices)}>}}")
+        if not os.path.exists(os.path.join(ROOT, "story", s.get("id", "?"), "bible.md")) and not s.get("label"):
+            problems.append(f"{s.get('id')}: story/{s.get('id')}/bible.md is missing")
+        if not s.get("label") and not s.get("tagline"):
+            problems.append(f"{s.get('id')}: needs a 'tagline' (one line, at most 42 characters)")
+        if len(s.get("tagline", "")) > 42:
+            problems.append(f"{s.get('id')}: tagline is longer than 42 characters")
+    serials = [s for s in S if not s.get("label")]
+    running = [s for s in serials if not (s.get("finale") and published(s["id"]) >= s["finale"])]
+    current = {}
+    for s in running:
+        current.setdefault(s["slot"], s)
+    upcoming = [s for s in running if current[s["slot"]] is not s]
+    for s in upcoming:
+        others = [o for o in current.values() if o["slot"] != s["slot"]]
+        if any(o["frame"] == s["frame"] for o in others):
+            problems.append(f"{s['id']}: frame '{s['frame']}' is already used by a story running beside it; pick another")
+        if any(o["narrator"] == s["narrator"] for o in others):
+            problems.append(f"{s['id']}: narrator '{s['narrator']}' already tells a story running beside it; pick another")
+        prev = current[s["slot"]]
+        for key in ("publish", "weekdays"):
+            if s.get(key) != prev.get(key):
+                problems.append(f"{s['id']}: '{key}' must match {prev['id']} (same slot {s['slot']})")
+    return problems
+
+
+def seasons():
+    """What the writer needs to know about every slot."""
+    S = json.load(open(SERIES_FILE))
+    for slot in sorted({s["slot"] for s in S}):
+        mine = [s for s in S if s["slot"] == slot]
+        for s in mine:
+            done, wait, fin = published(s["id"]), waiting(s["id"]), s.get("finale")
+            if fin and done >= fin:
+                state = f"finished (Day {fin})"
+            elif fin:
+                state = f"published {done}/{fin}, waiting {wait or 'none'}"
+            else:
+                state = f"published {done}, waiting {wait or 'none'}" + ("" if s.get("label") else ", NO FINALE SET")
+            print(f"{slot} {s['id']:<14} {state}")
+        last = mine[-1]
+        fin = last.get("finale")
+        if fin and fin in waiting(last["id"]) + [published(last["id"])] and published(last["id"]) <= fin:
+            print(f"   -> {last['id']} has its finale written: the NEXT STORY for slot {slot} is due now (Seasons in AGENT.md)")
+    for p in check_series():
+        print("problem:", p)
 
 
 def main():
+    if sys.argv[1:] == ["--seasons"]:
+        seasons()
+        return
     for path in sys.argv[1:]:
         try:
             spec = json.load(open(path))

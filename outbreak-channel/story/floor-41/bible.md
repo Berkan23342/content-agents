@@ -36,13 +36,16 @@ Same rules as every Outbreak Diary story:
 - **Ruth**, the receptionist on floor 12. Only a voice on the intercom so far.
 - **A light in Calder Tower:** someone across the gap flashes a torch at night.
 
-## Season 1 plan (about 30 parts; adapt freely)
+## Season plan (ends on Day 12)
 
-1. **Parts 1-5. The night it started.** The elevator, Dev, the lockdown, the first look down.
-2. **Parts 6-12. Holding floor 41.** The cafeteria run to floor 40. Ruth's voice from floor 12. Torch signals from
-   Calder Tower.
-3. **Parts 13-20. Losing power.** The main elevators die. The skybridge on floor 30. Dev's knee. A storm.
-4. **Parts 21-30. The roof.** A helicopter rumour, the climb to 52, and a choice that opens season 2.
+The story ends on Day 12 (story/series.json `finale`); after that its slot goes to a new story. Days 1-9 are told
+(see the Episode log). Land it:
+
+- **Days 10-11.** The skybridge: Maya crosses toward Calder Tower without counting the steps. What the boy and the
+  elevator are, and who has been sending it, comes out.
+- **Day 12, the finale.** Maya meets Ruth face to face and makes the choice that ends the night on floor 41. Answer
+  the elevator's mystery and end on one strong image (dawn over the two towers, the elevator number going dark). No
+  cliffhanger that needs a Day 13.
 
 ## Voices
 

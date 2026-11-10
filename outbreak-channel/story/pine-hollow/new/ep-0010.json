@@ -7,9 +7,9 @@
   "beats": [
     {
       "scene": "lake",
-      "text": "Day ten. We paddled in silence. The dock behind us stayed full of heads.",
+      "text": "Behind us, the dock was full of heads. We paddled in silence.",
       "hl": [
-        "silence"
+        "heads"
       ],
       "canoe": true,
       "zombies": 4

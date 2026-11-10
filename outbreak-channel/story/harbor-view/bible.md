@@ -32,16 +32,15 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 - **Leo (11C)**, fourteen. His parents went out to find his sister on Day 1 and have not come back. He hides it with jokes.
 - **Mr. Hale (3A)**, the building super. He has the keys to the roof and to the basement generator. Status unknown.
 
-## Season 1 plan (about 30 parts; adapt freely)
+## Season plan (ends on Day 15)
 
-1. **Parts 1-4. The first night.** Sirens, the street fills, Mrs. Okafor arrives, the power goes, the radio mentions
-   Pier Four.
-2. **Parts 5-10. Holding on.** Water and food run low. They meet Leo. A trip down the stairwell to 7B. Something
-   lives on floor 6.
-3. **Parts 11-18. The keys.** They reach Mr. Hale's floor for the roof key. A loss of supplies, a close call, a
-   helicopter that does not stop.
-4. **Parts 19-25. The fever.** Someone in the group is hurt. Hard choices. Biscuit goes missing and comes back.
-5. **Parts 26-30. Pier Four.** A rainy night run to the harbour, and an ending that opens season 2.
+The story ends on Day 15 (story/series.json `finale`); after that its slot goes to a new story. Days 1-13 are told
+(see the Episode log). Land it:
+
+- **Day 14.** Pier Four at night: free Biscuit from Marek and the pier's dead. Hale's generator key is the way out.
+- **Day 15, the finale.** The tug leaves the harbour with Sam, Biscuit, Mrs. Okafor, Leo, Dara and Hale. Answer the
+  big questions (Biscuit is safe, the boat really leaves) and end on one quiet, strong image: Harbor View's lit window
+  shrinking in the rain, or a light answering from across the water. No cliffhanger that needs a Day 16.
 
 ## Voices
 

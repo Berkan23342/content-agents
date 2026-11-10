@@ -32,12 +32,15 @@ Same rules as every Outbreak Diary story:
   the city."
 - **Tess**, a ranger at the north fire tower fifteen miles away. A voice on the radio.
 
-## Season 1 plan (about 30 parts; adapt freely)
+## Season plan (ends on Day 11)
 
-1. **Parts 1-5. The first nights.** The radio, the ranger at the window, the canoe, the first lesson about water.
-2. **Parts 6-12. Cedar Falls.** A supply run in the pickup. Lost hikers. Tess on the radio.
-3. **Parts 13-20. The island.** A refuge in the middle of the lake. Winter coming. Someone who isn't who they say.
-4. **Parts 21-30. The city.** The drive towards Port Ellis to find Grace, and an ending that opens season 2.
+The story ends on Day 11 (story/series.json `finale`); after that its slot goes to a new story. Days 1-10 are told
+(see the Episode log). Land it:
+
+- **Day 11, the finale.** The many footsteps reach the shack. Nora, Ava, Jonah and Grace get away together, using
+  what they learned about water and sound, and Jonah is brought back to his sister Pip (last seen on Day 7; check the
+  parts before writing). Answer Grace's hand (it is glass, not a bite) and end on one quiet image: the truck's lights
+  on the road to Port Ellis, the lake behind them. No cliffhanger that needs a Day 12.
 
 ## Voices
 

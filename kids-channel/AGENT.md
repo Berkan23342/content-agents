@@ -82,6 +82,12 @@ songs. Record the source as `"inspired_by": "<link> (theme only)"` in the script
   - A `bubble` is at most 4 words; it is the gist of the line.
 - Gentle conflict, kind resolution, a happy ending. Nothing scary, no injuries, no meanness without a sorry.
 - 2–4 characters, 3–6 shots. Start each story with a narrated scene-setter and end with "The end!".
+- **Title and thumbnail.** Most of our views come from the suggested videos next to other kids videos, where the
+  thumbnail and title decide the click. The thumbnail shows the title in big letters, the first two characters of
+  `cast` (the first one big) and the story's kind as a badge. So: a title of 2–5 words (at most 26 characters) that
+  names the hero and the fun ("Pig's Shape Hunt", "Bunny's Big Jump"), and put the hero first in `cast`.
+- **The first seconds.** The video opens with one short line and the title, then the story starts at once. Make the
+  first shot lively: the hero doing something or a surprise, not a long description.
 - Repeat a phrase or a pattern; little children love it. Use the characters' animal sounds.
 
 ## Script format

@@ -16,6 +16,7 @@ import glob
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -126,10 +127,40 @@ def frame_for(spec, series):
     return series.get("frame", "diary")
 
 
+LOG = os.path.join(ROOT, "logs", "uploaded.txt")
+DAY_OPENING = re.compile(r"^\s*Day\s+[\w-]+[.,:!]\s+(?=\S)", re.I)
+
+
+def opening(text):
+    """The first line starts on the moment itself: "Day twelve. Marek opened the cupboard." loses "Day twelve." because the
+    day is already on screen, and the first second decides whether a viewer stays."""
+    rest = DAY_OPENING.sub("", text, count=1)
+    return rest[0].upper() + rest[1:] if rest else text
+
+
+def day_one_url(series):
+    """The YouTube link of the story's Day 1, from the uploaded list (None before it is out)."""
+    for path in glob.glob(os.path.join(STORY, series["id"], "used", "*", "*.json")):
+        try:
+            if json.load(open(path))["episode"] != 1:
+                continue
+        except (json.JSONDecodeError, KeyError):
+            continue
+        vid = f"{os.path.basename(os.path.dirname(path))}-{os.path.basename(path).split('-')[0]}.mp4 "
+        for line in open(LOG) if os.path.exists(LOG) else []:
+            if line.startswith(vid) and "https://" in line:
+                return line.split()[1]
+    return None
+
+
 def build(spec, series):
     b = Builder()
     narrator = spec.get("narrator", series["narrator"])  # a special may pick its own narrator
-    lines = [(beat.get("speaker", narrator), beat["text"]) for beat in spec["beats"]]
+    cast_voice = series.get("voices", {})  # a character may borrow a voice file under another name
+    texts = [beat["text"] for beat in spec["beats"]]
+    texts[0] = opening(texts[0])
+    lines = [(cast_voice.get(beat["speaker"], beat["speaker"]) if "speaker" in beat else narrator, texts[i])
+             for i, beat in enumerate(spec["beats"])]
     speak_all(lines)
     frame = frame_for(spec, series)
 
@@ -146,8 +177,8 @@ def build(spec, series):
     crc = lambda text: zlib.crc32(text.encode()) % 997  # noqa: E731
     place = crc(f"{series['id']}-{spec['episode']}" if series.get("label") else series["id"])
     runs, shot, prev = {}, 0, None
-    b.sfx.append((0.05, "thud"))
-    cur = 0.3
+    b.sfx.append((0.0, "thud"))
+    cur = 0.05  # no title card: the first line starts at once
     scenes = [x["scene"] for x in spec["beats"]]
     sting_at = None
     for i, beat in enumerate(spec["beats"]):
@@ -161,7 +192,8 @@ def build(spec, series):
             shot += 1
         prev = scene
         d = say(start + 0.1, voice, text)
-        chunks += chunks_for(text, beat.get("hl", []), start + 0.12, start + 0.1 + d, b.f, "speaker" in beat)
+        hl = [h for h in beat.get("hl", []) if h.lower() in text.lower()]
+        chunks += chunks_for(text, hl, start + 0.02, start + 0.1 + d, b.f, "speaker" in beat)
         hits = []
         for s in beat.get("sfx", []):
             name = sfx_name(s)
@@ -182,7 +214,7 @@ def build(spec, series):
         beats.append({"from": b.f(start), "duration": b.f(end) - b.f(start), "scene": beat["scene"], "p": params,
                       "cam": beat.get("cam", "push"), "tone": beat.get("tone", "night"), "rain": bool(beat.get("rain")),
                       "fog": bool(beat.get("fog")), "flashlight": bool(beat.get("flashlight")),
-                      "alarm": bool(beat.get("alarm")), "cutIn": i == 0 or scenes[i - 1] != beat["scene"],
+                      "alarm": bool(beat.get("alarm")), "cutIn": i > 0 and scenes[i - 1] != beat["scene"],  # the first frame is already the scene
                       "cutOut": not last and scenes[i + 1] != beat["scene"], "hits": hits,
                       "seed": crc(f"{series['id']}-{spec['episode']}-{scene}"), "place": place, "shot": shot,
                       "flip": scene in FLIPPABLE and crc(f"{series['id']}-{spec['episode']}-{scene}-flip") % 2 == 1})
@@ -194,16 +226,28 @@ def build(spec, series):
                                                          None if ambience == "none" else ambience, 0.5))]
     b.music_gain = 0.2
     n = spec["episode"]
+    finale = bool(series.get("finale")) and n == series["finale"]
     props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"),
-             "grade": series.get("grade"), "title": spec["title"], "frame": frame,
-             "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
+             "grade": series.get("grade"), "title": spec["title"], "frame": frame, "tagline": series.get("tagline"),
+             "finale": finale, "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
     title = video_title(series, n, spec["title"])
+    first = day_one_url(series) if n > 1 and not series.get("label") else None
+    if series.get("label"):
+        where = []
+    elif n == 1:
+        where = [f"Day 1 of a brand-new story. {series['about']}"]
+    elif finale:
+        where = [f"The final day of {series['name']}." + (f" Watch it from the start: {first}" if first else "")]
+    else:
+        where = [f"New here? Start from Day 1: {first}"] if first else []
     meta = {
         "title": title[:100],
         "description": "\n".join([
             f"{series['name']}, day {n}. {spec['summary']}" if not series.get("label") else spec["summary"],
+            *where,
             "",
-            f"{series['about']} A new day of this story, and of the other Outbreak Diary stories, every day.",
+            f"{series['about']} A new day of this story, and of the other Outbreak Diary stories, every day."
+            if not finale else "A new Outbreak Diary story starts in its place soon, and the other stories go on every day.",
             "Follow so you don't miss what happens next.",
             "An original animated story. All characters and events are fictional.",
             "",
