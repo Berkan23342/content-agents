@@ -1,0 +1,109 @@
+{
+  "episode": 12,
+  "title": "Fair Trade",
+  "summary": "On Day twelve, a stranger offers a trade Sam cannot refuse.",
+  "event": "loss",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "lobby",
+      "text": "Day twelve. Marek opened the cupboard. Under his arm, wriggling, was Biscuit.",
+      "hl": [
+        "Biscuit"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "\"Fair trade,\" he said. \"The key for the dog.\"",
+      "hl": [
+        "Fair trade"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "hallway",
+      "text": "Mrs. Okafor stepped forward. \"Put him down, young man.\"",
+      "hl": [
+        "Put him down"
+      ],
+      "speaker": "okafor"
+    },
+    {
+      "scene": "hallway",
+      "text": "Biscuit whined. At the far end, a slow shape turned toward the sound.",
+      "hl": [
+        "slow shape"
+      ],
+      "zombie": true,
+      "light": "flicker",
+      "sfx": [
+        "steps"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Outside, more of them turned toward the whimper.",
+      "hl": [
+        "whimper"
+      ],
+      "zombies": 9,
+      "rain": true
+    },
+    {
+      "scene": "supplies",
+      "text": "I handed over the roof key. It was the only thing we owned.",
+      "hl": [
+        "roof key"
+      ],
+      "items": [
+        "keys",
+        "can",
+        "walkie"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "\"The dog walks with me,\" Marek said. \"Insurance.\"",
+      "hl": [
+        "Insurance"
+      ],
+      "zombies": 3,
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "He slipped into the rain. Biscuit's face stared back through the glass.",
+      "hl": [
+        "Biscuit's face"
+      ],
+      "rain": true,
+      "zombies": 2
+    },
+    {
+      "scene": "door",
+      "text": "Leo cried. Dara held him. I could not breathe.",
+      "hl": [
+        "could not breathe"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "hallway",
+      "text": "Then Mr. Hale opened his fist. \"That key only opens the roof, Sam. The tug starts with this one.\"",
+      "hl": [
+        "this one"
+      ],
+      "speaker": "hale",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

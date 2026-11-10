@@ -69,12 +69,12 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 
 ## Current state
 
-- **After:** part 11
-- **Day:** 11, night, Harbor View lobby (Sam, Leo, Dara, Mrs. Okafor, Biscuit, Hale; Marek outside)
-- **Who:** all unhurt; Hale freed with the generator key. Marek's crew scattered in the dark.
-- **Supplies:** one can left, shared.
-- **Known:** the roof key also starts the tug; Marek wants it; Sam lied that it is in 9C.
-- **Open threads:** where is the crew? Does Marek have the tug's real key?
+- **After:** part 13
+- **Day:** 13, dusk, Pier Four (Sam, Leo, Dara, Mrs. Okafor, Hale on the way; Marek and Biscuit on the tug)
+- **Who:** all unhurt; Marek holds Biscuit.
+- **Supplies:** one can, a rattling tin.
+- **Known:** the roof key does not start the tug; Hale holds the real generator key. Marek has just shouted Sam's name and woken the pier.
+- **Open threads:** will Marek and Biscuit get free of the pier? Who is on the pier?
 
 ## Episode log
 
@@ -94,3 +94,5 @@ The narrator calls them "them" or "the infected", never "zombies". Titles may sa
 - **Part 9 (Day 9) The Roof Door:** the three knocks were Leo's sister Dara. They climb to 12 and find the roof door already open and a stranger who says the last boat has gone.
 - **Part 10 (Day 10) The Pilot:** Marek offers a tug at Pier Four if they fetch diesel from the basement. Hale warns over the walkie that the pilot is not alone.
 - **Part 11 (Day 11) The Generator Room:** Marek's three-person crew waits in the basement; Hale is locked in the generator room. Mrs. Okafor's clang drives the crew off, Hale is freed, then boots stop outside Sam's hiding place and Marek whispers "Found you."
+- **Part 12 (Day 12) Fair Trade:** Marek has Biscuit and trades him for the roof key, taking the dog as insurance. Hale reveals the real tug key is the generator key in his fist.
+- **Part 13 (Day 13) The Rail Bridge:** Sam's group crosses the city by supermarket and dead train after Marek. At Pier Four the roof key fails, and Marek shouts Sam's name, waking the pier.

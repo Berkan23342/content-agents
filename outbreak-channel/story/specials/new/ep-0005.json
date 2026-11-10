@@ -1,0 +1,108 @@
+{
+  "episode": 5,
+  "title": "Bells in the Barn",
+  "summary": "A farmer keeps a notebook on holding a farm when the infected come. The last page is the problem.",
+  "event": "plan",
+  "ambience": "wind",
+  "kind": "journal",
+  "narrator": "grace",
+  "inspired_by": "https://youtu.be/PR4VXvw3Mqo (premise only: holding a farm against the infected)",
+  "beats": [
+    {
+      "scene": "forest",
+      "text": "Day one. They walked onto my farm. They follow sound, so I made a plan.",
+      "hl": [
+        "plan"
+      ],
+      "zombies": 3
+    },
+    {
+      "scene": "cabin",
+      "text": "Day two. I hung a bell on every fence post.",
+      "hl": [
+        "bell"
+      ],
+      "light": "lantern"
+    },
+    {
+      "scene": "forest",
+      "text": "Day three. I rang the far bell, and they drifted off to the field.",
+      "hl": [
+        "drifted off"
+      ],
+      "zombies": 5,
+      "fog": true
+    },
+    {
+      "scene": "truck",
+      "text": "Day four. Forty bells, all silent. I ate boiled eggs in the pickup.",
+      "hl": [
+        "silent"
+      ],
+      "lights": false
+    },
+    {
+      "scene": "cabin",
+      "text": "Day five. The cows never panicked. They only stared at the barn.",
+      "hl": [
+        "stared at the barn"
+      ],
+      "light": "lantern"
+    },
+    {
+      "scene": "forest",
+      "text": "Day six. At midnight every bell rang at once. Nothing had touched them.",
+      "hl": [
+        "every bell"
+      ],
+      "zombies": 7,
+      "alarm": true,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "The barn door was open. I had chained it shut myself.",
+      "hl": [
+        "chained it shut"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "phone",
+      "text": "A photo arrived from an unknown number. The barn, lit from inside.",
+      "hl": [
+        "lit from inside"
+      ],
+      "screen": "message",
+      "lines": [
+        "Unknown",
+        "Photo: the barn, lit inside."
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "Day seven. A bell rang in the barn, slowly, patiently.",
+      "hl": [
+        "patiently"
+      ],
+      "shadow": true,
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "text": "The last line in my notebook is not my handwriting: Come feed us, Mary.",
+      "hl": [
+        "Mary"
+      ],
+      "light": "off",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

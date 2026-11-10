@@ -69,12 +69,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 8
-- **Day:** 8, on floor 41
-- **Who:** Maya, Dev and the cold boy in the studio.
+- **After:** part 9
+- **Day:** 9, on floor 41
+- **Who:** Maya, Dev and the cold boy, who has called the elevator.
 - **Supplies:** same as Day 5.
-- **Known:** the boy is cold, marked 41, and says Ruth told him he would warm up when Maya came; the elevator is climbing to 41 by itself.
-- **Open threads:** what is in the lift? Who is Ruth in Calder Tower?
+- **Known:** Calder's torch numbers mean the 23 steps of the skybridge; Ruth warns not to count them. The elevator is falling by itself.
+- **Open threads:** where does the elevator stop? Who is Ruth in Calder Tower?
 
 ## Episode log
 
@@ -88,3 +88,4 @@ Same rules as every Outbreak Diary story:
 - **Part 6 (Day 6) The Number Falls:** the elevator drops to 30 and returns. A false torch code appears. Ruth warns the car is not empty, and its lamp turns on.
 - **Part 7 (Day 7) Lamp in the Lift:** a boy climbs out of the elevator holding Ruth's torch and says they want Maya to cross the skybridge. Ruth warns he died on Day two.
 - **Part 8 (Day 8) Ninety-One Degrees:** Dev finds the boy cold as glass with no wound, only 41 inked on his wrist. Calder Tower flashes 41 and the elevator climbs alone; the boy says it is his ride.
+- **Part 9 (Day 9) Twenty-Three:** Maya decodes the torch numbers as the steps of the skybridge. Ruth warns not to count them, and the elevator falls by itself.

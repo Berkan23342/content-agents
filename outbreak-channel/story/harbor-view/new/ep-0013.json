@@ -1,0 +1,108 @@
+{
+  "episode": 13,
+  "title": "The Rail Bridge",
+  "summary": "On Day thirteen, Sam and the others cross the rainy city after a stolen dog.",
+  "event": "rescue",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "window",
+      "text": "Day thirteen. Rain drummed the glass. Marek's torch bobbed toward the harbour.",
+      "hl": [
+        "torch"
+      ],
+      "zombies": 8,
+      "rain": true,
+      "tone": "dawn"
+    },
+    {
+      "scene": "hallway",
+      "text": "\"He will learn the key is wrong at the pier,\" said Hale. \"Biscuit will pay.\"",
+      "hl": [
+        "wrong"
+      ],
+      "speaker": "hale"
+    },
+    {
+      "scene": "kitchen",
+      "text": "Mrs. Okafor packed our last can and a rattling tin. \"Noise is a tool.\"",
+      "hl": [
+        "rattling tin"
+      ],
+      "cans": 1,
+      "power": false
+    },
+    {
+      "scene": "supermarket",
+      "text": "Leo knew a shortcut through the supermarket. Two of them drifted between shelves.",
+      "hl": [
+        "shortcut"
+      ],
+      "zombies": 2,
+      "light": "flicker"
+    },
+    {
+      "scene": "supermarket",
+      "text": "She rolled the tin down aisle three. The shuffling followed it away.",
+      "hl": [
+        "followed it away"
+      ],
+      "zombies": 2,
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "subway",
+      "text": "We crossed the rail bridge inside a dead train. Rain hid every step.",
+      "hl": [
+        "Rain"
+      ],
+      "light": "off",
+      "rain": true
+    },
+    {
+      "scene": "subway",
+      "text": "Dara froze. A shape sat in the last seat, head bowed, still.",
+      "hl": [
+        "still"
+      ],
+      "zombies": 1,
+      "hold": 0.8
+    },
+    {
+      "scene": "window",
+      "text": "Pier Four rose out of the fog. The tug's lamp was lit.",
+      "hl": [
+        "lamp"
+      ],
+      "fire": true,
+      "tone": "dusk"
+    },
+    {
+      "scene": "rooftop",
+      "text": "Marek held Biscuit up like a lantern and turned the roof key. Nothing.",
+      "hl": [
+        "Nothing"
+      ],
+      "flare": true,
+      "hold": 0.8,
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "He cupped his hands. \"Sam!\" Loud enough to wake the whole pier.",
+      "hl": [
+        "wake the whole pier"
+      ],
+      "zombies": 16,
+      "fog": true,
+      "alarm": true,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "episode": 10,
+  "title": "The Lake Road",
+  "summary": "On Day ten, Nora and Ava finally see who was on the lake road.",
+  "event": "reunion",
+  "ambience": "night",
+  "beats": [
+    {
+      "scene": "lake",
+      "text": "Day ten. We paddled in silence. The dock behind us stayed full of heads.",
+      "hl": [
+        "silence"
+      ],
+      "canoe": true,
+      "zombies": 4
+    },
+    {
+      "scene": "phone",
+      "text": "Grace's message said four words. On the lake road. Stay quiet.",
+      "hl": [
+        "Stay quiet"
+      ],
+      "screen": "message",
+      "lines": [
+        "Grace",
+        "On the lake road.",
+        "Stay quiet."
+      ]
+    },
+    {
+      "scene": "forest",
+      "text": "We beached in the reeds. At the tree line, a dim torch waved.",
+      "hl": [
+        "torch"
+      ],
+      "zombies": 2,
+      "cabin": true
+    },
+    {
+      "scene": "forest",
+      "text": "She limped out of the trees. Ava dropped the paddle and ran.",
+      "hl": [
+        "ran"
+      ],
+      "zombies": 2
+    },
+    {
+      "scene": "lake",
+      "text": "\"Mom?\" Ava whispered, and Grace caught her, crying without a sound.",
+      "hl": [
+        "Mom"
+      ],
+      "speaker": "ava"
+    },
+    {
+      "scene": "truck",
+      "text": "Grace showed me her hand, wrapped in a clean bandage. \"Glass. Not a bite. I checked twice.\"",
+      "hl": [
+        "Not a bite"
+      ]
+    },
+    {
+      "scene": "cabin",
+      "text": "I believed her. I wanted to. I took them to the old hunting shack.",
+      "hl": [
+        "wanted to"
+      ],
+      "light": "lantern",
+      "guest": "ava"
+    },
+    {
+      "scene": "radio",
+      "text": "\"Nora, are you moving?\" Tess whispered. \"I hear footsteps near you. Lots.\"",
+      "hl": [
+        "Lots"
+      ],
+      "mode": "voice",
+      "speaker": "tess",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "forest",
+      "text": "Grace looked back at the road. \"I'm sorry, Nora. They followed me.\"",
+      "hl": [
+        "followed me"
+      ],
+      "zombies": 8,
+      "fog": true,
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

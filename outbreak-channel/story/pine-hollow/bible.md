@@ -64,12 +64,12 @@ Same rules as every Outbreak Diary story:
 
 ## Current state
 
-- **After:** part 9
-- **Day:** 9, night, the lake (Nora, Ava, Jonah, Alder? in the canoe)
-- **Who:** all unhurt; Jonah feverish but not bitten.
+- **After:** part 10
+- **Day:** 10, night, the lake shore and the old hunting shack (Nora, Ava, Jonah, Grace)
+- **Who:** all unhurt; Grace has a bandaged hand (glass, not a bite); Alder left behind.
 - **Supplies:** same as before.
-- **Known:** the lake dead stand on the dock; Grace is near the lake road.
-- **Open threads:** can they reach shore quietly? Where is Grace?
+- **Known:** Grace walked fifteen miles; the lake dead and more followed her sound. Tess hears footsteps near.
+- **Open threads:** how do they escape the pursuers? Is Grace's hand really glass?
 
 ## Episode log
 
@@ -86,3 +86,4 @@ Same rules as every Outbreak Diary story:
 - **Part 7 (Day 7) Someone on the Porch:** a note offers Jonah in return for rowing out alone at dusk. Nora and Ava paddle out and meet a man in Walt's ranger jacket.
 - **Part 8 (Day 8) The Man in the Jacket:** Alder says Jonah is safe in the boathouse but sick. Inside lie Jonah's ribbon and a scratch on his wrist, and Alder locks the door.
 - **Part 9 (Day 9) The Dock Is Full:** Jonah's scratch is not a bite; Alder locked the door against the lake dead. They escape by canoe under the dock, and the dead turn toward them as Grace messages that she is on the lake road.
+- **Part 10 (Day 10) The Lake Road:** Ava finds Grace at the tree line; her hand is bandaged. Tess warns of many footsteps, and Grace admits they followed her.

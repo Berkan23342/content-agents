@@ -1,0 +1,90 @@
+{
+  "episode": 9,
+  "title": "Twenty-Three",
+  "summary": "On Day nine, Maya finally cracks the torch code from Calder Tower.",
+  "event": "signal",
+  "ambience": "none",
+  "beats": [
+    {
+      "scene": "office",
+      "text": "Day nine. The boy sat by the elevator all night, humming.",
+      "hl": [
+        "humming"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "office",
+      "text": "I spread my city model across the desk. Calder Tower had only ever flashed numbers.",
+      "hl": [
+        "numbers"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Two long, three short. Twenty-three. Forty-one. Thirty.",
+      "hl": [
+        "Thirty"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "\"Twenty-three isn't a floor,\" I whispered. \"It's the steps on the skybridge.\"",
+      "hl": [
+        "steps"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "Dev checked the plans. \"Twenty-three steps, then a door with no handle.\"",
+      "hl": [
+        "no handle"
+      ],
+      "speaker": "dev"
+    },
+    {
+      "scene": "skybridge",
+      "text": "A hundred metres of glass, and nowhere to hide.",
+      "hl": [
+        "glass"
+      ],
+      "light": "flicker",
+      "cracks": true
+    },
+    {
+      "scene": "elevator",
+      "text": "The elevator dinged. The boy stood inside, hand on the button. \"Ready when you are.\"",
+      "hl": [
+        "Ready"
+      ],
+      "doors": "open",
+      "floor": 41
+    },
+    {
+      "scene": "phone",
+      "text": "Ruth texted: Do not count the steps. Counting is how they find you.",
+      "hl": [
+        "Do not count"
+      ],
+      "screen": "message",
+      "lines": [
+        "Ruth",
+        "Do not count the steps.",
+        "Counting is how they find you."
+      ]
+    },
+    {
+      "scene": "elevator",
+      "text": "The numbers fell by themselves. Twenty-three. Twenty-two. Twenty-one.",
+      "hl": [
+        "Twenty-one"
+      ],
+      "doors": "closed",
+      "floor": 23,
+      "power": false,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}
