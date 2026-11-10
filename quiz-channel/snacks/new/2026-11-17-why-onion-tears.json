@@ -1,0 +1,137 @@
+{
+  "format": "why",
+  "title": "Why Do Onions Make You Cry?",
+  "summary": "Chopping an onion sets off a tiny chemical chain reaction that ends with a gas your eyes hate. Here is how it works, and why the tears are a defence.",
+  "topic": "food",
+  "beats": [
+    {
+      "text": "You slice one onion, and suddenly your eyes are streaming. What did it do to you?",
+      "hl": [
+        "streaming"
+      ],
+      "visual": {
+        "kind": "hook",
+        "emoji": "🧅",
+        "text": "Why do onions make you cry?"
+      }
+    },
+    {
+      "text": "Inside an onion, two things are kept apart in separate compartments. A knife breaks the walls between them.",
+      "hl": [
+        "apart"
+      ],
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "🧪",
+          "label": "Enzymes"
+        },
+        "b": {
+          "emoji": "🧅",
+          "label": "Sulfur stuff"
+        },
+        "vs": false
+      }
+    },
+    {
+      "text": "Once they mix, a quick reaction starts. Which one do you think reaches your eyes?",
+      "reveal": "A gas! The mix turns into a tiny cloud that floats up from the board.",
+      "visual": {
+        "kind": "choice",
+        "question": "What reaches your eyes?",
+        "options": [
+          {
+            "emoji": "💧",
+            "label": "Onion juice"
+          },
+          {
+            "emoji": "💨",
+            "label": "A gas"
+          },
+          {
+            "emoji": "🔥",
+            "label": "Heat"
+          }
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "text": "Here is the chain, in three steps.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🔪",
+            "label": "Cells break"
+          },
+          {
+            "emoji": "⚗️",
+            "label": "Chemicals mix"
+          },
+          {
+            "emoji": "💨",
+            "label": "Gas rises"
+          }
+        ]
+      }
+    },
+    {
+      "text": "The gas lands on the wet surface of your eye and makes a mild irritant. Your eye feels a sting.",
+      "hl": [
+        "sting"
+      ],
+      "visual": {
+        "kind": "emoji",
+        "emoji": "👁️",
+        "label": "A stinging eye",
+        "motion": "shake"
+      }
+    },
+    {
+      "text": "So your body floods the eye with tears to wash the irritant away. The crying is a cleaning job.",
+      "hl": [
+        "cleaning"
+      ],
+      "visual": {
+        "kind": "pair",
+        "a": {
+          "emoji": "💨",
+          "label": "Irritant"
+        },
+        "b": {
+          "emoji": "😢",
+          "label": "Tears"
+        },
+        "vs": false
+      }
+    },
+    {
+      "text": "Fewer tears are likely if you chill the onion first, or cut it near a fan, because the reaction slows down and the gas blows away.",
+      "hl": [
+        "chill"
+      ],
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {
+            "emoji": "🧊",
+            "label": "Chill the onion"
+          },
+          {
+            "emoji": "🌬️",
+            "label": "Use a fan"
+          }
+        ]
+      }
+    },
+    {
+      "text": "The onion does this to protect itself. Nothing wants to bite into something that stings its eyes.",
+      "visual": {
+        "kind": "fact",
+        "emoji": "🌱",
+        "text": "BONUS: the onion's gas is a natural defence against animals that might eat it."
+      }
+    }
+  ]
+}
