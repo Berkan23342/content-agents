@@ -1,0 +1,396 @@
+{
+ "title": "Sheep Counts Quiet Sounds",
+ "lesson": "Quiet sounds help us fall asleep",
+ "kind": "bedtime",
+ "theme": "sounds",
+ "summary": "Sleepless Little Sheep and friends count quiet garden, hill and night sounds and stars until sleepy.",
+ "cast": [
+  "sheep",
+  "cat",
+  "duck",
+  "owl"
+ ],
+ "calm": true,
+ "shots": [
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 800,
+     "size": 400
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The moon was up. It was time for bed, and Little Sheep was tucked in tight.",
+     "slow": true
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. I am not sleepy. My eyes will not close.",
+     "bubble": "Not sleepy!",
+     "act": "shake"
+    },
+    {
+     "say": "Sheep tried to count to sleep. One, two, three... then Sheep lost count.",
+     "slow": true
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. I will ask a friend for help.",
+     "bubble": "Help, please!",
+     "act": "wave"
+    },
+    {
+     "say": "So Sheep tiptoed out of the room, very softly, into the garden.",
+     "slow": true,
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The garden was quiet and dusky. A soft breeze blew.",
+     "slow": true
+    },
+    {
+     "enter": "cat",
+     "x": 1100,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "say": "Cat padded over on quiet paws. Purr, purr.",
+     "slow": true
+    },
+    {
+     "arrive": "cat"
+    },
+    {
+     "line": "cat",
+     "text": "Meow. Why are you up, Sheep?",
+     "bubble": "Why up, Sheep?",
+     "act": "wave"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. I cannot sleep. Can you help me?",
+     "bubble": "Can't sleep.",
+     "act": "shake"
+    },
+    {
+     "line": "cat",
+     "text": "Let us listen for quiet sounds. Quiet sounds make us sleepy.",
+     "bubble": "Quiet sounds!"
+    },
+    {
+     "say": "They listened. Swish, swish, went the leaves.",
+     "slow": true
+    },
+    {
+     "line": "cat",
+     "text": "That is one quiet sound. Can you count with me?",
+     "bubble": "One sound!",
+     "act": "jump"
+    },
+    {
+     "prop": "c1",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 820,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "Purr, purr, went Cat. That is two quiet sounds.",
+     "slow": true
+    },
+    {
+     "prop": "c2",
+     "icon": "heart",
+     "color": "#FF6FB5",
+     "x": 985,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "line": "sheep",
+     "text": "Baa, baa. That is three! I feel a little slow.",
+     "bubble": "Three! Yawn.",
+     "act": "sleep"
+    },
+    {
+     "say": "But Sheep was still not quite sleepy. Let us find more friends.",
+     "slow": true,
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 450,
+     "size": 380
+    },
+    {
+     "name": "cat",
+     "x": 850,
+     "size": 380
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The sky turned pink, then purple. The friends walked up the hill.",
+     "slow": true
+    },
+    {
+     "enter": "duck",
+     "x": 1300,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "say": "Duck came, with a slow, sleepy waddle.",
+     "slow": true
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack, softly. What are you two doing?",
+     "bubble": "What now?",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "We are counting quiet sounds to help Sheep sleep.",
+     "bubble": "Quiet sounds!"
+    },
+    {
+     "line": "duck",
+     "text": "Duck says quack, but only a quiet quack. Quack.",
+     "bubble": "Quiet quack.",
+     "act": "jump"
+    },
+    {
+     "say": "That is four quiet sounds. Quack was loud before, but now it was soft.",
+     "slow": true
+    },
+    {
+     "line": "sheep",
+     "text": "Loud is the opposite of quiet. Baa. I like quiet.",
+     "bubble": "Quiet is nice.",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "The opposite of day is night. Look up, friends!",
+     "bubble": "Look up!",
+     "act": "wave"
+    },
+    {
+     "say": "The three friends looked up at the sky together. It was almost dark.",
+     "slow": true,
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 450,
+     "size": 380
+    },
+    {
+     "name": "cat",
+     "x": 850,
+     "size": 380
+    },
+    {
+     "name": "duck",
+     "x": 1250,
+     "size": 380
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 725,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 890,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1055,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1220,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Now the night had come. Stars popped out, one by one.",
+     "slow": true
+    },
+    {
+     "line": "cat",
+     "text": "Let us count the stars. One, two, three...",
+     "bubble": "Count stars!"
+    },
+    {
+     "say": "One, two, three, four, five stars. Twinkle, twinkle, twinkle.",
+     "slow": true
+    },
+    {
+     "line": "duck",
+     "text": "Five stars. Count them again, softly. One, two, three.",
+     "bubble": "Again, softly.",
+     "act": "spin"
+    },
+    {
+     "line": "sheep",
+     "text": "Four... five... baa... yawn.",
+     "bubble": "Four... five...",
+     "act": "sleep"
+    },
+    {
+     "say": "Sheep's eyes got heavy. Cat and Duck whispered, shhh, shhh.",
+     "slow": true
+    },
+    {
+     "enter": "owl",
+     "x": 1650,
+     "side": "right",
+     "speed": 200,
+     "fly": true,
+     "y": 520
+    },
+    {
+     "say": "Owl came flying. Whoo, whoo, very softly.",
+     "slow": true
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Whoo, whoo. Night is for sleeping. Go home, little Sheep.",
+     "bubble": "Time for bed.",
+     "act": "wave"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa... thank you, friends. Good night.",
+     "bubble": "Good night!",
+     "act": "wave"
+    },
+    {
+     "say": "Everyone said good night. Sheep walked home, one slow step at a time.",
+     "slow": true,
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 900,
+     "size": 400
+    }
+   ],
+   "props": [
+    {
+     "id": "moon",
+     "icon": "moon",
+     "color": "#FFC92E",
+     "x": 400,
+     "y": 300,
+     "size": 130
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back in the bedroom, the moon was bright and the house was still.",
+     "slow": true
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. Quiet leaves, a soft purr, a soft quack.",
+     "bubble": "Quiet sounds.",
+     "act": "sleep"
+    },
+    {
+     "say": "Sheep climbed into bed and pulled up the blanket.",
+     "slow": true
+    },
+    {
+     "line": "sheep",
+     "text": "One, two, three, four, five stars. Good night, moon.",
+     "bubble": "Good night, moon.",
+     "act": "sleep"
+    },
+    {
+     "say": "Sheep's eyes closed, and soon Sheep was fast asleep. Snore, snore.",
+     "slow": true,
+     "gap": 1.0
+    },
+    {
+     "act": "all",
+     "kind": "sleep"
+    },
+    {
+     "say": "Sweet dreams, little one. The end!",
+     "slow": true,
+     "gap": 1.5
+    }
+   ]
+  }
+ ]
+}
