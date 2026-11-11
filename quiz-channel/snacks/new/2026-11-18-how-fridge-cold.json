@@ -1,0 +1,14 @@
+{
+  "format": "how",
+  "title": "Can You Guess How Your Fridge Gets Cold?",
+  "summary": "A fridge does not make cold. It moves heat from inside to the outside, using a liquid that boils and gets squeezed again and again.",
+  "topic": "home",
+  "beats": [
+    {"text": "Does your fridge add cold, move heat out, or freeze the air? Pause and guess!", "hl": ["move heat out"], "visual": {"kind": "hook", "emoji": "🧊", "text": "How does a fridge get cold?"}},
+    {"text": "Cold is not a thing you can add. It just means less heat.", "hl": ["less heat"], "visual": {"kind": "emoji", "emoji": "🌡️", "label": "Cold = less heat", "motion": "float"}},
+    {"text": "Time's up. What does a fridge really do?", "reveal": "It moves heat out! Warmth travels from inside the fridge to the coils at the back.", "visual": {"kind": "choice", "question": "What does a fridge really do?", "options": [{"emoji": "❄️", "label": "Adds cold"}, {"emoji": "♨️", "label": "Moves heat out"}, {"emoji": "💨", "label": "Freezes air"}], "answer": 1}},
+    {"text": "A special liquid in the pipes soaks up heat and turns to gas. A pump squeezes it, and the back coils let the heat go.", "hl": ["soaks up heat", "squeezes"], "visual": {"kind": "steps", "items": [{"emoji": "🥶", "label": "Liquid soaks heat"}, {"emoji": "⚙️", "label": "Pump squeezes"}, {"emoji": "♨️", "label": "Coils release it"}]}},
+    {"text": "That is why the back of a fridge feels warm.", "hl": ["warm"], "visual": {"kind": "pair", "a": {"emoji": "🧊", "label": "Inside: cool"}, "b": {"emoji": "🔥", "label": "Back: warm"}, "vs": true}},
+    {"text": "Bonus fact: an open door warms your room, not cools it.", "hl": ["warms"], "visual": {"kind": "fact", "emoji": "🚪", "text": "An open fridge warms a room: it pumps heat out the back, plus motor heat."}}
+  ]
+}
