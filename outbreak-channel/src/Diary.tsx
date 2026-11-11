@@ -67,6 +67,9 @@ export type DiaryProps = {
 	frame?: Frame;
 	tagline?: string | null; // one line for viewers who land in the middle of a story
 	finale?: boolean; // the story's last day
+	vote?: {question: string; options: string[]; decides: number} | null; // this part asks the viewers to choose
+	voted?: {pick: string; votes: Record<string, number>} | null; // this part follows what the viewers chose
+	film?: boolean; // inside the full-story video: no header, no end card, no sound of its own
 	beats: Beat[];
 	chunks: Chunk[];
 	endAt: number;
@@ -116,7 +119,7 @@ const TONES: Record<string, React.CSSProperties | null> = {
 };
 
 // ---------------------------------------------------------------- one beat: a scene, a camera move and its overlays
-const BeatView: React.FC<{b: Beat}> = ({b}) => {
+export const BeatView: React.FC<{b: Beat}> = ({b}) => {
 	const f = useCurrentFrame();
 	const t = f / Math.max(1, b.duration);
 	const Scene = SCENES[b.scene];
@@ -209,11 +212,26 @@ const Captions: React.FC<{chunks: Chunk[]; frame: Frame}> = ({chunks, frame}) =>
 
 // No title card: the first second decides whether a viewer stays, so the scene and the first line start at once and
 // the story's name, the day and a one-line premise sit small at the top.
-const Header: React.FC<{day: number; series: string; label?: string | null; tagline?: string | null; frame: Frame}> = ({day, series, label, tagline, frame}) => {
+const Header: React.FC<{day: number; series: string; label?: string | null; tagline?: string | null; frame: Frame; voted?: DiaryProps['voted']}> = ({day, series, label, tagline, frame, voted}) => {
 	const f = useCurrentFrame();
 	const st = FRAMES[frame];
 	const own = frame === 'camcorder' || frame === 'broadcast'; // their overlays already show the day or LIVE
 	const tag = tagline ? clamp(1 - (f - 120) / 14) : 0;
+	if (voted) {
+		// the viewers' choice, for the first seconds of the day their vote decided
+		const show = clamp(f / 8) * clamp(1 - (f - 165) / 14);
+		const counts = Object.values(voted.votes).sort((a, b) => b - a).join(' – ');
+		return (
+			<div style={{position: 'absolute', top: own ? 270 : 150, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
+				{own ? null : <div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{`${series.toUpperCase()} · DAY ${day}`}</div>}
+				{show > 0 ? (
+					<div style={{display: 'inline-block', marginTop: 16, padding: '10px 30px', background: C.red, color: '#fff', fontFamily: anton, fontSize: 54, letterSpacing: 2, opacity: show, transform: `scale(${0.9 + 0.1 * show})`, textShadow: 'none'}}>
+						YOU VOTED: {voted.pick} · {counts}
+					</div>
+				) : null}
+			</div>
+		);
+	}
 	return (
 		<div style={{position: 'absolute', top: own ? 270 : 150, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
 			{own ? null : (
@@ -226,9 +244,26 @@ const Header: React.FC<{day: number; series: string; label?: string | null; tagl
 	);
 };
 
-const EndCard: React.FC<{day: number; endAt: number; label?: string | null; frame: Frame; finale?: boolean}> = ({day, endAt, label, frame, finale}) => {
+const EndCard: React.FC<{day: number; endAt: number; label?: string | null; frame: Frame; finale?: boolean; vote?: DiaryProps['vote']}> = ({day, endAt, label, frame, finale, vote}) => {
 	const f = useCurrentFrame() - endAt;
 	if (f < 0) return null;
+	if (vote) {
+		// the viewers decide: both options big, and how to vote
+		const [a, b] = vote.options;
+		const pop = (at: number) => clamp((f - at) / 8);
+		return (
+			<AbsoluteFill style={{background: `rgba(0,0,0,${0.8 * clamp(f / 12)})`}}>
+				<div style={{position: 'absolute', top: 600, width: '100%', textAlign: 'center', fontFamily: FRAMES[frame].title, fontSize: 62, color: FRAMES[frame].paper, opacity: pop(0), padding: '0 80px', boxSizing: 'border-box'}}>{vote.question.toUpperCase()}</div>
+				<div style={{position: 'absolute', top: 790, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 36, fontFamily: anton}}>
+					<div style={{fontSize: 118, color: '#fff', opacity: pop(10), transform: `scale(${0.8 + 0.2 * pop(10)})`}}>{a}</div>
+					<div style={{fontSize: 60, color: FRAMES[frame].paper, opacity: pop(16)}}>OR</div>
+					<div style={{fontSize: 118, color: '#fff', opacity: pop(20), transform: `scale(${0.8 + 0.2 * pop(20)})`}}>{b}</div>
+				</div>
+				<div style={{position: 'absolute', top: 1000, width: '100%', textAlign: 'center', fontFamily: anton, fontSize: 70, color: C.red, opacity: pop(32)}}>COMMENT YOUR VOTE</div>
+				<div style={{position: 'absolute', top: 1095, width: '100%', textAlign: 'center', fontFamily: FRAMES[frame].label, fontSize: 46, color: FRAMES[frame].paper, opacity: 0.9 * pop(40)}}>{`IT DECIDES DAY ${vote.decides}`}</div>
+			</AbsoluteFill>
+		);
+	}
 	const text = finale ? 'THE END' : frame === 'broadcast' ? 'END OF TRANSMISSION' : frame === 'camcorder' ? 'RECORDING STOPPED' : label ? 'THE END...?' : 'TO BE CONTINUED...';
 	const shown = Math.floor(clamp(f / 30) * text.length);
 	return (
@@ -309,7 +344,7 @@ const Broadcast: React.FC<{title: string}> = ({title}) => {
 };
 
 // ---------------------------------------------------------------- composition
-export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, grade, title, endAt, frame = 'diary', tagline, finale}) => {
+export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, label, grade, title, endAt, frame = 'diary', tagline, finale, vote, voted, film}) => {
 	const f = useCurrentFrame();
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
@@ -322,9 +357,9 @@ export const Diary: React.FC<DiaryProps> = ({beats, chunks, audio, day, series, 
 			<Vignette />
 			<Grain f={f} />
 			{frame === 'camcorder' ? <Camcorder day={day} label={label} /> : frame === 'journal' ? <Journal /> : frame === 'broadcast' ? <Broadcast title={title} /> : null}
-			<Header day={day} series={series} label={label} tagline={tagline} frame={frame} />
+			{film ? null : <Header day={day} series={series} label={label} tagline={tagline} frame={frame} voted={voted} />}
 			<Captions chunks={chunks} frame={frame} />
-			<EndCard day={day} endAt={endAt} label={label} frame={frame} finale={finale} />
+			{film ? null : <EndCard day={day} endAt={endAt} label={label} frame={frame} finale={finale} vote={vote} />}
 			{audio ? <Audio src={staticFile(audio)} /> : null}
 		</AbsoluteFill>
 	);

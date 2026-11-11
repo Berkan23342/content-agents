@@ -153,14 +153,28 @@ def day_one_url(series):
     return None
 
 
-def build(spec, series):
-    b = Builder()
+FILMS = os.path.join(ROOT, "logs", "films.txt")
+
+
+def latest_film():
+    """(story id, link) of the newest full-story video (scripts/film.py), or None."""
+    lines = [l.split() for l in open(FILMS)] if os.path.exists(FILMS) else []  # "film-<story>.mp4 <link>"
+    return next(((l[0][len("film-"):-len(".mp4")], l[1]) for l in reversed(lines) if len(l) >= 2), None)
+
+
+def voice_lines(spec, series):
+    """(voice, text) of every beat: the narrator, or a speaking character in its own voice."""
     narrator = spec.get("narrator", series["narrator"])  # a special may pick its own narrator
     cast_voice = series.get("voices", {})  # a character may borrow a voice file under another name
     texts = [beat["text"] for beat in spec["beats"]]
     texts[0] = opening(texts[0])
-    lines = [(cast_voice.get(beat["speaker"], beat["speaker"]) if "speaker" in beat else narrator, texts[i])
-             for i, beat in enumerate(spec["beats"])]
+    return narrator, [(cast_voice.get(beat["speaker"], beat["speaker"]) if "speaker" in beat else narrator, texts[i])
+                      for i, beat in enumerate(spec["beats"])]
+
+
+def build(spec, series):
+    b = Builder()
+    narrator, lines = voice_lines(spec, series)
     speak_all(lines)
     frame = frame_for(spec, series)
 
@@ -208,7 +222,7 @@ def build(spec, series):
             if "sting" not in [sfx_name(s) for s in beat.get("sfx", [])]:
                 b.sfx.append((sting_at, "sting"))
                 hits.append(b.f(sting_at - start))
-            end = sting_at + 0.6 + END_CARD
+            end = sting_at + 0.6 + END_CARD + (1.2 if spec.get("vote") else 0)  # time to read the two options
         params = {k: v for k, v in beat.items() if k not in ("scene", "text", "hl", "sfx", "cam", "tone", "rain", "fog",
                                                               "flashlight", "alarm", "hold", "speaker")}
         beats.append({"from": b.f(start), "duration": b.f(end) - b.f(start), "scene": beat["scene"], "p": params,
@@ -229,7 +243,8 @@ def build(spec, series):
     finale = bool(series.get("finale")) and n == series["finale"]
     props = {"durationInFrames": b.f(b.t), "day": n, "series": series["name"], "label": series.get("label"),
              "grade": series.get("grade"), "title": spec["title"], "frame": frame, "tagline": series.get("tagline"),
-             "finale": finale, "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6)}
+             "finale": finale, "beats": beats, "chunks": chunks, "endAt": b.f(sting_at + 0.6),
+             "vote": spec.get("vote"), "voted": voted_badge(spec)}
     title = video_title(series, n, spec["title"])
     first = day_one_url(series) if n > 1 and not series.get("label") else None
     if series.get("label"):
@@ -240,6 +255,16 @@ def build(spec, series):
         where = [f"The final day of {series['name']}." + (f" Watch it from the start: {first}" if first else "")]
     else:
         where = [f"New here? Start from Day 1: {first}"] if first else []
+    vote, badge = spec.get("vote"), voted_badge(spec)
+    if vote:
+        a, z = vote["options"]
+        where.append(f"🗳 YOU DECIDE: {vote['question']} Comment {a} or {z}. The most votes decide Day {vote['decides']}.")
+    if badge:
+        counts = " to ".join(str(badge["votes"].get(o, 0)) for o in sorted(badge["votes"], key=lambda o: -badge["votes"][o]))
+        where.append(f"You voted {badge['pick']} ({counts}), and this is what happened.")
+    film = latest_film()
+    if film and film[0] != series["id"]:
+        where.append(f"▶ A whole finished story in one video: {film[1]}")
     meta = {
         "title": title[:100],
         "description": "\n".join([
@@ -257,6 +282,14 @@ def build(spec, series):
                  "scary story", "outbreak diary"],
     }
     return b, props, meta
+
+
+def voted_badge(spec):
+    """What the viewers chose, for the top of the part their vote decided (None when nobody voted)."""
+    voted = spec.get("voted")
+    if not voted or not sum(voted.get("votes", {}).values()):
+        return None
+    return {"pick": voted["pick"], "votes": voted["votes"]}
 
 
 def video_title(series, day, title):

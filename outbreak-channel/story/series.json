@@ -18,7 +18,12 @@
     "grade": "#3b6fb6",
     "frame": "diary",
     "finale": 15,
-    "tagline": "Trapped on the 9th floor with my dog"
+    "tagline": "Trapped on the 9th floor with my dog",
+    "film": {
+      "title": "Trapped on the 9th Floor With My Dog",
+      "intro": "My name is Sam. When the sirens started, I was alone on the ninth floor of Harbor View with my dog, Biscuit. These are all fifteen days, from the first night to the last.",
+      "outro": "That was my story, all fifteen days of it. Thank you for staying until the end. A new story has already begun on Outbreak Diary."
+    }
   },
   {
     "id": "floor-41",
@@ -44,7 +49,12 @@
     ],
     "frame": "camcorder",
     "finale": 12,
-    "tagline": "Trapped on the 41st floor of a skyscraper"
+    "tagline": "Trapped on the 41st floor of a skyscraper",
+    "film": {
+      "title": "Trapped on the 41st Floor of a Skyscraper",
+      "intro": "My name is Maya. The night it started, I was working late on the forty-first floor of Meridian Tower. This is everything I recorded, all twelve days of it.",
+      "outro": "That was my story, all twelve days. Thank you for staying until the end. A new story has already begun on Outbreak Diary."
+    }
   },
   {
     "id": "pine-hollow",
@@ -70,7 +80,12 @@
     ],
     "frame": "journal",
     "finale": 11,
-    "tagline": "Hiding in a lake cabin with my niece"
+    "tagline": "Hiding in a lake cabin with my niece",
+    "film": {
+      "title": "Hiding in a Lake Cabin With My Niece",
+      "intro": "My name is Nora. I'm a park ranger. When the outbreak reached the woods, my niece Ava and I hid in a cabin by the lake. These are the pages I wrote, all eleven days.",
+      "outro": "That was our story, all eleven days of it. Thank you for staying until the end. A new story has already begun on Outbreak Diary."
+    }
   },
   {
     "id": "specials",

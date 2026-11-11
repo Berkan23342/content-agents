@@ -158,7 +158,44 @@ def check_episode(spec, cast=None):
                 raise DiaryError(f"{where}: highlight {h!r} is not in the text")
     if not WORDS[0] <= total <= WORDS[1]:
         raise DiaryError(f"{total} words in all, aim for {WORDS[0]}-{WORDS[1]} (about 45-65 seconds)")
+    check_vote_fields(spec)
     return total
+
+
+VOTE_AHEAD = 3  # a vote on Day N decides Day N+3: Days N+1 and N+2 are already written when the votes come in
+
+
+def check_vote_fields(spec):
+    """The shape of 'vote' (this part asks the viewers) and 'voted' (this part follows their answer)."""
+    vote = spec.get("vote")
+    if vote is not None:
+        shape = 'write it as "vote": {"question": "Which way do we go?", "options": ["BRIDGE", "STAIRS"], "decides": N+3}'
+        if not isinstance(vote, dict) or set(vote) != {"question", "options", "decides"}:
+            raise DiaryError(f"'vote': {shape}")
+        q = vote["question"]
+        if not (isinstance(q, str) and 8 <= len(q) <= 48 and q.endswith("?")):
+            raise DiaryError("vote 'question': one short question of 8-48 characters, ending with '?'")
+        opts = vote["options"]
+        if not (isinstance(opts, list) and len(opts) == 2 and opts[0] != opts[1]
+                and all(isinstance(o, str) and re.fullmatch(r"[A-Z]{3,10}", o) for o in opts)):
+            raise DiaryError('vote \'options\': two different words in capitals, 3-10 letters each, like ["BRIDGE", "STAIRS"]')
+        if spec["episode"] == 1:
+            raise DiaryError("no vote on Day 1: new viewers need the story first")
+        if vote["decides"] != spec["episode"] + VOTE_AHEAD:
+            raise DiaryError(f"vote 'decides' must be {spec['episode'] + VOTE_AHEAD}: the next two days are already written "
+                             "when the votes are counted, so the answer comes on Day N+3")
+        last = {w.upper() for w in words(spec["beats"][-1]["text"])}
+        if any(o not in last for o in opts):
+            raise DiaryError(f"the last beat must ask the question out loud and name both options ({opts[0]} and {opts[1]})")
+    voted = spec.get("voted")
+    if voted is not None:
+        counts = voted.get("votes", {}) if isinstance(voted, dict) else None
+        if not (isinstance(voted, dict) and set(voted) <= {"from", "pick", "votes"} and isinstance(voted.get("from"), int)
+                and isinstance(voted.get("pick"), str) and isinstance(counts, dict)
+                and all(isinstance(v, int) and v >= 0 for v in counts.values())):
+            raise DiaryError('\'voted\': write it as {"from": N, "pick": "BRIDGE", "votes": {"BRIDGE": 7, "STAIRS": 3}}')
+        if voted["from"] != spec["episode"] - VOTE_AHEAD:
+            raise DiaryError(f"'voted' answers the vote of Day {spec['episode'] - VOTE_AHEAD}, so 'from' is that day")
 
 
 TOO_SIMILAR = 0.2  # share of three-word runs shared with an earlier script (today's scripts share at most 0.03)
@@ -192,6 +229,7 @@ def check_against(path, spec):
     finale = (series_of(path) or {}).get("finale")
     if finale and spec["episode"] > finale:
         raise DiaryError(f"this story ends on Day {finale}; start the next story instead (see Seasons in AGENT.md)")
+    check_vote_order(spec, [o for _, o in mine], series_of(path) or {})
     for p, o in mine:
         if o["title"].strip().lower() == spec["title"].strip().lower():
             raise DiaryError(f"the title {spec['title']!r} was already used ({os.path.basename(p)})")
@@ -203,6 +241,59 @@ def check_against(path, spec):
         score = overlap(text, script_text(o))
         if score >= TOO_SIMILAR:
             raise DiaryError(f"too similar to {os.path.relpath(p, ROOT)} ({score:.0%} of phrases repeat); write something new")
+
+
+def check_vote_order(spec, mine, series):
+    """Votes in a story: never in a special or past the finale, one open question at a time, and the part a vote decides
+    must say what the viewers chose ('voted')."""
+    vote, n = spec.get("vote"), spec["episode"]
+    if vote:
+        if series.get("label"):
+            raise DiaryError("a special is a single part, so there is no later day to decide: votes are for the serials")
+        if series.get("finale") and vote["decides"] > series["finale"]:
+            raise DiaryError(f"this vote would decide Day {vote['decides']}, after the finale (Day {series['finale']}); "
+                             "ask earlier in the season, or not at all")
+    for o in mine:
+        a, z = o["episode"], (o.get("vote") or {}).get("decides")
+        if vote and z and a < n <= z:
+            raise DiaryError(f"Day {a} already asked the viewers and Day {z} gives the answer; no new vote before Day {z + 1}")
+    asked = next((o for o in mine if (o.get("vote") or {}).get("decides") == n), None)
+    voted = spec.get("voted")
+    if asked and not voted:
+        raise DiaryError(f"Day {asked['episode']} asked the viewers {asked['vote']['question']!r}; this part gives the answer, "
+                         "so add 'voted' (see Viewers decide in AGENT.md)")
+    if voted:
+        if not asked:
+            raise DiaryError(f"'voted', but Day {voted['from']} asked the viewers nothing")
+        options = asked["vote"]["options"]
+        if voted["pick"] not in options or set(voted.get("votes", {})) - set(options):
+            raise DiaryError(f"'voted' must use Day {asked['episode']}'s options {options}")
+
+
+VOTES_FILE = os.path.join(ROOT, "story", "votes.json")
+
+
+def check_votes(path, spec):
+    """For the writers: the part a vote decides follows the votes counted in story/votes.json (scripts/votes.py)."""
+    votes = json.load(open(VOTES_FILE)) if os.path.exists(VOTES_FILE) else {}
+    if spec.get("vote") and not votes.get("_reader", {}).get("ok"):
+        raise DiaryError("the channel cannot read comments yet (story/votes.json \"_reader\"), so a vote could not be "
+                         "counted: write this part without 'vote'")
+    voted = spec.get("voted")
+    if not voted:
+        return
+    sid = (series_of(path) or {}).get("id")
+    tally = votes.get(sid, {}).get(str(voted["from"]), {})
+    counts = tally.get("votes", {})
+    if not sum(counts.values()):
+        if sum(voted.get("votes", {}).values()):
+            raise DiaryError(f"story/votes.json has no votes for Day {voted['from']}: leave 'votes' empty and choose yourself")
+        return
+    if voted.get("votes") != counts:
+        raise DiaryError(f"copy the counted votes from story/votes.json exactly: \"votes\": {json.dumps(counts)}")
+    top = max(counts.values())
+    if counts.get(voted["pick"], 0) != top:
+        raise DiaryError(f"the viewers chose {' or '.join(k for k, v in counts.items() if v == top)}; the story follows them")
 
 
 def _recent(path):
@@ -320,6 +411,14 @@ def check_series():
             problems.append(f"{s.get('id')}: needs a 'tagline' (one line, at most 42 characters)")
         if len(s.get("tagline", "")) > 42:
             problems.append(f"{s.get('id')}: tagline is longer than 42 characters")
+        fin = s.get("finale")
+        if fin and (fin in waiting(s["id"]) or published(s["id"]) >= fin):
+            film = s.get("film") or {}
+            if not all(isinstance(film.get(k), str) and film[k] for k in ("title", "intro", "outro")):
+                problems.append(f"{s['id']}: its finale is written, so add \"film\": {{\"title\", \"intro\", \"outro\"}} for the "
+                                "full-story video (Seasons in AGENT.md)")
+            elif len(film["title"]) > 60:
+                problems.append(f"{s['id']}: film title is longer than 60 characters")
     serials = [s for s in S if not s.get("label")]
     running = [s for s in serials if not (s.get("finale") and published(s["id"]) >= s["finale"])]
     current = {}
@@ -372,6 +471,7 @@ def main():
             check_against(path, spec)
             if os.sep + "new" + os.sep in os.path.abspath(path):  # only parts still being written; published ones stand
                 check_variety(path, spec)
+                check_votes(path, spec)
         except (DiaryError, json.JSONDecodeError) as e:
             raise SystemExit(f"episode error in {path}: {e}")
         print(f"ok: {path} ({total} words, about {estimate_seconds(total):.0f} s)")

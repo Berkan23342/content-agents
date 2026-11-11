@@ -33,6 +33,7 @@ TOKEN = os.path.join(SECRETS, "token.json")
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 READONLY = "https://www.googleapis.com/auth/youtube.readonly"  # only in tokens made with --sign-in
 MANAGE = "https://www.googleapis.com/auth/youtube"  # playlists and titles; only in tokens made with --sign-in --manage
+COMMENTS = "https://www.googleapis.com/auth/youtube.force-ssl"  # reading comments (viewer votes); --sign-in --comments
 EDUCATION = "27"
 
 
@@ -156,12 +157,13 @@ def main():
     p.add_argument("--sign-in", action="store_true", help="only sign in and save --token, then stop")
     p.add_argument("--expect-channel", help="upload only if the token belongs to this channel id (token made with --sign-in)")
     p.add_argument("--manage", action="store_true", help="with --sign-in: also allow playlists and title changes")
+    p.add_argument("--comments", action="store_true", help="with --sign-in: also allow reading comments (viewer votes)")
     p.add_argument("--playlist", help="add the video to this playlist (token made with --sign-in --manage)")
     p.add_argument("--playlist-description", default="")
     p.add_argument("--set-title", metavar="VIDEO_ID", help="change the title of an uploaded video to --title, then stop")
     a = p.parse_args()
     if a.sign_in:  # read-only access too, so the token can tell which channel it belongs to
-        wanted = SCOPES + [READONLY] + ([MANAGE] if a.manage else [])
+        wanted = SCOPES + [READONLY] + ([MANAGE] if a.manage else []) + ([COMMENTS] if a.comments else [])
         if os.path.exists(a.token):
             os.remove(a.token)  # always a fresh consent, so every permission is asked for again
         creds = credentials(a.client, a.token, wanted)

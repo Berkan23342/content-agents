@@ -4,7 +4,8 @@
   python3 scripts/ci_video.py due        prints the videos that are due and not uploaded yet ("story story-short", or nothing)
 
 Since 2026-11-08 a day is one new story (scripts/fun.py --daily) and a vertical Short cut from it (--short): fewer
-videos, each one different, because YouTube does not monetise template-made look-alikes. YouTube publishes them at
+videos, each one different, because YouTube does not monetise template-made look-alikes. On Sundays the week's stories
+also go out together in one long video at 10:00 (--weekly), for watch time. YouTube publishes them at
 17:00 and 20:00 Istanbul time; if that time has already passed, the video goes out right away. The old daily formats
 (learn, fun, short1, short2) can still be made by hand.
 """
@@ -17,7 +18,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TZ = ZoneInfo("Europe/Istanbul")
-PUBLISH_HOUR = {"story": 17, "story-short": 20, "learn": 10, "short1": 13, "fun": 18, "short2": 21}
+PUBLISH_HOUR = {"story": 17, "story-short": 20, "weekly": 10, "learn": 10, "short1": 13, "fun": 18, "short2": 21}
 DAILY = ("story", "story-short")
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 
@@ -31,7 +32,11 @@ def video_id(kind, date):
 
 
 def due(date):
-    return [k for k in DAILY if not uploaded(video_id(k, date))]
+    """The day's story and its Short; on Sundays also the week's stories in one video (last, so the daily ones go first)."""
+    todo = [k for k in DAILY if not uploaded(video_id(k, date))]
+    if dt.date.fromisoformat(date).weekday() == 6 and not uploaded(video_id("weekly", date)):
+        todo.append("weekly")
+    return todo
 
 
 def run(*cmd, tries=1):
@@ -51,6 +56,11 @@ def make(kind, date, upload):
     short = kind.startswith("short") or kind == "story-short"
     if kind == "story":
         run(py, "scripts/fun.py", "--date", date, "--daily")
+    elif kind == "weekly":
+        run(py, "scripts/fun.py", "--date", date, "--weekly")
+        if not os.path.exists(os.path.join(ROOT, "build", vid, "props.json")):
+            print(f"{vid}: not enough stories this week, no video")
+            return
     elif kind == "story-short":
         if not os.path.exists(os.path.join(ROOT, "build", f"{date}-story", "props.json")):  # a later run: rebuild the story
             run(py, "scripts/fun.py", "--date", date, "--daily")
@@ -83,7 +93,7 @@ def make(kind, date, upload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("kind", choices=["story", "story-short", "learn", "fun", "short1", "short2", "auto", "due"])
+    p.add_argument("kind", choices=["story", "story-short", "weekly", "learn", "fun", "short1", "short2", "auto", "due"])
     p.add_argument("--date", default="")
     p.add_argument("--no-upload", action="store_true")
     a = p.parse_args()

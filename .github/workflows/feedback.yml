@@ -1,0 +1,70 @@
+# Every morning, before the writers run: count the Outbreak viewers' votes (outbreak-channel/story/votes.json) and save
+# our own channels' public numbers (stats/history/); on Mondays also write stats/latest.md, the weekly report the
+# writers read to do more of what works.
+name: Viewer feedback
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # 06:00 Istanbul
+    - cron: "0 5 * * *"   # a backup: GitHub's scheduler can be hours late
+  workflow_dispatch:
+    inputs:
+      report:
+        description: Also write the weekly report now
+        type: boolean
+        default: false
+
+concurrency:
+  group: feedback
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  feedback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -q google-api-python-client==2.201.0 google-auth==2.62.0 google-auth-oauthlib==1.5.0 google-auth-httplib2==0.4.4 httplib2==0.32.1
+
+      - name: YouTube credentials
+        env:
+          CLIENT: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          QUIZ: ${{ secrets.QUIZ_YOUTUBE_TOKEN }}
+          OUTBREAK: ${{ secrets.OUTBREAK_YOUTUBE_TOKEN }}
+        run: |
+          mkdir -p secrets
+          printf '%s' "$CLIENT" > secrets/client_secret.json
+          printf '%s' "$QUIZ" > secrets/quiz.json
+          printf '%s' "$OUTBREAK" > secrets/outbreak.json
+
+      # reading comments needs the Outbreak sign-in's youtube.force-ssl permission; without it this only records that
+      - name: Count the Outbreak votes
+        continue-on-error: true
+        run: python outbreak-channel/scripts/votes.py --token secrets/outbreak.json --client secrets/client_secret.json
+
+      - name: Channel numbers
+        run: |
+          report=""
+          if [ "$(TZ=Europe/Istanbul date +%u)" = 1 ] || [ "${{ inputs.report }}" = true ]; then report=--report; fi
+          python stats/collect.py --token secrets/quiz.json --client secrets/client_secret.json $report
+
+      - name: Save
+        if: always()
+        run: |
+          rm -rf secrets
+          git config user.name "content-bot"
+          git config user.email "content-bot@users.noreply.github.com"
+          git add stats outbreak-channel/story/votes.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "feedback: $(TZ=Europe/Istanbul date +%F)"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done

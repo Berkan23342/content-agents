@@ -22,6 +22,9 @@ days in one part or one day in two parts. The day is on screen from the first fr
 3. For each story that needs parts:
    - Read its `bible.md`, the whole file.
    - Read its last three parts: the highest-numbered scripts in `new/`, or in `used/*/` if `new` is empty.
+   - If the part you are about to write is the day an earlier vote decides, read `story/votes.json` (see Viewers
+     decide).
+   - Once a week, read the Outbreak Diary part of `../stats/latest.md` (see Our own numbers).
 4. Write the next part as `story/<id>/new/ep-NNNN.json`, where `episode` is the next number. Continue exactly where the
    last part ended: answer its cliffhanger first, then move the story forward. Use only the scenes the story's bible
    allows.
@@ -74,7 +77,49 @@ stories are short seasons of 10-15 days, and a fresh Day 1 arrives every week or
      first two beats, a strong hook first, and a cliffhanger last.
   5. Run `--seasons` again: no `problem:` lines. A story's slot stays empty (and the video job fails loudly) if its
      successor is missing when the finale is out, so never leave this for later.
+- **The full-story video.** The day after a finale is published, `.github/workflows/outbreak-film.yml` turns the
+  whole season into one horizontal video (all days, with chapters), because Shorts views do not count towards
+  YouTube's watch hours. When you write a finale, also add to that story's entry in `series.json`:
+  `"film": {"title": "...", "intro": "...", "outro": "..."}`. `--seasons` reports a `problem:` until it is there.
+  - `title`: what the story is, in at most 60 characters, a phrase a viewer would search for ("Trapped on the 9th
+    Floor With My Dog"). The video is called "<title> | The Full Zombie Story, All N Days".
+  - `intro`: two or three sentences the narrator says at the very start: who she is, where she was when it began, and
+    that these are all N days. No spoilers.
+  - `outro`: one or two sentences after the last day, ending with "A new story has already begun on Outbreak Diary."
 - The ending story keeps its folder; never delete it.
+
+## Viewers decide
+
+Comments push a video in YouTube's feed, and a story the viewers steer is a reason to follow it. So about twice a
+season a serial asks the viewers to choose, and the story really follows the majority.
+
+- **Asking.** In the part for Day N, add `"vote": {"question": "Which way do we go?", "options": ["BRIDGE",
+  "STAIRS"], "decides": N+3}`.
+  - The answer comes on Day N+3, because Days N+1 and N+2 are already written when the votes are counted. So ask about
+    a decision that is a few days away ("Ruth says the bridge will hold. Dev says the stairs. We go in three days.
+    Which way?"), never about tomorrow's cliffhanger. Days N+1 and N+2 must not decide it.
+  - Both options are real and the story can go on either way. No vote can kill an animal or end the story badly.
+  - The options are two single words in capitals, 3-10 letters. The last beat asks the question out loud and names
+    both words (it can still be the cliffhanger). The video ends on a voting card instead of "Follow for Day N+1",
+    and the description tells viewers to comment one word.
+  - Never on Day 1, never in a special, never past the finale (N+3 must be at most the finale), and no new vote until
+    the last one has been answered. The checker refuses a vote while the channel cannot read comments yet
+    (`story/votes.json` `"_reader"`); then write the part without one.
+- **Answering.** Every morning `scripts/votes.py` counts the comments into `story/votes.json` (one vote per person).
+  When you write Day N+3, read the story's entry for Day N and add
+  `"voted": {"from": N, "pick": "BRIDGE", "votes": {"BRIDGE": 7, "STAIRS": 3}}`, copying the counted `votes` exactly.
+  The story follows the option with the most votes (a tie: you choose between the tied ones). If nobody voted, leave
+  `"votes": {}` and choose yourself. The video then shows "YOU VOTED: BRIDGE · 7 – 3" at the start of the day; the
+  narration stays in the story (the narrator does not talk about comments).
+- Record each vote and its result in the bible's Episode log.
+
+## Our own numbers
+
+`../stats/latest.md` (written every Monday from our channels' public numbers) shows how our own parts did: views two
+days after publishing, likes and comments, by story, Day 1s apart, specials, and every recent part with its event.
+Read the Outbreak Diary part once a week. Lean towards what scored best (kinds of hook, events, places, specials'
+kinds) and away from the weakest. Look for patterns over several parts, never one lucky video, and keep every variety
+rule.
 
 ## Approved ideas
 
@@ -165,6 +210,8 @@ your own:
 | `ambience` | The background bed: `rain`, `wind`, `night` or `none`. |
 | `event` | What the part is mostly about (see "Every part is about something different"). |
 | `kind`, `narrator` | Specials only: how it is told and who tells it (see Specials). |
+| `vote` | Optional: this part asks the viewers to choose (see Viewers decide). |
+| `voted` | Required on the day a vote decides: what the viewers chose (see Viewers decide). |
 | `text` | What Sam says in this beat. It is also the caption. |
 | `hl` | Words from `text` to show in red. |
 | `sfx` | A list of sounds: `"name"` plays at the start of the beat, `"name@1.5"` 1.5 seconds in. |

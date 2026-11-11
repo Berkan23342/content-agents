@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Composition, registerRoot} from 'remotion';
 import {Defs, Walker} from './art';
 import {Diary, DiaryProps} from './Diary';
+import {Film, FilmProps, FilmThumb} from './Film';
 
 // Real props come from build/<id>/props.json via `--props`; this is only a Studio placeholder.
 const placeholder: DiaryProps = {
@@ -15,6 +16,17 @@ const placeholder: DiaryProps = {
 	],
 	chunks: [],
 	endAt: 999,
+};
+
+const filmPlaceholder: FilmProps = {
+	durationInFrames: 90,
+	audio: '',
+	series: 'Harbor View',
+	title: 'Trapped on the 9th floor with my dog',
+	days: 15,
+	intro: {duration: 90},
+	parts: [],
+	outro: {from: 90, duration: 1},
 };
 
 /** Channel avatar: a lone walker under a red moon. */
@@ -42,6 +54,17 @@ const Root: React.FC = () => (
 			width={1080}
 			height={1920}
 		/>
+		<Composition
+			id="Film"
+			component={Film}
+			defaultProps={filmPlaceholder}
+			calculateMetadata={({props}) => ({durationInFrames: props.durationInFrames})}
+			durationInFrames={90}
+			fps={30}
+			width={1920}
+			height={1080}
+		/>
+		<Composition id="FilmThumb" component={FilmThumb} defaultProps={filmPlaceholder} durationInFrames={1} fps={30} width={1280} height={720} />
 		<Composition id="Avatar" component={Avatar} durationInFrames={1} fps={30} width={800} height={800} />
 	</>
 );

@@ -54,6 +54,14 @@ to `snacks/new/` starts that job.
 Never copy anyone's script, title, characters, pictures or jokes. Record the source as
 `"inspired_by": "<link> (topic only)"`.
 
+## Our own numbers
+
+`../stats/latest.md` (written every Monday from our channels' public numbers) shows how our own snacks did: views two
+days after publishing, likes and comments, grouped by format, and every recent snack with its format and topic. Read the
+Brain Snack Quiz part before writing. Within a format, lean towards the kinds of question, topic and title that scored
+best (for example a title that dares the viewer, an everyday mystery) and away from the weakest. Look for patterns over
+several snacks, never one lucky video, and keep the format rotation and the topic limits.
+
 ## Who it is for
 
 Write for curious **teenagers and adults** (13+), like a smart friend explaining something over lunch. YouTube decides

@@ -755,7 +755,7 @@ def narrator_for(kind, specs):
     return next((v for v in options if not set(p.partition(":")[0] for p in v.split("+")) & cast), options[-1])
 
 
-def fmt_daily(b, rng, ep_no, specs, kind=None):
+def fmt_daily(b, rng, ep_no, specs, kind=None, weekly=False):
     """The daily video since 2026-11-08: new stories from the story writer, told from start to end. Usually one long
     story; while short stories from before the change are waiting, two or three of them. (The rotation of eggs, dance and
     shadow templates was dropped: YouTube treats look-alike videos as inauthentic.)"""
@@ -765,12 +765,19 @@ def fmt_daily(b, rng, ep_no, specs, kind=None):
     titles = [s["title"] for s in specs]
     heroes = [body(icon(c)) for c in dict.fromkeys(c for s in specs for c in s.get("cast", [])[:2])][:3]
     style = KIND_STYLE.get(kind or specs[0].get("kind") or "adventure", KIND_STYLE["adventure"])
+    if weekly:  # Sunday's video: the whole week's stories, one after another
+        style = dict(style, label="This Week's Stories", hello="Hello friends!")
     badge = {"badge": style["label"], "badgeColor": style["color"], "rays": style["rays"]}  # for the thumbnail
     # a short opening: viewers (and the suggested-videos panel) judge the first seconds, so one line and the title
-    intro(b, outdoor(first_bg), [titles[0]] if len(specs) == 1 else ["Story Time!"], heroes,
-          [f"{style['hello']} Today's story is {titles[0]}!" if len(specs) == 1
-           else f"{style['hello']} We have {len(specs)} new stories today!"],
-          top=style["label"], topColor=style["color"], rays=style["rays"], start=0.5)
+    if weekly:
+        intro(b, outdoor(first_bg), [f"{len(specs)} Stories", "in One!"], heroes,
+              [f"Hello friends! Here are all {NUMBER_WORDS[len(specs)].lower()} stories from this week, one after another!"],
+              top=style["label"], topColor=style["color"], rays=style["rays"], start=0.5)
+    else:
+        intro(b, outdoor(first_bg), [titles[0]] if len(specs) == 1 else ["Story Time!"], heroes,
+              [f"{style['hello']} Today's story is {titles[0]}!" if len(specs) == 1
+               else f"{style['hello']} We have {len(specs)} new stories today!"],
+              top=style["label"], topColor=style["color"], rays=style["rays"], start=0.5)
     b.music = [(0, b.t, rng.choice(style["songs"]), "lullaby" if calm and len(specs) == 1 else "gentle")]
     infos = []
     b.stories = []  # (title, start, end) of each story, so the day's Short can name the story it comes from
@@ -803,6 +810,12 @@ def fmt_daily(b, rng, ep_no, specs, kind=None):
     }
     thumb = {"title": [titles[0]], "heroes": [body(icon(c)) for c in infos[0]["cast"][:2]], "bg": outdoor(first_bg),
              **badge}
+    if weekly:
+        meta["title"] = f"{len(specs)} Stories for Kids: {titles[0]}, {titles[1]} & More | Bubbly Kids TV"
+        meta["intro"] = (f"All {len(specs)} stories from this week on Bubbly Kids TV, one after another: about "
+                         f"{round(b.t / 60)} minutes of animated stories for toddlers and preschoolers. 🎈")
+        thumb = dict(thumb, title=[f"{len(specs)} Stories in One!"],
+                     heroes=[body(icon(i["cast"][0])) for i in infos[:2] if i.get("cast")])
     return meta, thumb
 
 
@@ -1089,7 +1102,7 @@ def description(b, meta, ep_no):
         "⏱ Chapters",
         *[f"{fmt(t)} {name}" for t, name in b.chapters],
         "",
-        "Bubbly Kids TV posts a learning video and a fun video every day!",
+        "A new story every day on Bubbly Kids TV, and every Sunday the whole week's stories in one video!",
         "Music: public-domain nursery melodies. Characters and stories: original Bubbly Kids TV.",
         "",
         "#kidsvideos #toddlers #preschool #bubblykidstv",
@@ -1103,6 +1116,7 @@ def main():
     p.add_argument("--check-story", help="build just this story script into build/check-story (for previews)")
     p.add_argument("--daily", action="store_true", help="the daily video: one new story, into build/<date>-story")
     p.add_argument("--short", action="store_true", help="the vertical Short cut from the day's story, into build/<date>-story-short")
+    p.add_argument("--weekly", action="store_true", help="Sunday's video: the past week's stories, into build/<date>-weekly")
     a = p.parse_args()
     if a.check_story:
         return check_only(a.check_story)
@@ -1110,6 +1124,8 @@ def main():
         return daily(a.date)
     if a.short:
         return story_short(a.date)
+    if a.weekly:
+        return weekly(a.date)
     day = dt.date.fromisoformat(a.date)
     ep_no = (day - FIRST_EPISODE).days + 1
     kind = a.format or FORMATS[(ep_no - 1) % len(FORMATS)]
@@ -1169,6 +1185,42 @@ def daily(date):
             os.makedirs(used, exist_ok=True)
             os.rename(path, os.path.join(used, os.path.basename(path)))
     print(f"daily story {date}: {[s['title'] for _, s in picked]}, {b.t:.1f}s, {len(b.scenes)} scenes")
+
+
+WEEKLY_MIN = 3
+WEEKLY_MAX = len(NUMBER_WORDS) - 1  # "Story number ten" is the last one we can say
+
+
+def weekly(date):
+    """Sunday's video: the stories of the seven days before, one after another (chapters in the description), for the
+    viewers who watch stories back to back. They are told again from their scripts in stories/used/, by one narrator.
+    With fewer than WEEKLY_MIN stories there is no weekly video (nothing is written)."""
+    day = dt.date.fromisoformat(date)
+    specs = []
+    for k in range(7, 0, -1):
+        for path in sorted(glob.glob(os.path.join(STORY_DIR, "used", (day - dt.timedelta(days=k)).isoformat(), "*.json"))):
+            try:
+                specs.append(load_script(path))
+            except (StoryError, ValueError, KeyError) as e:
+                print(f"skipping story {os.path.basename(path)}: {e}")
+    specs = specs[-WEEKLY_MAX:]
+    if len(specs) < WEEKLY_MIN:
+        print(f"only {len(specs)} stories in the week before {date}: no weekly video")
+        return
+    ep_no = (day - FIRST_EPISODE).days + 1
+    name = f"{date}-weekly"
+    work = os.path.join(BUILD, name)
+    os.makedirs(work, exist_ok=True)
+    b = Builder()
+    kind = kind_for(date)
+    b.narrator = narrator_for(kind, specs)
+    meta, thumb = fmt_daily(b, random.Random(f"weekly-{date}"), ep_no, specs, kind, weekly=True)
+    wav_rel = write_audio(b, work, name)
+    season, look = look_for(day, "weekly")
+    props = {"durationInFrames": b.f(b.t), "audio": wav_rel, "scenes": b.scenes, "thumb": thumb, "season": season, "look": look,
+             "stories": b.stories}
+    write_json(work, props, {"title": meta["title"][:100], "description": description(b, meta, ep_no), "tags": meta["tags"]})
+    print(f"weekly {date}: {len(specs)} stories, {b.t / 60:.1f} min, {len(b.scenes)} scenes")
 
 
 SHORT_SECONDS = (30, 58)

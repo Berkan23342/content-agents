@@ -18,7 +18,7 @@ on:
     inputs:
       kind:
         type: choice
-        options: [auto, story, story-short, learn, fun, short1, short2]
+        options: [auto, story, story-short, weekly, learn, fun, short1, short2]
         default: auto
       upload:
         description: Upload to YouTube (off = render only, the video is kept as an artifact)

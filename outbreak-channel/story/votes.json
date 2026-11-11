@@ -1,0 +1,7 @@
+{
+  "_reader": {
+    "ok": false,
+    "checked": "2026-11-10T20:02Z",
+    "why": "Request had insufficient authentication scopes."
+  }
+}

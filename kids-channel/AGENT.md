@@ -74,6 +74,15 @@ the last month. Read its `kids` table. About once a week, base a story on a them
 season, a holiday, a game or an animal, told with our own characters and plot. Never copy anyone's story, characters or
 songs. Record the source as `"inspired_by": "<link> (theme only)"` in the script.
 
+## Our own numbers
+
+`stats/latest.md` (at the repository root, written every Monday from our channels' public numbers) shows how our own
+videos did: views two days after publishing, likes, grouped by story kind, and every recent story with its kind. Read
+the Bubbly Kids TV part before writing. Lean towards the kinds, themes and title styles that scored best and away from
+the weakest, but look for patterns over several stories, never one lucky video, and keep the kind rotation.
+Every Sunday the week's stories also go out together in one long video, so a story that is calm and complete on its
+own fits there too.
+
 ## Writing rules
 
 - Toddler English: short, warm, simple sentences.
