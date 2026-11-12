@@ -26,6 +26,30 @@
     }
   },
   {
+    "id": "dead-air",
+    "name": "Dead Air",
+    "slot": "e1",
+    "publish": [
+      0,
+      "20:00"
+    ],
+    "about": "Wren, the night host of a hilltop radio station, learns that every word she says on air is shouted over Port Ellis by the old roof speakers, and the infected follow sound.",
+    "narrator": "nicole",
+    "cast": [
+      "tilly",
+      "cal",
+      "announcer"
+    ],
+    "voices": {
+      "tilly": "girl",
+      "cal": "man"
+    },
+    "grade": "#d9822b",
+    "frame": "broadcast",
+    "finale": 12,
+    "tagline": "Every word I say on the radio calls them"
+  },
+  {
     "id": "floor-41",
     "name": "Floor 41",
     "slot": "e2",

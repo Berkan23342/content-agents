@@ -1,0 +1,120 @@
+{
+  "episode": 1,
+  "title": "The Studio Phone",
+  "summary": "A night radio host hears the studio phone ring in a city that has gone silent.",
+  "event": "signal",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "phone",
+      "text": "At three in the morning, the studio phone rang. Nobody had that number.",
+      "hl": [
+        "rang"
+      ],
+      "screen": "alert",
+      "lines": [
+        "STUDIO LINE",
+        "Incoming call"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "I'm Wren, night host at Gull Hill Radio.",
+      "hl": [
+        "Wren"
+      ],
+      "mode": "static"
+    },
+    {
+      "scene": "rooftop",
+      "text": "My roof's siren speakers shout my every word. And the infected follow sound.",
+      "hl": [
+        "follow sound"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "window",
+      "text": "The streets below had filled. One loud word would bring them up my hill.",
+      "hl": [
+        "One loud word"
+      ],
+      "zombies": 8,
+      "rain": true
+    },
+    {
+      "scene": "phone",
+      "text": "\"Hello? Is anyone there? Please don't shout. They're right outside.\"",
+      "hl": [
+        "don't shout"
+      ],
+      "speaker": "tilly",
+      "screen": "alert",
+      "lines": [
+        "STUDIO LINE",
+        "Caller: Tilly"
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "Tilly was a child, hiding in the school at the bottom of the hill.",
+      "hl": [
+        "child"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "school",
+      "text": "Three of them stood outside, listening.",
+      "hl": [
+        "listening"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "radio",
+      "text": "A full-volume answer would shout her location to them all.",
+      "hl": [
+        "shout"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "hallway",
+      "text": "Beside the studio door hung the speaker switch. I flipped it off.",
+      "hl": [
+        "off"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "I leaned in and whispered, \"Tilly, I'm here.\"",
+      "hl": [
+        "I'm here"
+      ],
+      "mode": "voice",
+      "hold": 1.0
+    },
+    {
+      "scene": "rooftop",
+      "text": "Then every speaker on the roof said it back.",
+      "hl": [
+        "said it back"
+      ],
+      "fire": true,
+      "alarm": true,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

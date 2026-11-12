@@ -1,0 +1,128 @@
+{
+  "episode": 14,
+  "title": "The Pier Wakes",
+  "summary": "On Day fourteen, Sam walks onto a pier full of the infected to get her dog back.",
+  "event": "horde",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "window",
+      "text": "Marek's shout woke the whole pier.",
+      "hl": [
+        "woke"
+      ],
+      "zombies": 14,
+      "fog": true,
+      "alarm": true,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "He ran up the tug's ramp with Biscuit.",
+      "hl": [
+        "Biscuit"
+      ],
+      "flare": true
+    },
+    {
+      "scene": "supplies",
+      "text": "Mrs. Okafor set Leo's walkie hissing on a barrel.",
+      "hl": [
+        "hissing"
+      ],
+      "items": [
+        "walkie",
+        "can:1"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "text": "\"Noise is a tool, dear. Lend it to them.\"",
+      "hl": [
+        "Noise"
+      ],
+      "speaker": "okafor",
+      "items": [
+        "walkie"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "The static pulled them down the pier, away from the tug.",
+      "hl": [
+        "away"
+      ],
+      "zombies": 10,
+      "fog": true
+    },
+    {
+      "scene": "building",
+      "text": "We crept along the containers. Hale held the real key.",
+      "hl": [
+        "real key"
+      ],
+      "zombies": 4,
+      "fog": true
+    },
+    {
+      "scene": "rooftop",
+      "text": "Marek stood at the rail. Biscuit sat silent under his coat.",
+      "hl": [
+        "silent"
+      ],
+      "flare": true,
+      "hold": 0.8
+    },
+    {
+      "scene": "rooftop",
+      "text": "Marek crumpled. \"I only wanted off this coast,\" he whispered. \"Take him.\"",
+      "hl": [
+        "Take him"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "Biscuit leapt into my arms. For once in his life, he did not bark.",
+      "hl": [
+        "did not bark"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "hallway",
+      "text": "Hale slid the key in. \"Everyone aboard,\" he whispered. \"Quietly.\"",
+      "hl": [
+        "Quietly"
+      ],
+      "speaker": "hale",
+      "light": "flicker"
+    },
+    {
+      "scene": "building",
+      "text": "The engine coughed once. Then it roared.",
+      "hl": [
+        "roared"
+      ],
+      "zombies": 6,
+      "sfx": [
+        "bang"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Every head on Pier Four turned. And Leo's walkie went dead.",
+      "hl": [
+        "went dead"
+      ],
+      "zombies": 16,
+      "fog": true,
+      "alarm": true,
+      "hold": 0.8,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

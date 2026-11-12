@@ -68,12 +68,12 @@ The story ends on Day 15 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 13
-- **Day:** 13, dusk, Pier Four (Sam, Leo, Dara, Mrs. Okafor, Hale on the way; Marek and Biscuit on the tug)
-- **Who:** all unhurt; Marek holds Biscuit.
-- **Supplies:** one can, a rattling tin.
-- **Known:** the roof key does not start the tug; Hale holds the real generator key. Marek has just shouted Sam's name and woken the pier.
-- **Open threads:** will Marek and Biscuit get free of the pier? Who is on the pier?
+- **After:** part 15 (finale)
+- **Day:** 15, dawn, the tug leaving Pier Four
+- **Who:** Sam, Biscuit, Mrs. Okafor, Leo, Dara, Hale and Marek aboard, all safe.
+- **Supplies:** none needed; the radio says come west.
+- **Known:** the story is over; Harbor Station sees the boat.
+- **Open threads:** none.
 
 ## Episode log
 
@@ -95,3 +95,5 @@ The story ends on Day 15 (story/series.json `finale`); after that its slot goes 
 - **Part 11 (Day 11) The Generator Room:** Marek's three-person crew waits in the basement; Hale is locked in the generator room. Mrs. Okafor's clang drives the crew off, Hale is freed, then boots stop outside Sam's hiding place and Marek whispers "Found you."
 - **Part 12 (Day 12) Fair Trade:** Marek has Biscuit and trades him for the roof key, taking the dog as insurance. Hale reveals the real tug key is the generator key in his fist.
 - **Part 13 (Day 13) The Rail Bridge:** Sam's group crosses the city by supermarket and dead train after Marek. At Pier Four the roof key fails, and Marek shouts Sam's name, waking the pier.
+- **Part 14 (Day 14) The Pier Wakes:** Mrs. Okafor's hissing walkie lures the pier away. Marek gives Biscuit back and Hale starts the tug, but the engine's roar turns every head.
+- **Part 15 (Day 15) The Last Light:** a sneeze, Mrs. Okafor's thrown tin, a cut rope, and the tug slips away. Harbor Station answers and a lamp blinks across the water. THE END.

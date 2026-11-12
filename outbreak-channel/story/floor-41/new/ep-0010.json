@@ -1,0 +1,95 @@
+{
+  "episode": 10,
+  "title": "Don't Count",
+  "summary": "On Day ten, Maya steps onto the glass skybridge toward Calder Tower.",
+  "event": "journey",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "elevator",
+      "text": "The elevator stopped at thirty. The doors opened onto the skybridge, and the boy was gone.",
+      "hl": [
+        "boy was gone"
+      ],
+      "doors": "open",
+      "floor": 30,
+      "power": false
+    },
+    {
+      "scene": "skybridge",
+      "text": "Glass, rain and the whole city under my shoes. Twenty-three steps to Calder Tower.",
+      "hl": [
+        "Twenty-three"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "skybridge",
+      "text": "Dev limped behind me, humming. \"Don't count, Maya. Just walk.\"",
+      "hl": [
+        "Don't count"
+      ],
+      "speaker": "dev"
+    },
+    {
+      "scene": "skybridge",
+      "text": "I counted anyway. Eight. Nine. The glass gave a thin, bright crack.",
+      "hl": [
+        "crack"
+      ],
+      "cracks": true,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Far below, one by one, faces tilted up toward my footsteps.",
+      "hl": [
+        "faces"
+      ],
+      "zombies": 12
+    },
+    {
+      "scene": "phone",
+      "text": "Ruth texted: Hum, don't count. Numbers make a sound they can hear.",
+      "hl": [
+        "Hum"
+      ],
+      "screen": "message",
+      "lines": [
+        "Ruth",
+        "Hum, don't count.",
+        "Numbers make a sound they can hear."
+      ]
+    },
+    {
+      "scene": "tower",
+      "text": "So I hummed Dev's old song, and the faces below lost interest.",
+      "hl": [
+        "lost interest"
+      ],
+      "zombies": 2
+    },
+    {
+      "scene": "door",
+      "text": "At the end stood a steel door with no handle, only a number inked on it: forty-one.",
+      "hl": [
+        "forty-one"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "door",
+      "text": "I put my palm flat on it. Someone knocked back. Slowly. Forty-one times.",
+      "hl": [
+        "Forty-one times"
+      ],
+      "hold": 1.0,
+      "sfx": [
+        "knock",
+        "sting"
+      ]
+    }
+  ]
+}

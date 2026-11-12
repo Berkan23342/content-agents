@@ -1,0 +1,120 @@
+{
+  "episode": 15,
+  "title": "The Last Light",
+  "summary": "On Day fifteen, the tug at last leaves Pier Four and the long night of Harbor View ends.",
+  "event": "quiet",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "Biscuit sneezed. On a silent deck, it sounded like a bell.",
+      "hl": [
+        "bell"
+      ],
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "They poured down the pier. The tug was still tied.",
+      "hl": [
+        "still tied"
+      ],
+      "zombies": 14,
+      "fog": true,
+      "alarm": true
+    },
+    {
+      "scene": "supplies",
+      "text": "Mrs. Okafor hurled her rattling tin down the pier.",
+      "hl": [
+        "rattling tin"
+      ],
+      "items": [
+        "can:1"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "The whole crowd turned and followed it. Dara cut the rope.",
+      "hl": [
+        "cut the rope"
+      ],
+      "zombies": 12,
+      "fog": true,
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "building",
+      "text": "Hale opened the throttle. Pier Four slid backwards into the fog.",
+      "hl": [
+        "backwards"
+      ],
+      "zombies": 3,
+      "fog": true
+    },
+    {
+      "scene": "hallway",
+      "text": "Marek sat alone below deck. \"Sorry,\" he said. Hale nodded.",
+      "hl": [
+        "Sorry"
+      ],
+      "light": "on"
+    },
+    {
+      "scene": "room",
+      "text": "Leo fell asleep against Mrs. Okafor, Dara's arm around him.",
+      "hl": [
+        "asleep"
+      ],
+      "light": "lamp",
+      "guest": "leo",
+      "dog": "sleep",
+      "tone": "dawn"
+    },
+    {
+      "scene": "radio",
+      "text": "The radio crackled. \"Harbor Station to all boats. Come west. We see you.\"",
+      "hl": [
+        "We see you"
+      ],
+      "mode": "voice",
+      "speaker": "announcer"
+    },
+    {
+      "scene": "rooftop",
+      "text": "Biscuit stood at the bow, nose in the wind, like the captain.",
+      "hl": [
+        "captain"
+      ],
+      "tone": "dawn"
+    },
+    {
+      "scene": "building",
+      "text": "Behind us, Harbor View shrank into the rain. One window lit. Mine.",
+      "hl": [
+        "Mine"
+      ],
+      "lit": true,
+      "zombies": 0,
+      "tone": "dawn",
+      "hold": 0.8
+    },
+    {
+      "scene": "window",
+      "text": "Across the water, a lamp blinked back. I held my dog and breathed.",
+      "hl": [
+        "blinked back"
+      ],
+      "fog": true,
+      "tone": "dawn",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

@@ -72,12 +72,12 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 9
-- **Day:** 9, on floor 41
-- **Who:** Maya, Dev and the cold boy, who has called the elevator.
+- **After:** part 10
+- **Day:** 10, the skybridge on floor 30
+- **Who:** Maya and Dev at the handleless door; the boy has gone.
 - **Supplies:** same as Day 5.
-- **Known:** Calder's torch numbers mean the 23 steps of the skybridge; Ruth warns not to count them. The elevator is falling by itself.
-- **Open threads:** where does the elevator stop? Who is Ruth in Calder Tower?
+- **Known:** Ruth says hum, don't count; the door is inked 41 and something knocks back 41 times.
+- **Open threads:** who knocks? What is behind the door?
 
 ## Episode log
 
@@ -92,3 +92,4 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 - **Part 7 (Day 7) Lamp in the Lift:** a boy climbs out of the elevator holding Ruth's torch and says they want Maya to cross the skybridge. Ruth warns he died on Day two.
 - **Part 8 (Day 8) Ninety-One Degrees:** Dev finds the boy cold as glass with no wound, only 41 inked on his wrist. Calder Tower flashes 41 and the elevator climbs alone; the boy says it is his ride.
 - **Part 9 (Day 9) Twenty-Three:** Maya decodes the torch numbers as the steps of the skybridge. Ruth warns not to count them, and the elevator falls by itself.
+- **Part 10 (Day 10) Don't Count:** the elevator stops on 30 and Maya crosses the skybridge humming. At the end a door inked 41 knocks back 41 times.

@@ -1,0 +1,112 @@
+{
+  "episode": 2,
+  "title": "Roof Speakers",
+  "summary": "On Day two, Wren climbs onto the roof to silence the speakers before the street finds her.",
+  "event": "repair",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "My whisper rolled across Port Ellis from forty speakers. Then the street began to climb.",
+      "hl": [
+        "began to climb"
+      ],
+      "fire": true,
+      "alarm": true
+    },
+    {
+      "scene": "window",
+      "text": "Down the hill, heads turned in the rain. Dozens walked up toward me.",
+      "hl": [
+        "walked up"
+      ],
+      "zombies": 14,
+      "rain": true
+    },
+    {
+      "scene": "stairwell",
+      "text": "The switch was dead. The speakers ran straight from the mast.",
+      "hl": [
+        "mast"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "supplies",
+      "text": "I took wire cutters, a torch and a roll of tape. Nothing else.",
+      "hl": [
+        "wire cutters"
+      ],
+      "items": [
+        "flashlight",
+        "rope",
+        "keys"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "Rain hammered the roof. The speaker cable ran along the edge.",
+      "hl": [
+        "cable"
+      ],
+      "rain": true,
+      "sfx": [
+        "thunder"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "I cut it. Forty speakers died at once. The hill fell silent.",
+      "hl": [
+        "silent"
+      ],
+      "hold": 0.8,
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Below, the crowd slowed. Stopped. Swayed, like they had lost a song.",
+      "hl": [
+        "lost a song"
+      ],
+      "zombies": 14,
+      "rain": true
+    },
+    {
+      "scene": "phone",
+      "text": "Tilly's line had gone quiet too. Then the screen lit: \"Wren? Are you still there?\"",
+      "hl": [
+        "still there"
+      ],
+      "screen": "message",
+      "lines": [
+        "Tilly",
+        "Wren? Are you still there?"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "My dead microphone crackled. A man's voice came through it, live.",
+      "hl": [
+        "live"
+      ],
+      "mode": "voice",
+      "hold": 0.8
+    },
+    {
+      "scene": "radio",
+      "text": "\"Wren, stop,\" he whispered. \"You cut the wrong one. I am still on the mast.\"",
+      "hl": [
+        "wrong one"
+      ],
+      "speaker": "cal",
+      "mode": "voice",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}
