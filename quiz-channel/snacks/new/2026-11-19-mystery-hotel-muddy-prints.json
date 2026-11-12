@@ -1,0 +1,71 @@
+{
+  "format": "mystery",
+  "title": "Who Tracked Mud Through Your Hotel Lobby?",
+  "summary": "Fresh mud prints appeared on the freshly mopped hotel lobby floor. Four people, three clues, one answer. Can you find who did it?",
+  "topic": "travel",
+  "beats": [
+    {
+      "text": "Muddy prints cross the freshly mopped hotel lobby. Dan, Omar, Rita or Sue: who did it?",
+      "visual": {"kind": "hook", "emoji": "👣", "text": "Who tracked the mud?"}
+    },
+    {
+      "text": "Mopped at eleven. Rain stopped at ten, so the park was soaked.",
+      "hl": ["eleven"],
+      "visual": {"kind": "emoji", "emoji": "🧹", "label": "Mopped at eleven", "motion": "float"}
+    },
+    {
+      "text": "The prints show ridged soles, from the front door to the lift.",
+      "hl": ["ridged soles"],
+      "visual": {
+        "kind": "clues",
+        "items": [
+          {"emoji": "👟", "label": "Ridged soles"},
+          {"emoji": "🚪", "label": "From the front door"},
+          {"emoji": "🌧️", "label": "Rain stopped at ten"}
+        ]
+      }
+    },
+    {
+      "text": "Dan took a taxi in leather shoes. Omar wore slippers in his room. Rita ran in the park. Sue sat at the desk.",
+      "visual": {
+        "kind": "suspects",
+        "items": [
+          {"emoji": "🚕", "label": "Dan, taxi, leather shoes"},
+          {"emoji": "🛏️", "label": "Omar, slippers"},
+          {"emoji": "🏃", "label": "Rita, park run"},
+          {"emoji": "💁", "label": "Sue, at the desk"}
+        ]
+      }
+    },
+    {
+      "text": "Your turn, detective. Who tracked the mud?",
+      "reveal": "Rita! She came back from the soaked park in trainers.",
+      "hl": ["Rita"],
+      "visual": {
+        "kind": "choice",
+        "question": "Who tracked the mud?",
+        "options": [
+          {"emoji": "🚕", "label": "Dan"},
+          {"emoji": "🛏️", "label": "Omar"},
+          {"emoji": "🏃", "label": "Rita"},
+          {"emoji": "💁", "label": "Sue"}
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "text": "Mud, ridged soles, from outside: a runner's trainers. Case closed.",
+      "hl": ["trainers"],
+      "visual": {
+        "kind": "suspects",
+        "items": [
+          {"emoji": "🚕", "label": "Dan, taxi, leather shoes"},
+          {"emoji": "🛏️", "label": "Omar, slippers"},
+          {"emoji": "🏃", "label": "Rita, park run"},
+          {"emoji": "💁", "label": "Sue, at the desk"}
+        ],
+        "pick": 2
+      }
+    }
+  ]
+}
