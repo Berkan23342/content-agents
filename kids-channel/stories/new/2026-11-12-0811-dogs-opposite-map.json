@@ -1,0 +1,554 @@
+{
+ "title": "Dog's Opposite Map",
+ "lesson": "Helping a friend, and learning opposites",
+ "kind": "adventure",
+ "theme": "play",
+ "summary": "Dog and Cat follow a treasure map of opposite clues from garden to sea, and help slow Turtle find her ball.",
+ "cast": [
+  "dog",
+  "cat",
+  "turtle"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "dog",
+     "x": 600
+    }
+   ],
+   "props": [
+    {
+     "id": "map",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 820,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "One sunny morning, Dog found a treasure map in the garden!"
+    },
+    {
+     "line": "dog",
+     "text": "Woof! A map! Let's go on an adventure!",
+     "bubble": "A treasure map!",
+     "act": "jump"
+    },
+    {
+     "enter": "cat",
+     "x": 1150,
+     "side": "right",
+     "speed": 700
+    },
+    {
+     "arrive": "cat"
+    },
+    {
+     "line": "cat",
+     "text": "Meow! What does the map say?",
+     "bubble": "What does it say?",
+     "act": "wave"
+    },
+    {
+     "line": "dog",
+     "text": "It says: Find the opposite of down.",
+     "bubble": "Opposite of down?"
+    },
+    {
+     "say": "Opposite means different in a special way. Hot and cold. Big and small."
+    },
+    {
+     "line": "cat",
+     "text": "Can you help us? What is the opposite of down?",
+     "bubble": "Opposite of down?"
+    },
+    {
+     "pause": 2.5
+    },
+    {
+     "line": "cat",
+     "text": "Up! The opposite of down is up!",
+     "bubble": "Up!",
+     "act": "spin"
+    },
+    {
+     "line": "dog",
+     "text": "Up! Let's find something up high!",
+     "bubble": "Go up high!",
+     "act": "jump"
+    },
+    {
+     "say": "Dog and Cat hurried off to the playground."
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "dog",
+     "x": 700
+    },
+    {
+     "name": "cat",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "At the playground, a big slide stood tall and a little pail sat low."
+    },
+    {
+     "line": "dog",
+     "text": "Look! Up the slide! The next clue!",
+     "bubble": "Up the slide!",
+     "act": "jump"
+    },
+    {
+     "prop": "clue1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 300,
+     "y": 300,
+     "size": 150,
+     "float": true
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "cat",
+     "text": "A star! It says: Slide down fast, then walk slow.",
+     "bubble": "Fast, then slow",
+     "act": "wave"
+    },
+    {
+     "say": "Dog ran very fast. Whoosh! Can you run fast with us?"
+    },
+    {
+     "move": "dog",
+     "x": 1500,
+     "speed": 1400
+    },
+    {
+     "arrive": "dog"
+    },
+    {
+     "move": "dog",
+     "x": 1300,
+     "speed": 100
+    },
+    {
+     "say": "Then Dog walked very, very slowly. Step. Step. Step."
+    },
+    {
+     "arrive": "dog"
+    },
+    {
+     "line": "dog",
+     "text": "Fast and slow are opposites!",
+     "bubble": "Fast and slow!",
+     "act": "spin"
+    },
+    {
+     "line": "cat",
+     "text": "One more clue says: Big water, little drops.",
+     "bubble": "Big water?"
+    },
+    {
+     "hide": "clue1"
+    },
+    {
+     "say": "They followed the path to the sea."
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 600
+    },
+    {
+     "name": "dog",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "shell1",
+     "icon": "star",
+     "color": "#FF6FB5",
+     "x": 1400,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Splash! The sea was big and blue, and the sand was soft and dry."
+    },
+    {
+     "line": "cat",
+     "text": "The sea is wet. The sand is dry!",
+     "bubble": "Wet and dry!",
+     "act": "wave"
+    },
+    {
+     "line": "dog",
+     "text": "Wet and dry are opposites too! Woof!",
+     "bubble": "Opposites again!",
+     "act": "jump"
+    },
+    {
+     "say": "Then they heard a tiny voice. Someone was calling for help."
+    },
+    {
+     "enter": "turtle",
+     "x": 1500,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "arrive": "turtle"
+    },
+    {
+     "line": "turtle",
+     "text": "Hello! My shiny ball floated away. It is under the sea.",
+     "bubble": "Ball under the sea",
+     "act": "shake"
+    },
+    {
+     "line": "dog",
+     "text": "We will help you find it, Turtle!",
+     "bubble": "We will help!",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "The map says: go down to find the treasure.",
+     "bubble": "Go down!"
+    },
+    {
+     "say": "Turtle smiled. Slowly, slowly, they all went under the sea."
+    },
+    {
+     "sfx": "splash"
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    },
+    {
+     "name": "dog",
+     "x": 1000
+    },
+    {
+     "name": "cat",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "ball",
+     "icon": "ball",
+     "color": "#2F8CFF",
+     "x": 1700,
+     "y": 700,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Under the sea, little fish swam by, and big fish swam by."
+    },
+    {
+     "line": "turtle",
+     "text": "Let's count the fish. Can you count with me?",
+     "bubble": "Count the fish!",
+     "act": "wave"
+    },
+    {
+     "prop": "f1",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 500,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "prop": "f2",
+     "icon": "fish",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "prop": "f3",
+     "icon": "fish",
+     "color": "#FF6FB5",
+     "x": 830,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "prop": "f4",
+     "icon": "fish",
+     "color": "#9B5CFF",
+     "x": 995,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "say": "One, two, three, four fish!"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "cat",
+     "text": "Four colorful fish! Orange, yellow, pink and purple!",
+     "bubble": "Four fish!",
+     "act": "spin"
+    },
+    {
+     "line": "dog",
+     "text": "Is that your ball, Turtle? Far away, over there?",
+     "bubble": "Over there?"
+    },
+    {
+     "line": "turtle",
+     "text": "Yes! It is far away. I am too slow.",
+     "bubble": "Far away...",
+     "act": "shake"
+    },
+    {
+     "say": "Cat and Dog looked at each other. Slow Turtle needed a friend."
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    },
+    {
+     "name": "dog",
+     "x": 1000
+    },
+    {
+     "name": "cat",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "ball2",
+     "icon": "ball",
+     "color": "#2F8CFF",
+     "x": 1700,
+     "y": 700,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "line": "dog",
+     "text": "Climb on my back, Turtle! I am fast!",
+     "bubble": "Climb on!",
+     "act": "jump"
+    },
+    {
+     "line": "turtle",
+     "text": "Thank you! You are kind, Dog.",
+     "bubble": "Thank you!",
+     "act": "spin"
+    },
+    {
+     "move": "dog",
+     "x": 1500,
+     "speed": 800
+    },
+    {
+     "move": "turtle",
+     "x": 1500,
+     "speed": 800
+    },
+    {
+     "say": "Dog ran fast. Turtle held on tight. Whoosh!"
+    },
+    {
+     "arrive": "dog"
+    },
+    {
+     "prop_move": "ball2",
+     "x": 1450,
+     "y": 830,
+     "dur": 1.0
+    },
+    {
+     "line": "cat",
+     "text": "Near, far. Now the ball is near!",
+     "bubble": "Near, not far!",
+     "act": "wave"
+    },
+    {
+     "line": "turtle",
+     "text": "Hooray! I have my ball back!",
+     "bubble": "Got my ball!",
+     "act": "spin"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Everyone cheered. Hooray!"
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "dog",
+     "x": 600
+    },
+    {
+     "name": "turtle",
+     "x": 1000
+    },
+    {
+     "name": "cat",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "chest",
+     "icon": "gift",
+     "color": "#FF8A1F",
+     "x": 1000,
+     "y": 830,
+     "size": 180
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back on the beach, they found a chest in the sand."
+    },
+    {
+     "line": "cat",
+     "text": "Meow! The treasure! What is inside?",
+     "bubble": "The treasure!",
+     "act": "jump"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "prop": "t1",
+     "icon": "heart",
+     "color": "#FF3B3B",
+     "x": 700,
+     "y": 300,
+     "size": 140
+    },
+    {
+     "say": "Inside was a big heart and a little heart."
+    },
+    {
+     "line": "dog",
+     "text": "Big heart, little heart. Opposites!",
+     "bubble": "Big and little!",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "The best treasure is friends!",
+     "bubble": "Friends are treasure",
+     "act": "wave"
+    },
+    {
+     "line": "dog",
+     "text": "Hot sun, cool sea. Now let us play!",
+     "bubble": "Let's play!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "dog",
+     "x": 600
+    },
+    {
+     "name": "cat",
+     "x": 1000
+    },
+    {
+     "name": "turtle",
+     "x": 1400
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "They all went home to the garden, tired and happy."
+    },
+    {
+     "line": "cat",
+     "text": "Let's say opposites together. Up and...?",
+     "bubble": "Up and...?"
+    },
+    {
+     "pause": 2.0
+    },
+    {
+     "line": "dog",
+     "text": "Down! Fast and...? Slow! Wet and...? Dry!",
+     "bubble": "Down, slow, dry!",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "Thank you for helping me today.",
+     "bubble": "Thank you!",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "Helping is the best adventure.",
+     "bubble": "Helping is fun!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Dog, Cat and Turtle waved goodbye to you. The end!"
+    }
+   ]
+  }
+ ]
+}
