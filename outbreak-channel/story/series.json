@@ -112,6 +112,35 @@
     }
   },
   {
+    "id": "route-9",
+    "name": "Route 9",
+    "slot": "e3",
+    "publish": [
+      1,
+      "03:00"
+    ],
+    "about": "Mara, a school-bus driver, drives six children through the outbreak toward the boats at Pier Four, and the engine's noise calls the infected.",
+    "narrator": "grace",
+    "cast": [
+      "ollie",
+      "dell",
+      "announcer"
+    ],
+    "voices": {
+      "ollie": "boy",
+      "dell": "man"
+    },
+    "grade": "#d4a017",
+    "weekdays": [
+      1,
+      3,
+      5
+    ],
+    "frame": "journal",
+    "finale": 10,
+    "tagline": "I drive the last school bus out of town"
+  },
+  {
     "id": "specials",
     "name": "Outbreak Specials",
     "slot": "e4",

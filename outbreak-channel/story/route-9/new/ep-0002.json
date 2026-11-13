@@ -1,0 +1,100 @@
+{
+  "episode": 2,
+  "title": "Quiet Gears",
+  "summary": "Mara needs fuel and food, and the children must learn to stay silent.",
+  "event": "supplies",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "subway",
+      "text": "Sol's cry rolled down the road. I whispered a song until he stopped.",
+      "hl": [
+        "whispered"
+      ],
+      "light": "off",
+      "zombies": 2
+    },
+    {
+      "scene": "truck",
+      "text": "Heads turned between the cars. I coasted the bus into a ditch.",
+      "hl": [
+        "ditch"
+      ],
+      "zombies": 4,
+      "lights": false
+    },
+    {
+      "scene": "subway",
+      "text": "Silence for an hour. Ollie wrote the rules on a seat.",
+      "hl": [
+        "rules"
+      ],
+      "speaker": "ollie"
+    },
+    {
+      "scene": "supermarket",
+      "text": "At dawn I walked to the supermarket alone. The shelves were half bare.",
+      "hl": [
+        "alone"
+      ],
+      "light": "flicker",
+      "zombies": 1
+    },
+    {
+      "scene": "supplies",
+      "text": "Water, bread, a can of fuel, and a bell for a bicycle.",
+      "hl": [
+        "fuel"
+      ],
+      "items": [
+        "water:6",
+        "can:4",
+        "bat"
+      ]
+    },
+    {
+      "scene": "supermarket",
+      "text": "I threw the bell far down the aisle. They shuffled after it.",
+      "hl": [
+        "bell"
+      ],
+      "zombies": 5,
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "gas_station",
+      "text": "A man waved from the pumps, ashen but upright. \"You're the bus lady. I'm Dell.\"",
+      "hl": [
+        "Dell"
+      ],
+      "speaker": "dell",
+      "light": "on",
+      "zombies": 2
+    },
+    {
+      "scene": "truck",
+      "text": "\"Your muffler is cracked,\" Dell said. \"They hear you for miles.\"",
+      "hl": [
+        "muffler"
+      ],
+      "speaker": "dell",
+      "lights": true
+    },
+    {
+      "scene": "subway",
+      "text": "Behind us, thirty shapes stepped out of the fog. Ollie whispered, \"Mara. Don't start it.\"",
+      "hl": [
+        "Don't start it"
+      ],
+      "speaker": "ollie",
+      "zombies": 4,
+      "light": "off",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

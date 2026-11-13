@@ -1,0 +1,18 @@
+{
+  "episode": 1,
+  "title": "The Last Bus",
+  "summary": "A school-bus driver has six children, a quarter tank and a horn that calls the dead.",
+  "event": "journey",
+  "ambience": "rain",
+  "beats": [
+    {"scene": "subway", "text": "Six kids were asleep on my bus when I heard the first groan outside.", "hl": ["groan"], "light": "flicker", "moving": true, "sfx": ["groan"]},
+    {"scene": "school", "text": "The school behind us had gone silent. I was the last driver left.", "hl": ["last driver"], "zombies": 3, "light": "flicker"},
+    {"scene": "radio", "text": "\"Boats leave Pier Four at dawn,\" the radio said. Fifty miles away.", "hl": ["Pier Four"], "mode": "voice", "speaker": "announcer", "sfx": ["static"]},
+    {"scene": "truck", "text": "My bus is loud. The engine calls them, and so does the horn.", "hl": ["calls them"], "zombies": 3, "lights": true},
+    {"scene": "subway", "text": "Ollie, ten, counted heads out loud. \"Six. Seven with you.\"", "hl": ["Six"], "speaker": "ollie", "moving": true},
+    {"scene": "truck", "text": "I made one rule. Never stop, never honk.", "hl": ["Never stop"], "zombies": 4, "wipers": true},
+    {"scene": "gas_station", "text": "The needle showed a quarter tank. The only pump for miles was crowded.", "hl": ["quarter tank"], "zombies": 6, "light": "flicker", "car": true},
+    {"scene": "truck", "text": "Then the road ahead lit up. A wall of cars, and nowhere to turn.", "hl": ["wall of cars"], "zombies": 5, "lights": true, "sfx": ["thud"]},
+    {"scene": "subway", "text": "Sol woke up and started to cry. It was loud.", "hl": ["loud"], "light": "off", "zombies": 2, "hold": 1.0, "sfx": ["sting"]}
+  ]
+}

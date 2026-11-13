@@ -1,0 +1,117 @@
+{
+  "episode": 11,
+  "title": "The Last Page",
+  "summary": "On the last night, the footsteps reach the shack and Nora has one plan left.",
+  "event": "escape",
+  "ambience": "night",
+  "beats": [
+    {
+      "scene": "door",
+      "text": "The footsteps stopped outside the shack. A hand slid along the wood.",
+      "hl": [
+        "hand"
+      ],
+      "shadow": true,
+      "sfx": [
+        "scratch"
+      ]
+    },
+    {
+      "scene": "forest",
+      "text": "Twenty shapes between the pines, following Grace's sound.",
+      "hl": [
+        "Twenty"
+      ],
+      "zombies": 10,
+      "fog": true
+    },
+    {
+      "scene": "lake",
+      "text": "They cannot swim. So I gave them a lake to walk into.",
+      "hl": [
+        "lake"
+      ],
+      "zombies": 3
+    },
+    {
+      "scene": "supplies",
+      "text": "Grace's tin mug, Ava's whistle, my ranger bell. All noise.",
+      "hl": [
+        "noise"
+      ],
+      "items": [
+        "can:2",
+        "flashlight",
+        "keys"
+      ]
+    },
+    {
+      "scene": "forest",
+      "text": "Grace slipped out the back and rang the bell down the shore.",
+      "hl": [
+        "bell"
+      ],
+      "zombies": 8,
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "lake",
+      "text": "Every head turned. They walked off the sand into the black water.",
+      "hl": [
+        "black water"
+      ],
+      "zombies": 6,
+      "hold": 0.8
+    },
+    {
+      "scene": "cabin",
+      "text": "At the cabin, Pip stood in the doorway. Jonah ran the last ten steps.",
+      "hl": [
+        "Jonah"
+      ],
+      "light": "lantern",
+      "guest": "ava"
+    },
+    {
+      "scene": "cabin",
+      "text": "\"Pip!\" Ava cried for him, laughing, and they held on.",
+      "hl": [
+        "Pip"
+      ],
+      "speaker": "ava",
+      "light": "lantern"
+    },
+    {
+      "scene": "radio",
+      "text": "\"The road is clear. Go. The boats wait.\"",
+      "hl": [
+        "boats wait"
+      ],
+      "mode": "voice",
+      "speaker": "tess",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "truck",
+      "text": "We piled into the pickup. Grace's hand rested on Ava's shoulder. Glass, not a bite.",
+      "hl": [
+        "Glass"
+      ],
+      "lights": true
+    },
+    {
+      "scene": "truck",
+      "text": "Behind us the lake went quiet. Ahead, our headlights found the road home.",
+      "hl": [
+        "road"
+      ],
+      "lights": true,
+      "cam": "pull",
+      "hold": 1.2
+    }
+  ]
+}

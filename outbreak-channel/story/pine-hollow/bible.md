@@ -67,8 +67,8 @@ The story ends on Day 11 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 10
-- **Day:** 10, night, the lake shore and the old hunting shack (Nora, Ava, Jonah, Grace)
+- **After:** part 11, the finale (THE END)
+- **Day:** 11, night, the road to Port Ellis (Nora, Ava, Grace, Jonah, Pip in the pickup)
 - **Who:** all unhurt; Grace has a bandaged hand (glass, not a bite); Alder left behind.
 - **Supplies:** same as before.
 - **Known:** Grace walked fifteen miles; the lake dead and more followed her sound. Tess hears footsteps near.
@@ -90,3 +90,4 @@ The story ends on Day 11 (story/series.json `finale`); after that its slot goes 
 - **Part 8 (Day 8) The Man in the Jacket:** Alder says Jonah is safe in the boathouse but sick. Inside lie Jonah's ribbon and a scratch on his wrist, and Alder locks the door.
 - **Part 9 (Day 9) The Dock Is Full:** Jonah's scratch is not a bite; Alder locked the door against the lake dead. They escape by canoe under the dock, and the dead turn toward them as Grace messages that she is on the lake road.
 - **Part 10 (Day 10) The Lake Road:** Ava finds Grace at the tree line; her hand is bandaged. Tess warns of many footsteps, and Grace admits they followed her.
+- **Part 11 (Day 11) The Last Page:** Grace rings a bell down the shore and the dead walk into the lake. Jonah is reunited with Pip, Tess clears the road, and the pickup's lights find the road to Port Ellis. THE END.
