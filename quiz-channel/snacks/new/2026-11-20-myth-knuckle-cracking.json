@@ -1,0 +1,14 @@
+{
+  "format": "myth",
+  "title": "Does Cracking Your Knuckles Give You Arthritis?",
+  "summary": "Many people were told that cracking knuckles wears out the joints. Studies comparing crackers and non-crackers found no link to arthritis.",
+  "topic": "body",
+  "beats": [
+    {"text": "Your friend cracks their knuckles and you say it will give them arthritis. Myth or fact?", "hl": ["arthritis"], "visual": {"kind": "hook", "emoji": "🤜", "text": "Knuckle cracking = arthritis?"}},
+    {"text": "Between the bones of each finger joint is a thin layer of slippery fluid.", "hl": ["slippery fluid"], "visual": {"kind": "emoji", "emoji": "🖐️", "label": "Finger joint", "motion": "float"}},
+    {"text": "Pull the joint and the pressure changes. That is when the pop happens.", "hl": ["pop"], "visual": {"kind": "steps", "items": [{"emoji": "🤏", "label": "Pull"}, {"emoji": "🫧", "label": "Bubble"}, {"emoji": "💥", "label": "Pop"}]}},
+    {"text": "Time's up. Does cracking cause arthritis?", "visual": {"kind": "choice", "question": "Does cracking cause arthritis?", "options": [{"emoji": "🙅", "label": "Myth"}, {"emoji": "✅", "label": "Fact"}], "answer": 0}, "reveal": "Myth! Studies of people who crack and people who don't found no link to arthritis."},
+    {"text": "Doctors compared regular crackers with non-crackers. Both groups had arthritis at similar rates.", "hl": ["similar rates"], "visual": {"kind": "pair", "a": {"emoji": "😬", "label": "Belief: wears joints out"}, "b": {"emoji": "🔬", "label": "Studies: no link"}, "vs": true}},
+    {"text": "One thing to remember. If a joint hurts or swells when it cracks, see a doctor.", "hl": ["hurts or swells"], "visual": {"kind": "fact", "emoji": "🩺", "text": "Painful or swollen joint? Get it checked."}}
+  ]
+}
