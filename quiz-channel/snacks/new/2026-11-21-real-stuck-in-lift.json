@@ -1,0 +1,52 @@
+{
+  "format": "real",
+  "title": "Would You Know What to Do If a Lift Stops?",
+  "summary": "The lift jolts and stops between floors. Here is the calm, safe thing to do, and why you are safer inside than you think.",
+  "topic": "city",
+  "beats": [
+    {
+      "text": "The lift jolts and stops between floors. Do you pry the doors, press the alarm, or climb out?",
+      "visual": {"kind": "hook", "emoji": "🛗", "text": "Stuck between floors!"}
+    },
+    {
+      "text": "Your heart races, your phone has one bar, and the doors are right there.",
+      "hl": ["right there"],
+      "visual": {"kind": "emoji", "emoji": "😰", "label": "Panic is normal", "motion": "shake"}
+    },
+    {
+      "text": "Three seconds. What first?",
+      "reveal": "Press the alarm or call button. Help knows where you are, and the lift is built to hold you safely.",
+      "hl": ["alarm"],
+      "visual": {
+        "kind": "choice",
+        "question": "What should you do first?",
+        "options": [
+          {"emoji": "💪", "label": "Pry the doors"},
+          {"emoji": "🔔", "label": "Press the alarm"},
+          {"emoji": "🧗", "label": "Climb out"}
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "text": "Then breathe slowly, stay inside, and call the number on the panel if you have signal.",
+      "visual": {
+        "kind": "steps",
+        "items": [
+          {"emoji": "🔔", "label": "Press alarm"},
+          {"emoji": "🌬️", "label": "Breathe slowly"},
+          {"emoji": "📞", "label": "Call for help"}
+        ]
+      }
+    },
+    {
+      "text": "Prying doors or climbing out is where people actually get hurt.",
+      "hl": ["get hurt"],
+      "visual": {"kind": "pair", "a": {"emoji": "🚪", "label": "Forcing doors"}, "b": {"emoji": "🧍", "label": "Waiting inside"}, "vs": true}
+    },
+    {
+      "text": "Bonus: the cars hang on several strong steel cables, so you cannot simply fall.",
+      "visual": {"kind": "fact", "emoji": "🔗", "text": "A lift hangs on several cables and has safety brakes that grip the rails."}
+    }
+  ]
+}
