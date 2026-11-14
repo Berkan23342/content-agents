@@ -1,0 +1,115 @@
+{
+  "episode": 11,
+  "title": "Forty-One Knocks",
+  "summary": "On Day eleven, the door at the end of the skybridge opens for only one person.",
+  "event": "split",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "door",
+      "text": "The door clicked open by itself. Dev gripped my shoulder. \"Only one of us fits.\"",
+      "hl": [
+        "Only one"
+      ],
+      "sfx": [
+        "click"
+      ],
+      "hold": 0.6
+    },
+    {
+      "scene": "skybridge",
+      "text": "Behind us the glass groaned. Below, faces turned back toward the noise.",
+      "hl": [
+        "groaned"
+      ],
+      "zombies": 4,
+      "cracks": true,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "skybridge",
+      "text": "\"I'll hold the bridge. Hum, Maya. Go.\"",
+      "hl": [
+        "hold the bridge"
+      ],
+      "speaker": "dev"
+    },
+    {
+      "scene": "hallway",
+      "text": "I stepped inside alone. Forty-one paper stars hung down the corridor.",
+      "hl": [
+        "forty-one paper stars"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "office",
+      "text": "At the end was an office exactly like mine, even my cold coffee.",
+      "hl": [
+        "exactly like mine"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "office",
+      "text": "Every desk held a phone, and every phone lit up at once.",
+      "hl": [
+        "every phone"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "Each screen said: Don't answer the one that rings for you.",
+      "hl": [
+        "Don't answer"
+      ],
+      "screen": "message",
+      "lines": [
+        "Ruth",
+        "Don't answer the one",
+        "that rings for you."
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "Mine began to ring under the meeting room door. Then Ruth spoke from Dev's radio, tiny and terrified.",
+      "hl": [
+        "Ruth spoke"
+      ],
+      "mode": "voice",
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "\"Maya, I'm not in Calder Tower. I never was.\"",
+      "hl": [
+        "never was"
+      ],
+      "speaker": "ruth",
+      "hold": 1.0
+    },
+    {
+      "scene": "office",
+      "text": "The frosted glass lit up. A shape stood behind it, my phone at its ear, humming.",
+      "hl": [
+        "humming"
+      ],
+      "zombie": true,
+      "light": "off",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

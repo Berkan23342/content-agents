@@ -72,12 +72,12 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 10
-- **Day:** 10, the skybridge on floor 30
-- **Who:** Maya and Dev at the handleless door; the boy has gone.
+- **After:** part 11
+- **Day:** 11, inside the door at the end of the skybridge
+- **Who:** Maya alone in a copy of floor 41; Dev holds the cracking skybridge behind her.
 - **Supplies:** same as Day 5.
-- **Known:** Ruth says hum, don't count; the door is inked 41 and something knocks back 41 times.
-- **Open threads:** who knocks? What is behind the door?
+- **Known:** the copy office has phones that all light up; Ruth says over Dev's radio she was never in Calder Tower; a shape behind the frosted glass hums and holds Maya's phone.
+- **Open threads:** who is the shape, who sent the elevator, where Ruth really is (finale Day 12).
 
 ## Episode log
 
@@ -93,3 +93,4 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 - **Part 8 (Day 8) Ninety-One Degrees:** Dev finds the boy cold as glass with no wound, only 41 inked on his wrist. Calder Tower flashes 41 and the elevator climbs alone; the boy says it is his ride.
 - **Part 9 (Day 9) Twenty-Three:** Maya decodes the torch numbers as the steps of the skybridge. Ruth warns not to count them, and the elevator falls by itself.
 - **Part 10 (Day 10) Don't Count:** the elevator stops on 30 and Maya crosses the skybridge humming. At the end a door inked 41 knocks back 41 times.
+- **Part 11 (Day 11) Forty-One Knocks:** the door opens for one; Dev holds the bridge. Maya enters an exact copy of floor 41 where every phone lights up. Ruth says she was never in Calder Tower, and a humming shape appears behind the glass.
