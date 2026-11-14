@@ -1,0 +1,592 @@
+{
+ "title": "Duck Joins the Game",
+ "lesson": "Including a friend who is small",
+ "kind": "kindness",
+ "theme": "friendship",
+ "summary": "Bear says tiny Duck is too small for ball, then Bear and Pig find games with small, middle and big things that let Duck join in.",
+ "cast": [
+  "duck",
+  "bear",
+  "pig"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 700
+    },
+    {
+     "name": "pig",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "ball",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 900,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Bear and Pig kick a big red ball at the playground."
+    },
+    {
+     "prop_move": "ball",
+     "x": 1000,
+     "y": 830,
+     "dur": 0.8
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "line": "bear",
+     "text": "Grr! Look how high my ball goes!",
+     "bubble": "Look! High!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! Kick it to me, Bear!",
+     "bubble": "Kick it!",
+     "act": "wave"
+    },
+    {
+     "enter": "duck",
+     "x": 1500,
+     "side": "right",
+     "speed": 500,
+     "size": 300
+    },
+    {
+     "say": "Little Duck waddled in. She was very small."
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Can I play too?",
+     "bubble": "Can I play?",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "You are too small, Duck. Sorry.",
+     "bubble": "Too small.",
+     "act": "shake"
+    },
+    {
+     "say": "Duck looked down. Her wings drooped."
+    },
+    {
+     "line": "duck",
+     "text": "Quack... oh.",
+     "bubble": "Oh...",
+     "act": "shake"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 1300,
+     "size": 300
+    },
+    {
+     "name": "pig",
+     "x": 800
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Duck sat by the swings, all alone."
+    },
+    {
+     "line": "pig",
+     "text": "Oink. Duck looks so sad.",
+     "bubble": "She looks sad.",
+     "act": "shake"
+    },
+    {
+     "enter": "bear",
+     "x": 450,
+     "side": "left",
+     "speed": 500
+    },
+    {
+     "arrive": "bear"
+    },
+    {
+     "line": "pig",
+     "text": "Bear, how would you feel left out?",
+     "bubble": "Left out?"
+    },
+    {
+     "line": "bear",
+     "text": "Oh. Not good. I was not kind.",
+     "bubble": "I was unkind.",
+     "act": "shake"
+    },
+    {
+     "say": "Bear felt sorry. Bear and Pig had an idea."
+    },
+    {
+     "line": "pig",
+     "text": "Let us find a game for everyone!",
+     "bubble": "A game for all!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 500
+    },
+    {
+     "name": "pig",
+     "x": 900
+    },
+    {
+     "name": "duck",
+     "x": 1350,
+     "size": 300
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1250,
+     "y": 300,
+     "size": 90
+    },
+    {
+     "id": "b2",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1420,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "id": "b3",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1620,
+     "y": 300,
+     "size": 180
+    }
+   ],
+   "steps": [
+    {
+     "say": "They ran to the beach. Look! Three buckets in a row."
+    },
+    {
+     "line": "bear",
+     "text": "One small, one middle, one big!",
+     "bubble": "Small, middle, big!",
+     "act": "jump"
+    },
+    {
+     "say": "Can you count the buckets with me? One, two, three!"
+    },
+    {
+     "pause": 0.8
+    },
+    {
+     "line": "duck",
+     "text": "Quack! I am small. I can fill the small one!",
+     "bubble": "I fill small!",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "I will fill the middle one. Oink!",
+     "bubble": "Middle one!"
+    },
+    {
+     "line": "bear",
+     "text": "And I will fill the big one. Grr!",
+     "bubble": "Big one!"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 500
+    },
+    {
+     "name": "pig",
+     "x": 900
+    },
+    {
+     "name": "duck",
+     "x": 1350,
+     "size": 300
+    }
+   ],
+   "props": [
+    {
+     "id": "c1",
+     "icon": "cake",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 830,
+     "size": 100
+    }
+   ],
+   "steps": [
+    {
+     "say": "Small, middle, big. They stacked the sand, one on top of the other."
+    },
+    {
+     "prop_move": "c1",
+     "x": 1000,
+     "y": 700,
+     "dur": 1.0
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "duck",
+     "text": "Only I can reach the little top!",
+     "bubble": "I reach the top!",
+     "act": "jump"
+    },
+    {
+     "line": "bear",
+     "text": "Duck, you are the best at small jobs!",
+     "bubble": "Great job, Duck!",
+     "act": "spin"
+    },
+    {
+     "say": "A sandcastle with three towers! Duck put a shell on top."
+    },
+    {
+     "prop": "shell",
+     "icon": "star",
+     "color": "#FF6FB5",
+     "x": 1000,
+     "y": 560,
+     "size": 100
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Small is important too.",
+     "bubble": "Small is good!",
+     "act": "spin"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 1000,
+     "size": 300
+    },
+    {
+     "name": "bear",
+     "x": 500
+    }
+   ],
+   "props": [
+    {
+     "id": "f1",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 1300,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "f2",
+     "icon": "fish",
+     "color": "#2F8CFF",
+     "x": 1480,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "f3",
+     "icon": "fish",
+     "color": "#FFC92E",
+     "x": 1660,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "f4",
+     "icon": "fish",
+     "color": "#FF6FB5",
+     "x": 1840,
+     "y": 300,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Duck wanted a peek under the sea. Bear held her wing."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Look at all the fish!",
+     "bubble": "Look! Fish!",
+     "act": "jump"
+    },
+    {
+     "say": "Can you count the fish with me? One, two, three, four!"
+    },
+    {
+     "pause": 1.0
+    },
+    {
+     "line": "bear",
+     "text": "Orange, blue, yellow and pink!",
+     "bubble": "Four bright fish!",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "The smallest fish is my friend.",
+     "bubble": "Small fish friend!",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Small fish and big bear. Both are welcome.",
+     "bubble": "All are welcome."
+    },
+    {
+     "say": "Bubbles floated up. Pop, pop, pop!"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 900,
+     "size": 300
+    }
+   ],
+   "props": [
+    {
+     "id": "g1",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1250,
+     "y": 830,
+     "size": 100
+    },
+    {
+     "id": "g2",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1400,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "g3",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1580,
+     "y": 830,
+     "size": 210
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next, they all skipped into the garden."
+    },
+    {
+     "line": "pig",
+     "text": "Three carrots! Small, middle and big.",
+     "bubble": "Three carrots!",
+     "act": "jump"
+    },
+    {
+     "enter": "bear",
+     "x": 1100,
+     "side": "left",
+     "speed": 600
+    },
+    {
+     "arrive": "bear"
+    },
+    {
+     "line": "bear",
+     "text": "Duck, which carrot is the smallest?",
+     "bubble": "Which is small?"
+    },
+    {
+     "line": "duck",
+     "text": "This one! It is just right for me.",
+     "bubble": "Just right!",
+     "act": "wave"
+    },
+    {
+     "say": "Bear picked the big one. Pig picked the middle one. Crunch, crunch, crunch!"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "hide": "g3"
+    },
+    {
+     "hide": "g2"
+    },
+    {
+     "hide": "g1"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 500
+    },
+    {
+     "name": "pig",
+     "x": 900
+    },
+    {
+     "name": "duck",
+     "x": 1300,
+     "size": 300
+    }
+   ],
+   "props": [
+    {
+     "id": "ball",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back at the playground, the big red ball waited."
+    },
+    {
+     "line": "bear",
+     "text": "Duck, will you play ball with us now?",
+     "bubble": "Play with us?",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Yes please! Quack, quack!",
+     "bubble": "Yes, please!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "A small kick, a middle kick, a big kick!",
+     "bubble": "Small, big kicks!"
+    },
+    {
+     "prop_move": "ball",
+     "x": 1200,
+     "y": 830,
+     "dur": 0.7
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "prop_move": "ball",
+     "x": 700,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "line": "bear",
+     "text": "Everybody is big enough to play!",
+     "bubble": "All can play!"
+    },
+    {
+     "say": "Big or small, a kind friend makes room for everyone."
+    },
+    {
+     "say": "The end!"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}
