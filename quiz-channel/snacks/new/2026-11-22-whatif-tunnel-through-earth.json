@@ -1,0 +1,36 @@
+{
+  "format": "whatif",
+  "title": "Where Would You End Up If You Fell Through Earth?",
+  "summary": "Imagine a tunnel straight through the centre of the Earth, with no air in it. If you jumped in, where would you stop? A thought experiment with real physics.",
+  "topic": "earth",
+  "beats": [
+    {
+      "text": "What if you jumped into a tunnel straight through the Earth? Would you stop in the middle, pop out the other side, or fall forever?",
+      "hl": ["tunnel"],
+      "visual": {"kind": "hook", "emoji": "🕳️", "text": "Fall through the Earth?"}
+    },
+    {
+      "text": "Imagine a tunnel with no air, so nothing slows you down. Gravity pulls you towards the centre.",
+      "hl": ["gravity"],
+      "visual": {"kind": "emoji", "emoji": "🌍", "label": "Tunnel to the other side", "motion": "spin"}
+    },
+    {
+      "text": "Time's up. Where do you end up?",
+      "reveal": "You reach the other side, stop for a moment, and fall back. You swing like a pendulum!",
+      "hl": ["other side"],
+      "visual": {"kind": "choice", "question": "Where do you end up?",
+        "options": [{"emoji": "🎯", "label": "Stuck in the middle"}, {"emoji": "🌏", "label": "The other side"}, {"emoji": "♾️", "label": "Fall forever"}],
+        "answer": 1}
+    },
+    {
+      "text": "You speed up all the way to the centre, then slow down on the far half.",
+      "hl": ["speed up"],
+      "visual": {"kind": "steps", "items": [{"emoji": "⬇️", "label": "Speed up"}, {"emoji": "⚡", "label": "Fastest at centre"}, {"emoji": "⬆️", "label": "Slow down"}, {"emoji": "🛑", "label": "Stop at far end"}]}
+    },
+    {
+      "text": "Bonus fact: the whole trip takes under an hour, one way. Then you fall right back.",
+      "hl": ["under an hour"],
+      "visual": {"kind": "fact", "emoji": "⏱️", "text": "In theory, the fall to the other side takes less than an hour."}
+    }
+  ]
+}
