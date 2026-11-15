@@ -1,0 +1,650 @@
+{
+ "title": "Chick's Birthday Basket",
+ "lesson": "Counting one to five, and making a friend feel remembered",
+ "kind": "learning",
+ "theme": "counting",
+ "summary": "Chick and Cow gather one cake, two carrots, three strawberries, four starfish and five flowers, counting them all for Turtle's surprise birthday.",
+ "cast": [
+  "chick",
+  "cow",
+  "turtle"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "farm",
+   "actors": [
+    {
+     "name": "chick",
+     "x": 900
+    },
+    {
+     "name": "cow",
+     "x": 1350
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Peep, peep! Little Chick hops up and down on the farm."
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Tomorrow is Turtle's birthday! I need a basket of presents.",
+     "bubble": "Birthday basket!",
+     "act": "jump"
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Let us count the presents together, Chick.",
+     "bubble": "Let us count!",
+     "act": "wave"
+    },
+    {
+     "say": "Can you count with us? First, one big cake."
+    },
+    {
+     "prop": "cake",
+     "icon": "cake",
+     "color": "#FF6FB5",
+     "x": 1000,
+     "y": 830,
+     "size": 200
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "line": "cow",
+     "text": "Moo! I baked one cake. Put it in the basket.",
+     "bubble": "One cake!",
+     "act": "spin"
+    },
+    {
+     "line": "chick",
+     "text": "Thank you, Cow! One cake. Now where is number two?",
+     "bubble": "Thank you, Cow!",
+     "act": "wave"
+    },
+    {
+     "say": "Chick and Cow hurry off to the garden."
+    },
+    {
+     "hide": "cake"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "chick",
+     "x": 700
+    },
+    {
+     "name": "cow",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "In the garden, orange carrots peek out of the ground."
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Two carrots for Turtle. Count them with me!",
+     "bubble": "Two carrots!",
+     "act": "jump"
+    },
+    {
+     "prop": "c0",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 800,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "c1",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 965,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Carrots are orange. Now we need three red things.",
+     "bubble": "Three red things!",
+     "act": "wave"
+    },
+    {
+     "say": "Strawberries grow here too. They are red and sweet. Count them!"
+    },
+    {
+     "prop": "s0",
+     "icon": "strawberry",
+     "color": "#FF3B3B",
+     "x": 760,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "s1",
+     "icon": "strawberry",
+     "color": "#FF3B3B",
+     "x": 925,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "prop": "s2",
+     "icon": "strawberry",
+     "color": "#FF3B3B",
+     "x": 1090,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Three!",
+     "gap": 0.5
+    },
+    {
+     "line": "chick",
+     "text": "Peep, peep! One cake, two carrots, three strawberries!",
+     "bubble": "Cake, carrots, berries!",
+     "act": "spin"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Then Chick and Cow walk to the sunny beach."
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "chick",
+     "x": 600
+    },
+    {
+     "name": "cow",
+     "x": 1000
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "At the beach, the sea goes splash, splash, splash."
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Look in the sand. Yellow starfish are number four.",
+     "bubble": "Four starfish!",
+     "act": "wave"
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Let us count four stars. One, two, three, four!",
+     "bubble": "Count four!",
+     "act": "jump"
+    },
+    {
+     "prop": "t0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 700,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "t1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 865,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "prop": "t2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1030,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Three!",
+     "gap": 0.5
+    },
+    {
+     "prop": "t3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1195,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Four!",
+     "gap": 0.5
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Four starfish. Is the sand wet or dry?",
+     "bubble": "Wet or dry?",
+     "act": "shake"
+    },
+    {
+     "line": "chick",
+     "text": "Peep! The sand by the sea is wet. The sand by us is dry!",
+     "bubble": "Wet! Dry!",
+     "act": "jump"
+    },
+    {
+     "say": "The basket is nearly full. Only number five is left."
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "chick",
+     "x": 700
+    },
+    {
+     "name": "cow",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "In the park, flowers dance in the wind."
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Five flowers, please. Pink, purple, blue, yellow and red.",
+     "bubble": "Five flowers!",
+     "act": "jump"
+    },
+    {
+     "prop": "f0",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 600,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "f1",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 765,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "prop": "f2",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 930,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Three!",
+     "gap": 0.5
+    },
+    {
+     "prop": "f3",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 1095,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Four!",
+     "gap": 0.5
+    },
+    {
+     "prop": "f4",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 1260,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Five!",
+     "gap": 0.5
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Five pretty flowers. The basket is full!",
+     "bubble": "The basket is full!",
+     "act": "spin"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "say": "Now it is time to find Turtle. She is slow, so she is by the pond."
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 500
+    },
+    {
+     "name": "chick",
+     "x": 800
+    },
+    {
+     "name": "cow",
+     "x": 200
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Turtle sits by the pond, all alone. She thinks everyone forgot.",
+     "gap": 0.5
+    },
+    {
+     "pause": 0.2
+    },
+    {
+     "line": "turtle",
+     "text": "Hello. Nobody came to my party. I feel a little sad.",
+     "bubble": "I feel sad.",
+     "act": "shake"
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Surprise, Turtle! Happy birthday!",
+     "bubble": "Happy birthday!",
+     "act": "jump"
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "line": "cow",
+     "text": "Moo! We have a basket for you. Can you count what is inside?",
+     "bubble": "Count with us!",
+     "act": "wave"
+    },
+    {
+     "say": "One cake, two carrots, three strawberries, four starfish, and five flowers."
+    },
+    {
+     "line": "turtle",
+     "text": "Wow! One, two, three, four, five. Thank you, friends!",
+     "bubble": "Thank you, friends!",
+     "act": "spin"
+    },
+    {
+     "say": "Slow Turtle is not sad any more. She smiles a big smile."
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 700
+    },
+    {
+     "name": "chick",
+     "x": 1050
+    },
+    {
+     "name": "cow",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "cake",
+     "icon": "cake",
+     "color": "#FF6FB5",
+     "x": 1050,
+     "y": 830,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "At sunset, the friends have a little party."
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Let us sing and count the candles.",
+     "bubble": "Count the candles!",
+     "act": "wave"
+    },
+    {
+     "say": "Count with me! The candles are little yellow stars."
+    },
+    {
+     "prop": "k0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 760,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "k1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 925,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "prop": "k2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1090,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Three!",
+     "gap": 0.5
+    },
+    {
+     "prop": "k3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1255,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Four!",
+     "gap": 0.5
+    },
+    {
+     "prop": "k4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1420,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Five!",
+     "gap": 0.5
+    },
+    {
+     "line": "turtle",
+     "text": "Make a wish! Blow, blow, blow.",
+     "bubble": "Blow, blow!",
+     "act": "wave"
+    },
+    {
+     "hide": "k0"
+    },
+    {
+     "hide": "k1"
+    },
+    {
+     "hide": "k2"
+    },
+    {
+     "hide": "k3"
+    },
+    {
+     "hide": "k4"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "chick",
+     "text": "Peep! Five, four, three, two, one. All gone!",
+     "bubble": "Five to one!",
+     "act": "jump"
+    },
+    {
+     "say": "Counting up is fun. Counting down is fun too."
+    },
+    {
+     "line": "turtle",
+     "text": "This is my best birthday ever.",
+     "bubble": "Best birthday!",
+     "act": "spin"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "say": "The end!"
+    }
+   ]
+  }
+ ]
+}
