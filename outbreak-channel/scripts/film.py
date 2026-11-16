@@ -157,7 +157,7 @@ def build(sid, limit=None):
                        "next": {"name": nxt["name"], "tagline": nxt.get("tagline")} if nxt else None}}
     first_of_next = day_one_url(nxt) if nxt else None
     meta = {
-        "title": f"{text['title']} | The Full Zombie Story, All {days} Days"[:100],
+        "title": youtube_title(series),
         "description": "\n".join([
             f"{series['name']}: the whole story, all {days} days in one video. {series['about']}",
             "",
@@ -203,10 +203,37 @@ def write_audio(data, sid, rate):
     return f"film/{sid}.mp3"
 
 
+def on_youtube(title, token):
+    """The link of a video on the channel with exactly this title (the newest 50 uploads), or None: a film that was
+    uploaded but not recorded (logs/films.txt not saved) must never be uploaded a second time."""
+    sys.path.insert(0, os.path.dirname(ci_diary.UPLOADER))
+    from googleapiclient.discovery import build as api
+    from upload_youtube import credentials
+
+    scopes = json.load(open(token)).get("scopes") or ["https://www.googleapis.com/auth/youtube.readonly"]
+    yt = api("youtube", "v3", credentials=credentials(os.path.join(ROOT, "secrets", "client_secret.json"), token, scopes))
+    uploads = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+    items = yt.playlistItems().list(part="snippet", playlistId=uploads, maxResults=50).execute().get("items", [])
+    found = next((i for i in items if i["snippet"]["title"] == title), None)
+    return f"https://youtu.be/{found['snippet']['resourceId']['videoId']}" if found else None
+
+
+def youtube_title(series):
+    days = series.get("finale") or len(parts(series["id"]))
+    return f"{film_text(series, days)['title']} | The Full Zombie Story, All {days} Days"[:100]
+
+
 def make(sid, upload, limit=None):
     if logged(sid) and upload:
         print(f"film {sid} already uploaded")
         return
+    if upload and os.path.exists(ci_diary.TOKEN):
+        there = on_youtube(youtube_title(SERIES[sid]), ci_diary.TOKEN)
+        if there:
+            with open(FILMS, "a") as fh:
+                fh.write(f"film-{sid}.mp4 {there}\n")
+            print(f"film {sid} is already on YouTube ({there}): recorded, not made again")
+            return
     work = build(sid, limit)
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     mp4, jpg = f"out/film-{sid}.mp4", f"out/film-{sid}.jpg"

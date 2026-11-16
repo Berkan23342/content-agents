@@ -215,15 +215,16 @@ const Captions: React.FC<{chunks: Chunk[]; frame: Frame}> = ({chunks, frame}) =>
 const Header: React.FC<{day: number; series: string; label?: string | null; tagline?: string | null; frame: Frame; voted?: DiaryProps['voted']}> = ({day, series, label, tagline, frame, voted}) => {
 	const f = useCurrentFrame();
 	const st = FRAMES[frame];
-	const own = frame === 'camcorder' || frame === 'broadcast'; // their overlays already show the day or LIVE
+	const own = frame === 'camcorder'; // the camcorder overlay prints DAY NN itself
+	const top = frame === 'broadcast' ? 200 : own ? 270 : 150; // broadcast: under its LIVE banner
 	const tag = tagline ? clamp(1 - (f - 120) / 14) : 0;
 	if (voted) {
 		// the viewers' choice, for the first seconds of the day their vote decided
 		const show = clamp(f / 8) * clamp(1 - (f - 165) / 14);
 		const counts = Object.values(voted.votes).sort((a, b) => b - a).join(' – ');
 		return (
-			<div style={{position: 'absolute', top: own ? 270 : 150, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
-				{own ? null : <div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{`${series.toUpperCase()} · DAY ${day}`}</div>}
+			<div style={{position: 'absolute', top, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
+				<div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{own ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}</div>
 				{show > 0 ? (
 					<div style={{display: 'inline-block', marginTop: 16, padding: '10px 30px', background: C.red, color: '#fff', fontFamily: anton, fontSize: 54, letterSpacing: 2, opacity: show, transform: `scale(${0.9 + 0.1 * show})`, textShadow: 'none'}}>
 						YOU VOTED: {voted.pick} · {counts}
@@ -233,10 +234,8 @@ const Header: React.FC<{day: number; series: string; label?: string | null; tagl
 		);
 	}
 	return (
-		<div style={{position: 'absolute', top: own ? 270 : 150, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
-			{own ? null : (
-				<div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{label ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}</div>
-			)}
+		<div style={{position: 'absolute', top, width: '100%', textAlign: 'center', fontFamily: st.label, color: '#efe6d2', textShadow: '0 3px 12px rgba(0,0,0,0.95)'}}>
+			<div style={{fontSize: 42, letterSpacing: 4, opacity: 0.85}}>{label || own ? series.toUpperCase() : `${series.toUpperCase()} · DAY ${day}`}</div>
 			{tag > 0 ? (
 				<div style={{fontSize: frame === 'camcorder' ? 50 : 36, letterSpacing: 2, marginTop: 10, opacity: 0.8 * tag, padding: '0 90px'}}>{tagline!.toUpperCase()}</div>
 			) : null}

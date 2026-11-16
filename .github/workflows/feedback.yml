@@ -67,4 +67,6 @@ jobs:
           git add stats outbreak-channel/story/votes.json
           git diff --cached --quiet && exit 0
           git commit -q -m "feedback: $(TZ=Europe/Istanbul date +%F)"
-          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          git status --short | grep -v '^??' | head -20  # anything changed that is not saved (stashed while pulling)
+          for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done
+          if [ -n "$(git log origin/main..HEAD --oneline)" ]; then echo "::error::the saved state could not be pushed"; exit 1; fi
