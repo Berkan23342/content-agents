@@ -1,0 +1,14 @@
+{
+  "format": "teaser",
+  "title": "Can You Fix the Mislabeled Pen Boxes?",
+  "summary": "Three supply-room boxes, every label wrong. Which single pen do you take out to fix them all?",
+  "topic": "work",
+  "beats": [
+    {"text": "Three pen boxes, every label wrong. Which box do you pick from: Red, Blue, or Mixed?", "visual": {"kind": "hook", "emoji": "🖊️", "text": "Which box do you open?"}},
+    {"text": "Boxes say Red, Blue and Mixed. One holds red pens, one blue, one both.", "visual": {"kind": "clues", "items": [{"emoji": "🔴", "label": "Box says Red"}, {"emoji": "🔵", "label": "Box says Blue"}, {"emoji": "🎨", "label": "Box says Mixed"}]}},
+    {"text": "A coworker warns you: every single label is wrong. You may take out just one pen.", "hl": ["every single label", "one pen"], "visual": {"kind": "emoji", "emoji": "🤏", "label": "Just one pen", "motion": "bounce"}},
+    {"text": "Time to decide. Which box do you take the pen from?", "reveal": "The box labeled Mixed! Its label is wrong, so it holds only one color.", "hl": ["Mixed"], "visual": {"kind": "choice", "question": "Which box do you take a pen from?", "options": [{"emoji": "🔴", "label": "Red"}, {"emoji": "🔵", "label": "Blue"}, {"emoji": "🎨", "label": "Mixed"}], "answer": 2}},
+    {"text": "Say you pull a red pen. That box is all red. The Blue box can't be blue or red, so it's mixed.", "visual": {"kind": "steps", "items": [{"emoji": "🔴", "label": "Mixed box: all red"}, {"emoji": "🎨", "label": "Blue box: mixed"}, {"emoji": "🔵", "label": "Red box: blue"}]}},
+    {"text": "One pen fixes all three!", "visual": {"kind": "emoji", "emoji": "✅", "label": "All fixed", "motion": "zoom"}}
+  ]
+}
