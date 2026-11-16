@@ -1,0 +1,103 @@
+{
+  "episode": 1,
+  "title": "The Keeper's Light",
+  "summary": "A lighthouse keeper learns the dead follow her beam, and a boat is steering for it.",
+  "event": "signal",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "The infected follow light, and my job is the lighthouse.",
+      "hl": [
+        "my job"
+      ],
+      "fire": true,
+      "flare": true
+    },
+    {
+      "scene": "lake",
+      "text": "I'm Ilsa. I keep the light on Skerry Head, a rock beside Port Ellis.",
+      "hl": [
+        "Skerry Head"
+      ],
+      "zombies": 0
+    },
+    {
+      "scene": "radio",
+      "text": "\"Any boat at sea, steer for the Skerry light. Pier Four sails at dawn.\"",
+      "hl": [
+        "Skerry light"
+      ],
+      "speaker": "announcer",
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Down the causeway, shapes drifted toward my beam like moths.",
+      "hl": [
+        "like moths"
+      ],
+      "zombies": 8
+    },
+    {
+      "scene": "stairwell",
+      "text": "Two hundred steps to the lamp. I climbed them at a run.",
+      "hl": [
+        "two hundred"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "rooftop",
+      "text": "If I switched off, the dead would lose me. So would every ship.",
+      "hl": [
+        "every ship"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "lake",
+      "text": "Out on the black water, one small lamp blinked. Someone was steering for me.",
+      "hl": [
+        "steering for me"
+      ],
+      "zombies": 0,
+      "canoe": true
+    },
+    {
+      "scene": "radio",
+      "text": "\"Skerry light, I have forty people aboard. Keep it burning.\"",
+      "hl": [
+        "forty people"
+      ],
+      "speaker": "oren",
+      "mode": "voice"
+    },
+    {
+      "scene": "door",
+      "text": "Then the tower door boomed below. The first of them had reached the end of the causeway.",
+      "hl": [
+        "boomed"
+      ],
+      "banging": true,
+      "sfx": [
+        "bang"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "The lamp flickered. The generator coughed once. Then my beam went out.",
+      "hl": [
+        "beam went out"
+      ],
+      "fire": true,
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

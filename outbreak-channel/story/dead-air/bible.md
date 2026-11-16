@@ -62,14 +62,15 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 2
-- **Day:** 2, night, the studio and roof of Gull Hill Radio
-- **Who:** Wren alone; Tilly in the school; Cal's voice on the mast.
+- **After:** part 3
+- **Day:** 3, night, the studio and roof of Gull Hill Radio
+- **Who:** Wren in the studio; Cal on the mast; Tilly in the school.
 - **Supplies:** wire cutters, torch, tape.
-- **Known:** the roof speakers shout every live word; Wren cut the speaker cable, silencing them. Cal says she cut the wrong one and he is still on the mast.
-- **Open threads:** which cable did she cut? Where is Cal? Can Tilly get out of the school?
+- **Known:** the cut cable was the mute line; the mast now carries every studio sound, even breathing, and the classroom radio at the school breathes with Wren. The crowd climbs the hill again.
+- **Open threads:** Cal can stop it but someone must stay on the mast; what he hides; Tilly.
 
 ## Episode log
 
 - **Part 1 (Day 1) The Studio Phone:** Wren hears the studio phone ring. Tilly whispers from a school classroom. Wren whispers back, and every speaker on the roof repeats it.
 - **Part 2 (Day 2) Roof Speakers:** the street climbs the hill. Wren cuts the roof cable and the speakers die. A man's voice, Cal, says she cut the wrong one.
+- **Part 3 (Day 3) The Mute Line:** Wren finds Cal on the mast. The cable she cut muted the studio; now every sound goes out, and Tilly's radio breathes. Cal can stop it, but someone must stay on the mast.

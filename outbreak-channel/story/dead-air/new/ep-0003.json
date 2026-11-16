@@ -1,0 +1,111 @@
+{
+  "episode": 3,
+  "title": "The Mute Line",
+  "summary": "On Day three, Wren learns what the cable she cut really did.",
+  "event": "discovery",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "radio",
+      "text": "Cal's whisper came out of my dead microphone.",
+      "hl": [
+        "dead microphone"
+      ],
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "\"The cable you cut was the mute line. Now the mast carries every sound in the studio.\"",
+      "hl": [
+        "every sound"
+      ],
+      "speaker": "cal",
+      "mode": "voice"
+    },
+    {
+      "scene": "window",
+      "text": "Below, the crowd drifted uphill again, slowly, toward my breathing.",
+      "hl": [
+        "my breathing"
+      ],
+      "zombies": 12,
+      "rain": true
+    },
+    {
+      "scene": "rooftop",
+      "text": "On the roof, a man clung to the black mast.",
+      "hl": [
+        "a man"
+      ],
+      "fire": true,
+      "sfx": [
+        "thunder"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "Cal, the engineer, a headset round his neck. He looked ashamed.",
+      "hl": [
+        "ashamed"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "stairwell",
+      "text": "I held my breath on every stair.",
+      "hl": [
+        "stair"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "phone",
+      "text": "Tilly texted: The radio on the teacher's desk turned itself on.",
+      "hl": [
+        "turned itself on"
+      ],
+      "screen": "message",
+      "lines": [
+        "Tilly",
+        "The radio on the teacher's desk",
+        "turned itself on."
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "In the classroom, an old radio glowed. It breathed when I breathed.",
+      "hl": [
+        "breathed"
+      ],
+      "zombies": 3,
+      "light": "flicker",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "\"I built the mast to carry sound,\" Cal said. \"I never meant it to carry you.\"",
+      "hl": [
+        "carry you"
+      ],
+      "speaker": "cal",
+      "light": "flicker"
+    },
+    {
+      "scene": "radio",
+      "text": "\"I can stop it, Wren. But someone has to stay up here.\" Then the mast began to sway.",
+      "hl": [
+        "stay up here"
+      ],
+      "mode": "voice",
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

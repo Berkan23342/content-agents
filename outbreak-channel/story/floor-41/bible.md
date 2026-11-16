@@ -72,12 +72,11 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 11
-- **Day:** 11, inside the door at the end of the skybridge
-- **Who:** Maya alone in a copy of floor 41; Dev holds the cracking skybridge behind her.
-- **Supplies:** same as Day 5.
-- **Known:** the copy office has phones that all light up; Ruth says over Dev's radio she was never in Calder Tower; a shape behind the frosted glass hums and holds Maya's phone.
-- **Open threads:** who is the shape, who sent the elevator, where Ruth really is (finale Day 12).
+- **After:** part 12 (the finale)
+- **Day:** 12, dawn
+- **Who:** Maya, Dev and Ruth, safe on the real floor 41.
+- **Known:** the elevator was the tower's rescue car, following ringing phones; Ruth hid in the lift shaft; the story is over.
+- **Open threads:** none.
 
 ## Episode log
 
@@ -94,3 +93,4 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 - **Part 9 (Day 9) Twenty-Three:** Maya decodes the torch numbers as the steps of the skybridge. Ruth warns not to count them, and the elevator falls by itself.
 - **Part 10 (Day 10) Don't Count:** the elevator stops on 30 and Maya crosses the skybridge humming. At the end a door inked 41 knocks back 41 times.
 - **Part 11 (Day 11) Forty-One Knocks:** the door opens for one; Dev holds the bridge. Maya enters an exact copy of floor 41 where every phone lights up. Ruth says she was never in Calder Tower, and a humming shape appears behind the glass.
+- **Part 12 (Day 12) Dawn on Forty-One:** the shape is Ruth. Maya answers her own ringing phone, the copy ends, and the elevator opens on the real floor at dawn. The number goes dark. THE END.

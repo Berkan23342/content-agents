@@ -81,6 +81,36 @@
     }
   },
   {
+    "id": "last-light",
+    "name": "The Last Light",
+    "slot": "e2",
+    "publish": [
+      1,
+      "03:00"
+    ],
+    "about": "Ilsa keeps a lighthouse on a rock beside Port Ellis. The infected follow her beam, and a boat of survivors is steering for it.",
+    "narrator": "ruth",
+    "cast": [
+      "pip",
+      "oren",
+      "announcer"
+    ],
+    "voices": {
+      "pip": "boy",
+      "oren": "man"
+    },
+    "grade": "#8a5fd1",
+    "weekdays": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "frame": "diary",
+    "finale": 10,
+    "tagline": "The dead follow the light I keep"
+  },
+  {
     "id": "pine-hollow",
     "name": "Pine Hollow",
     "slot": "e3",

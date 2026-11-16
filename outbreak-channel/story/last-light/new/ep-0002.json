@@ -1,0 +1,94 @@
+{
+  "episode": 2,
+  "title": "Hand-Cranked",
+  "summary": "With the lamp dead and a boat in the dark, Ilsa needs a light that needs no power.",
+  "event": "repair",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "Without my beam, the sea was black. Forty people were steering for a rock they could no longer see.",
+      "hl": [
+        "could no longer see"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "lake",
+      "text": "Their little lamp zigzagged. Somewhere ahead of it, the reef waited.",
+      "hl": [
+        "reef"
+      ],
+      "zombies": 0
+    },
+    {
+      "scene": "kitchen",
+      "text": "The generator was dead. I found the old lamp's clockwork in the oil store.",
+      "hl": [
+        "clockwork"
+      ],
+      "power": false,
+      "cans": 2
+    },
+    {
+      "scene": "supplies",
+      "text": "A crank, a bottle of paraffin, a mirror. Nothing else would burn.",
+      "hl": [
+        "paraffin"
+      ],
+      "items": [
+        "flashlight",
+        "candle",
+        "rope"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "Something scratched on the tower door. Something patient.",
+      "hl": [
+        "patient"
+      ],
+      "shadow": true,
+      "sfx": [
+        "scratch"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "A boy's whisper drifted from the dark. \"Don't open it. They hear the latch.\"",
+      "hl": [
+        "Don't open it"
+      ],
+      "speaker": "pip",
+      "zombies": true
+    },
+    {
+      "scene": "stairwell",
+      "text": "Pip, eleven, had been hiding in the oil store for three days. He knew the crank.",
+      "hl": [
+        "Pip"
+      ]
+    },
+    {
+      "scene": "rooftop",
+      "text": "We turned it together, arms burning. The old lamp caught, swung and lit the water.",
+      "hl": [
+        "lit the water"
+      ],
+      "fire": true,
+      "flare": true
+    },
+    {
+      "scene": "lake",
+      "text": "Far out, the boat turned toward us. Then, behind the dunes, three flashes answered my light.",
+      "hl": [
+        "three flashes"
+      ],
+      "zombies": 0,
+      "hold": 1.0,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

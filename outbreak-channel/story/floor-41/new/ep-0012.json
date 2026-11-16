@@ -1,0 +1,128 @@
+{
+  "episode": 12,
+  "title": "Dawn on Forty-One",
+  "summary": "On Day twelve, Maya meets the shape behind the glass and makes her last choice.",
+  "event": "reunion",
+  "ambience": "wind",
+  "beats": [
+    {
+      "scene": "office",
+      "text": "The shape behind the frosted glass lowered my phone. It was Ruth.",
+      "hl": [
+        "Ruth"
+      ],
+      "zombie": true,
+      "light": "off"
+    },
+    {
+      "scene": "office",
+      "text": "Grey with dust, humming Dev's old song.",
+      "hl": [
+        "song"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "radio",
+      "text": "\"I hid in the lift shaft. The tower copied my voice to find you.\"",
+      "hl": [
+        "copied my voice"
+      ],
+      "speaker": "ruth",
+      "mode": "voice"
+    },
+    {
+      "scene": "elevator",
+      "text": "The elevator was the tower's rescue car. It followed ringing phones.",
+      "hl": [
+        "rescue car"
+      ],
+      "doors": "closed",
+      "floor": 30,
+      "power": false
+    },
+    {
+      "scene": "phone",
+      "text": "My own phone rang in her hand. Forty-one rings, then silence.",
+      "hl": [
+        "Forty-one"
+      ],
+      "screen": "alert",
+      "lines": [
+        "MAYA",
+        "Incoming call"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "office",
+      "text": "If I answered, the copy would end. If not, it never would.",
+      "hl": [
+        "would"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "skybridge",
+      "text": "The bridge cracked. Dev was still holding it.",
+      "hl": [
+        "still holding"
+      ],
+      "zombies": 4,
+      "cracks": true,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "I answered. \"This is Maya. Floor forty-one. Take us home.\"",
+      "hl": [
+        "Take us home"
+      ],
+      "screen": "alert",
+      "lines": [
+        "MAYA",
+        "Connected"
+      ],
+      "hold": 1.0
+    },
+    {
+      "scene": "elevator",
+      "text": "The doors opened on the real floor. Dev limped out, laughing.",
+      "hl": [
+        "real floor"
+      ],
+      "doors": "open",
+      "floor": 41,
+      "power": true,
+      "tone": "dawn"
+    },
+    {
+      "scene": "window",
+      "text": "Dawn rose between two towers. Far below, the harbour shone.",
+      "hl": [
+        "Dawn"
+      ],
+      "tone": "dawn",
+      "zombies": 0
+    },
+    {
+      "scene": "elevator",
+      "text": "Above the doors, the number blinked once and went dark. I did not count.",
+      "hl": [
+        "went dark"
+      ],
+      "doors": "open",
+      "floor": 0,
+      "power": false,
+      "tone": "dawn",
+      "hold": 1.2,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}
