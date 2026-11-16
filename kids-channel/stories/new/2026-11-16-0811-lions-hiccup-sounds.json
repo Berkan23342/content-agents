@@ -1,0 +1,434 @@
+{
+ "title": "Lion's Hiccup Sounds",
+ "lesson": "Staying calm and laughing when something silly happens, and helping a friend",
+ "kind": "funny",
+ "theme": "animals",
+ "summary": "Lion gets the hiccups and every hic comes out as a different animal sound, until his friends find a surprise cure.",
+ "cast": [
+  "lion",
+  "duck",
+  "pig"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 700
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Roar! Big Lion is walking in the forest. Then, hic!"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Oh my! What was that?",
+     "bubble": "Hic! What?",
+     "act": "shake"
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "say": "Out popped a tiny meow! Lion did not say roar at all."
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Meow! I am a lion, not a cat!",
+     "bubble": "Meow?!",
+     "act": "jump"
+    },
+    {
+     "enter": "duck",
+     "x": 1250,
+     "side": "right"
+    },
+    {
+     "say": "Along came Duck, waddle, waddle."
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Lion, did you just meow?",
+     "bubble": "You meowed!",
+     "act": "shake"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Meow! I have the hiccups. Please help me!",
+     "bubble": "Please help!",
+     "act": "shake"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Let us find a cure. Come with me!",
+     "bubble": "Let's go!",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 850
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Duck led Lion to the pond. Splish, splash!"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! A sip of cool water stops hiccups.",
+     "bubble": "Sip of water",
+     "act": "wave"
+    },
+    {
+     "say": "Lion took a big sip. Gulp, gulp, gulp."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! QUACK! Oh no. Now I quack!",
+     "bubble": "Hic! QUACK!",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack! Two quacks. Now we sound the same!",
+     "bubble": "Two quacks!",
+     "act": "jump"
+    },
+    {
+     "say": "Duck giggled. Lion giggled too. Hic, hic, ha, ha!"
+    },
+    {
+     "line": "duck",
+     "text": "Water did not work. Let us ask Pig.",
+     "bubble": "Ask Pig!",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 1400
+    },
+    {
+     "name": "lion",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 850
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "In the garden, Pig was picking orange carrots."
+    },
+    {
+     "line": "pig",
+     "text": "Oink! Hello, friends! Why do you sound so silly?",
+     "bubble": "Why so silly?",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Oink! I have the hiccups, Pig.",
+     "bubble": "Hic! Oink!",
+     "act": "shake"
+    },
+    {
+     "line": "pig",
+     "text": "Oink, oink! Easy! Hold your breath and count to five.",
+     "bubble": "Count to five!",
+     "act": "jump"
+    },
+    {
+     "say": "Lion held his breath. Can you count with us?"
+    },
+    {
+     "prop": "c1",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 800,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "One!",
+     "gap": 0.5
+    },
+    {
+     "prop": "c2",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 965,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "Two!",
+     "gap": 0.5
+    },
+    {
+     "prop": "c3",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1130,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "Three!",
+     "gap": 0.5
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Moo! Oh dear, I mooed!",
+     "bubble": "Hic! Moo!",
+     "act": "shake"
+    },
+    {
+     "say": "The count started again. Hiccups are very tricky!"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! Maybe you need a big surprise.",
+     "bubble": "A surprise!",
+     "act": "wave"
+    },
+    {
+     "hide": "c1"
+    },
+    {
+     "hide": "c2"
+    },
+    {
+     "hide": "c3"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 850
+    },
+    {
+     "name": "pig",
+     "x": 1200
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The three friends went to the beach. Whoosh, went the waves."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Pig, what surprise can we make?",
+     "bubble": "What surprise?",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! Let us hide, and jump out together!",
+     "bubble": "Hide and jump!",
+     "act": "jump"
+    },
+    {
+     "say": "Lion walked along the sand. His tummy went hic! every few steps."
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Baa! Now I sound like a sheep!",
+     "bubble": "Hic! Baa!",
+     "act": "spin"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Hee-haw! Hic! Cluck! So many sounds!",
+     "bubble": "So many sounds!",
+     "act": "jump"
+    },
+    {
+     "say": "Can you make a sheep sound with us? Baa!",
+     "gap": 0.6
+    },
+    {
+     "say": "Duck and Pig hid behind the striped umbrella."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 700
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Lion looked all around. Where did his friends go?"
+    },
+    {
+     "line": "lion",
+     "text": "Hic! Quack? Oink? Where are you?",
+     "bubble": "Where are you?",
+     "act": "shake"
+    },
+    {
+     "enter": "duck",
+     "x": 1100,
+     "side": "right",
+     "speed": 900
+    },
+    {
+     "enter": "pig",
+     "x": 1500,
+     "side": "right",
+     "speed": 900
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "line": "duck",
+     "text": "Surprise! Quack!",
+     "bubble": "Surprise!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Surprise! Oink!",
+     "bubble": "Surprise!",
+     "act": "jump"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Lion jumped so high! His heart went boom!"
+    },
+    {
+     "line": "lion",
+     "text": "Roar! You gave me a fright!",
+     "bubble": "You scared me!",
+     "act": "jump"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 800
+    },
+    {
+     "name": "duck",
+     "x": 1100
+    },
+    {
+     "name": "pig",
+     "x": 1400
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Everyone was quiet. Then Lion opened his mouth. Would he meow?"
+    },
+    {
+     "line": "lion",
+     "text": "Roar! A real roar! The hiccups are gone!",
+     "bubble": "Roar! All gone!",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Hooray! The surprise worked!",
+     "bubble": "Hooray!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! Lion, you made so many sounds today!",
+     "bubble": "So many sounds!",
+     "act": "jump"
+    },
+    {
+     "say": "Lion roared. Duck quacked. Pig oinked. Can you do all three?"
+    },
+    {
+     "line": "lion",
+     "text": "Thank you, friends. You helped me so much.",
+     "bubble": "Thank you!",
+     "act": "wave"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "The end!"
+    }
+   ]
+  }
+ ]
+}
