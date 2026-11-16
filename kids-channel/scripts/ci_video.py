@@ -1,7 +1,7 @@
 """Makes and uploads the day's Bubbly Kids TV videos on a server (GitHub Actions).
 
   python3 scripts/ci_video.py story|story-short|auto [--date YYYY-MM-DD] [--no-upload]
-  python3 scripts/ci_video.py due        prints the videos that are due and not uploaded yet ("story story-short", or nothing)
+  python3 scripts/ci_video.py due        prints the videos that are due and not uploaded yet ("story", or nothing)
 
 Since 2026-11-08 a day is one new story (scripts/fun.py --daily) and a vertical Short cut from it (--short): fewer
 videos, each one different, because YouTube does not monetise template-made look-alikes. On Sundays the week's stories
@@ -19,7 +19,9 @@ from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TZ = ZoneInfo("Europe/Istanbul")
 PUBLISH_HOUR = {"story": 17, "story-short": 20, "weekly": 10, "learn": 10, "short1": 13, "fun": 18, "short2": 21}
-DAILY = ("story", "story-short")
+# The daily story Short was stopped on 2026-11-16: made-for-kids Shorts got almost no views in the Shorts feed
+# (0-4 each in a week), so it only used an upload. It can still be made by hand ("story-short").
+DAILY = ("story",)
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 
 

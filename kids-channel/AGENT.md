@@ -5,7 +5,8 @@ Write **one new, original story script** for the Bubbly Kids TV YouTube channel 
 into `kids-channel/stories/new/`.
 
 - **Your story is the whole daily video.** Since 2026-11-08 the channel publishes one new story a day at 17:00, rendered by
-  `scripts/fun.py --daily` in `.github/workflows/kids-video.yml`, plus a vertical Short cut from it at 20:00.
+  `scripts/fun.py --daily` in `.github/workflows/kids-video.yml`, and every Sunday the week's stories go out together in one long video. (The daily vertical Short cut from the
+  story was stopped on 2026-11-16: made-for-kids Shorts got almost no views.)
 - **Why the stories must differ.** YouTube does not monetise channels whose videos look alike, so every story must be
   clearly different from the ones before: a new plot, new places, new characters together and a new learning thread.
 - If no story is waiting, there is no video that day. Built-in stories are never repeated.

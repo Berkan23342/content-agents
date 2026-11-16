@@ -129,21 +129,32 @@ const VisualView: React.FC<{v: Visual; duration: number; theme: SnackProps['them
 	switch (v.kind) {
 		case 'hook':
 			if (v.options?.length) {
-				// the first second: the question and its answers are already there, so the viewer starts guessing at once
+				// The first second decides whether a viewer stays (2026-11-16: only 8-20% stayed on a small, still card in
+				// the top half). So the whole screen is the game at once: a pulsing PAUSE & GUESS, the question big in the
+				// middle, the answers as big lettered cards, and a timer bar running out. Everything is there on frame 0.
+				const n = v.options.length;
+				const cols = n === 3 ? 3 : 2;
+				const w = cols === 3 ? 298 : 452;
+				const left = clamp(1 - f / Math.max(1, duration - 4));
+				const qSize = v.text.length > 40 ? 92 : v.text.length > 26 ? 110 : 128;
 				return (
-					<div style={{position: 'absolute', left: 70, right: 70, top: 280, height: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 34}}>
-						<div style={{display: 'flex', alignItems: 'center', gap: 26}}>
-							<Emoji e={v.emoji} size={170} style={{display: 'inline-block', transform: `rotate(${Math.sin(f / 9) * 6}deg)`}} />
-							<div style={{fontFamily: l.headFont, fontSize: 54, color: INK, background: theme.accent, padding: '8px 26px', borderRadius: 34, transform: `rotate(-3deg) scale(${1 + 0.05 * Math.sin(f / 5)})`, boxShadow: '0 8px 0 rgba(0,0,0,0.2)', whiteSpace: 'nowrap'}}>⏸ PAUSE &amp; GUESS</div>
+					<div style={{position: 'absolute', left: 50, right: 50, top: 190, height: 1030, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: n > 3 ? 28 : 40}}>
+						<div style={{display: 'flex', alignItems: 'center', gap: 22}}>
+							<Emoji e={v.emoji} size={130} style={{display: 'inline-block', transform: `rotate(${Math.sin(f / 7) * 10}deg) translateY(${Math.abs(Math.sin(f / 8)) * -10}px)`}} />
+							<div style={{fontFamily: l.headFont, fontSize: 62, color: INK, background: theme.accent, padding: '10px 32px', borderRadius: 40, transform: `rotate(-3deg) scale(${1 + 0.07 * Math.sin(f / 4)})`, boxShadow: '0 10px 0 rgba(0,0,0,0.22)', whiteSpace: 'nowrap'}}>⏸ PAUSE &amp; GUESS</div>
 						</div>
-						<div style={{fontFamily: l.headFont, fontSize: v.text.length > 26 ? 86 : 100, color: '#fff', textAlign: 'center', lineHeight: 1.05, textShadow: '0 8px 0 rgba(0,0,0,0.25)'}}>{v.text}</div>
-						<div style={{display: 'flex', gap: 22, justifyContent: 'center', flexWrap: 'wrap'}}>
+						<div style={{fontFamily: l.headFont, fontSize: qSize, color: '#fff', textAlign: 'center', lineHeight: 1.04, textShadow: '0 10px 0 rgba(0,0,0,0.28)', transform: `scale(${1 + 0.015 * Math.sin(f / 6)})`}}>{v.text}</div>
+						<div style={{display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', width: cols * w + (cols - 1) * 24}}>
 							{v.options.map((o, i) => (
-								<div key={i} style={{width: v.options!.length > 3 ? 205 : 255, padding: '20px 10px', ...card(l, i), background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 12px 0 rgba(0,0,0,0.18)', transform: `translateY(${Math.sin(f / 10 + i) * 6}px)`}}>
-									<Emoji e={o.emoji} size={100} />
-									<div style={{fontFamily: body, fontWeight: 900, fontSize: 40, color: INK, marginTop: 8, textAlign: 'center', lineHeight: 1.1}}>{o.label}</div>
+								<div key={i} style={{position: 'relative', width: w, height: cols === 3 ? 340 : n > 2 ? 240 : 360, ...card(l, i, 40), background: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 14px 0 rgba(0,0,0,0.2)', translate: `0 ${Math.sin(f / 9 + i * 1.7) * 8}px`}}>
+									<div style={{position: 'absolute', left: 16, top: 12, width: 64, height: 64, borderRadius: 32, background: theme.accent, color: INK, fontFamily: l.headFont, fontSize: 44, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{'ABCD'[i]}</div>
+									<Emoji e={o.emoji} size={cols === 3 ? 130 : n > 2 ? 108 : 160} />
+									<div style={{fontFamily: body, fontWeight: 900, fontSize: cols === 3 ? 44 : n > 2 ? 48 : 56, color: INK, marginTop: 10, textAlign: 'center', lineHeight: 1.08, padding: '0 14px'}}>{o.label}</div>
 								</div>
 							))}
+						</div>
+						<div style={{width: 880, height: 26, borderRadius: 13, background: 'rgba(255,255,255,0.25)', overflow: 'hidden'}}>
+							<div style={{width: `${left * 100}%`, height: '100%', borderRadius: 13, background: left < 0.3 ? '#EF4444' : theme.accent}} />
 						</div>
 					</div>
 				);

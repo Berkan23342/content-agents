@@ -1,5 +1,5 @@
 # Bubbly Kids TV: renders and uploads the daily videos, no Mac needed.
-# One new story a day (17:00 Istanbul time) and a vertical Short cut from it (20:00).
+# One new story a day (17:00 Istanbul time), and on Sundays the week's stories in one long video (10:00).
 name: Kids video
 
 on:
