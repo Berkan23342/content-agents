@@ -30,11 +30,11 @@ Videos of the last 14 days, newest first:
 | 2026-11-15 | Pine Hollow · Day 10: The Lake Road / Zombie Survival Story #shorts | pine-hollow day 10 (reunion) | - | 12 | 1 | 0 |
 | 2026-11-15 | Trapped on the 9th Floor With My Dog / The Full Zombie Story, All 15 D | not made by our pipeline | - | 5 | 0 | 0 |
 | 2026-11-15 | Trapped on the 9th Floor With My Dog / The Full Zombie Story, All 15 D | not made by our pipeline | - | 0 | 0 | 0 |
-| 2026-11-15 | Dead Air · Day 1: The Studio Phone / Zombie Survival Story #shorts | dead-air day 1 (signal) | - | 13 | 1 | 0 |
+| 2026-11-15 | Dead Air · Day 1: The Studio Phone / Zombie Survival Story #shorts | dead-air day 1 (signal) | - | 12 | 1 | 0 |
 | 2026-11-14 | Floor 41 · Day 9: Twenty-Three / Zombie Survival Story #shorts | floor-41 day 9 (signal) | 4 | 4 | 0 | 0 |
 | 2026-11-14 | Harbor View · Day 15: The Last Light / Zombie Survival Story #shorts | harbor-view day 15 (quiet) | - | 11 | 1 | 0 |
 | 2026-11-13 | Pine Hollow · Day 9: The Dock Is Full / Zombie Survival Story #shorts | pine-hollow day 9 (escape) | 71 | 72 | 3 | 0 |
-| 2026-11-13 | Harbor View · Day 14: The Pier Wakes / Zombie Survival Story #shorts | harbor-view day 14 (horde) | 8 | 8 | 1 | 0 |
+| 2026-11-13 | Harbor View · Day 14: The Pier Wakes / Zombie Survival Story #shorts | harbor-view day 14 (horde) | 9 | 9 | 1 | 0 |
 | 2026-11-12 | Floor 41 · Day 8: Ninety-One Degrees / Zombie Survival Story #shorts | floor-41 day 8 (sickness) | 3 | 3 | 2 | 0 |
 | 2026-11-12 | Harbor View · Day 13: The Rail Bridge / Zombie Survival Story #shorts | harbor-view day 13 (rescue) | 5 | 5 | 2 | 0 |
 | 2026-11-11 | Pine Hollow · Day 8: The Man in the Jacket / Zombie Survival Story #sh | pine-hollow day 8 (stranger) | 7 | 8 | 2 | 0 |
@@ -64,7 +64,6 @@ Videos of the last 14 days, newest first:
 | 2026-11-03 | Harbor View · Day 4: Three Taps / Zombie Survival Story #shorts | harbor-view day 4 | - | 175 | 12 | 1 |
 | 2026-11-03 | Pine Hollow · Day 2: The Ranger at the Glass / Zombie Survival Story # | pine-hollow day 2 | - | 183 | 12 | 1 |
 | 2026-11-02 | Harbor View · Day 3: Pier Four / Zombie Survival Story #shorts | harbor-view day 3 | - | 186 | 12 | 2 |
-| 2026-11-02 | Pine Hollow · Day 1: The Quiet Town / Zombie Survival Story #shorts | pine-hollow day 1 | - | 172 | 8 | 0 |
 
 ## Brain Snack Quiz
 
@@ -84,7 +83,7 @@ Videos of the last 14 days, newest first:
 | Date | Title | What | Views at 2 days | Views now | Likes | Comments |
 |---|---|---|---|---|---|---|
 | 2026-11-16 | Why Is Your Keyboard Laid Out Like That? 🧠 #shorts | origin snack, topic technology | - | 0 | 0 | 0 |
-| 2026-11-15 | Which Exit Would You Take? 🧠 #shorts | teaser snack, topic transport | - | 45 | 1 | 0 |
+| 2026-11-15 | Which Exit Would You Take? 🧠 #shorts | teaser snack, topic transport | - | 46 | 1 | 0 |
 | 2026-11-14 | What Would You Notice If the Moon Vanished? 🧠 #shorts | whatif snack, topic space | - | 200 | 2 | 0 |
 | 2026-11-13 | Your Phone Fell in Water. Now What? 🧠 #shorts | real snack, topic technology | 319 | 319 | 4 | 0 |
 | 2026-11-12 | Do You Think Goldfish Forget in 3 Seconds? 🧠 #shorts | myth snack, topic animals | 186 | 188 | 2 | 0 |
@@ -108,17 +107,17 @@ Videos of the last 14 days, newest first:
 
 ## Bubbly Kids TV
 
-Subscribers **7** (+3 in 6 days) · views **2,018** (+1,267) · 53 videos
+Subscribers **8** (+4 in 6 days) · views **2,018** (+1,267) · 53 videos
 
 | Group | Videos | Avg views at 2 days | Avg views now | Likes per 100 views | Comments |
 |---|---|---|---|---|---|
 | story: adventure/funny | 1 | 32 | 33 | 3.0 | 0 |
+| story: bedtime/feelings | 1 | 10 | 10 | 0.0 | 0 |
 | old formats | 37 | 9 | 51 | 3.2 | 0 |
 | story: kindness | 1 | 9 | 21 | 4.8 | 0 |
-| story: learning | 1 | 9 | 15 | 6.7 | 0 |
-| story: bedtime/feelings | 1 | 9 | 9 | 0.0 | 0 |
-| story: ? | 1 | 8 | 83 | 1.2 | 0 |
-| story Shorts | 5 | 1 | 2 | 12.5 | 0 |
+| story: learning | 1 | 9 | 16 | 6.2 | 0 |
+| story: ? | 1 | 8 | 98 | 2.0 | 0 |
+| story Shorts | 5 | 2 | 2 | 10.0 | 0 |
 | other | 1 | - | 10 | 30.0 | 0 |
 
 Videos of the last 14 days, newest first:
@@ -127,31 +126,31 @@ Videos of the last 14 days, newest first:
 |---|---|---|---|---|---|---|
 | 2026-11-15 | 10 Stories for Kids: Pig and Slow Turtle, Bear Brushes His Teeth & Mor | the week's stories in one video | - | 11 | 1 | 0 |
 | 2026-11-15 | Dog's Opposite Map 🎈 Kids Story #shorts | Short from the adventure story | - | 1 | 0 | 0 |
-| 2026-11-15 | Dog's Opposite Map / Animated Story for Kids / Bubbly Kids TV | adventure story (1 story) | - | 5 | 0 | 0 |
+| 2026-11-15 | Dog's Opposite Map / Animated Story for Kids / Bubbly Kids TV | adventure story (1 story) | - | 6 | 0 | 0 |
 | 2026-11-14 | Bear's Sleepy Colors 🎈 Kids Story #shorts | Short from the bedtime story | - | 2 | 0 | 0 |
 | 2026-11-14 | Bear's Sleepy Colors / Animated Story for Kids / Bubbly Kids TV | bedtime story (1 story) | - | 5 | 0 | 0 |
-| 2026-11-13 | Bunny's Big Jump 🎈 Kids Story #shorts | Short from the bedtime/feelings story | 2 | 2 | 0 | 0 |
-| 2026-11-13 | Bunny's Big Jump & Sheep Counts Quiet Sounds / Animated Story for Kids | bedtime/feelings story (2 stories) | 9 | 9 | 0 | 0 |
+| 2026-11-13 | Bunny's Big Jump 🎈 Kids Story #shorts | Short from the bedtime/feelings story | 4 | 4 | 0 | 0 |
+| 2026-11-13 | Bunny's Big Jump & Sheep Counts Quiet Sounds / Animated Story for Kids | bedtime/feelings story (2 stories) | 10 | 10 | 0 | 0 |
 | 2026-11-12 | Chick Bakes a Cake 🎈 Kids Story #shorts | Short from the adventure/funny story | 0 | 0 | 0 | 0 |
 | 2026-11-12 | Chick Bakes a Cake & The Autumn Leaf Pile / Animated Story for Kids /  | adventure/funny story (2 stories) | 32 | 33 | 1 | 0 |
 | 2026-11-11 | Pig's Shape Hunt 🎈 Kids Story #shorts | Short from the learning story | 2 | 2 | 1 | 0 |
-| 2026-11-11 | Pig's Shape Hunt / Animated Story for Kids / Bubbly Kids TV | learning story (1 story) | 9 | 15 | 1 | 0 |
+| 2026-11-11 | Pig's Shape Hunt / Animated Story for Kids / Bubbly Kids TV | learning story (1 story) | 9 | 16 | 1 | 0 |
 | 2026-11-10 | Lion Shares the Shade 🎈 Kids Story #shorts | Short from the kindness story | 0 | 2 | 0 | 0 |
 | 2026-11-10 | Cow Says Thank You & Lion Shares the Shade / Animated Story for Kids / | kindness story (2 stories) | 9 | 21 | 1 | 0 |
 | 2026-11-09 | Bear Brushes His Teeth 🎈 Kids Story #shorts | Short from the ? story | 3 | 2 | 0 | 0 |
-| 2026-11-09 | Pig and Slow Turtle & Bear Brushes His Teeth / Animated Story for Kids | ? story (2 stories) | 8 | 83 | 1 | 0 |
+| 2026-11-09 | Pig and Slow Turtle & Bear Brushes His Teeth / Animated Story for Kids | ? story (2 stories) | 8 | 98 | 2 | 0 |
 | 2026-11-08 | Count With Me! 🔢 Counting Game #shorts | old format (short1) | 2 | 60 | 0 | 0 |
 | 2026-11-08 | Learn Colors, Shapes, Numbers, ABC & Animals for Kids / Toddler Learni | old format (learn) | 16 | 71 | 0 | 0 |
 | 2026-11-07 | Surprise Eggs! What's Inside? 🥚 #shorts | old format (short2) | - | 0 | 0 | 0 |
 | 2026-11-07 | Guess the Shadow! Who Am I? Fish, Sheep & More / Bubbly Kids TV | old format (fun) | - | 39 | 0 | 0 |
 | 2026-11-07 | Can You Guess Who I Am? 🐾 Shadow Game #shorts | old format (short1) | - | 39 | 0 | 0 |
-| 2026-11-07 | Learn Animals, Numbers, ABC, Colors & Shapes for Kids / Toddler Learni | old format (learn) | - | 41 | 0 | 0 |
+| 2026-11-07 | Learn Animals, Numbers, ABC, Colors & Shapes for Kids / Toddler Learni | old format (learn) | - | 42 | 0 | 0 |
 | 2026-11-06 | Let's Count Together! 🔢 How Many? #shorts | old format (short2) | - | 49 | 0 | 0 |
 | 2026-11-06 | Lion and Little Bunny & Cat Tells the Truth & Frog Finds a Friend & Th | old format (fun) | - | 87 | 1 | 0 |
 | 2026-11-06 | Open the Surprise Eggs! 🥚 Animals & Toys #shorts | old format (short1) | - | 4 | 1 | 0 |
 | 2026-11-06 | Learn Shapes, Colors, Numbers, Animals & ABC for Kids / Toddler Learni | old format (learn) | - | 141 | 1 | 0 |
 | 2026-11-05 | Can You Guess Who I Am? 🐾 Shadow Game #shorts | old format (short2) | - | 17 | 2 | 0 |
-| 2026-11-05 | Dance Party with Fruit Friends! Freeze Dance for Kids / Bubbly Kids TV | old format (fun) | - | 242 | 2 | 0 |
+| 2026-11-05 | Dance Party with Fruit Friends! Freeze Dance for Kids / Bubbly Kids TV | old format (fun) | - | 246 | 2 | 0 |
 | 2026-11-05 | How Many Can You Count? 🔢 #shorts | old format (short1) | - | 20 | 1 | 0 |
 | 2026-11-05 | Learn Numbers, Animals, Shapes, Colors & ABC for Kids / Toddler Learni | old format (learn) | - | 108 | 1 | 0 |
 | 2026-11-04 | What's Inside the Egg? 🥚 Surprise! #shorts | old format (short2) | - | 4 | 1 | 0 |
