@@ -1,0 +1,14 @@
+{
+  "format": "origin",
+  "title": "Do You Know Where the Word OK Comes From?",
+  "summary": "The word OK began as a joke abbreviation in a newspaper almost 200 years ago. Here is how a silly spelling joke became an everyday word.",
+  "topic": "language",
+  "beats": [
+    {"text": "You say OK every day. But what do those two letters stand for? Pause and guess!", "visual": {"kind": "hook", "emoji": "👌", "text": "Where does OK come from?"}},
+    {"text": "Here's a clue: it was born in a city newspaper, almost two hundred years ago.", "hl": ["newspaper"], "visual": {"kind": "emoji", "emoji": "📰", "label": "A city newspaper", "motion": "float"}},
+    {"text": "Back then, writers loved funny abbreviations of deliberately misspelled words.", "visual": {"kind": "pair", "a": {"emoji": "✍️", "label": "Funny spelling"}, "b": {"emoji": "😄", "label": "Newspaper joke"}, "vs": false}},
+    {"text": "Time's up. Where did OK come from?", "reveal": "A joke! It stood for \"oll korrect\", a playful misspelling of \"all correct\".", "hl": ["joke"], "visual": {"kind": "choice", "question": "Where did OK come from?", "options": [{"emoji": "😂", "label": "A newspaper joke"}, {"emoji": "🏛️", "label": "An ancient word"}, {"emoji": "🎖️", "label": "A soldier's code"}], "answer": 0}},
+    {"text": "The joke was catchy. People kept using it, and the meaning stayed the same.", "hl": ["catchy"], "visual": {"kind": "steps", "items": [{"emoji": "📰", "label": "Printed as a joke"}, {"emoji": "🗣️", "label": "People copy it"}, {"emoji": "✉️", "label": "Used in writing"}, {"emoji": "📱", "label": "Typed on phones"}]}},
+    {"text": "Bonus: most of the other joke abbreviations from that time are long forgotten.", "visual": {"kind": "fact", "emoji": "🏆", "text": "Most joke abbreviations of that time vanished. OK is the one that survived."}}
+  ]
+}
