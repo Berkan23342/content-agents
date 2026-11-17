@@ -62,15 +62,17 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 3
-- **Day:** 3, night, the studio and roof of Gull Hill Radio
-- **Who:** Wren in the studio; Cal on the mast; Tilly in the school.
-- **Supplies:** wire cutters, torch, tape.
-- **Known:** the cut cable was the mute line; the mast now carries every studio sound, even breathing, and the classroom radio at the school breathes with Wren. The crowd climbs the hill again.
-- **Open threads:** Cal can stop it but someone must stay on the mast; what he hides; Tilly.
+- **After:** part 5
+- **Day:** 5, night, the school at the bottom of Gull Hill
+- **Who:** Wren, Tilly and Mr. Boyd (the school caretaker) in the school; Cal on the mast, holding the mute switch by hand.
+- **Supplies:** torch, tape, a cable; socks on boots.
+- **Known:** Tilly is safe and proved herself by a secret name ("Tilly Tiny"). Boyd wired the classroom radio to the mast and says Cal built it to call them, not stop them. A voice in Cal's voice warned Wren at the door (unexplained). The mast's red light came on.
+- **Open threads:** who spoke in Cal's voice; Cal's secret; why the mast is lit; getting back up or away from the hill.
 
 ## Episode log
 
 - **Part 1 (Day 1) The Studio Phone:** Wren hears the studio phone ring. Tilly whispers from a school classroom. Wren whispers back, and every speaker on the roof repeats it.
 - **Part 2 (Day 2) Roof Speakers:** the street climbs the hill. Wren cuts the roof cable and the speakers die. A man's voice, Cal, says she cut the wrong one.
 - **Part 3 (Day 3) The Mute Line:** Wren finds Cal on the mast. The cable she cut muted the studio; now every sound goes out, and Tilly's radio breathes. Cal can stop it, but someone must stay on the mast.
+- **Part 4 (Day 4) Down the Hill:** Cal holds the mute switch on the mast; Wren walks silently down to the school. Tilly whispers behind the door, but the classroom radio speaks in Cal's voice: "That is not Tilly."
+- **Part 5 (Day 5) The Caretaker:** Wren tests the door with a secret name; it is the real Tilly. Mr. Boyd, the caretaker, says Cal built the mast to call them. The mast's red light comes on.

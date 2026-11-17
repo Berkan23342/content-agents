@@ -1,0 +1,97 @@
+{
+  "episode": 5,
+  "title": "The Caretaker",
+  "summary": "On Day five, Wren must prove which voice at the school door is real, and meets a stranger inside.",
+  "event": "stranger",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "door",
+      "text": "Two voices, one door. One of them was lying to me.",
+      "hl": [
+        "lying"
+      ],
+      "hold": 0.6
+    },
+    {
+      "scene": "door",
+      "text": "I whispered through the wood, \"What did I call you the first night?\"",
+      "hl": [
+        "first night"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "\"Tilly Tiny,\" she whispered. Only the real Tilly knew that.",
+      "hl": [
+        "Tilly Tiny"
+      ],
+      "speaker": "tilly"
+    },
+    {
+      "scene": "school",
+      "text": "The door opened. She hugged me, silently.",
+      "hl": [
+        "silently"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "hallway",
+      "text": "Behind her stood a caretaker, a cable round his arm.",
+      "hl": [
+        "caretaker"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "school",
+      "text": "The classroom radio was wired to the mast.",
+      "hl": [
+        "wired"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "\"I'm Mr. Boyd,\" he whispered. \"I heard everything you said.\"",
+      "hl": [
+        "heard everything"
+      ],
+      "cam": "still"
+    },
+    {
+      "scene": "school",
+      "text": "\"Then who spoke in Cal's voice?\" I asked.",
+      "hl": [
+        "Cal's voice"
+      ],
+      "light": "flicker",
+      "hold": 0.8
+    },
+    {
+      "scene": "radio",
+      "text": "\"Cal built that mast to call them,\" Boyd said. \"Not to stop them.\"",
+      "hl": [
+        "to call them"
+      ],
+      "mode": "static"
+    },
+    {
+      "scene": "rooftop",
+      "text": "\"Ask him why.\" Far up the hill, the mast's red light came on.",
+      "hl": [
+        "red light"
+      ],
+      "fire": true,
+      "alarm": true,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

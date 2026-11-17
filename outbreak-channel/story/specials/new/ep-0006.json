@@ -1,0 +1,92 @@
+{
+  "episode": 6,
+  "title": "Last Train Radio",
+  "summary": "A radio presenter reads the safety rules for a city on a broadcast that slowly goes wrong.",
+  "event": "trap",
+  "ambience": "none",
+  "kind": "broadcast",
+  "narrator": "tess",
+  "inspired_by": "https://youtu.be/RVszt4A-ucc (premise only: a monster that copies a voice you know)",
+  "beats": [
+    {
+      "scene": "radio",
+      "text": "This is the Port Ellis emergency broadcast. Tonight's rule: never answer a voice you cannot see.",
+      "hl": [
+        "never answer"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "subway",
+      "text": "The infected have learned to copy us. They borrow the voice of someone you love.",
+      "hl": [
+        "borrow the voice"
+      ],
+      "zombies": 2,
+      "light": "off"
+    },
+    {
+      "scene": "phone",
+      "text": "Test every caller with a question only the real person knows.",
+      "hl": [
+        "question"
+      ],
+      "screen": "message",
+      "lines": [
+        "Rule two",
+        "Ask a question only they know."
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "He did not know the name of their cat. She did not open the door.",
+      "hl": [
+        "did not open"
+      ],
+      "zombies": 2,
+      "light": "flicker"
+    },
+    {
+      "scene": "lobby",
+      "text": "Our own front desk reports a knock. A voice outside says, \"Let me in, it's me.\"",
+      "hl": [
+        "it's me"
+      ],
+      "zombies": 2,
+      "light": "flicker",
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "It is my producer's voice. I ask him the name of my dog.",
+      "hl": [
+        "my dog"
+      ],
+      "mode": "voice",
+      "hold": 1.0
+    },
+    {
+      "scene": "lobby",
+      "text": "He answers at once, and he is right. I have never had a dog.",
+      "hl": [
+        "never had a dog"
+      ],
+      "zombies": 2,
+      "light": "flicker"
+    },
+    {
+      "scene": "radio",
+      "text": "He is not copying her voice. He is copying mine, and I am live on air.",
+      "hl": [
+        "live on air"
+      ],
+      "mode": "voice",
+      "alarm": true,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}

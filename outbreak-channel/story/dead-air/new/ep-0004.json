@@ -1,0 +1,102 @@
+{
+  "episode": 4,
+  "title": "Down the Hill",
+  "summary": "On Day four, Wren leaves the studio to bring Tilly out of the school, and she cannot make a sound.",
+  "event": "split",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "stairwell",
+      "text": "I had to walk down a hill of hunting dead without making one sound.",
+      "hl": [
+        "one sound"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "rooftop",
+      "text": "Cal stayed on the mast, holding the mute switch by hand. Rain hid how his arm shook.",
+      "hl": [
+        "mute switch"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "lobby",
+      "text": "The lobby doors were glass. Four of them leaned on it, swaying.",
+      "hl": [
+        "swaying"
+      ],
+      "zombies": 4,
+      "light": "flicker"
+    },
+    {
+      "scene": "gas_station",
+      "text": "I crouched under a canopy while a crowd shuffled past.",
+      "hl": [
+        "shuffled past"
+      ],
+      "zombies": 6,
+      "light": "off",
+      "rain": true
+    },
+    {
+      "scene": "school",
+      "text": "The school rose out of the rain. One window glowed upstairs. Tilly's.",
+      "hl": [
+        "Tilly's"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "door",
+      "text": "I tapped twice on the door. Our code. Nothing answered.",
+      "hl": [
+        "Nothing answered"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "door",
+      "text": "Then a whisper came through the wood: \"Wren? Is that you? I'm coming.\"",
+      "hl": [
+        "I'm coming"
+      ],
+      "speaker": "tilly"
+    },
+    {
+      "scene": "school",
+      "text": "Behind her, the classroom radio crackled and began to speak.",
+      "hl": [
+        "began to speak"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "\"Wren, don't open it,\" said Cal's voice. \"That is not Tilly.\"",
+      "hl": [
+        "not Tilly"
+      ],
+      "speaker": "cal",
+      "light": "flicker",
+      "hold": 1.0
+    },
+    {
+      "scene": "rooftop",
+      "text": "But I had left Cal a mile up the hill, on the mast, holding the switch.",
+      "hl": [
+        "a mile up"
+      ],
+      "fire": true,
+      "alarm": true,
+      "sfx": [
+        "sting"
+      ]
+    }
+  ]
+}
