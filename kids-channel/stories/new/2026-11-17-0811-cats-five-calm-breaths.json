@@ -1,0 +1,510 @@
+{
+ "title": "Cat's Five Calm Breaths",
+ "lesson": "When you feel cross, stop and take five calm breaths",
+ "kind": "feelings",
+ "theme": "feelings",
+ "summary": "Cat feels cross when Bunny has the ball, and kind Sheep teaches her to count five calm breaths before she says sorry.",
+ "cast": [
+  "cat",
+  "bunny",
+  "sheep"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 800
+    },
+    {
+     "name": "bunny",
+     "x": 1250
+    }
+   ],
+   "props": [
+    {
+     "id": "ball",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Grr! Cat wanted the red ball. But Bunny had it first."
+    },
+    {
+     "line": "cat",
+     "text": "Grr! I want the ball! Give it to me!",
+     "bubble": "I want it!",
+     "act": "shake"
+    },
+    {
+     "say": "Cat's face felt hot. Cat was feeling cross."
+    },
+    {
+     "line": "bunny",
+     "text": "Oh! Cat, you look so cross.",
+     "bubble": "You look cross",
+     "act": "shake"
+    },
+    {
+     "line": "cat",
+     "text": "I am red like the ball. Grr, grr, grr!",
+     "bubble": "Grr, grr, grr!",
+     "act": "shake"
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "say": "Cat stamped away, one, two, three steps. Stamp, stamp, stamp!"
+    },
+    {
+     "move": "cat",
+     "x": 300,
+     "dur": 1.5
+    },
+    {
+     "say": "Bunny did not know what to do. Cat felt too cross to play."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "f1",
+     "icon": "flower",
+     "color": "#FF6FB5",
+     "x": 1100,
+     "y": 830,
+     "size": 140
+    },
+    {
+     "id": "f2",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 1300,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Cat went to the garden. Cat's tummy was tight and her paws were tight."
+    },
+    {
+     "line": "cat",
+     "text": "I am so cross. I do not like this.",
+     "bubble": "So cross!",
+     "act": "shake"
+    },
+    {
+     "enter": "sheep",
+     "x": 1500,
+     "side": "right"
+    },
+    {
+     "say": "Baa! Along came kind Sheep, soft and slow."
+    },
+    {
+     "arrive": "sheep"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. Cat, are you feeling cross?",
+     "bubble": "Feeling cross?",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "Yes. Grr. My cross is very big.",
+     "bubble": "Very big cross",
+     "act": "shake"
+    },
+    {
+     "line": "sheep",
+     "text": "Big feelings are okay. Let us breathe together.",
+     "bubble": "Let us breathe",
+     "act": "wave"
+    },
+    {
+     "say": "Sheep smelled a flower. Breathe in through your nose."
+    },
+    {
+     "line": "sheep",
+     "text": "Smell the flower. Now blow out the candle.",
+     "bubble": "Smell, then blow",
+     "act": "spin"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 700
+    },
+    {
+     "name": "sheep",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Let us count the breaths together. Can you count with me?"
+    },
+    {
+     "line": "sheep",
+     "text": "In, and out. That is number one.",
+     "bubble": "One!"
+    },
+    {
+     "prop": "b1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 500,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "line": "cat",
+     "text": "In, and out. That is number two.",
+     "bubble": "Two!"
+    },
+    {
+     "prop": "b2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "line": "sheep",
+     "text": "In, and out. That is number three.",
+     "bubble": "Three!"
+    },
+    {
+     "prop": "b3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 830,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "line": "cat",
+     "text": "In, and out. Number four.",
+     "bubble": "Four!"
+    },
+    {
+     "prop": "b4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 995,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "line": "cat",
+     "text": "In, and out. Number five!",
+     "bubble": "Five!",
+     "act": "jump"
+    },
+    {
+     "prop": "b5",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1160,
+     "y": 300,
+     "size": 130
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "Five calm breaths. Five shining stars!"
+    },
+    {
+     "line": "cat",
+     "text": "My tummy feels softer now.",
+     "bubble": "Softer now"
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 600
+    },
+    {
+     "name": "sheep",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "sh",
+     "icon": "fish",
+     "color": "#2F8CFF",
+     "x": 1500,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Cat and Sheep walked to the beach. Whoosh, went the waves."
+    },
+    {
+     "line": "sheep",
+     "text": "Look. The waves come in and go out.",
+     "bubble": "In and out",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "Like breathing! In and out, in and out.",
+     "bubble": "Like breathing!",
+     "act": "spin"
+    },
+    {
+     "say": "Big waves are blue. Cross is red. Calm is soft blue, like the sea."
+    },
+    {
+     "line": "cat",
+     "text": "Cross is red. Calm is blue. I like blue.",
+     "bubble": "I like blue",
+     "act": "jump"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "sheep",
+     "text": "Cat, who else is feeling cross today?",
+     "bubble": "Who else?"
+    },
+    {
+     "line": "cat",
+     "text": "Bunny! I was grumpy to Bunny.",
+     "bubble": "Oh, Bunny!",
+     "act": "shake"
+    },
+    {
+     "say": "Cat knew just what to do. Time to say sorry."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 700
+    },
+    {
+     "name": "sheep",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "j1",
+     "icon": "jellyfish",
+     "color": "#9B5CFF",
+     "x": 1500,
+     "y": 400,
+     "size": 140
+    },
+    {
+     "id": "j2",
+     "icon": "jellyfish",
+     "color": "#FF6FB5",
+     "x": 1650,
+     "y": 500,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "On the way, they peeked under the sea. Blub, blub!"
+    },
+    {
+     "line": "sheep",
+     "text": "Look! Two jellyfish. One purple, one pink.",
+     "bubble": "Two jellyfish!",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "Wow! They float so slow and calm.",
+     "bubble": "So calm!",
+     "act": "spin"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "sheep",
+     "text": "Slow is a good way to feel better.",
+     "bubble": "Slow is good"
+    },
+    {
+     "say": "Cat smiled. She was ready to find Bunny."
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 800
+    }
+   ],
+   "props": [
+    {
+     "id": "ball",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back at the playground, Bunny sat all alone with the ball."
+    },
+    {
+     "enter": "cat",
+     "x": 1300,
+     "side": "right"
+    },
+    {
+     "arrive": "cat"
+    },
+    {
+     "line": "cat",
+     "text": "Bunny, I am sorry I was grumpy.",
+     "bubble": "I am sorry",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "That is okay, Cat. Thank you!",
+     "bubble": "Thank you!",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "I felt cross. Then I took five breaths.",
+     "bubble": "Five breaths",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "Clever Cat! Now we can both play.",
+     "bubble": "Let us play!",
+     "act": "spin"
+    },
+    {
+     "prop_move": "ball",
+     "x": 1200,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "say": "They took turns with the red ball. Roll, roll, roll!"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "cat",
+     "x": 700
+    },
+    {
+     "name": "bunny",
+     "x": 1150
+    },
+    {
+     "name": "sheep",
+     "x": 1550
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "As the sun went down, three friends sat together."
+    },
+    {
+     "line": "sheep",
+     "text": "When you feel cross, what do you do?",
+     "bubble": "What do you do?",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "I stop, and breathe in and out. Five times!",
+     "bubble": "Breathe five times",
+     "act": "spin"
+    },
+    {
+     "line": "bunny",
+     "text": "And then we say sorry and play.",
+     "bubble": "Say sorry, play",
+     "act": "jump"
+    },
+    {
+     "say": "Can you take five calm breaths with Cat? In, and out. One, two, three, four, five!"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "The end!"
+    }
+   ]
+  }
+ ]
+}
