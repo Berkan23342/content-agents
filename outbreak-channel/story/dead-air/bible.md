@@ -62,12 +62,12 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 
 ## Current state
 
-- **After:** part 5
-- **Day:** 5, night, the school at the bottom of Gull Hill
-- **Who:** Wren, Tilly and Mr. Boyd (the school caretaker) in the school; Cal on the mast, holding the mute switch by hand.
-- **Supplies:** torch, tape, a cable; socks on boots.
-- **Known:** Tilly is safe and proved herself by a secret name ("Tilly Tiny"). Boyd wired the classroom radio to the mast and says Cal built it to call them, not stop them. A voice in Cal's voice warned Wren at the door (unexplained). The mast's red light came on.
-- **Open threads:** who spoke in Cal's voice; Cal's secret; why the mast is lit; getting back up or away from the hill.
+- **After:** part 6
+- **Day:** 6, night, the school yard at the bottom of Gull Hill
+- **Who:** Wren, Tilly and Mr. Boyd in Boyd's old van, about to leave the school; Cal on the mast.
+- **Supplies:** torch, tape, a cable; socks on boots; the van.
+- **Known:** The mast's red light is drawing the whole hill to the school. Cal (text and van radio) says do not go to the boats, come back up, and that Boyd lies: "ask him what he cut." Boyd will not look at Wren. A voice in Cal's voice warned Wren on Day 4 (unexplained).
+- **Open threads:** what Boyd cut; who to trust; Cal's secret; why the mast is lit; the school doors are shaking.
 
 ## Episode log
 
@@ -76,3 +76,4 @@ The story ends on Day 12 (story/series.json `finale`); after that its slot goes 
 - **Part 3 (Day 3) The Mute Line:** Wren finds Cal on the mast. The cable she cut muted the studio; now every sound goes out, and Tilly's radio breathes. Cal can stop it, but someone must stay on the mast.
 - **Part 4 (Day 4) Down the Hill:** Cal holds the mute switch on the mast; Wren walks silently down to the school. Tilly whispers behind the door, but the classroom radio speaks in Cal's voice: "That is not Tilly."
 - **Part 5 (Day 5) The Caretaker:** Wren tests the door with a secret name; it is the real Tilly. Mr. Boyd, the caretaker, says Cal built the mast to call them. The mast's red light comes on.
+- **Part 6 (Day 6) Red Light Rising:** the red light pulls the hill to the school. Boyd leads Wren and Tilly out the back to his van; Cal says Boyd lies and begs her to come back up.

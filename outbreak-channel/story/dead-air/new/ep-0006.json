@@ -1,0 +1,113 @@
+{
+  "episode": 6,
+  "title": "Red Light Rising",
+  "summary": "On Day six, a red light on the mast pulls the whole hill toward the school, and Wren has to get Tilly out through the back.",
+  "event": "escape",
+  "ambience": "rain",
+  "beats": [
+    {
+      "scene": "school",
+      "text": "The red light on the mast was a beacon. Every dead thing on Gull Hill turned toward it.",
+      "hl": [
+        "beacon"
+      ],
+      "zombies": 5,
+      "light": "flicker",
+      "alarm": true
+    },
+    {
+      "scene": "window",
+      "text": "From the window I watched them climb, hundreds, slow and dripping.",
+      "hl": [
+        "hundreds"
+      ],
+      "zombies": 20,
+      "rain": true
+    },
+    {
+      "scene": "hallway",
+      "text": "\"We are right under it,\" Boyd whispered. \"We go out the back.\"",
+      "hl": [
+        "the back"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "stairwell",
+      "text": "Tilly held my sleeve. We crept down the stairs on our toes.",
+      "hl": [
+        "on our toes"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "door",
+      "text": "The back door was chained. Boyd lifted it link by link.",
+      "hl": [
+        "link by link"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "truck",
+      "text": "His old van waited in the yard. Rain hid our steps.",
+      "hl": [
+        "van"
+      ],
+      "zombies": 2,
+      "lights": false,
+      "rain": true
+    },
+    {
+      "scene": "phone",
+      "text": "Then my phone buzzed. Cal: Do not go to the boats. Come back up.",
+      "hl": [
+        "Do not go"
+      ],
+      "screen": "message",
+      "lines": [
+        "Cal",
+        "Do not go to the boats.",
+        "Come back up the hill."
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "\"Wren,\" Cal whispered from the van radio. \"Boyd lies. Ask him what he cut.\"",
+      "hl": [
+        "Boyd lies"
+      ],
+      "speaker": "cal",
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "truck",
+      "text": "Boyd's hand tightened on the key. He would not look at me.",
+      "hl": [
+        "not look"
+      ],
+      "zombies": 4,
+      "lights": false,
+      "hold": 1.0
+    },
+    {
+      "scene": "school",
+      "text": "Behind us the school doors began to shake.",
+      "hl": [
+        "shake"
+      ],
+      "zombies": 5,
+      "alarm": true,
+      "sfx": [
+        "bang",
+        "sting"
+      ]
+    }
+  ]
+}
