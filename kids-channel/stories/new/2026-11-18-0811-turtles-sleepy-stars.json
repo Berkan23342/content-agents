@@ -1,0 +1,566 @@
+{
+ "title": "Turtle's Sleepy Stars",
+ "lesson": "Slowing down and saying goodnight",
+ "kind": "bedtime",
+ "theme": "bedtime",
+ "calm": true,
+ "summary": "Turtle carries five sleepy stars and gives one to each tired friend, counting down from five to one.",
+ "cast": [
+  "turtle",
+  "chick",
+  "frog",
+  "owl"
+ ],
+ "shots": [
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 725,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 890,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1055,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1220,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Once upon a time, little Turtle said goodnight to the garden.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "Turtle had five sleepy stars to give away. Count them with me!",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "One, two, three, four, five. Five sleepy stars.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "turtle",
+     "text": "Five stars, one for each friend. Let us find them, slowly.",
+     "bubble": "Five sleepy stars",
+     "act": "wave"
+    },
+    {
+     "enter": "chick",
+     "x": 1350,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "arrive": "chick"
+    },
+    {
+     "line": "chick",
+     "text": "Cheep. I am tired. Is it bedtime yet?",
+     "bubble": "Is it bedtime?",
+     "act": "sleep"
+    },
+    {
+     "line": "turtle",
+     "text": "Yes, Chick. Here is a sleepy star for you.",
+     "bubble": "A star for you"
+    },
+    {
+     "prop_move": "s4",
+     "x": 1350,
+     "y": 420,
+     "dur": 2.0
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Chick fluffed up her feathers and tucked into her nest.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "hide": "s4"
+    },
+    {
+     "line": "chick",
+     "text": "Goodnight, Turtle. Four stars left.",
+     "bubble": "Four stars left"
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 500
+    },
+    {
+     "name": "frog",
+     "x": 1200
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 725,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 890,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1055,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Slowly, slowly, Turtle walked to the quiet pond.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "pause": 0.5
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit. The pond is so still tonight.",
+     "bubble": "Still pond"
+    },
+    {
+     "line": "turtle",
+     "text": "Shh, Frog. Listen. Is that a quiet sound or a loud sound?",
+     "bubble": "Quiet or loud?"
+    },
+    {
+     "say": "Splish. Splish. A tiny drip, drip, drip. That is a quiet sound.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "frog",
+     "text": "Quiet! A frog should whisper at night. Ribbit, ribbit.",
+     "bubble": "Whisper, ribbit"
+    },
+    {
+     "line": "turtle",
+     "text": "Here is a sleepy star for you, Frog.",
+     "bubble": "A star for you"
+    },
+    {
+     "prop_move": "s3",
+     "x": 1200,
+     "y": 420,
+     "dur": 2.0
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "hide": "s3"
+    },
+    {
+     "say": "Frog gave a big yawn and closed his eyes.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "act": "frog",
+     "kind": "sleep"
+    },
+    {
+     "line": "turtle",
+     "text": "Goodnight, Frog. Three stars left.",
+     "bubble": "Three stars left"
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 600
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 725,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 890,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next, Turtle crept into the dark forest. The trees were tall.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "The trees were big. Turtle was small. Big and small!",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "enter": "owl",
+     "x": 1250,
+     "side": "right",
+     "speed": 300,
+     "fly": true,
+     "y": 420
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Hoo hoo. Turtle, you are very small and I am up very high.",
+     "bubble": "Up so high",
+     "act": "wave"
+    },
+    {
+     "line": "turtle",
+     "text": "And I am down low. Up and down, Owl. Up and down.",
+     "bubble": "Up and down"
+    },
+    {
+     "line": "owl",
+     "text": "Hoo. I stay awake at night, but I will rest soon.",
+     "bubble": "I will rest soon"
+    },
+    {
+     "line": "turtle",
+     "text": "Here is a sleepy star for you, Owl.",
+     "bubble": "A star for you"
+    },
+    {
+     "prop_move": "s2",
+     "x": 1250,
+     "y": 300,
+     "dur": 2.0
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "hide": "s2"
+    },
+    {
+     "say": "Owl blinked her big round eyes, slowly, slowly.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "owl",
+     "text": "Thank you. Two stars left. Hoo, goodnight.",
+     "bubble": "Two stars left"
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFFFFF",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    },
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FFFFFF",
+     "x": 725,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Now it was night. The moon was bright and round, like a big circle.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "Turtle looked up. Two stars were left. Can you count them with me?",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "One, two. Two sleepy stars.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "turtle",
+     "text": "One star for me, and one for someone special.",
+     "bubble": "Two stars left"
+    },
+    {
+     "enter": "chick",
+     "x": 1300,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "arrive": "chick"
+    },
+    {
+     "line": "chick",
+     "text": "Cheep! I could not sleep. I missed you, Turtle.",
+     "bubble": "I missed you",
+     "act": "shake"
+    },
+    {
+     "line": "turtle",
+     "text": "Do not worry. Take a deep, slow breath with me.",
+     "bubble": "Slow breath"
+    },
+    {
+     "say": "In, one, two, three. Out, one, two, three. Nice and slow.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "chick",
+     "text": "I feel warm and cosy now. Thank you, Turtle.",
+     "bubble": "Warm and cosy",
+     "act": "spin"
+    },
+    {
+     "prop_move": "s1",
+     "x": 1300,
+     "y": 420,
+     "dur": 2.0
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "hide": "s1"
+    },
+    {
+     "say": "Chick yawned and walked home to her nest. One star left.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "leave": "chick",
+     "side": "right"
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 800
+    }
+   ],
+   "props": [
+    {
+     "id": "s0",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 560,
+     "y": 300,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Turtle walked home in the last soft light. Slowly, slowly.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "turtle",
+     "text": "Five friends are cosy. One star is left, and it is mine.",
+     "bubble": "One is mine"
+    },
+    {
+     "prop_move": "s0",
+     "x": 800,
+     "y": 300,
+     "dur": 2.0
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Five, four, three, two, one. All the stars went to bed.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "turtle",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "m",
+     "icon": "moon",
+     "color": "#FFC92E",
+     "x": 900,
+     "y": 300,
+     "size": 160
+    }
+   ],
+   "steps": [
+    {
+     "say": "Turtle climbed into the cosy bed in the bedroom.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "The room was dark and the moon was soft and light.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "line": "turtle",
+     "text": "Dark and light. Loud and quiet. Up and down. Goodnight, everyone.",
+     "bubble": "Goodnight, everyone"
+    },
+    {
+     "act": "turtle",
+     "kind": "sleep"
+    },
+    {
+     "say": "Close your eyes now, little one. Take a slow, deep breath.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "Goodnight, Turtle. Goodnight, Chick, Frog and Owl. Sweet dreams.",
+     "slow": true,
+     "gap": 0.8
+    },
+    {
+     "say": "The end!",
+     "slow": true,
+     "gap": 1.0
+    },
+    {
+     "pause": 1.5
+    }
+   ]
+  }
+ ]
+}
