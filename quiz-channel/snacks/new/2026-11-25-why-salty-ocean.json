@@ -1,0 +1,14 @@
+{
+  "format": "why",
+  "title": "Why Do You Think the Ocean Is Salty?",
+  "summary": "Rain slowly washes tiny amounts of minerals out of rocks and rivers carry them to the sea. Water evaporates, but the salt stays behind.",
+  "topic": "ocean",
+  "beats": [
+    {"text": "Why is the sea salty, when rivers are not? Is it fish, rocks, or volcanoes? Pause and guess!", "hl": ["salty"], "visual": {"kind": "hook", "emoji": "🌊", "text": "Why is the sea salty?"}},
+    {"text": "Rivers taste fresh. Yet every river ends in the sea.", "hl": ["fresh"], "visual": {"kind": "emoji", "emoji": "🏞️", "label": "Fresh river", "motion": "float"}},
+    {"text": "Time's up. Where does the salt come from?", "reveal": "Rocks! Rain wears tiny bits of minerals out of rock, and rivers carry them to the sea.", "visual": {"kind": "choice", "question": "Where does most sea salt come from?", "options": [{"emoji": "🐟", "label": "Fish"}, {"emoji": "🪨", "label": "Rocks"}, {"emoji": "🌋", "label": "Volcanoes"}], "answer": 1}},
+    {"text": "The sun lifts pure water into clouds. The salt can't float away, so it stays behind.", "hl": ["salt", "stays behind"], "visual": {"kind": "steps", "items": [{"emoji": "🌧️", "label": "Rain wears rock"}, {"emoji": "🏞️", "label": "Rivers carry it"}, {"emoji": "☀️", "label": "Water evaporates"}, {"emoji": "🧂", "label": "Salt stays"}]}},
+    {"text": "Over millions of years, the sea keeps getting a little saltier.", "hl": ["millions of years"], "visual": {"kind": "pair", "a": {"emoji": "🏞️", "label": "River: barely salty"}, "b": {"emoji": "🌊", "label": "Sea: salty"}, "vs": true}},
+    {"text": "Bonus fact: in the Dead Sea, the water is so salty you float without trying.", "hl": ["float"], "visual": {"kind": "fact", "emoji": "🏊", "text": "In the very salty Dead Sea, you float easily, because salty water is denser."}}
+  ]
+}
