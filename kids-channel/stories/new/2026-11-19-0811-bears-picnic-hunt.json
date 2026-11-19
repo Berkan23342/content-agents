@@ -1,0 +1,490 @@
+{
+ "title": "Bear's Picnic Hunt",
+ "lesson": "Asking kindly and sharing",
+ "kind": "adventure",
+ "theme": "food",
+ "summary": "Bear visits the farm, garden and pond to ask kindly for four picnic things, counting each, then shares a picnic in the park.",
+ "cast": [
+  "bear",
+  "chick",
+  "cow",
+  "frog"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 800
+    }
+   ],
+   "props": [
+    {
+     "id": "basket",
+     "icon": "nest",
+     "color": "#B5733A",
+     "x": 1150,
+     "y": 830,
+     "size": 180
+    }
+   ],
+   "steps": [
+    {
+     "say": "Bear has a big picnic basket. It is empty!"
+    },
+    {
+     "line": "bear",
+     "text": "I want a picnic. I need four yummy things.",
+     "bubble": "Four yummy things!",
+     "act": "jump"
+    },
+    {
+     "line": "bear",
+     "text": "Let's go and find them. Come with me!",
+     "bubble": "Come with me!",
+     "act": "wave"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "enter": "owl",
+     "x": 1350,
+     "side": "right",
+     "speed": 600,
+     "fly": true,
+     "y": 420
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Hoo hoo! Try the farm first. Ask kindly.",
+     "bubble": "Ask kindly!",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Thank you, Owl! Off we go.",
+     "bubble": "Thank you!",
+     "act": "jump"
+    },
+    {
+     "leave": "owl",
+     "side": "right"
+    },
+    {
+     "say": "Bear walked and walked to the farm."
+    }
+   ]
+  },
+  {
+   "bg": "farm",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 1000
+    },
+    {
+     "name": "chick",
+     "x": 1450
+    }
+   ],
+   "props": [
+    {
+     "id": "egg1",
+     "icon": "egg",
+     "color": "#FFF3D6",
+     "x": 1450,
+     "y": 560,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "At the farm, Chick was sitting on a warm nest."
+    },
+    {
+     "line": "chick",
+     "text": "Peep, peep! Hello, Bear.",
+     "bubble": "Hello, Bear!",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Hello, Chick. May I please have one egg?",
+     "bubble": "One egg, please?",
+     "act": "wave"
+    },
+    {
+     "line": "chick",
+     "text": "Yes, please! Here is one egg.",
+     "bubble": "Here you go!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "egg1",
+     "x": 1150,
+     "y": 420,
+     "dur": 0.9
+    },
+    {
+     "prop_move": "egg1",
+     "x": 1170,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "One egg! Can you say one with me? One!"
+    },
+    {
+     "line": "bear",
+     "text": "One egg in my basket. Thank you!",
+     "bubble": "Thank you!",
+     "act": "spin"
+    },
+    {
+     "say": "Now Bear needed two more things."
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 700
+    },
+    {
+     "name": "cow",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "c1",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1000,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "id": "c2",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 1165,
+     "y": 300,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next, Bear came to the garden. Cow was picking carrots."
+    },
+    {
+     "line": "cow",
+     "text": "Moo! Look at my orange carrots.",
+     "bubble": "Orange carrots!",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Can I have two carrots, please?",
+     "bubble": "Two carrots, please?",
+     "act": "wave"
+    },
+    {
+     "line": "cow",
+     "text": "Of course! Count them with me.",
+     "bubble": "Count with me!",
+     "act": "jump"
+    },
+    {
+     "say": "Can you count them? One carrot. Two carrots!"
+    },
+    {
+     "prop_move": "c1",
+     "x": 1150,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "prop_move": "c2",
+     "x": 1230,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "bear",
+     "text": "Two carrots, plus one egg. That is three!",
+     "bubble": "Now we have three!",
+     "act": "spin"
+    },
+    {
+     "line": "cow",
+     "text": "Moo! The pond has a juicy treat.",
+     "bubble": "Try the pond!",
+     "act": "wave"
+    },
+    {
+     "say": "So off they went to the pond."
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 400
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "g1",
+     "icon": "grapes",
+     "color": "#9B5CFF",
+     "x": 1300,
+     "y": 420,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "At the pond, a green frog sat on a lily pad."
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Hello, Bear. What do you need?",
+     "bubble": "What do you need?",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "One more yummy thing for my picnic.",
+     "bubble": "One more thing!",
+     "act": "shake"
+    },
+    {
+     "line": "frog",
+     "text": "Purple grapes! Ribbit. A whole bunch.",
+     "bubble": "Purple grapes!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "g1",
+     "x": 700,
+     "y": 420,
+     "dur": 1.0
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "bear",
+     "text": "Purple grapes. Now I have four! One, two, three, four.",
+     "bubble": "Four things!",
+     "act": "spin"
+    },
+    {
+     "say": "Egg, carrot, carrot, grapes. Four yummy things!"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Where will you eat?",
+     "bubble": "Where will you eat?",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "I do not know yet. Let's look!",
+     "bubble": "Let's look!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 700
+    },
+    {
+     "name": "frog",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Bear and Frog walked to the beach. Splash, splash went the waves."
+    },
+    {
+     "line": "bear",
+     "text": "The sand is hot and the sea is wide.",
+     "bubble": "Hot sand!",
+     "act": "shake"
+    },
+    {
+     "line": "frog",
+     "text": "Too hot! Let's find somewhere cool.",
+     "bubble": "Somewhere cool!",
+     "act": "wave"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "The sea was big. The shell was small. Big and small!"
+    },
+    {
+     "line": "bear",
+     "text": "Big sea, small shell. Now cool shade, please.",
+     "bubble": "Cool shade!",
+     "act": "wave"
+    },
+    {
+     "say": "They walked up the hill to the park."
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 800
+    },
+    {
+     "name": "frog",
+     "x": 1150
+    },
+    {
+     "name": "chick",
+     "x": 450
+    },
+    {
+     "name": "cow",
+     "x": 1500
+    }
+   ],
+   "props": [
+    {
+     "id": "pk",
+     "icon": "cake",
+     "color": "#FF6FB5",
+     "x": 960,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "In the park, under a big tree, it was cool and shady."
+    },
+    {
+     "line": "bear",
+     "text": "Here is the best place for a picnic!",
+     "bubble": "Best picnic place!",
+     "act": "jump"
+    },
+    {
+     "enter": "duck",
+     "x": 200,
+     "side": "left",
+     "speed": 700
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Are you having a picnic?",
+     "bubble": "A picnic?",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Yes! We have four things. Will you share?",
+     "bubble": "We can share!",
+     "act": "spin"
+    },
+    {
+     "say": "Bear had four things. Now there were five friends!"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Let's cut everything into pieces.",
+     "bubble": "Share it all!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "sparkle"
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "bear",
+     "x": 800
+    },
+    {
+     "name": "duck",
+     "x": 1200
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The sun went down. The picnic was all gone."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Thank you for sharing, Bear.",
+     "bubble": "Thank you!",
+     "act": "wave"
+    },
+    {
+     "line": "bear",
+     "text": "Asking kindly got us a feast. Please and thank you!",
+     "bubble": "Please and thank you!",
+     "act": "spin"
+    },
+    {
+     "say": "Bear said please and thank you. Four kind friends went home happy."
+    },
+    {
+     "act": "all",
+     "kind": "wave"
+    },
+    {
+     "say": "The end!"
+    }
+   ]
+  }
+ ]
+}
