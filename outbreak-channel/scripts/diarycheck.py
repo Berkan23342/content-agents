@@ -64,7 +64,7 @@ EVENT_LIMIT = 3
 RECENT_USED = 6
 # A special (a one-part story) is told in one of these ways; each has its own look (scripts/diary.py SPECIAL_FRAME).
 SPECIAL_KINDS = {"story", "broadcast", "found", "journal"}
-SPECIAL_NARRATORS = {"grace", "ruth", "tess"}  # the series keep nicole, isabella and heart
+SPECIAL_NARRATORS = NARRATORS  # since 2026-11-19 every video is a one-part story: all six women narrate them
 MAX_BEAT_WORDS = 24
 WORDS = (85, 130)
 BEATS = (8, 16)
@@ -419,7 +419,7 @@ def check_series():
                                 "full-story video (Seasons in AGENT.md)")
             elif len(film["title"]) > 60:
                 problems.append(f"{s['id']}: film title is longer than 60 characters")
-    serials = [s for s in S if not s.get("label")]
+    serials = [s for s in S if not s.get("label") and not s.get("retired")]
     running = [s for s in serials if not (s.get("finale") and published(s["id"]) >= s["finale"])]
     current = {}
     for s in running:
@@ -441,10 +441,13 @@ def check_series():
 def seasons():
     """What the writer needs to know about every slot."""
     S = json.load(open(SERIES_FILE))
-    for slot in sorted({s["slot"] for s in S}):
-        mine = [s for s in S if s["slot"] == slot]
+    for slot in sorted({s["slot"] for s in S} | {x for s in S for x in s.get("extra_slots", {})}):
+        mine = [s for s in S if s["slot"] == slot or slot in s.get("extra_slots", {})]
         for s in mine:
             done, wait, fin = published(s["id"]), waiting(s["id"]), s.get("finale")
+            if s.get("retired"):
+                print(f"{slot} {s['id']:<14} retired after Day {done} (not continued)")
+                continue
             if fin and done >= fin:
                 state = f"finished (Day {fin})"
             elif fin:
@@ -452,7 +455,10 @@ def seasons():
             else:
                 state = f"published {done}, waiting {wait or 'none'}" + ("" if s.get("label") else ", NO FINALE SET")
             print(f"{slot} {s['id']:<14} {state}")
-        last = mine[-1]
+        live = [s for s in mine if not s.get("retired")]
+        if not live:
+            continue
+        last = live[-1]
         fin = last.get("finale")
         if fin and fin in waiting(last["id"]) + [published(last["id"])] and published(last["id"]) <= fin:
             print(f"   -> {last['id']} has its finale written: the NEXT STORY for slot {slot} is due now (Seasons in AGENT.md)")

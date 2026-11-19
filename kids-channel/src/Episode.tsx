@@ -31,7 +31,7 @@ export type EpisodeProps = {
 	audio: string;
 	scenes: Scene[];
 	// badge: the story's kind ("A Kindness Story") in its colour; with a badge the thumbnail uses the story layout
-	thumb: {title: string[]; heroes: Hero[]; bg?: Bg; badge?: string; badgeColor?: string; rays?: string};
+	thumb: {title: string[]; heroes: Hero[]; bg?: Bg; badge?: string; badgeColor?: string; rays?: string; layout?: number; prop?: Hero};
 	season?: Season; // from the video's date
 	look?: number; // a seed: sky, sun and small details differ from video to video
 };
@@ -248,45 +248,95 @@ export const Episode: React.FC<EpisodeProps> = ({scenes, audio, season = 'spring
 
 /** The daily story's thumbnail: the main character big, the second one beside it, the title in two short lines and
  *  the kind of story as a coloured badge, so every day's picture is different and readable on a small phone. */
+// Four layouts, a different one each day (fun.py "layout"), so the channel page does not look like one template:
+//   0 hero left, title right   1 hero right, title left   2 title on top, heroes and the story's prop below
+//   3 a big close-up of the hero, the title in a speech bubble
 const StoryThumbnail: React.FC<EpisodeProps> = ({thumb, season = 'spring', look = 0}) => {
 	const [main, second] = thumb.heroes;
+	const layout = (thumb.layout ?? 0) % 4;
 	const words = thumb.title.join(' ').split(' ');
 	const cut = words.length > 2 ? Math.ceil(words.length / 2) : words.length;
 	const lines = [words.slice(0, cut).join(' '), words.slice(cut).join(' ')].filter(Boolean);
 	const longest = Math.max(...lines.map((l) => l.length));
-	const size = Math.min(170, Math.floor(1700 / Math.max(8, longest)));
+	const color = thumb.badgeColor ?? '#FF8A1F';
+	const rainbow = layout === 0 || layout === 2;
+	const titleSize = layout === 2 ? Math.min(190, Math.floor(2600 / Math.max(8, words.join(' ').length))) : layout === 3 ? Math.min(130, Math.floor(1150 / Math.max(8, longest))) : Math.min(170, Math.floor(1700 / Math.max(8, longest)));
+	const Title: React.FC<{align: 'flex-start' | 'flex-end' | 'center'; oneLine?: boolean}> = ({align, oneLine}) => (
+		<>
+			{(oneLine ? [lines.join(' ')] : lines).map((line, i) => (
+				<div key={i} style={{display: 'flex', justifyContent: align, transform: `rotate(${i ? 2 : -2}deg)`}}>
+					{line.split('').map((ch, k) => (
+						<span key={k} style={{...textStyle(rainbow ? RAINBOW[(k + i * 3) % RAINBOW.length] : layout === 3 ? color : '#ffffff', titleSize), WebkitTextStroke: `${Math.round(titleSize / 7)}px ${rainbow || layout === 3 ? '#fff' : color}`, display: 'inline-block'}}>
+							{ch === ' ' ? ' ' : ch}
+						</span>
+					))}
+				</div>
+			))}
+		</>
+	);
+	const badge = (pos: React.CSSProperties) =>
+		thumb.badge ? (
+			<div style={{position: 'absolute', ...pos, transform: 'rotate(-4deg)', background: color, borderRadius: 60, padding: '14px 40px', border: '8px solid #fff', boxShadow: '0 10px 0 rgba(0,0,0,0.15)'}}>
+				<span style={{...textStyle('#ffffff', 64), WebkitTextStroke: '0px', filter: 'none'}}>{thumb.badge}</span>
+			</div>
+		) : null;
+	const hero = (h: typeof main | undefined, x: number, y: number, size: number, rot: number) =>
+		h ? (
+			<div style={{position: 'absolute', inset: 0, transform: `rotate(${rot}deg)`}}>
+				<HeroView hero={h} x={x} y={y} size={size} blink={1} />
+			</div>
+		) : null;
+	const prop = (x: number, y: number, size: number) => (thumb.prop ? <HeroView hero={thumb.prop} x={x} y={y} size={size} blink={1} /> : null);
 	return (
 		<Look.Provider value={{season, seed: look}}>
 			<AbsoluteFill>
 				<Scenery bg={thumb.bg ?? 'day'} tint={null} />
-				<AbsoluteFill style={{background: 'radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0) 35%, rgba(0,0,0,0.28) 100%)'}} />
-				<Rays x={560} y={700} r={760} color={thumb.rays ?? '#fff6b0'} opacity={0.55} frame={0} count={18} />
-				{second ? (
-					<div style={{position: 'absolute', inset: 0, transform: 'rotate(5deg)'}}>
-						<HeroView hero={second} x={1330} y={second.body ? 770 : 800} size={second.body ? 450 : 320} blink={1} />
-					</div>
-				) : null}
-				{main ? (
-					<div style={{position: 'absolute', inset: 0, transform: 'rotate(-4deg)'}}>
-						<HeroView hero={main} x={560} y={main.body ? 690 : 720} size={main.body ? 720 : 500} blink={1} />
-					</div>
-				) : null}
-				{thumb.badge ? (
-					<div style={{position: 'absolute', left: 50, top: 46, transform: 'rotate(-4deg)', background: thumb.badgeColor ?? '#FF8A1F', borderRadius: 60, padding: '14px 40px', border: '8px solid #fff', boxShadow: '0 10px 0 rgba(0,0,0,0.15)'}}>
-						<span style={{...textStyle('#ffffff', 64), WebkitTextStroke: '0px', filter: 'none'}}>{thumb.badge}</span>
-					</div>
-				) : null}
-				<div style={{position: 'absolute', right: 50, top: 190, width: 1050, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6}}>
-					{lines.map((line, i) => (
-						<div key={i} style={{display: 'flex', transform: `rotate(${i ? 2 : -2}deg)`}}>
-							{line.split('').map((ch, k) => (
-								<span key={k} style={{...textStyle(RAINBOW[(k + i * 3) % RAINBOW.length], size), WebkitTextStroke: `${Math.round(size / 7)}px #fff`, display: 'inline-block'}}>
-									{ch === ' ' ? '\u00a0' : ch}
-								</span>
-							))}
+				<AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0) 35%, rgba(0,0,0,0.28) 100%)'}} />
+				{layout === 0 ? (
+					<>
+						<Rays x={560} y={700} r={760} color={thumb.rays ?? '#fff6b0'} opacity={0.55} frame={0} count={18} />
+						{hero(second, 1330, second?.body ? 770 : 800, second?.body ? 450 : 320, 5)}
+						{hero(main, 560, main?.body ? 690 : 720, main?.body ? 720 : 500, -4)}
+						{badge({left: 50, top: 46})}
+						<div style={{position: 'absolute', right: 50, top: 190, width: 1050, display: 'flex', flexDirection: 'column', gap: 6}}>
+							<Title align="flex-end" />
 						</div>
-					))}
-				</div>
+					</>
+				) : layout === 1 ? (
+					<>
+						<Rays x={1360} y={700} r={760} color={thumb.rays ?? '#fff6b0'} opacity={0.55} frame={0} count={14} />
+						{hero(second, 560, second?.body ? 800 : 820, second?.body ? 400 : 290, -6)}
+						{prop(860, 860, 220)}
+						{hero(main, 1360, main?.body ? 690 : 720, main?.body ? 720 : 500, 4)}
+						{badge({right: 50, top: 46})}
+						<div style={{position: 'absolute', left: 60, top: 170, width: 1050, display: 'flex', flexDirection: 'column', gap: 6}}>
+							<Title align="flex-start" />
+						</div>
+					</>
+				) : layout === 2 ? (
+					<>
+						<Rays x={960} y={1000} r={900} color={thumb.rays ?? '#fff6b0'} opacity={0.5} frame={0} count={22} />
+						<div style={{position: 'absolute', left: 40, right: 40, top: 50, display: 'flex', flexDirection: 'column', gap: 0}}>
+							<Title align="center" oneLine={words.join(' ').length <= 16} />
+						</div>
+						{hero(main, 640, main?.body ? 860 : 880, main?.body ? 560 : 400, -3)}
+						{prop(960, 900, 230)}
+						{hero(second, 1290, second?.body ? 870 : 890, second?.body ? 520 : 370, 3)}
+						{badge({left: 50, bottom: 50})}
+					</>
+				) : (
+					<>
+						<Rays x={520} y={760} r={820} color={thumb.rays ?? '#fff6b0'} opacity={0.6} frame={0} count={16} />
+						{hero(main, 560, main?.body ? 1020 : 960, main?.body ? 1150 : 820, -3)}
+						{hero(second, 1700, second?.body ? 960 : 980, second?.body ? 330 : 240, 8)}
+						<div style={{position: 'absolute', right: 70, top: 90, width: 900, padding: '50px 50px 60px', background: '#ffffff', borderRadius: 70, boxShadow: '0 16px 0 rgba(0,0,0,0.15)', border: `10px solid ${color}`}}>
+							<Title align="center" />
+						</div>
+						<div style={{position: 'absolute', left: 1030, top: 398, width: 0, height: 0, borderLeft: '30px solid transparent', borderRight: '60px solid transparent', borderTop: `120px solid ${color}`, transform: 'rotate(32deg)', transformOrigin: 'top center'}} />
+						{prop(1180, 800, 200)}
+						{badge({left: 50, top: 46})}
+					</>
+				)}
 				<div style={{position: 'absolute', right: 40, bottom: 30}}>
 					<span style={textStyle('#2F8CFF', 56)}>Bubbly Kids TV</span>
 				</div>

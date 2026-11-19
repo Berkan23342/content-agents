@@ -808,8 +808,14 @@ def fmt_daily(b, rng, ep_no, specs, kind=None, weekly=False):
         "tags": ["kids stories", "story time", "animated stories for kids", "stories for toddlers", "moral stories",
                  "preschool", "cartoon for kids", "bubbly kids tv"],
     }
-    thumb = {"title": [titles[0]], "heroes": [body(icon(c)) for c in infos[0]["cast"][:2]], "bg": outdoor(first_bg),
-             **badge}
+    # the thumbnail changes its layout every day (four layouts, src/Episode.tsx StoryThumbnail), shows a place from the
+    # middle of the story (where it happens, not always its first place) and one of the story's props
+    middle = specs[0]["shots"][len(specs[0]["shots"]) * 2 // 3]
+    props_seen = [p for sh in specs[0]["shots"] for p in sh.get("props", [])]
+    thumb = {"title": [titles[0]], "heroes": [body(icon(c)) for c in infos[0]["cast"][:2]], "bg": outdoor(middle["bg"]),
+             "layout": ep_no % 4, **badge}
+    if props_seen:
+        thumb["prop"] = prop_hero(props_seen[0])
     if weekly:
         meta["title"] = f"{len(specs)} Stories for Kids: {titles[0]}, {titles[1]} & More | Bubbly Kids TV"
         meta["intro"] = (f"All {len(specs)} stories from this week on Bubbly Kids TV, one after another: about "
@@ -1165,7 +1171,7 @@ def daily(date):
     picked = []
     for path, spec in scripts:  # one long story, or a few short ones until the video is about three minutes
         picked.append((path, spec))
-        if sum(estimate_seconds(s) for _, s in picked) >= 150:
+        if sum(estimate_seconds(s) for _, s in picked) >= 240:  # about 5 minutes with the opening and the goodbye
             break
     name = f"{date}-story"
     work = os.path.join(BUILD, name)

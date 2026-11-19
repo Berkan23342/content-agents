@@ -1,8 +1,8 @@
-# Brain Snack writer
+# Brain Snack Quiz writer
 
 You run unattended as a Claude cloud routine on the GitHub repository `Berkan23342/content-agents`. Write new
-**Brain Snack scripts** for the Brain Snack Quiz YouTube channel (English, vertical Shorts) into
-`quiz-channel/snacks/new/`. The channel is for a **general audience: teenagers and adults**, not for children (see
+**Brain Snack scripts** (into `quiz-channel/snacks/new/`) and **trivia question packs** (into
+`quiz-channel/quizzes/new/`) for the Brain Snack Quiz YouTube channel (English, vertical Shorts). The channel is for a **general audience: teenagers and adults**, not for children (see
 "Who it is for"). Nobody can answer questions during the run; decide
 yourself.
 
@@ -22,17 +22,29 @@ format has its own host voice, background and fonts (the code picks them; you on
 | `teaser` | A logic puzzle told in a few lines (crossing a river, weighing coins, a liar and a truth-teller). The viewer thinks during the countdown, then the solution step by step. Write your own puzzle or a classic with your own story; it must have exactly one answer. |
 | `origin` | The story behind an everyday thing or word (why a keyboard is QWERTY, where "OK" comes from): how it started and how it changed. Only well-documented history; say "probably" where historians are not sure. |
 
-The quiz job (`.github/workflows/quiz-video.yml`) takes the day's script, voices it, draws it and uploads it. Every push
-to `snacks/new/` starts that job.
+**Since 2026-11-20 the days take turns** (the owner: different formats on different days, not one fixed format; our
+five-question "How many can you get?" quizzes were the channel's best videos, about 1,000 views each, while single
+Brain Snacks lost most viewers in the first second). `scripts/snackcheck.py DAY_PLAN` repeats every 7 days:
+trivia quiz, Brain Snack, flags quiz, Brain Snack, trivia quiz, Brain Snack, flags quiz.
+
+- **trivia days:** a five-question quiz from a question pack you write (see Trivia packs). Keep at least 3 packs
+  waiting.
+- **flags days:** a "guess the flag" quiz the code makes by itself. Nothing to write.
+- **Brain Snack days:** the eight Brain Snack formats below keep their own turn, one per Brain Snack day.
+
+The quiz job (`.github/workflows/quiz-video.yml`) takes the day's script or pack, voices it, draws it and uploads it.
+Every push to `snacks/new/` starts that job.
 
 ## Steps
 
 1. `cd quiz-channel`.
-2. Run `python3 scripts/snackcheck.py --plan`. It prints the next 8 days, each with its format and the script that will
-   be used, or `MISSING: write one`, and how often each topic appears among recent scripts.
+2. Run `python3 scripts/snackcheck.py --plan 14`. It prints the next 14 days: each day's kind (`trivia`, `flags` or a
+   Brain Snack format) and the pack or script that will be used, or `MISSING: write one`, and how often each topic
+   appears among recent scripts.
    - If no day is missing, write nothing. Write the current date and time into `snacks/new/.heartbeat`, commit only
      that file and push it (step 7).
-   - Otherwise write one script for each missing day (at most 4 per run, the earliest days first), in that day's format.
+   - Otherwise write what is missing (at most 4 per run, the earliest days first): a trivia pack for a `trivia` day
+     (see Trivia packs), a Brain Snack in that day's format for a Brain Snack day.
 3. Read `../ideas/approved.md` (the channel owner ticks ideas there each week). Ideas whose id starts with `quiz-`
    (for example `quiz-2026w46-2`) and that no script in `snacks/new/` or `snacks/used/` names in its `"idea"` field come
    first, when their format is one you need: add `"idea": "<id>"` to the script.
@@ -46,6 +58,27 @@ to `snacks/new/` starts that job.
 7. Commit only your new files and push to `main`: `git push origin HEAD:main`. If the push is rejected, run
    `git pull --rebase origin main` and push again.
 8. Final message: one line per script with its day, format and title.
+
+## Trivia packs
+
+A pack is five multiple-choice questions on one theme, from easy to hard, played as "How many can you get?" (a
+3-second countdown each, the answer, then the next). Write it to `quizzes/new/<YYYY-MM-DD>-<slug>.json` and check it
+with `python3 scripts/quizcheck.py quizzes/new/<file>.json` (it must print `ok`; it also refuses a repeated question):
+
+```json
+{"type": "trivia", "title": "Ocean Quiz",
+ "questions": [
+   {"q": "Which ocean is the largest?", "options": ["Atlantic", "Indian", "Pacific", "Arctic"], "answer": 2},
+   ...
+ ]}
+```
+
+- `title`: the theme and "Quiz", at most 22 characters ("Space Quiz", "Food Quiz", "90s Movies Quiz"). Every pack is
+  a new theme: animals, food, space, the human body, geography, inventions, sports, history, music, science, movies,
+  brands' logos in words, languages... never the same theme as the last 10 packs.
+- Questions: at most 110 characters, four options of at most 24 characters, `answer` = the index of the right one.
+  Facts must be certain and current (no "trick" questions, nothing disputed). Question 1-2 easy, 3-4 medium, 5 hard.
+- Put the right answer in a different position each time.
 
 ## Trends
 

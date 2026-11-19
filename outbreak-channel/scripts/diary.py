@@ -159,7 +159,8 @@ FILMS = os.path.join(ROOT, "logs", "films.txt")
 def latest_film():
     """(story id, link) of the newest full-story video (scripts/film.py), or None."""
     lines = [l.split() for l in open(FILMS)] if os.path.exists(FILMS) else []  # "film-<story>.mp4 <link>"
-    return next(((l[0][len("film-"):-len(".mp4")], l[1]) for l in reversed(lines) if len(l) >= 2), None)
+    return next(((l[0][len("film-"):-len(".mp4")], l[1]) for l in reversed(lines)
+                 if len(l) >= 2 and l[1].startswith("https://")), None)  # "skipped" lines are not films
 
 
 def voice_lines(spec, series):

@@ -21,7 +21,20 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPLOADER = os.path.join(os.path.dirname(ROOT), "kids-channel", "scripts", "upload_youtube.py")
 TZ = ZoneInfo("Europe/Istanbul")
 ALL = json.load(open(os.path.join(ROOT, "story", "series.json")))
-SLOTS = sorted({s["slot"] for s in ALL})
+# Since 2026-11-19 the channel posts two complete one-part stories a day (story/specials, slots e1 and e2): the serials
+# are "retired" (kept in series.json and on disk, never continued). A story can fill more slots with "extra_slots":
+# {"e2": [1, "03:00"]} (its publishing time in that slot).
+LIVE = [s for s in ALL if not s.get("retired")]
+SLOTS = sorted({s["slot"] for s in LIVE} | {x for s in LIVE for x in s.get("extra_slots", {})})
+
+
+def owns(s, slot):
+    return s["slot"] == slot or slot in s.get("extra_slots", {})
+
+
+def publish_of(s, slot):
+    """[days later, "HH:MM"] for this story in this slot."""
+    return s["publish"] if s["slot"] == slot else s["extra_slots"][slot]
 LOG = os.path.join(ROOT, "logs", "uploaded.txt")
 TOKEN = os.path.join(ROOT, "secrets", "token.json")
 CHANNEL = "UCtjcmQc9DV_sKh4_3UrToIQ"  # Outbreak Diary; the uploader refuses a token for any other channel
@@ -41,8 +54,8 @@ def published_before(sid, date):
 def active(slot, date):
     """The story that owns a slot on `date`: the first one in series.json whose finale is not yet behind it. A re-run on
     the finale's own day still finds the finished story, so a failed upload is retried rather than skipped."""
-    for s in ALL:
-        if s["slot"] == slot and not (s.get("finale") and published_before(s["id"], date) >= s["finale"]):
+    for s in LIVE:
+        if owns(s, slot) and not (s.get("finale") and published_before(s["id"], date) >= s["finale"]):
             return s
     return None
 
@@ -87,7 +100,7 @@ def make(e, date, upload):
     if not upload:
         print(f"rendered {mp4} (not uploaded)")
         return
-    days, at = series["publish"]
+    days, at = publish_of(series, e)
     publish = dt.datetime.combine(dt.date.fromisoformat(date) + dt.timedelta(days=days), dt.time.fromisoformat(at), TZ)
     args = [py, UPLOADER, "--video", mp4, "--meta", f"build/{vid}/meta.json", "--log", LOG, "--general-audience",
             "--client", "secrets/client_secret.json", "--token", TOKEN, "--expect-channel", CHANNEL]

@@ -46,9 +46,11 @@ Nobody can answer questions during the run; decide yourself.
    - **Learning** (always): weave a learning thread through the plot: count things together, name colors or shapes,
      opposites, days of the week, weather, seasons, sounds of animals... Characters ask the viewer ("Can you count
      them with me?") and answer.
-   - **Length and places:** 180-300 seconds, 6-10 shots, in at least 2 different places. Use the backgrounds widely:
-     beach, garden, playground, bedroom and underwater as well as the old ones. Do not open in the place the previous
-     story opened in.
+   - **Length and places:** about **5 minutes**: 240-330 seconds by the checker's estimate (calibrated on our real
+     videos), **10-14 shots**, in at least 3 different places. A five-minute story needs a real middle, not a longer
+     ending: the problem, a first try that fails, a second idea, a friend who helps, the solution, a happy ending, with
+     the learning thread running through it. Use the backgrounds widely: beach, garden, playground, bedroom and
+     underwater as well as the old ones. Do not open in the place the previous story opened in.
    - **Theme:** set `"theme"` to what the story is about, one of: sharing, kindness, friendship, helping, honesty,
      patience, trying, bravery, manners, feelings, safety, nature, weather, seasons, food, colors, counting, shapes,
      sounds, family, bedtime, play, animals, health, tidying, music. Pick one the plan shows rarely; the checker
@@ -57,7 +59,7 @@ Nobody can answer questions during the run; decide yourself.
 6. Check it with `python3 scripts/storycheck.py stories/new/<file>.json`. It also refuses a title used before or a
    story too close to an earlier one.
    - It must print `ok`; fix any `story error` it reports.
-   - The estimate should be 180–300 seconds.
+   - The estimate must be 240-330 seconds (about 5 minutes); the checker refuses a shorter or longer story.
    - It also refuses a story that stays in one place, or opens where the previous story opened.
    - Re-read your positions against the stage geometry below: characters at least ~280 px apart, land animals out of
      the pond, and speakers on screen.
@@ -91,10 +93,11 @@ own fits there too.
   - Character lines are at most 12 words.
   - A `bubble` is at most 4 words; it is the gist of the line.
 - Gentle conflict, kind resolution, a happy ending. Nothing scary, no injuries, no meanness without a sorry.
-- 2–4 characters, 3–6 shots. Start each story with a narrated scene-setter and end with "The end!".
+- 2–4 characters, 10–14 shots. Start each story with a narrated scene-setter and end with "The end!".
 - **Title and thumbnail.** Most of our views come from the suggested videos next to other kids videos, where the
   thumbnail and title decide the click. The thumbnail shows the title in big letters, the first two characters of
-  `cast` (the first one big) and the story's kind as a badge. So: a title of 2–5 words (at most 26 characters) that
+  `cast` (the first one big), the story's kind as a badge, the place where the middle of the story happens and the
+  first prop of the story; its layout changes every day (four layouts), so use a clear, colourful prop early. So: a title of 2–5 words (at most 26 characters) that
   names the hero and the fun ("Pig's Shape Hunt", "Bunny's Big Jump"), and put the hero first in `cast`.
 - **The first seconds.** The video opens with one short line and the title, then the story starts at once. Make the
   first shot lively: the hero doing something or a surprise, not a long description.

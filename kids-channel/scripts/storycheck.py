@@ -160,8 +160,17 @@ def check_variety(path, spec):
             raise StoryError(f"the previous story also opened in '{bgs[0]}'; open somewhere else")
 
 
+STORY_SECONDS = (240, 330)  # a daily video is about 5 minutes (the owner, 2026-11-19); with the opening and the goodbye
+CALIBRATION = 0.78  # the old estimate ran about 25% long: 212 s estimated were 160 s in the real video (2026-11-19)
+
+
 def estimate_seconds(spec):
-    """Rough length: speech at ~2.4 words/s plus pauses, walks and shot transitions."""
+    """Rough length in the real video: speech at ~2.4 words/s plus pauses, walks and shot transitions, calibrated on
+    the published stories."""
+    return raw_seconds(spec) * CALIBRATION
+
+
+def raw_seconds(spec):
     t = 0.0
     for shot in spec["shots"]:
         t += 1.1
@@ -221,9 +230,10 @@ def main():
     except StoryError as e:
         raise SystemExit(f"story error: {e}")
     t = estimate_seconds(spec)
+    if os.sep + "new" + os.sep in os.path.abspath(sys.argv[1]) and not STORY_SECONDS[0] <= t <= STORY_SECONDS[1]:
+        raise SystemExit(f"story error: about {t:.0f} s; a daily video is about 5 minutes, so write "
+                         f"{STORY_SECONDS[0]}-{STORY_SECONDS[1]} s (about 10-14 shots, see Writing rules)")
     print(f"ok: {spec['title']!r}, about {t:.0f} s, {len(spec['shots'])} shots")
-    if not 150 <= t <= 320:
-        print("warning: aim for 180-300 seconds (the daily video is one story)")
 
 
 if __name__ == "__main__":

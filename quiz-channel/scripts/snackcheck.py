@@ -20,6 +20,19 @@ from novelty import overlap  # noqa: E402
 # The formats take turns, one a day, so the same one comes back every 8 days and on a different weekday each time.
 ROTATION = ["why", "how", "mystery", "myth", "real", "whatif", "teaser", "origin"]
 FIRST_DAY = dt.date(2026, 11, 9)  # a "why" day
+# Since 2026-11-20 the channel does not post a Brain Snack every day: the days take turns between a five-question quiz
+# and a Brain Snack (the owner: "birden farklı formatı ayrı günlerde yayınla, sabit bir format yerine"; the old
+# "How many can you get?" quizzes were our best videos). trivia = a question pack from quizzes/new (the writer writes
+# them), flags = made by scripts/quiz.py itself. The Brain Snack formats keep their own turn on the Brain Snack days.
+PLAN_START = dt.date(2026, 11, 20)
+DAY_PLAN = ["trivia", "snack", "flags", "snack", "trivia", "snack", "flags"]
+ROTATION_BEFORE_PLAN = 11  # Brain Snack days from FIRST_DAY up to PLAN_START (the next one continues the turn)
+
+
+def kind_of_day(date):
+    """'snack', 'trivia' or 'flags': what the channel posts on this day."""
+    d = dt.date.fromisoformat(date)
+    return "snack" if d < PLAN_START else DAY_PLAN[(d - PLAN_START).days % len(DAY_PLAN)]
 FORMATS = set(ROTATION)
 # what a snack is about; the same topic at most twice among the waiting scripts and the last few used ones
 TOPICS = {
@@ -219,7 +232,24 @@ def date_of(path):
 
 
 def format_for(date):
-    return ROTATION[(dt.date.fromisoformat(date) - FIRST_DAY).days % len(ROTATION)]
+    """The Brain Snack format of a Brain Snack day (the turn goes on over Brain Snack days only)."""
+    d = dt.date.fromisoformat(date)
+    if d < PLAN_START:
+        return ROTATION[(d - FIRST_DAY).days % len(ROTATION)]
+    snack_days = sum(1 for k in range((d - PLAN_START).days) if DAY_PLAN[k % len(DAY_PLAN)] == "snack")
+    return ROTATION[(ROTATION_BEFORE_PLAN + snack_days) % len(ROTATION)]
+
+
+def waiting_packs():
+    """Trivia question packs waiting in quizzes/new, oldest first."""
+    out = []
+    for p in sorted(glob.glob(os.path.join(ROOT, "quizzes", "new", "*.json"))):
+        try:
+            if json.load(open(p)).get("type") == "trivia":
+                out.append(p)
+        except json.JSONDecodeError:
+            continue
+    return out
 
 
 def plan(start, days):
@@ -230,9 +260,18 @@ def plan(start, days):
             pool.setdefault(json.load(open(p))["format"], []).append(p)
         except (json.JSONDecodeError, KeyError):
             continue
+    packs = waiting_packs()
     out = []
     for i in range(days):
         date = (dt.date.fromisoformat(start) + dt.timedelta(days=i)).isoformat()
+        kind = kind_of_day(date)
+        if kind == "flags":
+            out.append((date, "flags", "made automatically"))
+            continue
+        if kind == "trivia":
+            done = glob.glob(os.path.join(ROOT, "quizzes", "used", date, "*.json"))
+            out.append((date, "trivia", done[0] if done else packs.pop(0) if packs else None))
+            continue
         fmt = format_for(date)
         done = glob.glob(os.path.join(ROOT, "snacks", "used", date, "*.json"))
         if done:
@@ -247,7 +286,8 @@ def main():
         days = int(sys.argv[2]) if len(sys.argv) > 2 else len(ROTATION)
         today = dt.datetime.now(dt.timezone(dt.timedelta(hours=3))).date().isoformat()  # Istanbul
         for date, fmt, path in plan(max(today, FIRST_DAY.isoformat()), days):
-            print(f"{date} {fmt:8} {os.path.relpath(path, ROOT) if path else 'MISSING: write one'}")
+            shown = path if path == "made automatically" else os.path.relpath(path, ROOT) if path else "MISSING: write one"
+            print(f"{date} {fmt:8} {shown}")
         topics = {}
         for p in waiting() + used()[-RECENT_USED:]:
             t = json.load(open(p)).get("topic")

@@ -380,6 +380,7 @@ def main():
     p.add_argument("--date", default=dt.date.today().isoformat())
     p.add_argument("--slot", type=int, choices=[1, 2], default=1)
     p.add_argument("--format", choices=FORMATS, help="override the daily rotation")
+    p.add_argument("--keep", action="store_true", help="leave the question pack in quizzes/new (a test render)")
     a = p.parse_args()
     day = dt.date.fromisoformat(a.date)
     name = f"{a.date}-q{a.slot}"
@@ -398,7 +399,7 @@ def main():
         json.dump(props, fh)
     with open(os.path.join(work, "meta.json"), "w") as fh:
         json.dump(meta, fh, indent=2, ensure_ascii=False)
-    if pack_path and os.path.dirname(pack_path) != os.path.join(QUIZ_DIR, "used", a.date):  # archive the pack
+    if pack_path and not a.keep and os.path.dirname(pack_path) != os.path.join(QUIZ_DIR, "used", a.date):  # archive it
         used = os.path.join(QUIZ_DIR, "used", a.date)
         os.makedirs(used, exist_ok=True)
         os.rename(pack_path, os.path.join(used, f"q{a.slot}-{os.path.basename(pack_path)}"))
