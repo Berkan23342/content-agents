@@ -17,3 +17,4 @@ quiz-channel/public/flags/
 **/.venv-cb/
 **/public/film/
 stats/__pycache__/
+stream-clips/

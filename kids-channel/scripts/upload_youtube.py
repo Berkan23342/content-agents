@@ -64,7 +64,8 @@ def credentials(client=CLIENT, token=TOKEN, scopes=SCOPES) -> Credentials:
     return creds
 
 
-def upload(video, title, description, tags, thumbnail=None, privacy="private", publish_at=None, creds=None, for_kids=True):
+def upload(video, title, description, tags, thumbnail=None, privacy="private", publish_at=None, creds=None, for_kids=True,
+           category=EDUCATION, language="en"):
     youtube = build("youtube", "v3", credentials=creds or credentials())
     status = {"privacyStatus": privacy, "selfDeclaredMadeForKids": for_kids}
     if publish_at:  # scheduled publishing only works on private videos
@@ -74,9 +75,9 @@ def upload(video, title, description, tags, thumbnail=None, privacy="private", p
             "title": title[:100],
             "description": description[:5000],
             "tags": tags,
-            "categoryId": EDUCATION,
-            "defaultLanguage": "en",
-            "defaultAudioLanguage": "en",
+            "categoryId": category,
+            "defaultLanguage": language,
+            "defaultAudioLanguage": language,
         },
         "status": status,
     }
@@ -180,7 +181,8 @@ def main():
         if missing:
             print(f"not granted: {', '.join(missing)} (the box was unticked on Google's page)")
         return
-    if a.meta:
+    meta = {}
+    if a.meta:  # a meta file may also set "category" (YouTube category id) and "language" (e.g. "tr")
         meta = json.load(open(a.meta))
         title, description, tags = meta["title"], meta["description"], meta["tags"]
     else:
@@ -196,7 +198,8 @@ def main():
         mine = build("youtube", "v3", credentials=creds).channels().list(part="id", mine=True).execute()["items"][0]["id"]
         if mine != a.expect_channel:
             raise SystemExit(f"the token belongs to channel {mine}, not {a.expect_channel}: not uploading")
-    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at, creds, not a.general_audience)
+    video_id = upload(a.video, title, description, tags, a.thumbnail, a.privacy, a.publish_at, creds, not a.general_audience,
+                      meta.get("category", EDUCATION), meta.get("language", "en"))
     if a.log:
         with open(a.log, "a") as fh:
             fh.write(f"{os.path.basename(a.video)} https://youtu.be/{video_id}\n")
