@@ -1,0 +1,13 @@
+{
+  "format": "how",
+  "title": "What Do You Think Keeps Your Flask Coffee Hot?",
+  "summary": "A thermos has two walls with almost no air between them, so heat has very little to travel through. The same trick also keeps cold drinks cold.",
+  "topic": "home",
+  "beats": [
+    {"text": "How does a flask keep your coffee hot for hours? Is it thick foam, a vacuum, or a heater? Pause and guess!", "hl": ["hot", "vacuum"], "visual": {"kind": "hook", "emoji": "☕", "text": "How does a flask stay hot?"}},
+    {"text": "Heat always escapes from hot things to cold things. It moves through touching materials, and through air.", "hl": ["escapes"], "visual": {"kind": "emoji", "emoji": "🔥", "label": "Heat wants out", "motion": "shake"}},
+    {"text": "Time's up. What is between the walls?", "reveal": "A vacuum! Two walls with almost no air between them, so heat has little to travel through.", "visual": {"kind": "choice", "question": "What sits between the two walls?", "options": [{"emoji": "🧽", "label": "Foam"}, {"emoji": "🕳️", "label": "Vacuum"}, {"emoji": "🔌", "label": "Heater"}], "answer": 1}},
+    {"text": "Three tricks work together, and the last one is the lid.", "hl": ["lid"], "visual": {"kind": "steps", "items": [{"emoji": "🕳️", "label": "Almost no air"}, {"emoji": "🪞", "label": "Shiny walls"}, {"emoji": "🔒", "label": "Tight lid"}]}},
+    {"text": "Bonus fact: the same trick keeps cold drinks cold, because it slows heat coming in.", "hl": ["cold"], "visual": {"kind": "fact", "emoji": "🧊", "text": "A flask does not make heat or cold. It just slows heat moving in or out."}}
+  ]
+}
