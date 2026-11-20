@@ -1,0 +1,125 @@
+{
+  "episode": 7,
+  "title": "Note to Myself",
+  "summary": "A woman finds a phone on a rooftop with a video she does not remember making.",
+  "event": "discovery",
+  "ambience": "wind",
+  "kind": "found",
+  "narrator": "nicole",
+  "inspired_by": "https://youtu.be/J0OQXSo1chk (premise only: a rule you must follow through the night)",
+  "beats": [
+    {
+      "scene": "rooftop",
+      "text": "I found a phone on the roof. The last video was me.",
+      "hl": [
+        "last video"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "rooftop",
+      "text": "I do not remember filming it.",
+      "hl": [
+        "do not remember"
+      ],
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "I said: if you are watching, you have forgotten again.",
+      "hl": [
+        "forgotten again"
+      ],
+      "screen": "message",
+      "lines": [
+        "Video, 02:14",
+        "You have forgotten again."
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "The sickness steals one day each night. I keep notes.",
+      "hl": [
+        "one day"
+      ],
+      "screen": "message",
+      "lines": [
+        "Rule one",
+        "Memory goes every night."
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "text": "Rule one: the cans in the kitchen are safe.",
+      "hl": [
+        "safe"
+      ],
+      "cans": 4
+    },
+    {
+      "scene": "hallway",
+      "text": "Rule two: never go down to the lobby.",
+      "hl": [
+        "never go down"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "rooftop",
+      "text": "On my left arm: forty tally marks, in marker.",
+      "hl": [
+        "forty tally marks"
+      ],
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "Rule three: do not trust the door at the end.",
+      "hl": [
+        "do not trust"
+      ],
+      "screen": "message",
+      "lines": [
+        "Rule three",
+        "Do not trust the door."
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "The roof door was locked from outside. The key hung beside it.",
+      "hl": [
+        "locked from outside"
+      ],
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "I whispered: I locked you up here to keep you safe. Please stay.",
+      "hl": [
+        "Please stay"
+      ],
+      "screen": "message",
+      "lines": [
+        "Last line",
+        "Please stay."
+      ],
+      "hold": 1.0
+    },
+    {
+      "scene": "rooftop",
+      "text": "Below, the lobby door opened. Someone climbed, calling my name.",
+      "hl": [
+        "calling my name"
+      ],
+      "sfx": [
+        "steps"
+      ]
+    }
+  ]
+}

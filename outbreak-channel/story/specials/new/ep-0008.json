@@ -1,0 +1,104 @@
+{
+  "episode": 8,
+  "title": "The Crossing Guard",
+  "summary": "A crossing guard leads the infected away from a school with nothing but a whistle.",
+  "event": "rescue",
+  "ambience": "rain",
+  "kind": "story",
+  "narrator": "ruth",
+  "inspired_by": "https://youtu.be/z29UmjLHsFI (premise only: a clever safe haven built for a zombie world)",
+  "beats": [
+    {
+      "scene": "school",
+      "text": "The infected follow sound. I am a crossing guard with a loud whistle.",
+      "hl": [
+        "loud whistle"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "school",
+      "text": "Thirty children hid in the gym. The street was full of them.",
+      "hl": [
+        "Thirty children"
+      ],
+      "zombies": 5
+    },
+    {
+      "scene": "street",
+      "text": "I stood in the road, blew the whistle, and ran. They followed me.",
+      "hl": [
+        "followed me"
+      ],
+      "zombies": 8,
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "street",
+      "text": "I led them around the block, lost them, and ran back to do it again.",
+      "hl": [
+        "do it again"
+      ],
+      "zombies": 6
+    },
+    {
+      "scene": "gas_station",
+      "text": "By midnight my lungs burned, and the whistle cracked.",
+      "hl": [
+        "cracked"
+      ],
+      "light": "flicker",
+      "zombies": 3
+    },
+    {
+      "scene": "street",
+      "text": "I dropped it in a gutter. The crowd turned back toward the school.",
+      "hl": [
+        "turned back"
+      ],
+      "zombies": 10,
+      "sfx": [
+        "glass"
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "Then a whistle blew inside the school. Thin and cracked. Not mine.",
+      "hl": [
+        "Not mine"
+      ],
+      "light": "off",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "A small boy stood at the doors with my spare whistle. He grinned and ran.",
+      "hl": [
+        "spare whistle"
+      ],
+      "zombies": 4
+    },
+    {
+      "scene": "street",
+      "text": "He led the whole crowd over the field in a long wobbling line.",
+      "hl": [
+        "wobbling line"
+      ],
+      "zombies": 12
+    },
+    {
+      "scene": "school",
+      "text": "At dawn he came back, soaked and proud, and asked to be a guard too.",
+      "hl": [
+        "a guard"
+      ],
+      "light": "on",
+      "hold": 1.0
+    }
+  ]
+}
