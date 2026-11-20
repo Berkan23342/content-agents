@@ -1,0 +1,864 @@
+{
+ "title": "Frog's Rainbow Quest",
+ "lesson": "Trying again and working together",
+ "kind": "adventure",
+ "theme": "colors",
+ "summary": "Frog, Duck and Owl search the garden, playground, beach, sea and forest for five lost rainbow colors and bring them back together.",
+ "cast": [
+  "frog",
+  "duck",
+  "owl"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "rain",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 650
+    }
+   ],
+   "props": [
+    {
+     "id": "rb",
+     "icon": "rainbow",
+     "color": "#BBBBBB",
+     "x": 1300,
+     "y": 330,
+     "size": 420
+    }
+   ],
+   "steps": [
+    {
+     "say": "Splash, splash! Little Frog hopped in the puddles after the rain."
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Look, a rainbow! But it is all gray.",
+     "bubble": "Gray rainbow?",
+     "act": "shake"
+    },
+    {
+     "enter": "owl",
+     "x": 1250,
+     "side": "right",
+     "speed": 700,
+     "fly": true,
+     "y": 420
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! Its five colors ran away to hide.",
+     "bubble": "Colors ran away!",
+     "act": "wave"
+    },
+    {
+     "line": "frog",
+     "text": "Oh no! Let us find them and bring them back.",
+     "bubble": "Let's find them!",
+     "act": "jump"
+    },
+    {
+     "say": "Owl knew the five hiding colors: red, yellow, blue, green and purple."
+    },
+    {
+     "line": "owl",
+     "text": "I will fly with you. Hop, hop, hop!",
+     "bubble": "Hop, hop, hop!"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "owl",
+     "x": 1500,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "They walked over the green hills, and who came running by?"
+    },
+    {
+     "enter": "duck",
+     "x": 1000,
+     "side": "left",
+     "speed": 650
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Where are you going, friends?",
+     "bubble": "Where to?",
+     "act": "wave"
+    },
+    {
+     "line": "frog",
+     "text": "We are finding five lost rainbow colors!",
+     "bubble": "Five colors!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack! May I come too?",
+     "bubble": "May I come?",
+     "act": "jump"
+    },
+    {
+     "line": "owl",
+     "text": "Yes! Three friends are better than two.",
+     "bubble": "Come with us!"
+    },
+    {
+     "say": "One frog, two... Can you count the friends with me? One, two, three!"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "frog",
+     "text": "Let us look in the garden first.",
+     "bubble": "To the garden!",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 900
+    },
+    {
+     "name": "owl",
+     "x": 1400,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "straw",
+     "icon": "strawberry",
+     "color": "#FF3B3B",
+     "x": 1300,
+     "y": 830,
+     "size": 160
+    }
+   ],
+   "steps": [
+    {
+     "say": "In the garden, something small and bright peeked out of the leaves."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! A red strawberry. Red is the first color!",
+     "bubble": "Red! One!",
+     "act": "spin"
+    },
+    {
+     "prop_move": "straw",
+     "x": 900,
+     "y": 420,
+     "dur": 1.0
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Red, red, red! The strawberry flew up to the rainbow, but it was too far."
+    },
+    {
+     "line": "owl",
+     "text": "Let us carry the colors in a basket of leaves.",
+     "bubble": "A basket!"
+    },
+    {
+     "prop": "leaf",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 1500,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "line": "frog",
+     "text": "Look! A green leaf. Green is the second color!",
+     "bubble": "Green! Two!",
+     "act": "jump"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Whoosh! The wind blew the leaf away. Oh no!"
+    },
+    {
+     "prop_move": "leaf",
+     "x": 1900,
+     "y": 300,
+     "dur": 1.2
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "duck",
+     "text": "Do not worry. We can try again.",
+     "bubble": "Try again!",
+     "act": "shake"
+    },
+    {
+     "hide": "leaf"
+    },
+    {
+     "prop": "leaf2",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 1400,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "line": "frog",
+     "text": "Got it! Hold it tight this time.",
+     "bubble": "Hold it tight!",
+     "act": "jump"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 700
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "owl",
+     "x": 1400,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "sun",
+     "icon": "sun",
+     "color": "#FFC92E",
+     "x": 800,
+     "y": 300,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next they came to the playground, with a slide and swings."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! The sun is shining yellow up there.",
+     "bubble": "Yellow sun!",
+     "act": "wave"
+    },
+    {
+     "line": "frog",
+     "text": "Yellow is the third color! Can you say yellow?",
+     "bubble": "Yellow! Three!",
+     "act": "jump"
+    },
+    {
+     "say": "Say it with us: yellow, yellow, yellow!"
+    },
+    {
+     "prop_move": "sun",
+     "x": 1100,
+     "y": 420,
+     "dur": 1.2
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "owl",
+     "text": "Three colors found. Red, green and yellow.",
+     "bubble": "Three found!",
+     "act": "spin"
+    },
+    {
+     "say": "Frog counted them on his fingers: one, two, three. Two more to go!"
+    },
+    {
+     "line": "frog",
+     "text": "Let us go to the sea. Hop, hop, hop!",
+     "bubble": "To the sea!",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 900
+    },
+    {
+     "name": "owl",
+     "x": 1300,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The friends walked along the path, singing a little song."
+    },
+    {
+     "line": "duck",
+     "text": "Red, green, yellow, hop, hop, hop!",
+     "bubble": "Hop, hop, hop!",
+     "act": "jump"
+    },
+    {
+     "line": "frog",
+     "text": "Red, green, yellow, hop, hop, hop! Sing with us!",
+     "bubble": "Sing with us!",
+     "act": "jump"
+    },
+    {
+     "say": "Little Frog hopped, little Duck waddled, and Owl flew over them."
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! Tell me, what color is the grass?",
+     "bubble": "Grass is...?"
+    },
+    {
+     "line": "duck",
+     "text": "Green! Green like the leaf in our basket.",
+     "bubble": "Green!",
+     "act": "wave"
+    },
+    {
+     "line": "owl",
+     "text": "And what color is the sky? Can you tell me?",
+     "bubble": "Sky is...?"
+    },
+    {
+     "line": "frog",
+     "text": "Blue! We will find blue next.",
+     "bubble": "Blue!",
+     "act": "spin"
+    },
+    {
+     "say": "They could hear the sea. Swish, swish, swish. It was near!"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 950
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "At the beach, the waves went swish, swish, swish."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! I see the blue sea. Blue is the fourth color!",
+     "bubble": "Blue! Four!",
+     "act": "spin"
+    },
+    {
+     "line": "frog",
+     "text": "But how do we carry the sea? It is so big!",
+     "bubble": "Too big!",
+     "act": "shake"
+    },
+    {
+     "say": "Duck thought and thought. Then she smiled."
+    },
+    {
+     "line": "duck",
+     "text": "Let us ask a little fish to help.",
+     "bubble": "Ask a fish!",
+     "act": "jump"
+    },
+    {
+     "prop": "shell",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 1500,
+     "y": 850,
+     "size": 120
+    },
+    {
+     "line": "frog",
+     "text": "Look, an orange starfish is waving to us.",
+     "bubble": "Orange starfish!",
+     "act": "wave"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "duck",
+     "text": "Oh! Let us go under the water.",
+     "bubble": "Under we go!",
+     "act": "jump"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "fish",
+     "icon": "fish",
+     "color": "#2F8CFF",
+     "x": 1500,
+     "y": 500,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "Under the water, bubbles floated up, up, up."
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! A big blue fish!",
+     "bubble": "Blue fish!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Hello, fish. Can you lend us your blue?",
+     "bubble": "Lend us blue?",
+     "act": "wave"
+    },
+    {
+     "say": "The fish smiled. Blub, blub! It gave them a bit of its blue."
+    },
+    {
+     "prop_move": "fish",
+     "x": 1000,
+     "y": 420,
+     "dur": 1.2
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "line": "frog",
+     "text": "Thank you, kind fish! Four colors found.",
+     "bubble": "Thank you!",
+     "act": "spin"
+    },
+    {
+     "say": "Red, green, yellow and blue. Can you count them? One, two, three, four!"
+    },
+    {
+     "line": "duck",
+     "text": "One more! Purple. Where is purple?",
+     "bubble": "Where is purple?",
+     "act": "shake"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 1300
+    },
+    {
+     "name": "duck",
+     "x": 700
+    },
+    {
+     "name": "owl",
+     "x": 400,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The friends stopped at the pond to rest their tired feet."
+    },
+    {
+     "line": "duck",
+     "text": "Quack. Let us count our colors so far.",
+     "bubble": "Count with me!",
+     "act": "wave"
+    },
+    {
+     "say": "Red, one. Green, two. Yellow, three. Blue, four. Four colors!"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Just one left. Purple.",
+     "bubble": "One left!",
+     "act": "jump"
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! Purple grows on a vine, up in the forest.",
+     "bubble": "Purple is high!"
+    },
+    {
+     "line": "duck",
+     "text": "Then off we go, to the forest!",
+     "bubble": "To the forest!",
+     "act": "spin"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 900
+    },
+    {
+     "name": "owl",
+     "x": 1300,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "grapes",
+     "icon": "grapes",
+     "color": "#9B5CFF",
+     "x": 1450,
+     "y": 350,
+     "size": 170
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back on dry land, they went into the tall, quiet forest."
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! Look high up in the tree.",
+     "bubble": "Look up high!",
+     "act": "wave"
+    },
+    {
+     "line": "frog",
+     "text": "Purple grapes! Purple is the fifth color!",
+     "bubble": "Purple! Five!",
+     "act": "jump"
+    },
+    {
+     "say": "But the grapes were up high, and Frog was down low."
+    },
+    {
+     "line": "frog",
+     "text": "They are too high for me. I am too low.",
+     "bubble": "High, low...",
+     "act": "shake"
+    },
+    {
+     "line": "duck",
+     "text": "Frog, you can jump up high! Try, try, try.",
+     "bubble": "You can jump!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "prop_move": "grapes",
+     "x": 900,
+     "y": 400,
+     "dur": 1.0
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "line": "frog",
+     "text": "Boing! I did it! Five colors, five!",
+     "bubble": "I did it!",
+     "act": "spin"
+    },
+    {
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 500
+    },
+    {
+     "name": "duck",
+     "x": 900
+    },
+    {
+     "name": "owl",
+     "x": 1300,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "rb2",
+     "icon": "rainbow",
+     "color": "#BBBBBB",
+     "x": 1250,
+     "y": 330,
+     "size": 430
+    }
+   ],
+   "steps": [
+    {
+     "say": "The three friends went back to the gray rainbow. It was very still."
+    },
+    {
+     "line": "owl",
+     "text": "Now, give each color back, one by one.",
+     "bubble": "One by one!"
+    },
+    {
+     "line": "frog",
+     "text": "Red goes first. Red like a strawberry!",
+     "bubble": "Red!",
+     "act": "jump"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "duck",
+     "text": "Yellow like the sun! Quack!",
+     "bubble": "Yellow!",
+     "act": "jump"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "frog",
+     "text": "Green like a leaf, and blue like the fish.",
+     "bubble": "Green and blue!",
+     "act": "wave"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "owl",
+     "text": "And purple like the sweet grapes. Whoo!",
+     "bubble": "Purple!",
+     "act": "wave"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Sparkle! The rainbow glowed in five happy colors."
+    },
+    {
+     "hide": "rb2"
+    },
+    {
+     "prop": "rb3",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1250,
+     "y": 330,
+     "size": 480
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "frog",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "owl",
+     "x": 1400,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "rb4",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 960,
+     "y": 330,
+     "size": 520
+    }
+   ],
+   "steps": [
+    {
+     "say": "The rainbow shone over the hills, red, yellow, green, blue and purple."
+    },
+    {
+     "line": "duck",
+     "text": "Quack! How lovely. We did it together.",
+     "bubble": "We did it!",
+     "act": "spin"
+    },
+    {
+     "line": "frog",
+     "text": "Friends make hard things easy. And I tried again.",
+     "bubble": "Try again!",
+     "act": "jump"
+    },
+    {
+     "line": "owl",
+     "text": "Five colors, three friends, and one big rainbow.",
+     "bubble": "Five colors!",
+     "act": "wave"
+    },
+    {
+     "say": "Can you name the rainbow colors with us? Red, yellow, green, blue, purple!"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "say": "And they all splashed home, happy. The end!"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  }
+ ]
+}
