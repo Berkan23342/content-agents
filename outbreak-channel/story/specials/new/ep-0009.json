@@ -1,0 +1,112 @@
+{
+  "episode": 9,
+  "title": "The Bunker Under My Garden",
+  "summary": "A woman built a small bunker while the street laughed. Tonight the street is at her hatch, and it only holds six.",
+  "event": "shelter",
+  "ambience": "night",
+  "kind": "journal",
+  "narrator": "heart",
+  "inspired_by": "https://youtu.be/eEv2AtJh0nM (premise only: the neighbours who laughed at the bunker now want in)",
+  "beats": [
+    {
+      "scene": "door",
+      "text": "They laughed at my garden bunker. Tonight eleven neighbours are knocking on its hatch.",
+      "hl": [
+        "eleven neighbours"
+      ],
+      "banging": true,
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "text": "It holds six. Food for six, air for six, and a hatch that locks from inside.",
+      "hl": [
+        "six"
+      ],
+      "items": [
+        "can:6",
+        "water:6",
+        "flashlight",
+        "radio",
+        "medkit"
+      ]
+    },
+    {
+      "scene": "peephole",
+      "text": "Mr. Pell knocked first. He laughed the loudest. He was not laughing now.",
+      "hl": [
+        "not laughing"
+      ],
+      "who": "empty"
+    },
+    {
+      "scene": "door",
+      "text": "My rule, on the wall: let in what the air allows. Not one more.",
+      "hl": [
+        "Not one more"
+      ],
+      "hold": 0.6
+    },
+    {
+      "scene": "stairwell",
+      "text": "I took the children first. Then their mothers. Then an old man and his dog.",
+      "hl": [
+        "children first"
+      ],
+      "zombies": true
+    },
+    {
+      "scene": "kitchen",
+      "text": "Six places filled. Above us Pell asked softly, please.",
+      "hl": [
+        "please"
+      ],
+      "cans": 6
+    },
+    {
+      "scene": "door",
+      "text": "I slid the lock across and sat against it. I did not answer.",
+      "hl": [
+        "did not answer"
+      ],
+      "sfx": [
+        "click"
+      ],
+      "shadow": true
+    },
+    {
+      "scene": "door",
+      "text": "By midnight the knocking stopped. The children slept. I called it kindness.",
+      "hl": [
+        "stopped"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "supplies",
+      "text": "At two I counted us again. Six. Good. Six.",
+      "hl": [
+        "Six"
+      ],
+      "items": [
+        "can:5",
+        "water:5",
+        "flashlight"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "Then three slow knocks came from below the floor, where I never built a door.",
+      "hl": [
+        "below the floor"
+      ],
+      "zombies": true,
+      "sfx": [
+        "knock@0.5"
+      ],
+      "hold": 1.0
+    }
+  ]
+}

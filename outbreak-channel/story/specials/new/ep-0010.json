@@ -1,0 +1,103 @@
+{
+  "episode": 10,
+  "title": "Fog Until Five",
+  "summary": "A weather presenter reads the forecast on a night when fog is the only thing hiding the city. Then a slip arrives in her own handwriting.",
+  "event": "weather",
+  "ambience": "wind",
+  "kind": "broadcast",
+  "narrator": "isabella",
+  "beats": [
+    {
+      "scene": "radio",
+      "text": "This is the Port Ellis weather. Tonight: heavy fog. Every light must be off.",
+      "hl": [
+        "off"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "street",
+      "text": "Fog is good news. The infected hunt by sight, and tonight they cannot see.",
+      "hl": [
+        "cannot see"
+      ],
+      "zombies": true,
+      "fog": true
+    },
+    {
+      "scene": "radio",
+      "text": "Stay quiet. The fog holds until five, and I will tell you when it lifts.",
+      "hl": [
+        "until five"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "office",
+      "text": "My producer slides a slip under the studio door each hour. I read it out.",
+      "hl": [
+        "slip"
+      ],
+      "light": "off"
+    },
+    {
+      "scene": "door",
+      "text": "At three the handwriting is mine, and it is dated tomorrow.",
+      "hl": [
+        "dated tomorrow"
+      ],
+      "sfx": [
+        "click"
+      ],
+      "hold": 0.8
+    },
+    {
+      "scene": "office",
+      "text": "It says: the fog will not lift at five. Do not open the door.",
+      "hl": [
+        "will not lift"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "radio",
+      "text": "Listeners, ignore that. The fog clears at five. I promise.",
+      "hl": [
+        "I promise"
+      ],
+      "mode": "static",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "My producer went home hours ago. I locked the studio myself.",
+      "hl": [
+        "myself"
+      ],
+      "shadow": true
+    },
+    {
+      "scene": "peephole",
+      "text": "It is five. Someone knocks, kindly, in my producer's rhythm.",
+      "hl": [
+        "rhythm"
+      ],
+      "who": "empty",
+      "sfx": [
+        "knock"
+      ],
+      "hold": 1.0
+    },
+    {
+      "scene": "street",
+      "text": "The new slip says: fog until six. Whoever wrote it knew what I would do.",
+      "hl": [
+        "knew"
+      ],
+      "zombies": true,
+      "fog": true
+    }
+  ]
+}
