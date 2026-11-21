@@ -1,0 +1,781 @@
+{
+ "title": "Pig's Music Parade",
+ "lesson": "Making room for everyone, loud or soft",
+ "kind": "kindness",
+ "theme": "music",
+ "summary": "Pig is told her xylophone is too quiet for the band parade; Duck and Sheep say sorry and find a place for every sound.",
+ "cast": [
+  "pig",
+  "duck",
+  "sheep"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "xylo",
+     "icon": "xylophone",
+     "color": "#FF6FB5",
+     "x": 1100,
+     "y": 830,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "One sunny morning, Pig skipped to the playground with a shiny xylophone."
+    },
+    {
+     "line": "pig",
+     "text": "Plink, plonk! I will play in the music parade!",
+     "bubble": "Music parade!",
+     "act": "jump"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "enter": "duck",
+     "x": 450,
+     "side": "left"
+    },
+    {
+     "say": "Duck came waddling by with a big round drum."
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! We are making a band. Come and see!",
+     "bubble": "Make a band!",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Yes please! Where do we start?",
+     "bubble": "Where?",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 500
+    },
+    {
+     "name": "pig",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "drum",
+     "icon": "ball",
+     "color": "#2F8CFF",
+     "x": 300,
+     "y": 830,
+     "size": 170
+    }
+   ],
+   "steps": [
+    {
+     "say": "In the park, Sheep was waiting with a little silver bell."
+    },
+    {
+     "enter": "sheep",
+     "x": 1400,
+     "side": "right"
+    },
+    {
+     "arrive": "sheep"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa! I have one bell. Duck has one drum.",
+     "bubble": "One bell!",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Can you count the band with me?",
+     "bubble": "Count with me!"
+    },
+    {
+     "say": "One bell. One drum. That is two. Now Pig is three!"
+    },
+    {
+     "line": "pig",
+     "text": "One, two, three! Three friends in a band!",
+     "bubble": "One, two, three!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "drum",
+     "x": 560,
+     "y": 830,
+     "dur": 0.8
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 450
+    },
+    {
+     "name": "sheep",
+     "x": 850
+    },
+    {
+     "name": "pig",
+     "x": 1350
+    }
+   ],
+   "props": [
+    {
+     "id": "flower",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 1700,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "The band marched into the garden to practise. Tap, tap, tap!"
+    },
+    {
+     "line": "duck",
+     "text": "Boom, boom! My drum is loud.",
+     "bubble": "Loud drum!",
+     "act": "jump"
+    },
+    {
+     "line": "sheep",
+     "text": "Ting, ting. My bell is soft.",
+     "bubble": "Soft bell.",
+     "act": "wave"
+    },
+    {
+     "say": "Loud and soft. Those are opposites. Say it with me: loud, soft!"
+    },
+    {
+     "line": "pig",
+     "text": "My xylophone goes plink! Is it loud or soft?",
+     "bubble": "Loud or soft?"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "duck",
+     "text": "It is nice, but it is too quiet for a parade.",
+     "bubble": "Too quiet.",
+     "act": "shake"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "farm",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "hay",
+     "icon": "pumpkin",
+     "color": "#FF8A1F",
+     "x": 1650,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Pig wanted to be louder. She hurried to the farm to try again."
+    },
+    {
+     "line": "pig",
+     "text": "I will bang harder. Plink, PLONK, PLINK!",
+     "bubble": "Bang harder!",
+     "act": "jump"
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "say": "Oh dear. The xylophone bar went crack, and the sound was not nice."
+    },
+    {
+     "line": "pig",
+     "text": "Oops. That did not sound like me.",
+     "bubble": "Not like me.",
+     "act": "shake"
+    },
+    {
+     "enter": "duck",
+     "x": 1350,
+     "side": "right"
+    },
+    {
+     "arrive": "duck"
+    },
+    {
+     "line": "duck",
+     "text": "Try again, Pig! Is a big bang the same as a nice song?",
+     "bubble": "Try again!"
+    },
+    {
+     "line": "pig",
+     "text": "No. Big and small are not the same as good.",
+     "bubble": "Big, small...",
+     "act": "shake"
+    },
+    {
+     "say": "Big and small are opposites. A small sound can still be a good one."
+    },
+    {
+     "line": "duck",
+     "text": "Let us go back. Maybe Sheep has an idea.",
+     "bubble": "Go back!",
+     "act": "wave"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 450
+    },
+    {
+     "name": "sheep",
+     "x": 850
+    },
+    {
+     "name": "pig",
+     "x": 1350
+    }
+   ],
+   "props": [
+    {
+     "id": "flower",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 1700,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "The parade needed to be loud. Pig looked down at her xylophone."
+    },
+    {
+     "line": "pig",
+     "text": "Oh. Maybe I am not a good band friend.",
+     "bubble": "I am too quiet.",
+     "act": "shake"
+    },
+    {
+     "act": "all",
+     "kind": "shake"
+    },
+    {
+     "line": "sheep",
+     "text": "Oh no. Pig feels sad.",
+     "bubble": "Pig feels sad.",
+     "act": "shake"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Pig tucked her xylophone under her arm and walked away. Slowly, slowly."
+    },
+    {
+     "leave": "pig",
+     "side": "right"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "shell",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 500,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "bucket",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 250,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Pig sat alone on the beach. The waves went shh, shh, shh."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "pig",
+     "text": "Plink. Plink. Nobody can hear me here.",
+     "bubble": "Nobody hears.",
+     "act": "shake"
+    },
+    {
+     "say": "Pig counted the waves. One. Two. Three. Four. Can you count them too?"
+    },
+    {
+     "line": "pig",
+     "text": "Four waves, soft and slow. Shh, shh.",
+     "bubble": "Soft waves.",
+     "act": "wave"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "shell",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 500,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Meanwhile, Duck and Sheep were practising in the park."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "Boom, boom, boom! Ting, ting, ting! But something was missing."
+    },
+    {
+     "enter": "duck",
+     "x": 600,
+     "side": "left"
+    },
+    {
+     "enter": "sheep",
+     "x": 900,
+     "side": "left"
+    },
+    {
+     "arrive": "sheep"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! We are loud, but the song feels empty.",
+     "bubble": "Song feels empty.",
+     "act": "shake"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. We said Pig was too quiet. That was not kind.",
+     "bubble": "Not kind.",
+     "act": "shake"
+    },
+    {
+     "line": "duck",
+     "text": "Let us find Pig and say sorry.",
+     "bubble": "Say sorry!",
+     "act": "jump"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 1400
+    },
+    {
+     "name": "duck",
+     "x": 650
+    },
+    {
+     "name": "sheep",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "shell",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 300,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Duck and Sheep found Pig by the sea."
+    },
+    {
+     "line": "duck",
+     "text": "Pig, we are sorry. We missed you.",
+     "bubble": "We are sorry.",
+     "act": "wave"
+    },
+    {
+     "line": "sheep",
+     "text": "Your plink is the best part of our song.",
+     "bubble": "Best part!",
+     "act": "spin"
+    },
+    {
+     "line": "pig",
+     "text": "Really? I thought I was too quiet.",
+     "bubble": "Really?"
+    },
+    {
+     "line": "duck",
+     "text": "Quiet is nice. We need loud and soft together.",
+     "bubble": "Loud and soft!",
+     "act": "jump"
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500
+    },
+    {
+     "name": "sheep",
+     "x": 1000
+    },
+    {
+     "name": "duck",
+     "x": 1500
+    }
+   ],
+   "props": [
+    {
+     "id": "jelly",
+     "icon": "jellyfish",
+     "color": "#9B5CFF",
+     "x": 900,
+     "y": 330,
+     "size": 180,
+     "float": true
+    }
+   ],
+   "steps": [
+    {
+     "say": "Sheep had a dreamy idea. What if the band played a sea song? Plop!"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "In the sea, everything is quiet and calm. A soft song fits just right."
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. The jellyfish sways when you play softly.",
+     "bubble": "Soft is magic.",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Plink, plonk, plink. Look, it dances!",
+     "bubble": "It dances!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "jelly",
+     "x": 1200,
+     "y": 280,
+     "dur": 1.2
+    },
+    {
+     "say": "One jellyfish, two bubbles, three little fish. Count them with me!"
+    },
+    {
+     "line": "duck",
+     "text": "One, two, three! Quack, quack, quack!",
+     "bubble": "One, two, three!",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "sheep",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "balloon",
+     "icon": "balloon",
+     "color": "#FF3B3B",
+     "x": 1650,
+     "y": 400,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next day, the band came back to the playground for the parade."
+    },
+    {
+     "line": "duck",
+     "text": "First, loud! Boom, boom, boom!",
+     "bubble": "Loud first!",
+     "act": "jump"
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "line": "sheep",
+     "text": "Then, soft. Ting, ting, ting.",
+     "bubble": "Then soft.",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "And now, my turn. Plink, plonk, plink!",
+     "bubble": "My turn!",
+     "act": "spin"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Loud, soft, loud, soft. The song went up and down like a hill."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "sheep",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "rb",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 960,
+     "y": 250,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "say": "The three friends marched through the park. Everyone clapped along."
+    },
+    {
+     "prop_move": "rb",
+     "x": 960,
+     "y": 300,
+     "dur": 1.0
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "pig",
+     "text": "One band, three friends. I feel so happy!",
+     "bubble": "So happy!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Everyone has a sound that is just right.",
+     "bubble": "Your sound counts.",
+     "act": "spin"
+    },
+    {
+     "line": "sheep",
+     "text": "Baa. Nobody should be left out.",
+     "bubble": "Nobody left out.",
+     "act": "wave"
+    },
+    {
+     "say": "Pig learned that a kind friend makes room for everyone. Loud or soft, every sound counts."
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "sheep",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "moon",
+     "icon": "moon",
+     "color": "#FFC92E",
+     "x": 1500,
+     "y": 250,
+     "size": 180
+    }
+   ],
+   "steps": [
+    {
+     "say": "As the sun went down, the friends sat together and played one last song."
+    },
+    {
+     "line": "pig",
+     "text": "Plink, plonk. Goodnight, little band.",
+     "bubble": "Goodnight band.",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Boom, boom. Goodnight, friends.",
+     "bubble": "Goodnight!",
+     "act": "wave"
+    },
+    {
+     "line": "sheep",
+     "text": "Ting, ting. See you tomorrow.",
+     "bubble": "See you soon!",
+     "act": "wave"
+    },
+    {
+     "say": "Can you play a loud song and a soft song too? Try it now!"
+    },
+    {
+     "say": "The end!"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}
