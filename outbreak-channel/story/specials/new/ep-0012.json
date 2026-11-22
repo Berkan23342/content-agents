@@ -1,0 +1,114 @@
+{
+  "episode": 12,
+  "title": "The Key Marked Do Not Use",
+  "summary": "A school caretaker locks the hungry infected out with one ring of keys, and finds that one key opens something she never expected.",
+  "event": "escape",
+  "ambience": "night",
+  "kind": "story",
+  "narrator": "ruth",
+  "beats": [
+    {
+      "scene": "school",
+      "text": "I am the school caretaker, with eleven keys. Tonight the infected filled the corridor.",
+      "hl": [
+        "eleven keys"
+      ],
+      "zombies": 4,
+      "light": "flicker"
+    },
+    {
+      "scene": "hallway",
+      "text": "Every door I locked bought me ten more steps.",
+      "hl": [
+        "ten more steps"
+      ],
+      "light": "flicker",
+      "zombie": true,
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "supplies",
+      "text": "My ring held a gym key, a boiler key, a roof key, and one marked Do Not Use.",
+      "hl": [
+        "Do Not Use"
+      ],
+      "items": [
+        "keys",
+        "flashlight"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "The gym was full. The boiler room was full. The roof was locked outside.",
+      "hl": [
+        "locked"
+      ],
+      "zombies": true,
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "That left the old basement door I was told never to open.",
+      "hl": [
+        "never to open"
+      ],
+      "zombies": 5,
+      "light": "flicker",
+      "sfx": [
+        "bang"
+      ]
+    },
+    {
+      "scene": "stairwell",
+      "text": "I turned the last key. The door opened on a warm room.",
+      "hl": [
+        "warm room"
+      ],
+      "zombies": false,
+      "hold": 0.9,
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "kitchen",
+      "text": "Eleven children looked up from sleeping bags. A boy held a torch.",
+      "hl": [
+        "Eleven children"
+      ],
+      "power": true,
+      "cans": 5
+    },
+    {
+      "scene": "school",
+      "text": "They had hidden there nine days, leaving crumbs upstairs. I had blamed the mice.",
+      "hl": [
+        "blamed the mice"
+      ],
+      "zombies": 0
+    },
+    {
+      "scene": "kitchen",
+      "text": "I locked us in and gave each child a key.",
+      "hl": [
+        "key"
+      ],
+      "power": true
+    },
+    {
+      "scene": "stairwell",
+      "text": "At dawn the girl asked what the roof key opens. I smiled. A rescue.",
+      "hl": [
+        "The roof"
+      ],
+      "zombies": false,
+      "sfx": [
+        "whoosh"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "episode": 11,
+  "title": "Three Minutes of Quiet",
+  "summary": "Every hour a siren sounds across the city, and a woman has three minutes to cross the skybridge before the infected come back.",
+  "event": "signal",
+  "ambience": "wind",
+  "kind": "found",
+  "narrator": "grace",
+  "beats": [
+    {
+      "scene": "lobby",
+      "text": "Every hour, a siren sounds. Then the city goes quiet for three minutes.",
+      "hl": [
+        "siren"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "lobby",
+      "text": "The infected run toward the noise. The lobby empties.",
+      "hl": [
+        "empties"
+      ],
+      "zombies": 0,
+      "sfx": [
+        "siren"
+      ]
+    },
+    {
+      "scene": "skybridge",
+      "text": "I need those minutes. The bridge to the car park is four hundred steps.",
+      "hl": [
+        "four hundred"
+      ],
+      "zombies": 0,
+      "light": "flicker"
+    },
+    {
+      "scene": "phone",
+      "text": "I set a timer. Two minutes fifty-seven, fifty-six.",
+      "hl": [
+        "fifty-seven"
+      ],
+      "screen": "message",
+      "lines": [
+        "Timer",
+        "02:57"
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "I walked with my shoes in my hand. Glass bridges carry sound.",
+      "hl": [
+        "shoes in my hand"
+      ],
+      "zombies": 2
+    },
+    {
+      "scene": "skybridge",
+      "text": "Halfway across, the siren did not sound. The hour passed. Nothing.",
+      "hl": [
+        "did not sound"
+      ],
+      "zombies": 2,
+      "hold": 0.9
+    },
+    {
+      "scene": "lobby",
+      "text": "Every infected below turned and looked up. They knew the siren was late.",
+      "hl": [
+        "late"
+      ],
+      "zombies": 4,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "A message arrived from a number I did not know. Run. Sorry. I fell asleep.",
+      "hl": [
+        "Sorry"
+      ],
+      "screen": "message",
+      "lines": [
+        "Unknown",
+        "Run. Sorry. I was asleep."
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "skybridge",
+      "text": "Someone else had been ringing that siren for nine days. Keeping me alive.",
+      "hl": [
+        "nine days"
+      ],
+      "zombies": 3,
+      "light": "flicker"
+    },
+    {
+      "scene": "skybridge",
+      "text": "I ran the last steps. Far behind me, the siren began. It sounded like an apology.",
+      "hl": [
+        "apology"
+      ],
+      "zombies": 0,
+      "sfx": [
+        "siren@1.0"
+      ]
+    }
+  ]
+}
