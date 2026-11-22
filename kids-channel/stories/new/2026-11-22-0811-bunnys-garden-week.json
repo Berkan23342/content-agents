@@ -1,0 +1,875 @@
+{
+ "title": "Bunny's Garden Week",
+ "lesson": "Good things grow slowly, so we wait and help",
+ "kind": "learning",
+ "theme": "nature",
+ "summary": "Bunny plants a carrot seed and learns the seven days of the week, waiting and helping while it grows.",
+ "cast": [
+  "bunny",
+  "turtle",
+  "frog"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "seed",
+     "icon": "egg",
+     "color": "#8B5A2B",
+     "x": 1000,
+     "y": 830,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "One bright Monday, Bunny hopped into the garden with a tiny seed."
+    },
+    {
+     "line": "bunny",
+     "text": "Hop, hop! I will grow a big orange carrot!",
+     "bubble": "Big carrot!",
+     "act": "jump"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Bunny dug a little hole and tucked the seed in. One seed."
+    },
+    {
+     "prop_move": "seed",
+     "x": 1000,
+     "y": 880,
+     "dur": 0.8
+    },
+    {
+     "line": "bunny",
+     "text": "Please grow, little seed. Today is Monday.",
+     "bubble": "Today: Monday",
+     "act": "wave"
+    },
+    {
+     "enter": "turtle",
+     "x": 1300,
+     "side": "right",
+     "speed": 300
+    },
+    {
+     "say": "Slow Turtle came plodding along the fence."
+    },
+    {
+     "arrive": "turtle"
+    },
+    {
+     "line": "turtle",
+     "text": "Good morning, Bunny. What are you doing?",
+     "bubble": "What's that?",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "I planted a seed. Will it grow today?",
+     "bubble": "Grow today?",
+     "act": "shake"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 600
+    },
+    {
+     "name": "turtle",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "seed",
+     "icon": "egg",
+     "color": "#8B5A2B",
+     "x": 850,
+     "y": 880,
+     "size": 110
+    },
+    {
+     "id": "can",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1500,
+     "y": 700,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "On Tuesday, Bunny ran back to look. Nothing yet."
+    },
+    {
+     "line": "bunny",
+     "text": "Oh no. I cannot see a carrot at all.",
+     "bubble": "No carrot yet",
+     "act": "shake"
+    },
+    {
+     "line": "turtle",
+     "text": "Plants grow slowly, like me. Seeds need water.",
+     "bubble": "Give water",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "Water! Can you count the drops with me?",
+     "bubble": "Count drops!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 600
+    },
+    {
+     "name": "turtle",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "seed",
+     "icon": "egg",
+     "color": "#8B5A2B",
+     "x": 850,
+     "y": 880,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "prop": "d1",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 700,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "One drop!"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "d2",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 865,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "Two drops!"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "d3",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1030,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "Three drops! Splish, splash, on the seed."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "turtle",
+     "text": "Now we wait. Waiting is a kind of helping.",
+     "bubble": "We wait",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "rain",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 700
+    },
+    {
+     "name": "turtle",
+     "x": 1200
+    }
+   ],
+   "props": [
+    {
+     "id": "seed",
+     "icon": "egg",
+     "color": "#8B5A2B",
+     "x": 950,
+     "y": 880,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "On Wednesday, the sky turned grey. Drip, drop, rain came down."
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "line": "bunny",
+     "text": "Rain! The seed gets a big drink, drip, drop!",
+     "bubble": "Drip, drop!",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "Is the rain wet or dry, Bunny?",
+     "bubble": "Wet or dry?",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "Wet! And my fur is wet too. Dry is the opposite.",
+     "bubble": "Wet. Not dry!",
+     "act": "shake"
+    },
+    {
+     "say": "Wet and dry. Cold and warm. Bunny and Turtle splashed in a puddle."
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "turtle",
+     "text": "Rain helps seeds grow. Thank you, rain.",
+     "bubble": "Thank you, rain",
+     "act": "wave"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 800
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "On Thursday, the friends walked to the pond. Maybe a friend there knew about seeds."
+    },
+    {
+     "enter": "frog",
+     "x": 1300,
+     "side": "right",
+     "speed": 600
+    },
+    {
+     "say": "Splash! Frog jumped out of the water."
+    },
+    {
+     "arrive": "frog"
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 800
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "line": "frog",
+     "text": "Ribbit! Why do you look so worried?",
+     "bubble": "Why worried?",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "My seed has not grown yet. I want it now!",
+     "bubble": "Want it now!",
+     "act": "shake"
+    },
+    {
+     "line": "frog",
+     "text": "I was a tadpole once. I waited and waited. Ribbit!",
+     "bubble": "I waited too",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "See, Bunny? Everything grows in its own time.",
+     "bubble": "Own time",
+     "act": "wave"
+    },
+    {
+     "line": "frog",
+     "text": "Let us help. We can say the days together.",
+     "bubble": "Say the days",
+     "act": "jump"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "park",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "seed",
+     "icon": "egg",
+     "color": "#8B5A2B",
+     "x": 950,
+     "y": 880,
+     "size": 110
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back in the garden, the three friends sang a days song."
+    },
+    {
+     "line": "bunny",
+     "text": "Monday, Tuesday, Wednesday, Thursday!",
+     "bubble": "Mon, Tue, Wed, Thu",
+     "act": "jump"
+    },
+    {
+     "line": "frog",
+     "text": "Now Friday, Saturday, and Sunday! Ribbit!",
+     "bubble": "Fri, Sat, Sun",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "That is seven days. Can you count them?",
+     "bubble": "Seven days!",
+     "act": "wave"
+    },
+    {
+     "say": "Monday, one. Tuesday, two. Wednesday, three. Thursday, four."
+    },
+    {
+     "say": "Friday, five. Saturday, six. Sunday, seven. Seven days in a week!"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "prop": "sun",
+     "icon": "sun",
+     "color": "#FFC92E",
+     "x": 960,
+     "y": 200,
+     "size": 200
+    },
+    {
+     "line": "frog",
+     "text": "The sun is warm. Warm helps seeds too.",
+     "bubble": "Sun helps",
+     "act": "wave"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "sprout",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 950,
+     "y": 830,
+     "size": 130
+    }
+   ],
+   "steps": [
+    {
+     "say": "On Friday morning, Bunny looked at the ground. Something tiny and green!"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "bunny",
+     "text": "A green sprout! Look, look, look!",
+     "bubble": "A green sprout!",
+     "act": "jump"
+    },
+    {
+     "line": "frog",
+     "text": "Green is the color of a growing leaf. Ribbit!",
+     "bubble": "Green leaf",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "Small today. Big tomorrow. Small is the opposite of big.",
+     "bubble": "Small, then big",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "I will not hurry. I will help and wait.",
+     "bubble": "Help and wait",
+     "act": "wave"
+    },
+    {
+     "say": "On Saturday, the sprout was a little taller."
+    },
+    {
+     "prop_move": "sprout",
+     "x": 950,
+     "y": 780,
+     "dur": 1.0
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "On Saturday, the friends played a guessing game while they waited."
+    },
+    {
+     "line": "frog",
+     "text": "I spy something big. It is a tall tree! Ribbit!",
+     "bubble": "Big and tall",
+     "act": "jump"
+    },
+    {
+     "prop": "tr",
+     "icon": "tree",
+     "color": "#3CC75A",
+     "x": 1600,
+     "y": 600,
+     "size": 380
+    },
+    {
+     "line": "bunny",
+     "text": "I spy something small. It is a little flower.",
+     "bubble": "Small flower",
+     "act": "wave"
+    },
+    {
+     "prop": "fl",
+     "icon": "flower",
+     "color": "#FF6FB5",
+     "x": 700,
+     "y": 830,
+     "size": 110
+    },
+    {
+     "line": "turtle",
+     "text": "Big, small. Tall, short. Fast, slow. That is me!",
+     "bubble": "Fast, slow",
+     "act": "spin"
+    },
+    {
+     "say": "They laughed together. Big and small, tall and short, fast and slow."
+    },
+    {
+     "line": "bunny",
+     "text": "Can you find something big? Something small?",
+     "bubble": "Big? Small?",
+     "act": "wave"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "sprout",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 950,
+     "y": 780,
+     "size": 160
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back at the garden, the sprout grew two more leaves."
+    },
+    {
+     "line": "bunny",
+     "text": "One leaf, two leaves, three leaves! Count with me.",
+     "bubble": "Count the leaves",
+     "act": "jump"
+    },
+    {
+     "prop": "a",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 700,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "One."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "b",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 865,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "Two."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "c",
+     "icon": "leaf",
+     "color": "#3CC75A",
+     "x": 1030,
+     "y": 300,
+     "size": 120
+    },
+    {
+     "say": "Three green leaves!"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "frog",
+     "text": "Yellow sun, green leaves, blue sky. Ribbit!",
+     "bubble": "Pretty colors",
+     "act": "spin"
+    },
+    {
+     "line": "turtle",
+     "text": "Tomorrow is Sunday. Let us come early.",
+     "bubble": "Come early",
+     "act": "wave"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 600
+    },
+    {
+     "name": "turtle",
+     "x": 1000
+    }
+   ],
+   "props": [
+    {
+     "id": "moon",
+     "icon": "moon",
+     "color": "#FFE9A0",
+     "x": 960,
+     "y": 250,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "That night, Bunny felt sleepy but a little worried."
+    },
+    {
+     "line": "bunny",
+     "text": "What if the sprout is cold tonight?",
+     "bubble": "Is it cold?",
+     "act": "shake"
+    },
+    {
+     "line": "turtle",
+     "text": "The soil is a cosy blanket. Sleep well, little sprout.",
+     "bubble": "Cosy blanket",
+     "act": "wave"
+    },
+    {
+     "say": "Bunny gave a big yawn. Turtle gave a slow yawn. Goodnight, garden."
+    },
+    {
+     "act": "all",
+     "kind": "sleep"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "carrot",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 950,
+     "y": 780,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "say": "On Sunday, the very last day of the week, the sun came up bright."
+    },
+    {
+     "sfx": "whoop"
+    },
+    {
+     "say": "And there in the garden stood a big orange carrot!"
+    },
+    {
+     "line": "bunny",
+     "text": "My carrot! It grew! Hooray!",
+     "bubble": "It grew!",
+     "act": "spin"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Orange as the sun!",
+     "bubble": "Orange carrot!",
+     "act": "jump"
+    },
+    {
+     "line": "turtle",
+     "text": "Seven days. Slow and steady. We did it.",
+     "bubble": "Seven days!",
+     "act": "wave"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 500
+    },
+    {
+     "name": "turtle",
+     "x": 900
+    },
+    {
+     "name": "frog",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "carrot",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 950,
+     "y": 830,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "line": "bunny",
+     "text": "Let us share it. One carrot, three friends.",
+     "bubble": "Share it!",
+     "act": "wave"
+    },
+    {
+     "say": "Crunch, crunch. Bunny, Turtle and Frog took a bite each."
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "line": "frog",
+     "text": "Yum! What day will we plant the next seed?",
+     "bubble": "Next seed?",
+     "act": "jump"
+    },
+    {
+     "line": "bunny",
+     "text": "Monday! And we will wait together.",
+     "bubble": "Monday again!",
+     "act": "spin"
+    },
+    {
+     "say": "Waiting is hard, but good things grow slowly."
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "say": "Seven days make one week. Can you say them with Bunny? The end!"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}
