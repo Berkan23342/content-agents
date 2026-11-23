@@ -1,0 +1,880 @@
+{
+ "title": "Pig's Wobbly Tower",
+ "lesson": "Big goes at the bottom, and friends help try again",
+ "kind": "funny",
+ "theme": "shapes",
+ "summary": "Pig's block tower tumbles on the playground, sinks in the sand and gets a jelly bump under the sea until Duck and Frog help build it steady.",
+ "cast": [
+  "pig",
+  "duck",
+  "frog"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 800
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1250,
+     "y": 830,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "say": "One sunny morning, Pig skipped to the playground with a big pile of blocks."
+    },
+    {
+     "line": "pig",
+     "text": "Oink, oink! Today I will build the tallest tower ever!",
+     "bubble": "Tallest tower!",
+     "act": "jump"
+    },
+    {
+     "say": "Pig put down the first block. It was big, red and square."
+    },
+    {
+     "line": "pig",
+     "text": "One big square block. Can you say square with me?",
+     "bubble": "Square!",
+     "act": "wave"
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "prop": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1250,
+     "y": 640,
+     "size": 190
+    },
+    {
+     "say": "Two! A blue square block, a little smaller."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1250,
+     "y": 490,
+     "size": 130
+    },
+    {
+     "say": "Three! A yellow square block, even smaller."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "line": "pig",
+     "text": "Three blocks. Big, middle and small. Wobble, wobble!",
+     "bubble": "Wobble, wobble!",
+     "act": "shake"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "duck",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 260
+    },
+    {
+     "id": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1000,
+     "y": 640,
+     "size": 190
+    },
+    {
+     "id": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 490,
+     "size": 130
+    }
+   ],
+   "steps": [
+    {
+     "say": "Along came Duck, waddling very fast."
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack! What a tall tower, Pig!",
+     "bubble": "Tall tower!",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "One more! A round, green ball to go on top.",
+     "bubble": "A round ball!",
+     "act": "jump"
+    },
+    {
+     "prop": "ball",
+     "icon": "ball",
+     "color": "#3CC75A",
+     "x": 1000,
+     "y": 330,
+     "size": 130
+    },
+    {
+     "say": "Pig put the round ball on the very top."
+    },
+    {
+     "pause": 0.6
+    },
+    {
+     "prop_move": "ball",
+     "x": 1500,
+     "y": 830,
+     "dur": 0.9
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "say": "Boing! The ball rolled away. Round things roll and roll."
+    },
+    {
+     "hide": "b3"
+    },
+    {
+     "hide": "b2"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "duck",
+     "text": "Oh dear! The tower fell down. Plop, plop, plop!",
+     "bubble": "Plop, plop!",
+     "act": "shake"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! That was silly. Let us try again!",
+     "bubble": "Try again!",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1100
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1500,
+     "y": 830,
+     "size": 240
+    }
+   ],
+   "steps": [
+    {
+     "say": "Pig and Duck hurried to the beach. The sand was soft and warm."
+    },
+    {
+     "line": "duck",
+     "text": "Let us build here. Sand is soft. Is it good for a tower?",
+     "bubble": "Soft sand?",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Yes! Big block first, then middle, then small.",
+     "bubble": "Big, middle, small",
+     "act": "jump"
+    },
+    {
+     "prop": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1500,
+     "y": 660,
+     "size": 180
+    },
+    {
+     "say": "Big red block, blue block."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1500,
+     "y": 520,
+     "size": 130
+    },
+    {
+     "say": "Then the little yellow block. Three blocks tall."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "But the sand was very soft. The tower began to sink. Slowly, slowly, down."
+    },
+    {
+     "prop_move": "b1",
+     "x": 1500,
+     "y": 930,
+     "dur": 1.2
+    },
+    {
+     "prop_move": "b2",
+     "x": 1600,
+     "y": 960,
+     "dur": 1.2
+    },
+    {
+     "prop_move": "b3",
+     "x": 1400,
+     "y": 980,
+     "dur": 1.2
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "duck",
+     "text": "Oh no! The sand is soft, so the blocks sink. Plop!",
+     "bubble": "It sank!",
+     "act": "shake"
+    },
+    {
+     "line": "pig",
+     "text": "Soft sand is too wobbly. We need something hard and flat.",
+     "bubble": "Hard and flat",
+     "act": "wave"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 700
+    },
+    {
+     "name": "pig",
+     "x": 1250
+    }
+   ],
+   "props": [
+    {
+     "id": "fish1",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 300,
+     "y": 300,
+     "size": 140
+    },
+    {
+     "id": "fish2",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 465,
+     "y": 300,
+     "size": 140
+    }
+   ],
+   "steps": [
+    {
+     "say": "Duck jumped in a wave and pulled Pig under the sea, splash! Bubbles popped all around."
+    },
+    {
+     "line": "duck",
+     "text": "Look! Fish swim here. Can you count the fish with me?",
+     "bubble": "Count the fish!",
+     "act": "wave"
+    },
+    {
+     "prop": "fish3",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 630,
+     "y": 300,
+     "size": 140
+    },
+    {
+     "say": "One fish, two fish, three fish!"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "prop": "fish4",
+     "icon": "fish",
+     "color": "#FF8A1F",
+     "x": 795,
+     "y": 300,
+     "size": 140
+    },
+    {
+     "say": "Four fish! They all swim in a line."
+    },
+    {
+     "line": "pig",
+     "text": "Four fish! Do fish like to build towers? Oink!",
+     "bubble": "Fish tower?",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Fish swim up and down. We need a flat, hard place.",
+     "bubble": "Flat, hard place",
+     "act": "shake"
+    },
+    {
+     "say": "Pig looked at the rocks on the sand. Flat and hard, just right."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "underwater",
+   "actors": [
+    {
+     "name": "duck",
+     "x": 700
+    },
+    {
+     "name": "pig",
+     "x": 1250
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 830,
+     "size": 260
+    }
+   ],
+   "steps": [
+    {
+     "line": "pig",
+     "text": "A flat rock! Big red block goes first.",
+     "bubble": "Big block first",
+     "act": "wave"
+    },
+    {
+     "prop": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1000,
+     "y": 640,
+     "size": 190
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Then the blue block. Wobble, wobble."
+    },
+    {
+     "prop": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 500,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Then the yellow one. The tower was tall and steady!"
+    },
+    {
+     "say": "Then a jellyfish floated by and gave the tower a little bump."
+    },
+    {
+     "prop": "jelly",
+     "icon": "jellyfish",
+     "color": "#9B5CFF",
+     "x": 1500,
+     "y": 500,
+     "size": 170
+    },
+    {
+     "prop_move": "jelly",
+     "x": 1050,
+     "y": 500,
+     "dur": 1.0
+    },
+    {
+     "hide": "b3"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! The yellow block popped off like a bubble!",
+     "bubble": "Pop like a bubble!",
+     "act": "spin"
+    },
+    {
+     "line": "duck",
+     "text": "Ha ha ha! The tower got a jelly hug.",
+     "bubble": "Jelly hug!",
+     "act": "jump"
+    },
+    {
+     "hide": "jelly"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "frog",
+     "x": 1450
+    }
+   ],
+   "props": [
+    {
+     "id": "c1",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 300,
+     "y": 320,
+     "size": 120
+    },
+    {
+     "id": "c2",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 465,
+     "y": 320,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back on dry land, they came to the garden. Frog sat on a mossy stone, going ribbit."
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! What are you doing, friends?",
+     "bubble": "What's that?",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "We are building a tower! Our blocks keep falling.",
+     "bubble": "Falling blocks",
+     "act": "shake"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Let me count carrots. Count with me!",
+     "bubble": "Count carrots!",
+     "act": "jump"
+    },
+    {
+     "prop": "c3",
+     "icon": "carrot",
+     "color": "#FF8A1F",
+     "x": 630,
+     "y": 320,
+     "size": 120
+    },
+    {
+     "say": "One, two, three carrots. Big carrot, small carrot."
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "line": "frog",
+     "text": "Big goes at the bottom. Small goes at the top. Like carrots in a row.",
+     "bubble": "Big down, small up",
+     "act": "wave"
+    },
+    {
+     "line": "duck",
+     "text": "Big at the bottom, small at the top. Quack, that makes sense!",
+     "bubble": "Big down!",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "frog",
+     "x": 1450
+    }
+   ],
+   "props": [
+    {
+     "id": "g1",
+     "icon": "gift",
+     "color": "#FF6FB5",
+     "x": 900,
+     "y": 830,
+     "size": 280
+    }
+   ],
+   "steps": [
+    {
+     "line": "pig",
+     "text": "Frog, can you help me carry a very big pink block?",
+     "bubble": "Please help me!",
+     "act": "wave"
+    },
+    {
+     "move": "frog",
+     "x": 1150,
+     "speed": 400,
+     "wait": true
+    },
+    {
+     "say": "Frog hopped over. Hop, hop, hop. He pushed and Pig pulled."
+    },
+    {
+     "prop_move": "g1",
+     "x": 1500,
+     "y": 830,
+     "dur": 1.2
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "line": "pig",
+     "text": "Thank you, Frog! Helping makes the work light.",
+     "bubble": "Thank you!",
+     "act": "spin"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Friends are good at helping.",
+     "bubble": "Friends help",
+     "act": "jump"
+    },
+    {
+     "say": "Together they carried the blocks back to the playground."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "frog",
+     "x": 1450
+    }
+   ],
+   "props": [
+    {
+     "id": "b0",
+     "icon": "gift",
+     "color": "#FF6FB5",
+     "x": 1000,
+     "y": 830,
+     "size": 280
+    }
+   ],
+   "steps": [
+    {
+     "say": "Now they built the tower together, on the hard, flat ground."
+    },
+    {
+     "line": "pig",
+     "text": "First, the biggest block, the pink one. Number one!",
+     "bubble": "Number one!",
+     "act": "wave"
+    },
+    {
+     "prop": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 640,
+     "size": 220
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Number two, the big red block."
+    },
+    {
+     "prop": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1000,
+     "y": 490,
+     "size": 170
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Number three, the blue block."
+    },
+    {
+     "prop": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 360,
+     "size": 130
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Number four, the yellow block. Can you count them with me? One, two, three, four!"
+    },
+    {
+     "line": "duck",
+     "text": "Pig, what about your round ball? Round things roll.",
+     "bubble": "Round things roll",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Oink! I will put it in a nest so it stays.",
+     "bubble": "Ball in a nest",
+     "act": "jump"
+    },
+    {
+     "prop": "nest",
+     "icon": "nest",
+     "color": "#8B5A2B",
+     "x": 1000,
+     "y": 260,
+     "size": 110
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "prop": "ball",
+     "icon": "ball",
+     "color": "#3CC75A",
+     "x": 1000,
+     "y": 200,
+     "size": 90
+    },
+    {
+     "say": "The tower stood still. Number five was the ball, safe in the nest!"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "duck",
+     "x": 1000
+    },
+    {
+     "name": "frog",
+     "x": 1450
+    }
+   ],
+   "props": [
+    {
+     "id": "b0",
+     "icon": "gift",
+     "color": "#FF6FB5",
+     "x": 1000,
+     "y": 830,
+     "size": 280
+    },
+    {
+     "id": "b1",
+     "icon": "gift",
+     "color": "#FF3B3B",
+     "x": 1000,
+     "y": 640,
+     "size": 220
+    },
+    {
+     "id": "b2",
+     "icon": "gift",
+     "color": "#2F8CFF",
+     "x": 1000,
+     "y": 490,
+     "size": 170
+    },
+    {
+     "id": "b3",
+     "icon": "gift",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 360,
+     "size": 130
+    },
+    {
+     "id": "star",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1000,
+     "y": 150,
+     "size": 120
+    }
+   ],
+   "steps": [
+    {
+     "say": "Then Frog gave a tiny sneeze. Ribbit, choo!"
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "hide": "star"
+    },
+    {
+     "line": "frog",
+     "text": "Oh! I am sorry! I sneezed on your tower.",
+     "bubble": "I'm sorry!",
+     "act": "shake"
+    },
+    {
+     "say": "The tower wobbled, wobbled, wobbled... but it did not fall."
+    },
+    {
+     "line": "pig",
+     "text": "It is still tall! Big at the bottom keeps it steady.",
+     "bubble": "Still tall!",
+     "act": "spin"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "duck",
+     "text": "Quack! Big at the bottom, small at the top. We did it!",
+     "bubble": "We did it!",
+     "act": "jump"
+    },
+    {
+     "line": "frog",
+     "text": "Ribbit! Shapes, sizes and good friends make it strong.",
+     "bubble": "Friends make strong",
+     "act": "wave"
+    },
+    {
+     "say": "Pig, Duck and Frog clapped and cheered. The tallest tower ever!"
+    },
+    {
+     "say": "The end!"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}
