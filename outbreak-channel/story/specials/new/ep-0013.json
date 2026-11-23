@@ -1,0 +1,116 @@
+{
+  "episode": 13,
+  "title": "Wave Back",
+  "summary": "A woman waves each morning at a neighbour across the street. Then the neighbour starts holding up a sign.",
+  "event": "stranger",
+  "ambience": "wind",
+  "kind": "journal",
+  "narrator": "isabella",
+  "beats": [
+    {
+      "scene": "window",
+      "text": "Four days alone, then someone waved from across the street. I waved back.",
+      "hl": [
+        "waved back"
+      ],
+      "zombies": 3
+    },
+    {
+      "scene": "room",
+      "text": "Best moment of my week. I made tea to celebrate.",
+      "hl": [
+        "tea"
+      ],
+      "light": "candle",
+      "cam": "still"
+    },
+    {
+      "scene": "window",
+      "text": "Day five. She waved again, holding up a sheet of paper. Too far to read.",
+      "hl": [
+        "paper"
+      ],
+      "zombies": 6
+    },
+    {
+      "scene": "rooftop",
+      "text": "I waved harder, so she knew I was glad.",
+      "hl": [
+        "waved harder"
+      ],
+      "fire": true
+    },
+    {
+      "scene": "street",
+      "text": "Below, the street began to fill. They stood still, faces tipped up.",
+      "hl": [
+        "faces tipped up"
+      ],
+      "zombies": 11,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Day six. A second sheet. I fetched my binoculars.",
+      "hl": [
+        "binoculars"
+      ],
+      "zombies": 12,
+      "hold": 0.9
+    },
+    {
+      "scene": "peephole",
+      "text": "It said: STOP WAVING. THEY WATCH MOVEMENT. I put my hands down.",
+      "hl": [
+        "STOP WAVING"
+      ],
+      "who": "empty",
+      "sfx": [
+        "heartbeat"
+      ]
+    },
+    {
+      "scene": "door",
+      "text": "Too late. The crowd was already inside, climbing the stairs.",
+      "hl": [
+        "climbing"
+      ],
+      "shadow": true,
+      "sfx": [
+        "steps@0.5"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Across the street, she lit a red flare and swung it wildly.",
+      "hl": [
+        "red flare"
+      ],
+      "survivor": true,
+      "zombies": 6
+    },
+    {
+      "scene": "street",
+      "text": "Every face turned from my window to her light, and followed it away.",
+      "hl": [
+        "turned"
+      ],
+      "zombies": 12,
+      "fire": true,
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "room",
+      "text": "I did not wave again. I held up my own sheet: THANK YOU.",
+      "hl": [
+        "THANK YOU"
+      ],
+      "light": "candle",
+      "cam": "pull"
+    }
+  ]
+}

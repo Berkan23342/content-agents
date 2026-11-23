@@ -1,0 +1,114 @@
+{
+  "episode": 14,
+  "title": "Say Your Name",
+  "summary": "A night nurse records the one test she trusts for telling the sick from the well, and then it is her turn.",
+  "event": "sickness",
+  "ambience": "night",
+  "kind": "found",
+  "narrator": "heart",
+  "beats": [
+    {
+      "scene": "hospital",
+      "text": "Recording. I am a nurse, and this is the only test that works: ask their name.",
+      "hl": [
+        "their name"
+      ],
+      "zombies": 0,
+      "light": "flicker"
+    },
+    {
+      "scene": "hospital",
+      "text": "The sick forget it. They open their mouths, and nothing comes.",
+      "hl": [
+        "nothing comes"
+      ],
+      "zombies": 2,
+      "light": "flicker",
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "school",
+      "text": "Forty people queued in the school gym tonight. I asked each softly.",
+      "hl": [
+        "Forty people"
+      ],
+      "zombies": 0,
+      "light": "on"
+    },
+    {
+      "scene": "lobby",
+      "text": "Thirty-nine answered at once. One man smiled and shook his head.",
+      "hl": [
+        "shook his head"
+      ],
+      "zombies": 1,
+      "light": "flicker",
+      "speaker": "man"
+    },
+    {
+      "scene": "hospital",
+      "text": "I walked him to the quiet ward. He went without a fight.",
+      "hl": [
+        "quiet ward"
+      ],
+      "zombies": 0,
+      "light": "on"
+    },
+    {
+      "scene": "lobby",
+      "text": "A girl asked who would test me. I laughed. I was fine.",
+      "hl": [
+        "test me"
+      ],
+      "zombies": 0,
+      "speaker": "girl",
+      "light": "flicker"
+    },
+    {
+      "scene": "phone",
+      "text": "But my hands had been cold since morning. I checked my arm. Nothing.",
+      "hl": [
+        "cold"
+      ],
+      "screen": "nosignal",
+      "lines": [
+        "no signal"
+      ],
+      "battery": 12
+    },
+    {
+      "scene": "lobby",
+      "text": "So I set this camera on the gurney and asked myself, out loud.",
+      "hl": [
+        "asked myself"
+      ],
+      "light": "flicker",
+      "hold": 1.0,
+      "zombies": 0
+    },
+    {
+      "scene": "hospital",
+      "text": "My name is... It is on my badge. I only had to read it.",
+      "hl": [
+        "badge"
+      ],
+      "zombies": 0,
+      "light": "flicker",
+      "sfx": [
+        "heartbeat"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "I said it, clear as a bell. The girl clapped. I was only tired.",
+      "hl": [
+        "only tired"
+      ],
+      "zombies": 0,
+      "light": "on",
+      "cam": "pull"
+    }
+  ]
+}
