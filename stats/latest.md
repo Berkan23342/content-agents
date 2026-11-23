@@ -9,7 +9,7 @@ and kinds of video at the top, away from the bottom ones, always within your var
 
 ## Outbreak Diary
 
-Subscribers **33** (+3 in 8 days) · views **5,729** (+851) · 56 videos
+Subscribers **33** (+4 in 7 days) · views **5,729** (+824) · 56 videos
 
 | Group | Videos | Avg views at 2 days | Avg views now | Likes per 100 views | Comments |
 |---|---|---|---|---|---|
@@ -31,9 +31,9 @@ Videos of the last 14 days, newest first:
 
 | Date | Title | What | Views at 2 days | Views now | Likes | Comments |
 |---|---|---|---|---|---|---|
-| 2026-11-23 | Fog Until Five / Outbreak Stories · Zombie Survival Story #shorts | special (broadcast): Fog Until Five | - | 8 | 1 | 0 |
-| 2026-11-22 | The Crossing Guard / Outbreak Stories · Zombie Survival Story #shorts | special (story): The Crossing Guard | - | 118 | 2 | 0 |
-| 2026-11-22 | The Bunker Under My Garden / Outbreak Stories · Zombie Survival Story  | special (journal): The Bunker Under My Garden | - | 23 | 2 | 0 |
+| 2026-11-23 | Fog Until Five / Outbreak Stories · Zombie Survival Story #shorts | special (broadcast): Fog Until Five | - | 11 | 1 | 0 |
+| 2026-11-22 | The Crossing Guard / Outbreak Stories · Zombie Survival Story #shorts | special (story): The Crossing Guard | - | 119 | 2 | 0 |
+| 2026-11-22 | The Bunker Under My Garden / Outbreak Stories · Zombie Survival Story  | special (journal): The Bunker Under My Garden | - | 25 | 2 | 0 |
 | 2026-11-21 | Last Train Radio / Outbreak Stories · Zombie Survival Story #shorts | special (broadcast): Last Train Radio | 12 | 12 | 0 | 0 |
 | 2026-11-21 | Note to Myself / Outbreak Stories · Zombie Survival Story #shorts | special (found): Note to Myself | - | 82 | 2 | 0 |
 | 2026-11-20 | Route 9 · Day 1: The Last Bus / Zombie Survival Story #shorts | route-9 day 1 (journey) | 338 | 325 | 10 | 0 |
@@ -41,9 +41,9 @@ Videos of the last 14 days, newest first:
 | 2026-11-19 | Floor 41 · Day 12: Dawn on Forty-One / Zombie Survival Story #shorts | floor-41 day 12 (reunion) | 26 | 26 | 1 | 0 |
 | 2026-11-19 | Dead Air · Day 5: The Caretaker / Zombie Survival Story #shorts | dead-air day 5 (stranger) | 91 | 91 | 2 | 0 |
 | 2026-11-18 | Pine Hollow · Day 11: The Last Page / Zombie Survival Story #shorts | pine-hollow day 11 (escape) | 57 | 60 | 1 | 0 |
-| 2026-11-18 | Dead Air · Day 4: Down the Hill / Zombie Survival Story #shorts | dead-air day 4 (split) | 8 | 9 | 0 | 0 |
+| 2026-11-18 | Dead Air · Day 4: Down the Hill / Zombie Survival Story #shorts | dead-air day 4 (split) | 8 | 10 | 0 | 0 |
 | 2026-11-17 | Floor 41 · Day 11: Forty-One Knocks / Zombie Survival Story #shorts | floor-41 day 11 (split) | 20 | 23 | 1 | 0 |
-| 2026-11-17 | Stay in the Water / Outbreak Specials · Zombie Survival Story #shorts | special (found): Stay in the Water | 22 | 24 | 1 | 0 |
+| 2026-11-17 | Stay in the Water / Outbreak Specials · Zombie Survival Story #shorts | special (found): Stay in the Water | 22 | 25 | 1 | 0 |
 | 2026-11-17 | Dead Air · Day 3: The Mute Line / Zombie Survival Story #shorts | dead-air day 3 (discovery) | 9 | 11 | 1 | 0 |
 | 2026-11-16 | Floor 41 · Day 10: Don't Count / Zombie Survival Story #shorts | floor-41 day 10 (journey) | 107 | 108 | 1 | 0 |
 | 2026-11-16 | Dead Air · Day 2: Roof Speakers / Zombie Survival Story #shorts | dead-air day 2 (repair) | 24 | 25 | 1 | 0 |
@@ -66,7 +66,7 @@ Videos of the last 14 days, newest first:
 
 ## Brain Snack Quiz
 
-Subscribers **11** (+0 in 8 days) · views **8,308** (+604) · 32 videos
+Subscribers **11** (+0 in 7 days) · views **8,308** (+436) · 32 videos
 
 | Group | Videos | Avg views at 2 days | Avg views now | Likes per 100 views | Comments |
 |---|---|---|---|---|---|
@@ -86,7 +86,7 @@ Videos of the last 14 days, newest first:
 |---|---|---|---|---|---|---|
 | 2026-11-23 | Would You Know What to Do If a Lift Stops? 🧠 #shorts | real snack, topic city | - | 0 | 0 | 0 |
 | 2026-11-22 | Can You Guess These Flags? 🌍 Easy to Hard #shorts | old template quiz | - | 1 | 1 | 0 |
-| 2026-11-21 | Does Cracking Your Knuckles Give You Arthritis? 🧠 #shorts | myth snack, topic body | - | 170 | 2 | 0 |
+| 2026-11-21 | Does Cracking Your Knuckles Give You Arthritis? 🧠 #shorts | myth snack, topic body | - | 188 | 2 | 0 |
 | 2026-11-20 | Music Quiz 🧠 How Many Can You Get? #shorts | old template quiz | 166 | 166 | 4 | 0 |
 | 2026-11-19 | Who Tracked Mud Through Your Hotel Lobby? 🧠 #shorts | mystery snack, topic travel | 25 | 26 | 0 | 0 |
 | 2026-11-18 | Can You Guess How Your Fridge Gets Cold? 🧠 #shorts | how snack, topic home | 92 | 91 | 1 | 0 |
@@ -102,22 +102,22 @@ Videos of the last 14 days, newest first:
 
 ## Bubbly Kids TV
 
-Subscribers **12** (+5 in 8 days) · views **3,301** (+1,459) · 59 videos
+Subscribers **12** (+4 in 7 days) · views **3,301** (+1,283) · 63 videos
 
 | Group | Videos | Avg views at 2 days | Avg views now | Likes per 100 views | Comments |
 |---|---|---|---|---|---|
 | story: adventure/funny | 1 | 32 | 49 | 2.0 | 0 |
-| story: adventure/bedtime | 1 | 29 | 29 | 0.0 | 0 |
 | story: feelings | 1 | 22 | 23 | 0.0 | 0 |
 | weekly compilations | 1 | 17 | 73 | 2.7 | 0 |
 | story Shorts | 8 | 16 | 28 | 0.4 | 0 |
 | story: funny | 1 | 13 | 13 | 0.0 | 0 |
-| story: adventure | 1 | 11 | 20 | 0.0 | 0 |
 | story: bedtime/feelings | 1 | 10 | 20 | 0.0 | 0 |
 | old formats | 37 | 9 | 70 | 2.5 | 0 |
 | story: kindness | 2 | 9 | 30 | 1.7 | 0 |
 | story: ? | 1 | 8 | 141 | 1.4 | 0 |
+| story: adventure | 2 | 8 | 12 | 0.0 | 0 |
 | story: learning | 2 | 7 | 24 | 2.1 | 0 |
+| story: adventure/bedtime | 1 | - | 29 | 0.0 | 0 |
 | story: bedtime | 1 | - | 22 | 4.5 | 0 |
 | other | 1 | - | 10 | 30.0 | 0 |
 
@@ -125,10 +125,11 @@ Videos of the last 14 days, newest first:
 
 | Date | Title | What | Views at 2 days | Views now | Likes | Comments |
 |---|---|---|---|---|---|---|
+| 2026-11-23 | Bunny's Garden Week / Animated Story for Kids / Bubbly Kids TV | learning story (1 story) | - | 2 | 0 | 0 |
 | 2026-11-22 | 8 Stories for Kids: Dog's Opposite Map, Duck Joins the Game & More / B | the week's stories in one video | - | 10 | 0 | 0 |
 | 2026-11-22 | Pig's Music Parade / Animated Story for Kids / Bubbly Kids TV | kindness story (1 story) | - | 5 | 0 | 0 |
-| 2026-11-21 | Frog's Rainbow Quest / Animated Story for Kids / Bubbly Kids TV | adventure story (1 story) | - | 5 | 0 | 0 |
-| 2026-11-20 | Turtle's Sleepy Stars & Bear's Picnic Hunt / Animated Story for Kids / | adventure/bedtime story (2 stories) | 29 | 29 | 0 | 0 |
+| 2026-11-21 | Frog's Rainbow Quest / Animated Story for Kids / Bubbly Kids TV | adventure story (1 story) | 5 | 5 | 0 | 0 |
+| 2026-11-20 | Turtle's Sleepy Stars & Bear's Picnic Hunt / Animated Story for Kids / | adventure/bedtime story (2 stories) | - | 29 | 0 | 0 |
 | 2026-11-19 | Cat's Five Calm Breaths / Animated Story for Kids / Bubbly Kids TV | feelings story (1 story) | 22 | 23 | 0 | 0 |
 | 2026-11-18 | Lion's Hiccup Sounds / Animated Story for Kids / Bubbly Kids TV | funny story (1 story) | 13 | 13 | 0 | 0 |
 | 2026-11-17 | Chick's Birthday Basket / Animated Story for Kids / Bubbly Kids TV | learning story (1 story) | 5 | 16 | 0 | 0 |
@@ -148,4 +149,3 @@ Videos of the last 14 days, newest first:
 | 2026-11-10 | Lion Shares the Shade 🎈 Kids Story #shorts | Short from the kindness story | 0 | 6 | 0 | 0 |
 | 2026-11-10 | Cow Says Thank You & Lion Shares the Shade / Animated Story for Kids / | kindness story (2 stories) | 9 | 48 | 1 | 0 |
 | 2026-11-09 | Bear Brushes His Teeth 🎈 Kids Story #shorts | Short from the ? story | 3 | 8 | 0 | 0 |
-| 2026-11-09 | Pig and Slow Turtle & Bear Brushes His Teeth / Animated Story for Kids | ? story (2 stories) | 8 | 141 | 2 | 0 |
