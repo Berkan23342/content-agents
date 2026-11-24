@@ -1,0 +1,13 @@
+{
+  "format": "mystery",
+  "title": "Can You Find the Train Sandwich Thief?",
+  "summary": "Sam left a tuna sandwich on a train table and came back to an empty plate. Four fellow passengers, three clues, one answer. Can you solve it?",
+  "topic": "transport",
+  "beats": [
+    {"text": "Sam left a tuna sandwich on the train table. Twenty minutes later, it was gone. Hana, Ivo, Tom or Lena?", "visual": {"kind": "hook", "emoji": "🥪", "text": "Who took the sandwich?"}},
+    {"text": "Four people shared Sam's table. Hana, Ivo, Tom and Lena.", "visual": {"kind": "suspects", "items": [{"emoji": "🧳", "label": "Hana"}, {"emoji": "🥗", "label": "Ivo"}, {"emoji": "😴", "label": "Tom"}, {"emoji": "📖", "label": "Lena"}]}},
+    {"text": "Clues: Hana got off before Sam left. Ivo never eats fish. Tom slept the whole time.", "hl": ["fish", "slept"], "visual": {"kind": "clues", "items": [{"emoji": "🚉", "label": "Hana got off early"}, {"emoji": "🐟", "label": "Ivo: no fish"}, {"emoji": "💤", "label": "Tom: asleep"}]}},
+    {"text": "Your turn, detective. Who took it?", "reveal": "Lena! Everyone else is ruled out.", "hl": ["Lena"], "visual": {"kind": "choice", "question": "Who took the sandwich?", "options": [{"emoji": "🧳", "label": "Hana"}, {"emoji": "🥗", "label": "Ivo"}, {"emoji": "😴", "label": "Tom"}, {"emoji": "📖", "label": "Lena"}], "answer": 3}},
+    {"text": "Hana was gone, Ivo avoids fish, and Tom never moved. Only Lena could have taken it.", "visual": {"kind": "suspects", "items": [{"emoji": "🧳", "label": "Hana, gone"}, {"emoji": "🥗", "label": "Ivo, no fish"}, {"emoji": "😴", "label": "Tom, asleep"}, {"emoji": "📖", "label": "Lena"}], "pick": 3}}
+  ]
+}
