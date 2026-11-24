@@ -1,0 +1,672 @@
+{
+ "title": "Lion's Loud and Quiet Day",
+ "lesson": "Big feelings are okay: breathe, say sorry, and tell a friend",
+ "kind": "feelings",
+ "theme": "manners",
+ "summary": "Lion roars at Bunny when he feels cross, then learns with Owl to calm down with quiet roars and big breaths, and says sorry.",
+ "cast": [
+  "lion",
+  "bunny",
+  "owl"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 800
+    }
+   ],
+   "props": [
+    {
+     "id": "b1",
+     "icon": "ball",
+     "color": "#FF3B3B",
+     "x": 1150,
+     "y": 830,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "One morning in the forest, Lion woke up feeling very cross."
+    },
+    {
+     "line": "lion",
+     "text": "Grr! Everything is wrong today! Stomp, stomp, stomp!",
+     "bubble": "Stomp, stomp!",
+     "act": "shake"
+    },
+    {
+     "say": "His ball rolled away. His tummy was grumbly. His mane was messy."
+    },
+    {
+     "enter": "bunny",
+     "x": 1400,
+     "side": "right",
+     "speed": 600
+    },
+    {
+     "say": "Along came Bunny, hop, hop, hop, with a big smile."
+    },
+    {
+     "arrive": "bunny"
+    },
+    {
+     "line": "bunny",
+     "text": "Good morning, Lion! Do you want to play with me?",
+     "bubble": "Want to play?",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "ROAR! No! Go away! I am cross!",
+     "bubble": "ROAR! Go away!",
+     "act": "shake"
+    },
+    {
+     "say": "That was a very loud roar. Can you say ROAR loudly?"
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "line": "bunny",
+     "text": "Oh. Oh my. That was so loud.",
+     "bubble": "So loud...",
+     "act": "shake"
+    },
+    {
+     "say": "Bunny's ears drooped down. Her smile went away."
+    },
+    {
+     "leave": "bunny",
+     "side": "right"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 700
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Now Lion was all alone. The forest was quiet. Very quiet."
+    },
+    {
+     "line": "lion",
+     "text": "Hmm. Loud is not nice. Quiet is not nice. Oh dear.",
+     "bubble": "Not nice...",
+     "act": "shake"
+    },
+    {
+     "enter": "owl",
+     "x": 1300,
+     "side": "right",
+     "fly": true,
+     "y": 380,
+     "speed": 700
+    },
+    {
+     "say": "Whoosh! Owl flew down from the tall tree."
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Hoot, hoot. Lion, how do you feel inside?",
+     "bubble": "How do you feel?",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "I feel cross. Hot and fizzy, like a shaken bottle.",
+     "bubble": "Hot and fizzy!",
+     "act": "shake"
+    },
+    {
+     "line": "owl",
+     "text": "Cross is a big feeling. It is okay to feel cross.",
+     "bubble": "Cross is okay.",
+     "act": "wave"
+    },
+    {
+     "line": "owl",
+     "text": "But it is not okay to roar at a friend. Let us find a way.",
+     "bubble": "Let us find a way.",
+     "act": "wave"
+    },
+    {
+     "say": "Lion took a little breath. He followed Owl to the beach."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 600
+    },
+    {
+     "name": "owl",
+     "x": 1200,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "s1",
+     "icon": "star",
+     "color": "#FF8A1F",
+     "x": 1500,
+     "y": 830,
+     "size": 130
+    }
+   ],
+   "steps": [
+    {
+     "say": "At the beach, the sea went swish, swish, swish."
+    },
+    {
+     "line": "owl",
+     "text": "Try a big, loud roar at the sea, Lion. Roar it all out!",
+     "bubble": "Roar at the sea!",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "ROAR! ROAR! ROAR!",
+     "bubble": "ROAR!",
+     "act": "jump"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "say": "The big sea did not mind at all. Splash, splash!"
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "line": "owl",
+     "text": "Now try the opposite. A tiny, quiet roar. Can you whisper roar with me?",
+     "bubble": "Whisper roar!",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "Rrrr. Rrrr. Rrrr.",
+     "bubble": "Rrrr, rrrr.",
+     "act": "wave"
+    },
+    {
+     "say": "Loud and quiet. Two opposites! Lion felt a little less fizzy."
+    },
+    {
+     "line": "lion",
+     "text": "Loud makes me tired. Quiet makes me calm. I like quiet.",
+     "bubble": "Quiet is calm.",
+     "act": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 650
+    },
+    {
+     "name": "owl",
+     "x": 1250,
+     "fly": true,
+     "y": 430
+    }
+   ],
+   "props": [
+    {
+     "id": "bl",
+     "icon": "balloon",
+     "color": "#FF6FB5",
+     "x": 1000,
+     "y": 500,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "line": "owl",
+     "text": "Here is another trick. A big breath in, and a slow breath out.",
+     "bubble": "Breathe in, out.",
+     "act": "wave"
+    },
+    {
+     "say": "Owl pointed to a pink balloon. Watch it grow, and grow!"
+    },
+    {
+     "line": "lion",
+     "text": "Breathe in. My tummy gets big, like the balloon.",
+     "bubble": "Big tummy!",
+     "act": "wave"
+    },
+    {
+     "prop_move": "bl",
+     "x": 1000,
+     "y": 420,
+     "dur": 1.2
+    },
+    {
+     "sfx": "pop"
+    },
+    {
+     "say": "Now breathe out slowly. The balloon goes small."
+    },
+    {
+     "line": "lion",
+     "text": "Breathe out. Whoosh. My tummy gets small.",
+     "bubble": "Small tummy.",
+     "act": "wave"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "say": "In is big. Out is small. Can you breathe in and out with Lion?"
+    },
+    {
+     "pause": 1.0
+    },
+    {
+     "line": "lion",
+     "text": "Three big breaths. One, two, three. Now I feel soft inside.",
+     "bubble": "One, two, three.",
+     "act": "spin"
+    },
+    {
+     "line": "owl",
+     "text": "You know what? Bunny was sad. Maybe we should say sorry.",
+     "bubble": "Say sorry?",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "Yes. I was loud and cross. I want to say sorry.",
+     "bubble": "I will say sorry.",
+     "act": "jump"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "f1",
+     "icon": "flower",
+     "color": "#FF3B3B",
+     "x": 300,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f2",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 480,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f3",
+     "icon": "flower",
+     "color": "#FF6FB5",
+     "x": 660,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "In the garden, Bunny was counting flowers. She was very sad."
+    },
+    {
+     "line": "bunny",
+     "text": "One red flower. Two yellow flowers. Three pink flowers.",
+     "bubble": "Count the flowers.",
+     "act": "shake"
+    },
+    {
+     "say": "Can you count the flowers with Bunny? One, two, three."
+    },
+    {
+     "enter": "lion",
+     "x": 1400,
+     "side": "right",
+     "speed": 400
+    },
+    {
+     "say": "Then Lion came, slowly, slowly, with his head low."
+    },
+    {
+     "arrive": "lion"
+    },
+    {
+     "line": "bunny",
+     "text": "Oh. Hello, Lion.",
+     "bubble": "Hello, Lion.",
+     "act": "shake"
+    },
+    {
+     "line": "lion",
+     "text": "Bunny, I am sorry I roared at you. I felt cross.",
+     "bubble": "I am sorry.",
+     "act": "shake"
+    },
+    {
+     "line": "lion",
+     "text": "It was not your fault. Cross is a big feeling.",
+     "bubble": "Not your fault.",
+     "act": "shake"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "bunny",
+     "x": 800
+    },
+    {
+     "name": "lion",
+     "x": 1300
+    }
+   ],
+   "props": [
+    {
+     "id": "f1",
+     "icon": "flower",
+     "color": "#FF3B3B",
+     "x": 300,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f2",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 480,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f3",
+     "icon": "flower",
+     "color": "#FF6FB5",
+     "x": 660,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "line": "bunny",
+     "text": "Thank you for saying sorry. I forgive you.",
+     "bubble": "I forgive you.",
+     "act": "wave"
+    },
+    {
+     "say": "Bunny's smile came back, big and bright."
+    },
+    {
+     "line": "lion",
+     "text": "The flowers look thirsty. Shall we give them a drink?",
+     "bubble": "Water the flowers?",
+     "act": "jump"
+    },
+    {
+     "say": "The flowers were dry. Lion and Bunny gave them a big drink."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "prop": "f4",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 840,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "Dry flowers drink water, and then they are wet. Dry and wet are opposites."
+    },
+    {
+     "line": "bunny",
+     "text": "Look! A new purple flower! Now we have four.",
+     "bubble": "Four flowers!",
+     "act": "spin"
+    },
+    {
+     "say": "One, two, three, four flowers. Can you count them?"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 700
+    },
+    {
+     "name": "bunny",
+     "x": 1100
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Next they ran to the playground. The sun was bright and warm."
+    },
+    {
+     "line": "bunny",
+     "text": "Let us go up the slide, Lion! Up, up, up!",
+     "bubble": "Up the slide!",
+     "act": "jump"
+    },
+    {
+     "line": "lion",
+     "text": "And then down, down, down! Up and down are opposites!",
+     "bubble": "Up and down!",
+     "act": "jump"
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "say": "Whee! Bunny and Lion slid down, fast, fast, fast."
+    },
+    {
+     "line": "bunny",
+     "text": "Now the swing. Fast, then slow. Fast, then slow.",
+     "bubble": "Fast, then slow.",
+     "act": "wave"
+    },
+    {
+     "say": "Fast and slow are opposites too. Can you swing fast? Now slow?"
+    },
+    {
+     "pause": 1.0
+    },
+    {
+     "act": "all",
+     "kind": "spin"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "playground",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 600
+    },
+    {
+     "name": "bunny",
+     "x": 1000
+    },
+    {
+     "name": "owl",
+     "x": 1400,
+     "fly": true,
+     "y": 400
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "Owl flew over to watch them play."
+    },
+    {
+     "line": "owl",
+     "text": "Lion, what will you do next time you feel cross?",
+     "bubble": "Next time?",
+     "act": "wave"
+    },
+    {
+     "line": "lion",
+     "text": "First, stomp softly. Second, breathe in and out. Third, tell a friend.",
+     "bubble": "Stomp, breathe, tell.",
+     "act": "wave"
+    },
+    {
+     "say": "Can you remember? Stomp softly, breathe big and small, and tell a friend."
+    },
+    {
+     "line": "bunny",
+     "text": "And I will give you a big hug, Lion.",
+     "bubble": "A big hug!",
+     "act": "jump"
+    },
+    {
+     "say": "They hugged, a warm and gentle hug. Lion felt happy and calm."
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "lion",
+     "x": 650
+    },
+    {
+     "name": "bunny",
+     "x": 1050
+    },
+    {
+     "name": "owl",
+     "x": 1450,
+     "fly": true,
+     "y": 420
+    }
+   ],
+   "props": [
+    {
+     "id": "sn",
+     "icon": "sun",
+     "color": "#FF8A1F",
+     "x": 1500,
+     "y": 250,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "As the day grew late, the sun went down. The sky turned orange and pink."
+    },
+    {
+     "line": "lion",
+     "text": "Today I was loud and cross. Then I was quiet and calm.",
+     "bubble": "Loud, then calm.",
+     "act": "wave"
+    },
+    {
+     "line": "owl",
+     "text": "Big feelings come, and big feelings go. Just like the sun.",
+     "bubble": "Feelings go away.",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "Hot and cold, big and small, loud and quiet. Today was full of opposites!",
+     "bubble": "Lots of opposites!",
+     "act": "jump"
+    },
+    {
+     "say": "Lion, Bunny and Owl watched the sunset together, nice and close."
+    },
+    {
+     "line": "lion",
+     "text": "Roar... I mean, rrr. Goodnight, friends. See you tomorrow.",
+     "bubble": "Goodnight, friends.",
+     "act": "wave"
+    },
+    {
+     "say": "The end!"
+    },
+    {
+     "pause": 1.0
+    }
+   ]
+  }
+ ]
+}
