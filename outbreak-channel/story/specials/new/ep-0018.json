@@ -1,0 +1,127 @@
+{
+  "episode": 18,
+  "title": "The Voice in the Vent",
+  "summary": "A man left alone in a dark lift shaft records a message to his daughter, and a voice answers from the vent.",
+  "event": "loss",
+  "ambience": "night",
+  "kind": "found",
+  "narrator": "isabella",
+  "beats": [
+    {
+      "scene": "elevator",
+      "text": "Recording. Sunny, if you find this, I did not leave you. I am stuck between floors.",
+      "hl": [
+        "did not leave you"
+      ],
+      "doors": "closed",
+      "floor": 7,
+      "power": false
+    },
+    {
+      "scene": "office",
+      "text": "The lift stopped when the power died. Four days. Nobody opened the doors.",
+      "hl": [
+        "Four days"
+      ],
+      "light": "off",
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "Outside, they walk the corridor. I stay quiet, so they leave.",
+      "hl": [
+        "stay quiet"
+      ],
+      "light": "off",
+      "zombie": true,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "My battery is at nine percent. I am saving it.",
+      "hl": [
+        "nine percent"
+      ],
+      "screen": "battery",
+      "battery": 9,
+      "lines": [
+        "Battery low"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "text": "Tonight, something knocked inside the vent. Three soft taps.",
+      "hl": [
+        "three soft taps"
+      ],
+      "doors": "closed",
+      "floor": 7,
+      "power": false,
+      "sfx": [
+        "knock"
+      ]
+    },
+    {
+      "scene": "elevator",
+      "text": "I tapped back. A voice whispered through the grille: Daddy?",
+      "hl": [
+        "Daddy"
+      ],
+      "doors": "closed",
+      "floor": 7,
+      "power": false,
+      "speaker": "girl",
+      "hold": 1.0
+    },
+    {
+      "scene": "stairwell",
+      "text": "I know her voice. But she is eight floors away.",
+      "hl": [
+        "eight floors"
+      ],
+      "zombies": true,
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "It asked me to open the hatch. It asked nicely. Twice.",
+      "hl": [
+        "Twice"
+      ],
+      "light": "flicker",
+      "zombie": true,
+      "alarm": true
+    },
+    {
+      "scene": "phone",
+      "text": "I did not open it. Her photo glowed on my phone, and the voice went silent.",
+      "hl": [
+        "did not open it"
+      ],
+      "screen": "message",
+      "lines": [
+        "Sunny",
+        "Daddy, I am on the roof. Come up."
+      ],
+      "battery": 4
+    },
+    {
+      "scene": "elevator",
+      "text": "The hatch clanged open. A rope fell in, and a small torch: Daddy, hold on.",
+      "hl": [
+        "hold on"
+      ],
+      "doors": "closed",
+      "floor": 7,
+      "power": false,
+      "speaker": "girl",
+      "cam": "pull"
+    }
+  ]
+}

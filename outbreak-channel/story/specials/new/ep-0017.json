@@ -1,0 +1,106 @@
+{
+  "episode": 17,
+  "title": "Forty Steps to the Boat",
+  "summary": "A woman keeps a journal of the forty steps between her door and the last boat, and each page costs her a step she cannot take back.",
+  "event": "journey",
+  "ambience": "wind",
+  "kind": "journal",
+  "narrator": "tess",
+  "beats": [
+    {
+      "scene": "street",
+      "text": "Page one. The last boat leaves at dawn. It is forty steps from my door.",
+      "hl": [
+        "forty steps"
+      ],
+      "zombies": 2
+    },
+    {
+      "scene": "street",
+      "text": "Page two. Thirty-eight steps. A man stood where my next step should be.",
+      "hl": [
+        "Thirty-eight"
+      ],
+      "zombies": 3,
+      "sfx": [
+        "steps"
+      ]
+    },
+    {
+      "scene": "lobby",
+      "text": "Page three. I waited until he wandered off. Thirty-six steps.",
+      "hl": [
+        "Thirty-six"
+      ],
+      "light": "flicker",
+      "zombies": 1
+    },
+    {
+      "scene": "lobby",
+      "text": "Page four. I dropped my bag to run faster. I did not look back.",
+      "hl": [
+        "did not look back"
+      ],
+      "light": "flicker",
+      "zombies": 2,
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "gas_station",
+      "text": "Page five. Twenty steps. I hid behind a pump as a crowd drifted past, humming.",
+      "hl": [
+        "Twenty steps"
+      ],
+      "light": "off",
+      "zombies": 5
+    },
+    {
+      "scene": "gas_station",
+      "text": "Page six. Someone in the crowd was calling my name, kindly.",
+      "hl": [
+        "calling my name"
+      ],
+      "light": "off",
+      "zombies": 5,
+      "hold": 0.9
+    },
+    {
+      "scene": "gas_station",
+      "text": "Page seven. My brother's voice. He had stayed behind in the flat.",
+      "hl": [
+        "brother's voice"
+      ],
+      "light": "flicker",
+      "zombies": 3,
+      "speaker": "man"
+    },
+    {
+      "scene": "street",
+      "text": "Page eight. Ten steps. I covered my ears and walked through them.",
+      "hl": [
+        "covered my ears"
+      ],
+      "zombies": 6
+    },
+    {
+      "scene": "lake",
+      "text": "Page nine. The captain handed me my own bag, and my brother's coat.",
+      "hl": [
+        "my own bag"
+      ],
+      "zombies": 0,
+      "canoe": true
+    },
+    {
+      "scene": "lake",
+      "text": "Page ten. He had followed my steps, only to be sure I arrived.",
+      "hl": [
+        "followed my steps"
+      ],
+      "zombies": 0,
+      "cam": "pull"
+    }
+  ]
+}

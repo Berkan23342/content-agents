@@ -1,0 +1,124 @@
+{
+  "episode": 16,
+  "title": "Tower Light Out",
+  "summary": "An emergency broadcaster reads the power-grid report, and every district she names goes dark exactly as she says it.",
+  "event": "repair",
+  "ambience": "none",
+  "kind": "broadcast",
+  "narrator": "grace",
+  "beats": [
+    {
+      "scene": "radio",
+      "text": "This is the Port Ellis broadcast. Tonight, one switch keeps the city lights alive.",
+      "hl": [
+        "one switch"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "radio",
+      "text": "It sits in the harbour substation. I am the engineer who can reach it.",
+      "hl": [
+        "engineer"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "street",
+      "text": "I am walking there now. Forty infected shuffle along the road.",
+      "hl": [
+        "Forty infected"
+      ],
+      "zombies": 8,
+      "sfx": [
+        "steps"
+      ]
+    },
+    {
+      "scene": "street",
+      "text": "They follow light, so I switch the lamps off behind me.",
+      "hl": [
+        "switch the lamps off"
+      ],
+      "zombies": 4,
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "The substation door is open. It was locked this morning.",
+      "hl": [
+        "open"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "creak"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "The panel is warm. The fuse is already replaced.",
+      "hl": [
+        "already replaced"
+      ],
+      "light": "flicker",
+      "hold": 0.9
+    },
+    {
+      "scene": "phone",
+      "text": "My phone buzzes. A message, from the control room: Do not touch the switch.",
+      "hl": [
+        "Do not touch"
+      ],
+      "screen": "message",
+      "lines": [
+        "Control Room",
+        "Do not touch the switch.",
+        "It is a trap."
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "hallway",
+      "text": "The control room has been silent six days.",
+      "hl": [
+        "six days"
+      ],
+      "light": "off",
+      "zombie": true
+    },
+    {
+      "scene": "radio",
+      "text": "Listeners, I have not touched it. Who wrote that?",
+      "hl": [
+        "who wrote that"
+      ],
+      "mode": "static",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "My radio answers, in a child's voice: Keep the lights off, lady. I fixed it.",
+      "hl": [
+        "I fixed it"
+      ],
+      "mode": "voice",
+      "speaker": "girl"
+    },
+    {
+      "scene": "window",
+      "text": "On a dark hilltop, a small hand waved a torch. The lights stay off tonight.",
+      "hl": [
+        "small hand"
+      ],
+      "zombies": 6,
+      "survivor": true,
+      "cam": "pull"
+    }
+  ]
+}

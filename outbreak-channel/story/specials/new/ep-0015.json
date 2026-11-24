@@ -1,0 +1,123 @@
+{
+  "episode": 15,
+  "title": "One Can Short",
+  "summary": "A shopkeeper counts her cans every night, and every morning one has vanished from behind a bolted door.",
+  "event": "supplies",
+  "ambience": "night",
+  "kind": "story",
+  "narrator": "ruth",
+  "beats": [
+    {
+      "scene": "supplies",
+      "text": "Every morning, one can was missing. My shop was bolted from inside.",
+      "hl": [
+        "one can"
+      ],
+      "items": [
+        "can:39",
+        "water:6",
+        "candle:3"
+      ],
+      "sfx": [
+        "click"
+      ]
+    },
+    {
+      "scene": "supermarket",
+      "text": "Forty cans Monday. Thirty-nine Tuesday. Someone was eating my food.",
+      "hl": [
+        "Someone"
+      ],
+      "light": "flicker",
+      "zombies": 0
+    },
+    {
+      "scene": "kitchen",
+      "text": "I sat up all night with a bat.",
+      "hl": [
+        "bat"
+      ],
+      "power": false,
+      "cans": 3
+    },
+    {
+      "scene": "door",
+      "text": "Outside, the infected pressed my shutters, drawn by light. I switched the torch off.",
+      "hl": [
+        "switched the torch off"
+      ],
+      "shadow": true,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "supermarket",
+      "text": "At three, a tiny scratch came from the stockroom. Smaller than theirs.",
+      "hl": [
+        "tiny scratch"
+      ],
+      "light": "off",
+      "sfx": [
+        "scratch@0.5"
+      ],
+      "hold": 1.0
+    },
+    {
+      "scene": "hallway",
+      "text": "The stockroom door was open one inch. Two eyes shone back.",
+      "hl": [
+        "Two eyes"
+      ],
+      "light": "off"
+    },
+    {
+      "scene": "hallway",
+      "text": "A small voice whispered, \"Please don't shout. They hear shouting.\"",
+      "hl": [
+        "don't shout"
+      ],
+      "light": "off",
+      "speaker": "girl"
+    },
+    {
+      "scene": "kitchen",
+      "text": "She was six, hiding since the first night, eating one can a day.",
+      "hl": [
+        "six"
+      ],
+      "power": false,
+      "cans": 2
+    },
+    {
+      "scene": "supplies",
+      "text": "I was angry for one second. Then I opened peaches and found a second spoon.",
+      "hl": [
+        "second spoon"
+      ],
+      "items": [
+        "can:37",
+        "water:6"
+      ]
+    },
+    {
+      "scene": "supermarket",
+      "text": "\"There are three of us,\" she whispered.",
+      "hl": [
+        "three of us"
+      ],
+      "light": "flicker",
+      "speaker": "girl"
+    },
+    {
+      "scene": "supermarket",
+      "text": "The freezer door rattled. A scruffy dog crawled out, wagging, and licked the syrup.",
+      "hl": [
+        "scruffy dog"
+      ],
+      "light": "on",
+      "zombies": 0,
+      "cam": "pull"
+    }
+  ]
+}
