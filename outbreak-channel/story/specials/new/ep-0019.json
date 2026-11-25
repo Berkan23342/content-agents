@@ -19,7 +19,7 @@
       ]
     },
     {
-      "scene": "hospital",
+      "scene": "school",
       "text": "The rule is simple. Noise wakes them. A lullaby keeps them still.",
       "hl": [
         "lullaby"
@@ -37,7 +37,7 @@
       "zombies": 0
     },
     {
-      "scene": "hospital",
+      "scene": "subway",
       "text": "At two, a second voice joined me from the far end. Same tune, a half-note flat.",
       "hl": [
         "half-note flat"
@@ -66,7 +66,7 @@
       "alarm": true
     },
     {
-      "scene": "hospital",
+      "scene": "lobby",
       "text": "A small girl stood by a gurney, humming through tears.",
       "hl": [
         "small girl"
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "scene": "hospital",
+      "scene": "lobby",
       "text": "A small girl stood by a gurney, humming through tears. She had been lost for days.",
       "hl": [
         "small girl"
