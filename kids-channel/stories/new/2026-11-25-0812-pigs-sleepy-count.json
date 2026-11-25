@@ -1,0 +1,704 @@
+{
+ "title": "Pig's Sleepy Count",
+ "lesson": "Counting slowly helps you feel calm and ready to sleep",
+ "kind": "bedtime",
+ "theme": "counting",
+ "summary": "Pig cannot sleep, so Owl and Cat take him on a quiet night walk to count stars, flowers and ripples until he feels sleepy.",
+ "cast": [
+  "pig",
+  "owl",
+  "cat",
+  "duck"
+ ],
+ "calm": true,
+ "shots": [
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "moon",
+     "icon": "moon",
+     "color": "#FFE680",
+     "x": 1000,
+     "y": 260,
+     "size": 160
+    }
+   ],
+   "steps": [
+    {
+     "say": "Night had come. Little Pig was in his cosy bed, but his eyes were wide open.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Oink. I cannot sleep. My tummy feels wiggly.",
+     "bubble": "I cannot sleep",
+     "act": "shake"
+    },
+    {
+     "say": "Pig tried to count sheep. But there were no sheep in his room.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "One... oh dear. Where are my sheep?",
+     "bubble": "Where are sheep?",
+     "act": "shake"
+    },
+    {
+     "say": "Tap, tap, tap. Someone was at the window.",
+     "slow": true
+    },
+    {
+     "enter": "owl",
+     "x": 1150,
+     "side": "right",
+     "speed": 300,
+     "fly": true,
+     "y": 450
+    },
+    {
+     "arrive": "owl"
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "x": 700,
+     "name": "pig"
+    },
+    {
+     "name": "owl",
+     "x": 1150,
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "line": "owl",
+     "text": "Hoo hoo. Pig, are you awake? Come and count with me.",
+     "bubble": "Come count with me",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Count what, Owl? It is dark outside.",
+     "bubble": "Count what?"
+    },
+    {
+     "line": "owl",
+     "text": "Count the sleepy things of the night. Follow me, hoo hoo.",
+     "bubble": "Follow me!",
+     "act": "spin"
+    },
+    {
+     "say": "Pig put on his slippers. Off they went, very slowly, into the quiet garden.",
+     "slow": true,
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "x": 700,
+     "name": "pig"
+    },
+    {
+     "x": 1150,
+     "name": "owl",
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [],
+   "steps": []
+  },
+  {
+   "bg": "night",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    },
+    {
+     "name": "owl",
+     "x": 1150,
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The garden was dark and calm. Above them, the sky was full of twinkles.",
+     "slow": true
+    },
+    {
+     "line": "owl",
+     "text": "Look up, Pig. The stars are coming out, one by one.",
+     "bubble": "Look at stars",
+     "act": "wave"
+    },
+    {
+     "prop": "s1",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 500,
+     "y": 220,
+     "size": 130
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "One little star. Twinkle.",
+     "slow": true
+    },
+    {
+     "prop": "s2",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 665,
+     "y": 220,
+     "size": 130
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "Two little stars. Twinkle, twinkle.",
+     "slow": true
+    },
+    {
+     "prop": "s3",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 830,
+     "y": 220,
+     "size": 130
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "line": "pig",
+     "text": "Three! Three stars! Can you count them with me?",
+     "bubble": "Three stars!",
+     "act": "jump"
+    },
+    {
+     "prop": "s4",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 995,
+     "y": 220,
+     "size": 130
+    },
+    {
+     "prop": "s5",
+     "icon": "star",
+     "color": "#FFC92E",
+     "x": 1160,
+     "y": 220,
+     "size": 130
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "say": "Four stars, and five stars. Five sleepy stars, shining softly.",
+     "slow": true
+    },
+    {
+     "line": "owl",
+     "text": "Now say it slowly. One, two, three, four, five. Sleepy stars.",
+     "bubble": "Five sleepy stars"
+    },
+    {
+     "line": "pig",
+     "text": "Ahh. My tummy feels a little less wiggly.",
+     "bubble": "Less wiggly",
+     "act": "wave"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "owl",
+     "x": 1000,
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [
+    {
+     "id": "f1",
+     "icon": "flower",
+     "color": "#FF6FB5",
+     "x": 1250,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f2",
+     "icon": "flower",
+     "color": "#9B5CFF",
+     "x": 1400,
+     "y": 830,
+     "size": 150
+    },
+    {
+     "id": "f3",
+     "icon": "flower",
+     "color": "#FFC92E",
+     "x": 1550,
+     "y": 830,
+     "size": 150
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next, they walked past the garden fence. The flowers had closed their petals for the night.",
+     "slow": true
+    },
+    {
+     "line": "owl",
+     "text": "Flowers go to sleep too. Count them, Pig.",
+     "bubble": "Count the flowers",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "One pink flower. Two purple flowers. Three yellow flowers.",
+     "bubble": "One, two, three!",
+     "act": "jump"
+    },
+    {
+     "say": "Three sleepy flowers. Pink, purple and yellow. All with their heads bowed down.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Goodnight, pink. Goodnight, purple. Goodnight, yellow.",
+     "bubble": "Goodnight, flowers",
+     "act": "wave"
+    },
+    {
+     "enter": "cat",
+     "x": 300,
+     "side": "left",
+     "speed": 250
+    },
+    {
+     "arrive": "cat"
+    },
+    {
+     "say": "Someone soft stepped out of the shadows. It was Cat, stretching and yawning.",
+     "slow": true
+    },
+    {
+     "line": "cat",
+     "text": "Meow. Purr. Are you counting? I love counting. It makes me purr.",
+     "bubble": "I love counting",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Yes! We are counting the sleepy things. Come with us.",
+     "bubble": "Come with us!",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "Purr, purr. I will count in my softest voice.",
+     "bubble": "Soft voice",
+     "act": "spin"
+    },
+    {
+     "say": "So three friends tiptoed on, quiet as a whisper, to the pond.",
+     "slow": true
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 600
+    },
+    {
+     "name": "cat",
+     "x": 950
+    },
+    {
+     "name": "owl",
+     "x": 1300,
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [
+    {
+     "id": "ff0",
+     "icon": "sun",
+     "color": "#FFF27A",
+     "x": 500,
+     "y": 330,
+     "size": 90
+    },
+    {
+     "id": "ff1",
+     "icon": "sun",
+     "color": "#FFF27A",
+     "x": 720,
+     "y": 420,
+     "size": 90
+    },
+    {
+     "id": "ff2",
+     "icon": "sun",
+     "color": "#FFF27A",
+     "x": 940,
+     "y": 330,
+     "size": 90
+    },
+    {
+     "id": "ff3",
+     "icon": "sun",
+     "color": "#FFF27A",
+     "x": 1160,
+     "y": 420,
+     "size": 90
+    }
+   ],
+   "steps": [
+    {
+     "say": "Past the garden, the forest was dark and still. But look! Tiny lights were blinking.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Fireflies! Let us count their little lights.",
+     "bubble": "Count the lights",
+     "act": "jump"
+    },
+    {
+     "line": "cat",
+     "text": "Blink. One firefly. Blink. Two fireflies.",
+     "bubble": "One... two...",
+     "act": "wave"
+    },
+    {
+     "line": "owl",
+     "text": "Blink, blink. Three. And four. Four glowing fireflies.",
+     "bubble": "Four fireflies!",
+     "act": "wave"
+    },
+    {
+     "say": "Four fireflies, glowing gold. They blinked slowly, as if they were sleepy too.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Can you blink slowly like a firefly? Blink, blink, blink.",
+     "bubble": "Blink slowly",
+     "act": "wave"
+    },
+    {
+     "say": "Pig blinked. Cat blinked. Owl blinked. Their eyes felt heavier and heavier.",
+     "slow": true
+    },
+    {
+     "line": "cat",
+     "text": "Mmm. Counting makes me sleepy too. Let us visit the pond.",
+     "bubble": "Visit the pond",
+     "act": "wave"
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "x": 600,
+     "name": "pig"
+    },
+    {
+     "x": 950,
+     "name": "cat"
+    },
+    {
+     "x": 1300,
+     "name": "owl",
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "pond",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 300
+    },
+    {
+     "name": "cat",
+     "x": 620
+    },
+    {
+     "name": "owl",
+     "x": 900,
+     "fly": true,
+     "y": 450
+    },
+    {
+     "name": "duck",
+     "x": 1400
+    }
+   ],
+   "props": [],
+   "steps": [
+    {
+     "say": "The pond was still and silver. A little duck floated near the reeds with her head tucked in.",
+     "slow": true
+    },
+    {
+     "line": "owl",
+     "text": "Shh. Duck is nearly asleep. Let us whisper.",
+     "bubble": "Shh, whisper",
+     "act": "wave"
+    },
+    {
+     "line": "pig",
+     "text": "Hello, Duck. We are counting sleepy things. Can we count you?",
+     "bubble": "Can we count you?"
+    },
+    {
+     "line": "duck",
+     "text": "Quack, quack... yes. I am one sleepy duck.",
+     "bubble": "One sleepy duck",
+     "act": "wave"
+    },
+    {
+     "prop": "r1",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1150,
+     "y": 700,
+     "size": 120
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "Plip! A ripple spread across the water. One ripple.",
+     "slow": true
+    },
+    {
+     "prop": "r2",
+     "icon": "drop",
+     "color": "#5FB3FF",
+     "x": 1300,
+     "y": 700,
+     "size": 120
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "Plip! Two ripples, getting bigger and bigger.",
+     "slow": true
+    },
+    {
+     "line": "cat",
+     "text": "Two ripples. And one duck. That makes... three!",
+     "bubble": "Three!",
+     "act": "jump"
+    },
+    {
+     "line": "duck",
+     "text": "Mmm. Three is a cosy number. Goodnight, friends.",
+     "bubble": "Goodnight, friends",
+     "act": "sleep"
+    },
+    {
+     "say": "The ripples melted away. The pond was quiet again. Everyone yawned a great big yawn.",
+     "slow": true
+    },
+    {
+     "act": "all",
+     "kind": "wave"
+    },
+    {
+     "pause": 0.8
+    }
+   ]
+  },
+  {
+   "bg": "dusk",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 500
+    },
+    {
+     "name": "cat",
+     "x": 900
+    },
+    {
+     "name": "owl",
+     "x": 1300,
+     "fly": true,
+     "y": 450
+    }
+   ],
+   "props": [
+    {
+     "id": "m1",
+     "icon": "moon",
+     "color": "#FFE680",
+     "x": 1500,
+     "y": 280,
+     "size": 170
+    }
+   ],
+   "steps": [
+    {
+     "say": "On the way home, the sky was a soft, deep purple. The moon was round and gentle.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Owl, how many things did we count tonight?",
+     "bubble": "How many things?"
+    },
+    {
+     "line": "owl",
+     "text": "Five stars. Three flowers. One duck. Two ripples. That is lots of sleepy things.",
+     "bubble": "Lots of sleepy things",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "And one moon. Do not forget the moon.",
+     "bubble": "One moon!",
+     "act": "jump"
+    },
+    {
+     "line": "pig",
+     "text": "Ooh! And that is one, two, three... four friends.",
+     "bubble": "Four friends",
+     "act": "spin"
+    },
+    {
+     "say": "Pig looked at his friends, and his tummy felt warm and still.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "I think I can sleep now. Thank you for counting with me.",
+     "bubble": "Thank you, friends",
+     "act": "wave"
+    },
+    {
+     "line": "cat",
+     "text": "Purr. Sweet dreams, Pig.",
+     "bubble": "Sweet dreams",
+     "act": "wave"
+    },
+    {
+     "pause": 0.4
+    },
+    {
+     "say": "Cat and Owl waved goodbye. Pig walked home, step by sleepy step.",
+     "slow": true,
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "bg": "bedroom",
+   "actors": [
+    {
+     "name": "pig",
+     "x": 700
+    }
+   ],
+   "props": [
+    {
+     "id": "moon2",
+     "icon": "moon",
+     "color": "#FFE680",
+     "x": 1000,
+     "y": 260,
+     "size": 160
+    }
+   ],
+   "steps": [
+    {
+     "say": "Back in his room, Pig climbed into bed. His blanket was soft and warm.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "One moon. Two ears. Three... yawn... four...",
+     "bubble": "Four... yawn",
+     "act": "sleep"
+    },
+    {
+     "say": "Pig counted all the sleepy things again, slowly, slowly, slowly.",
+     "slow": true
+    },
+    {
+     "line": "pig",
+     "text": "Five stars, three flowers, four fireflies... goodnight.",
+     "bubble": "Goodnight...",
+     "act": "sleep"
+    },
+    {
+     "act": "pig",
+     "kind": "sleep"
+    },
+    {
+     "say": "His eyes grew heavy. His tummy was calm. Pig was fast asleep.",
+     "slow": true,
+     "gap": 1.0
+    },
+    {
+     "say": "Goodnight, Pig. Goodnight, stars. Goodnight, everyone. The end!",
+     "slow": true,
+     "gap": 1.0
+    }
+   ]
+  }
+ ]
+}
