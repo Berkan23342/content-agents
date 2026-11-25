@@ -1,0 +1,100 @@
+{
+  "episode": 19,
+  "title": "The Lullaby Shift",
+  "summary": "A night nurse hums one lullaby to keep a sleeping ward quiet until sunrise, and tonight someone is humming it back.",
+  "event": "quiet",
+  "ambience": "night",
+  "kind": "story",
+  "narrator": "nicole",
+  "beats": [
+    {
+      "scene": "hospital",
+      "text": "I hum one lullaby every night to keep the ward asleep. Tonight, someone hummed it back.",
+      "hl": [
+        "hummed it back"
+      ],
+      "light": "flicker",
+      "sfx": [
+        "heartbeat"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "The rule is simple. Noise wakes them. A lullaby keeps them still.",
+      "hl": [
+        "lullaby"
+      ],
+      "light": "flicker",
+      "zombies": 0
+    },
+    {
+      "scene": "school",
+      "text": "So every night I hummed, slow and soft, hallway to hallway, until sunrise.",
+      "hl": [
+        "slow and soft"
+      ],
+      "light": "on",
+      "zombies": 0
+    },
+    {
+      "scene": "hospital",
+      "text": "At two, a second voice joined me from the far end. Same tune, a half-note flat.",
+      "hl": [
+        "half-note flat"
+      ],
+      "light": "flicker",
+      "zombies": 2,
+      "hold": 1.0
+    },
+    {
+      "scene": "lobby",
+      "text": "I stopped. It stopped. Down the corridor, the swing doors began to sway.",
+      "hl": [
+        "swing doors"
+      ],
+      "light": "off",
+      "zombies": 1
+    },
+    {
+      "scene": "school",
+      "text": "If I stayed silent, the ward would wake. If I hummed, it would find me.",
+      "hl": [
+        "find me"
+      ],
+      "light": "off",
+      "zombies": 3,
+      "alarm": true
+    },
+    {
+      "scene": "hospital",
+      "text": "A small girl stood by a gurney, humming through tears.",
+      "hl": [
+        "small girl"
+      ],
+      "light": "off",
+      "zombies": 2,
+      "sfx": [
+        "steps"
+      ]
+    },
+    {
+      "scene": "hospital",
+      "text": "A small girl stood by a gurney, humming through tears. She had been lost for days.",
+      "hl": [
+        "small girl"
+      ],
+      "light": "flicker",
+      "zombies": 0
+    },
+    {
+      "scene": "hospital",
+      "text": "I took her hand. We hummed together until sunrise, flat note and all.",
+      "hl": [
+        "sunrise"
+      ],
+      "light": "on",
+      "zombies": 0,
+      "cam": "pull"
+    }
+  ]
+}

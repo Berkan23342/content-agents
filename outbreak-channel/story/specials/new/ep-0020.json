@@ -1,0 +1,104 @@
+{
+  "episode": 20,
+  "title": "Do Not Say Goodnight",
+  "summary": "A late-night radio host has one rule for her listeners: never say goodnight out loud. Tonight a caller breaks it.",
+  "event": "rescue",
+  "ambience": "night",
+  "kind": "broadcast",
+  "narrator": "heart",
+  "beats": [
+    {
+      "scene": "radio",
+      "text": "This is Port Ellis Night Radio. Tonight's rule: never say goodnight out loud. Not once.",
+      "hl": [
+        "goodnight"
+      ],
+      "mode": "voice",
+      "sfx": [
+        "static"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "Goodnight is what the sirens whisper before the infected come running.",
+      "hl": [
+        "come running"
+      ],
+      "mode": "voice"
+    },
+    {
+      "scene": "phone",
+      "text": "A caller is on line one. She says her son is asleep upstairs and will not wake.",
+      "hl": [
+        "will not wake"
+      ],
+      "screen": "message",
+      "lines": [
+        "Line one",
+        "He hasn't moved since last night."
+      ]
+    },
+    {
+      "scene": "phone",
+      "text": "She wants to kiss him goodnight. Just once. I beg her not to.",
+      "hl": [
+        "goodnight"
+      ],
+      "screen": "message",
+      "lines": [
+        "Line one",
+        "I just want to say it to him."
+      ],
+      "sfx": [
+        "buzz"
+      ]
+    },
+    {
+      "scene": "radio",
+      "text": "Through the speakers, faintly, a woman's voice: \"Goodnight, sweetheart.\"",
+      "hl": [
+        "Goodnight, sweetheart"
+      ],
+      "mode": "static",
+      "alarm": true,
+      "hold": 1.0
+    },
+    {
+      "scene": "window",
+      "text": "Every figure on my street turned toward the sound. Then, slowly, they began to kneel.",
+      "hl": [
+        "kneel"
+      ],
+      "zombies": 10,
+      "cam": "push"
+    },
+    {
+      "scene": "street",
+      "text": "One by one they lay down on the wet road and closed their eyes. They were sleeping.",
+      "hl": [
+        "sleeping"
+      ],
+      "zombies": 12
+    },
+    {
+      "scene": "hospital",
+      "text": "The siren was never the signal. Goodnight was the cure.",
+      "hl": [
+        "cure"
+      ],
+      "light": "flicker"
+    },
+    {
+      "scene": "phone",
+      "text": "On line one, a small voice whispered, \"Mum? Is the city asleep now?\" I whispered back: \"Goodnight.\"",
+      "hl": [
+        "Goodnight"
+      ],
+      "screen": "message",
+      "lines": [
+        "Line one",
+        "Thank you."
+      ]
+    }
+  ]
+}
