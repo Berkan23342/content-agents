@@ -164,7 +164,7 @@ jobs:
           rm -f secrets/*.json
           git config user.name "content-bot"
           git config user.email "content-bot@users.noreply.github.com"
-          git add logs/uploaded.txt snacks
+          git add logs/uploaded.txt snacks quizzes
           git diff --cached --quiet && exit 0
           git commit -q -m "quiz: ${{ steps.due.outputs.todo }} $(TZ=Europe/Istanbul date +%F)"
           git status --short | grep -v '^??' | head -20  # anything changed that is not saved (stashed while pulling)
