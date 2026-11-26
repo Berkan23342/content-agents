@@ -1,0 +1,102 @@
+{
+  "episode": 22,
+  "title": "The Nine O'Clock Horde",
+  "summary": "Every night at nine the horde arrives under one woman's window. Tonight she finds out why.",
+  "event": "horde",
+  "ambience": "night",
+  "kind": "found",
+  "narrator": "grace",
+  "beats": [
+    {
+      "scene": "window",
+      "text": "Recording. Every night at nine, the horde arrives under my window. Every night. Always nine.",
+      "hl": [
+        "always nine"
+      ],
+      "zombies": 14,
+      "sfx": [
+        "groan"
+      ]
+    },
+    {
+      "scene": "window",
+      "text": "Sixty minutes of silence, hands over my mouth, while they look up.",
+      "hl": [
+        "silence"
+      ],
+      "zombies": 18,
+      "cam": "still"
+    },
+    {
+      "scene": "kitchen",
+      "text": "Seven nights. Nobody keeps a schedule that regular. Not even the dead.",
+      "hl": [
+        "seven"
+      ],
+      "power": true,
+      "cans": 3
+    },
+    {
+      "scene": "room",
+      "text": "So I searched for what happens in this flat at nine. Nothing.",
+      "hl": [
+        "nothing"
+      ],
+      "light": "candle",
+      "dog": "sleep"
+    },
+    {
+      "scene": "phone",
+      "text": "Then my phone lit up. An alarm I never knew about, set to vibrate. Daily. Nine p.m.",
+      "hl": [
+        "alarm"
+      ],
+      "screen": "alert",
+      "lines": [
+        "ALARM",
+        "Dinner time!"
+      ],
+      "battery": 40,
+      "sfx": [
+        "buzz"
+      ],
+      "hold": 1.0
+    },
+    {
+      "scene": "room",
+      "text": "I'd set it to remind me to eat. A soft buzz, ringing the dinner bell.",
+      "hl": [
+        "dinner bell"
+      ],
+      "light": "candle",
+      "dog": "alert"
+    },
+    {
+      "scene": "window",
+      "text": "I deleted it at 8:59. The street filled, as usual. Nine o'clock came.",
+      "hl": [
+        "8:59"
+      ],
+      "zombies": 15,
+      "alarm": true
+    },
+    {
+      "scene": "street",
+      "text": "Nothing buzzed. They stood there, confused, then drifted away one by one into the rain.",
+      "hl": [
+        "drifted away"
+      ],
+      "zombies": 3,
+      "cam": "pull"
+    },
+    {
+      "scene": "kitchen",
+      "text": "I'm eating dinner now. Quietly. Whoever finds this: check your alarms.",
+      "hl": [
+        "check your alarms"
+      ],
+      "power": true,
+      "cans": 2
+    }
+  ]
+}

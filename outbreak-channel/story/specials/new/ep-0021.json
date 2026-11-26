@@ -1,0 +1,113 @@
+{
+  "episode": 21,
+  "title": "Two Roads, One Whistle",
+  "summary": "Two sisters split at a fork with one rule: whistle every hour so the dead follow the whistler. Then one whistle goes quiet.",
+  "event": "split",
+  "ambience": "wind",
+  "kind": "journal",
+  "narrator": "tess",
+  "beats": [
+    {
+      "scene": "forest",
+      "text": "Our rule: whistle twice every hour. The dead follow the whistler. The other sister walks free.",
+      "hl": [
+        "whistle twice"
+      ],
+      "zombies": 2,
+      "sfx": [
+        "whoosh"
+      ]
+    },
+    {
+      "scene": "street",
+      "text": "My sister Joan and I split at the fork. One road each.",
+      "hl": [
+        "split"
+      ],
+      "zombies": 3
+    },
+    {
+      "scene": "forest",
+      "text": "Noon. I whistled twice. Branches snapped. The whole wood began to lean my way.",
+      "hl": [
+        "lean my way"
+      ],
+      "zombies": 6,
+      "fog": true,
+      "sfx": [
+        "thud"
+      ]
+    },
+    {
+      "scene": "gas_station",
+      "text": "Joan's whistle drifted from the east. Her road was quiet. Mine was filling up.",
+      "hl": [
+        "filling up"
+      ],
+      "zombies": 5,
+      "light": "flicker"
+    },
+    {
+      "scene": "gas_station",
+      "text": "I hid while thirty shuffled past, chasing my own whistle.",
+      "hl": [
+        "thirty"
+      ],
+      "zombies": 8,
+      "light": "off",
+      "hold": 0.8
+    },
+    {
+      "scene": "forest",
+      "text": "Dusk. Her whistle stopped. One hour. Two hours. Nothing but wind.",
+      "hl": [
+        "stopped"
+      ],
+      "zombies": 2,
+      "tone": "dusk",
+      "sfx": [
+        "heartbeat"
+      ]
+    },
+    {
+      "scene": "street",
+      "text": "If I stopped, the dead would turn toward her road. So I could never stop.",
+      "hl": [
+        "never stop"
+      ],
+      "zombies": 6,
+      "alarm": true
+    },
+    {
+      "scene": "forest",
+      "text": "I whistled all night. My lips went numb.",
+      "hl": [
+        "all night"
+      ],
+      "zombies": 7,
+      "fog": true,
+      "cam": "pull"
+    },
+    {
+      "scene": "skybridge",
+      "text": "Dawn. The bridge. A hundred stood below it, every face turned to my road.",
+      "hl": [
+        "hundred"
+      ],
+      "zombies": 5,
+      "light": "flicker",
+      "tone": "dawn"
+    },
+    {
+      "scene": "skybridge",
+      "text": "Far ahead, Joan crossed in silence, unseen. She mouthed two words: thank you.",
+      "hl": [
+        "thank you"
+      ],
+      "zombies": 0,
+      "light": "on",
+      "tone": "dawn",
+      "hold": 1.0
+    }
+  ]
+}
