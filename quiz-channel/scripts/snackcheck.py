@@ -25,7 +25,8 @@ FIRST_DAY = dt.date(2026, 11, 9)  # a "why" day
 # "How many can you get?" quizzes were our best videos). trivia = a question pack from quizzes/new (the writer writes
 # them), flags = made by scripts/quiz.py itself. The Brain Snack formats keep their own turn on the Brain Snack days.
 PLAN_START = dt.date(2026, 11, 20)
-DAY_PLAN = ["trivia", "snack", "flags", "snack", "trivia", "snack", "flags"]
+# 2026-11-26: the flags days became trivia days (a flags quiz got 1 view in 2 days; trivia quizzes 160+)
+DAY_PLAN = ["trivia", "snack", "trivia", "snack", "trivia", "snack", "trivia"]
 ROTATION_BEFORE_PLAN = 11  # Brain Snack days from FIRST_DAY up to PLAN_START (the next one continues the turn)
 
 

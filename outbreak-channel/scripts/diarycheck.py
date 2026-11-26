@@ -63,7 +63,9 @@ EVENTS = {
 EVENT_LIMIT = 3
 RECENT_USED = 6
 # A special (a one-part story) is told in one of these ways; each has its own look (scripts/diary.py SPECIAL_FRAME).
-SPECIAL_KINDS = {"story", "broadcast", "found", "journal"}
+# "broadcast" was dropped on 2026-11-26: its radio voice and "This is the Port Ellis broadcast" openers got the fewest
+# views (16 and 27), while "story" and "found" got 90-125. "journal" stays, but rarely (see check_variety).
+SPECIAL_KINDS = {"story", "found", "journal"}
 SPECIAL_NARRATORS = NARRATORS  # since 2026-11-19 every video is a one-part story: all six women narrate them
 MAX_BEAT_WORDS = 24
 WORDS = (85, 130)
@@ -326,7 +328,11 @@ def check_variety(path, spec):
         raise DiaryError(f"event '{spec['event']}' is already in {', '.join(same)}; pick another kind of day")
     if special:
         if spec.get("kind") not in SPECIAL_KINDS:
-            raise DiaryError(f"a special needs 'kind', one of {sorted(SPECIAL_KINDS)}")
+            raise DiaryError(f"a special needs 'kind', one of {sorted(SPECIAL_KINDS)} (no 'broadcast': it lost viewers)")
+        if spec["kind"] == "journal" and any(o.get("kind") == "journal" for p, o in _recent(path)
+                                             if "specials" in p.split(os.sep)):
+            raise DiaryError("a journal story is already among the waiting or recent stories; tell this one as a 'story' "
+                             "or a 'found' recording, which keep viewers best")
         if spec.get("narrator") not in SPECIAL_NARRATORS:
             raise DiaryError(f"a special picks its own 'narrator', one of {sorted(SPECIAL_NARRATORS)}")
     need = 3 if special else 4

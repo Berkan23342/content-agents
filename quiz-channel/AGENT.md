@@ -25,11 +25,11 @@ format has its own host voice, background and fonts (the code picks them; you on
 **Since 2026-11-20 the days take turns** (the owner: different formats on different days, not one fixed format; our
 five-question "How many can you get?" quizzes were the channel's best videos, about 1,000 views each, while single
 Brain Snacks lost most viewers in the first second). `scripts/snackcheck.py DAY_PLAN` repeats every 7 days:
-trivia quiz, Brain Snack, flags quiz, Brain Snack, trivia quiz, Brain Snack, flags quiz.
+trivia quiz, Brain Snack, trivia quiz, Brain Snack, trivia quiz, Brain Snack, trivia quiz (since 2026-11-26 there are
+no flags days: a flags quiz got 1 view in 2 days, a trivia quiz 164).
 
-- **trivia days:** a five-question quiz from a question pack you write (see Trivia packs). Keep at least 3 packs
-  waiting.
-- **flags days:** a "guess the flag" quiz the code makes by itself. Nothing to write.
+- **trivia days:** a five-question quiz from a question pack you write (see Trivia packs). Four a week: keep at least
+  4 packs waiting, every one a new theme.
 - **Brain Snack days:** the eight Brain Snack formats below keep their own turn, one per Brain Snack day.
 
 The quiz job (`.github/workflows/quiz-video.yml`) takes the day's script or pack, voices it, draws it and uploads it.

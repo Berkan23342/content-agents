@@ -35,6 +35,12 @@ evening), both from `story/specials/`.
 - **One idea per story, told whole in about a minute.** A premise a stranger understands in one breath, built on a
   rule, a threat or an impossible choice: "If you hear three knocks, don't open." "The infected follow light, and my job
   is the lighthouse." "My daughter's school bus is the last one out, and I'm the driver."
+- **The first line: who I am, the rule, the danger.** Our numbers (2026-11-26): the stories that opened with the
+  narrator's role and a rule ("The infected follow sound. I am a crossing guard with a loud whistle." 125 views; "I am
+  the school caretaker, with eleven keys. Tonight the infected filled the corridor." 105) did three to six times better
+  than the ones that opened like an announcement ("This is the Port Ellis broadcast..." 16 and 27). So the first beat
+  always says, in at most two short sentences, who the narrator is (a job or a role people know) and the rule or the
+  danger of tonight.
 - **Shape (the spiral):** the hook in the first beat (the danger or the rule, said at once; no lead-in, no "Day N."),
   then each beat raises the stakes or tightens the trap, a turn in the middle (the rule breaks, a mistake, a stranger),
   and an ending that pays off the hook: a twist the viewer did not see coming but that the first beats set up, or one
@@ -44,11 +50,12 @@ evening), both from `story/specials/`.
 - **Narrator** (`"narrator"`): one of `nicole`, `isabella`, `heart`, `grace`, `ruth`, `tess`, always a woman, a
   different one from the previous story.
 - **Kind** (`"kind"`), how it is told, a different one from the previous story; each has its own look:
-  - `story`: a survivor tells it (the diary look).
-  - `broadcast`: a radio or TV presenter on an emergency broadcast that slowly goes wrong (radio voice, LIVE banner,
-    news ticker).
-  - `found`: a phone recording someone left behind (REC light, timecode); the narrator talks to the camera.
-  - `journal`: pages of a handwritten journal someone found; dated entries, short.
+  - `story`: a survivor tells it (the diary look). Our best kind.
+  - `found`: a phone recording someone left behind (REC light, timecode); the narrator talks to the camera. As good.
+  - `journal`: pages of a handwritten journal someone found; dated entries, short. It kept fewer viewers: at most one
+    journal among the waiting and recent stories (the checker refuses a second).
+  - No `broadcast` any more: the radio voice lost viewers. A radio host can still be a narrator, telling it as a
+    `story` or a `found` recording ("I host the night show on Port Ellis radio...").
 - **Event** (`"event"`): what the story is mostly about: `supplies`, `shelter`, `escape`, `rescue`, `stranger`,
   `sickness`, `weather`, `signal`, `loss`, `discovery`, `trap`, `horde`, `journey`, `repair`, `plan`, `quiet`,
   `split`, `reunion`. Not the previous story's, and not one already in 3 of the waiting and recent stories.
@@ -61,7 +68,7 @@ evening), both from `story/specials/`.
 
 ## Writing rules
 
-- **Voice:** first person, past tense ("I"), in the narrator's voice (a `broadcast` may be present tense). Short
+- **Voice:** first person, past tense ("I"), in the narrator's voice (a `found` recording may be present tense). Short
   sentences, concrete details, a little dry humour.
 - **Length:** 100-125 words over 8-14 beats; each beat is one or two sentences, at most 24 words. A part lasts about a
   minute.

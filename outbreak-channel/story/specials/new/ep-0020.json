@@ -4,12 +4,12 @@
   "summary": "A late-night radio host has one rule for her listeners: never say goodnight out loud. Tonight a caller breaks it.",
   "event": "rescue",
   "ambience": "night",
-  "kind": "broadcast",
+  "kind": "found",
   "narrator": "heart",
   "beats": [
     {
       "scene": "radio",
-      "text": "This is Port Ellis Night Radio. Tonight's rule: never say goodnight out loud. Not once.",
+      "text": "Recording. I host Port Ellis Night Radio. My one rule: never say goodnight out loud. Not once.",
       "hl": [
         "goodnight"
       ],
@@ -28,9 +28,9 @@
     },
     {
       "scene": "phone",
-      "text": "A caller is on line one. She says her son is asleep upstairs and will not wake.",
+      "text": "Tonight a caller rang line one. Her son was asleep upstairs and would not wake.",
       "hl": [
-        "will not wake"
+        "asleep"
       ],
       "screen": "message",
       "lines": [
@@ -55,7 +55,7 @@
     },
     {
       "scene": "radio",
-      "text": "Through the speakers, faintly, a woman's voice: \"Goodnight, sweetheart.\"",
+      "text": "Then, over my headphones, faintly, a woman's voice: \"Goodnight, sweetheart.\"",
       "hl": [
         "Goodnight, sweetheart"
       ],

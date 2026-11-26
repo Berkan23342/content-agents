@@ -302,6 +302,9 @@ def build(day, slot, fmt):
     pack_path, pack = None, None
     if fmt in ("trivia", "truefalse"):
         pack_path, pack = take_pack(fmt, day.isoformat(), slot)
+        if not pack and fmt == "trivia":  # no trivia pack waiting: a true-or-false pack before the weaker flags quiz
+            pack_path, pack = take_pack("truefalse", day.isoformat(), slot)
+            fmt = "truefalse" if pack else fmt
         if not pack:
             print(f"no {fmt} pack in quizzes/new, making a {'flags' if fmt == 'trivia' else 'math'} quiz instead")
             fmt = "flags" if fmt == "trivia" else "math"
