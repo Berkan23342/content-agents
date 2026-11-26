@@ -1,0 +1,14 @@
+{
+  "format": "myth",
+  "title": "Do You Think a Banana Is a Berry?",
+  "summary": "Botanists define a berry by how the fruit grows, not by size or looks. By that definition a banana is a berry, and a strawberry is not.",
+  "topic": "nature",
+  "beats": [
+    {"text": "A banana is a berry, but a strawberry is not. Myth or fact? Pause and guess!", "hl": ["banana", "berry"], "visual": {"kind": "hook", "emoji": "🍌", "text": "Is a banana a berry?"}},
+    {"text": "In the shop, berries are small, round and sweet. Bananas are long and yellow.", "hl": ["small", "long"], "visual": {"kind": "emoji", "emoji": "🍓", "label": "Looks like a berry", "motion": "bounce"}},
+    {"text": "Time's up. Myth or fact?", "reveal": "Fact! Botanists call a banana a berry, and a strawberry is not one.", "visual": {"kind": "choice", "question": "A banana is a berry. Myth or fact?", "options": [{"emoji": "🙅", "label": "Myth"}, {"emoji": "✅", "label": "Fact"}], "answer": 1}},
+    {"text": "Scientists don't sort fruit by looks. They look at how it grows from the flower.", "hl": ["how it grows"], "visual": {"kind": "pair", "a": {"emoji": "🍌", "label": "Seeds inside flesh"}, "b": {"emoji": "🍓", "label": "Seeds outside"}, "vs": true}},
+    {"text": "A true berry has a soft skin, soft flesh and seeds inside. That fits bananas, grapes and tomatoes.", "hl": ["soft", "tomatoes"], "visual": {"kind": "steps", "items": [{"emoji": "🍌", "label": "Banana"}, {"emoji": "🍇", "label": "Grape"}, {"emoji": "🍅", "label": "Tomato"}]}},
+    {"text": "Bonus fact: the tiny dark dots in a banana are its seeds.", "hl": ["seeds"], "visual": {"kind": "fact", "emoji": "🔍", "text": "The tiny dark dots in the middle of a banana are the remains of its seeds."}}
+  ]
+}
