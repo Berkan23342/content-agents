@@ -1,0 +1,747 @@
+{
+ "title": "Sheep's Windy Scarf",
+ "lesson": "Friends help each other; weather changes",
+ "kind": "adventure",
+ "theme": "weather",
+ "summary": "Wind blows Sheep's rainbow scarf away and she follows it through the forest, the beach, the rain and the garden with Bunny and Owl.",
+ "cast": [
+  "sheep",
+  "bunny",
+  "owl"
+ ],
+ "calm": false,
+ "shots": [
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 600
+    },
+    {
+     "name": "bunny",
+     "x": 1250
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 900,
+     "y": 420,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "One windy morning, Sheep showed Bunny her brand new rainbow scarf."
+    },
+    {
+     "line": "sheep",
+     "text": "Look, Bunny! I knitted it myself. Baa!",
+     "bubble": "My new scarf!",
+     "act": "jump"
+    },
+    {
+     "line": "bunny",
+     "text": "It is so pretty! How many colors does it have?",
+     "bubble": "How many colors?",
+     "act": "wave"
+    },
+    {
+     "say": "Can you count the colors with us? Red, orange, yellow, green, blue. Five colors!"
+    },
+    {
+     "line": "sheep",
+     "text": "Yes! Five colors, all warm and soft.",
+     "bubble": "Five colors!",
+     "act": "spin"
+    },
+    {
+     "say": "Then, whoosh! A big wind came blowing past."
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1700,
+     "y": 200,
+     "dur": 1.4
+    },
+    {
+     "line": "sheep",
+     "text": "Oh no! My scarf is flying away!",
+     "bubble": "Come back!",
+     "act": "shake"
+    },
+    {
+     "line": "bunny",
+     "text": "Do not worry, Sheep. Let us follow it. Hop, hop, hop!",
+     "bubble": "Let's follow!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "day",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1700,
+     "y": 200,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "They ran and hopped across the hills, as fast as they could."
+    },
+    {
+     "line": "sheep",
+     "text": "I am slow. Baa. My legs are short.",
+     "bubble": "I am slow...",
+     "act": "shake"
+    },
+    {
+     "line": "bunny",
+     "text": "Slow and fast are opposites. I will hop fast, you walk slow.",
+     "bubble": "Fast and slow!",
+     "act": "wave"
+    },
+    {
+     "say": "Can you say it? Fast, fast, fast! Slow, slow, slow!"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1850,
+     "y": 300,
+     "dur": 1.0
+    },
+    {
+     "line": "sheep",
+     "text": "Look! The wind is taking it to the forest.",
+     "bubble": "To the forest!",
+     "act": "wave"
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "say": "So off they went, together, to the forest."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1400,
+     "y": 200,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "In the forest, the wind was strong and the trees were tall."
+    },
+    {
+     "line": "bunny",
+     "text": "I see it! It is high up in the tree.",
+     "bubble": "It's up high!",
+     "act": "jump"
+    },
+    {
+     "line": "sheep",
+     "text": "It is too high for me. Baa. Too high.",
+     "bubble": "Too high...",
+     "act": "shake"
+    },
+    {
+     "say": "Up high. Down low. Those are opposites. Can you say up and down?"
+    },
+    {
+     "line": "bunny",
+     "text": "I can jump up. Boing! But I cannot reach.",
+     "bubble": "Boing! Too high.",
+     "act": "jump"
+    },
+    {
+     "sfx": "boing"
+    },
+    {
+     "say": "Bunny tried once. Bunny tried twice. But the scarf was still too far."
+    },
+    {
+     "line": "sheep",
+     "text": "Oh dear. What can we do now?",
+     "bubble": "What can we do?",
+     "act": "shake"
+    }
+   ]
+  },
+  {
+   "bg": "forest",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 900
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1400,
+     "y": 200,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "Then they heard a soft sound from above. Whoo, whoo!"
+    },
+    {
+     "enter": "owl",
+     "x": 1400,
+     "side": "right",
+     "fly": true,
+     "y": 420,
+     "speed": 700
+    },
+    {
+     "arrive": "owl"
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! I can fly up high. I will help you.",
+     "bubble": "I will help!",
+     "act": "wave"
+    },
+    {
+     "move": "owl",
+     "x": 1400,
+     "y": 260,
+     "dur": 1.0
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1400,
+     "y": 380,
+     "dur": 0.8
+    },
+    {
+     "line": "owl",
+     "text": "I have almost got it. Just one more...",
+     "bubble": "Almost there!",
+     "act": "jump"
+    },
+    {
+     "say": "But, whoosh! A gust of wind took the scarf again."
+    },
+    {
+     "sfx": "whoosh"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1750,
+     "y": 120,
+     "dur": 1.2
+    },
+    {
+     "line": "owl",
+     "text": "Oh dear! Come along. I know where it goes.",
+     "bubble": "Follow me!",
+     "act": "wave"
+    },
+    {
+     "say": "Away went the scarf, over the trees and far away."
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 400
+    },
+    {
+     "name": "bunny",
+     "x": 800
+    },
+    {
+     "name": "owl",
+     "x": 1200,
+     "y": 420,
+     "fly": true
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1650,
+     "y": 200,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "Next, our three friends came to a sunny beach. The sand was warm."
+    },
+    {
+     "line": "bunny",
+     "text": "The sun is hot. The sea breeze is cool.",
+     "bubble": "Hot and cool!",
+     "act": "wave"
+    },
+    {
+     "say": "Hot and cold are opposites. Is the sand hot or cold? Hot! Is the sea cool? Yes!"
+    },
+    {
+     "line": "owl",
+     "text": "Whoo! Look, a scarf is floating on the sea.",
+     "bubble": "I see it!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1500,
+     "y": 700,
+     "dur": 1.4
+    },
+    {
+     "line": "sheep",
+     "text": "My scarf! But I cannot swim. Baa.",
+     "bubble": "I cannot swim!",
+     "act": "shake"
+    },
+    {
+     "line": "bunny",
+     "text": "Do not be sad. The waves may help us.",
+     "bubble": "Waves may help!",
+     "act": "wave"
+    },
+    {
+     "say": "Splash, splash. The sea went up and down, up and down."
+    }
+   ]
+  },
+  {
+   "bg": "beach",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 400
+    },
+    {
+     "name": "bunny",
+     "x": 800
+    },
+    {
+     "name": "owl",
+     "x": 1200,
+     "y": 420,
+     "fly": true
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 1500,
+     "y": 700,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "line": "bunny",
+     "text": "Let us count the waves. Can you help us?",
+     "bubble": "Count the waves!",
+     "act": "spin"
+    },
+    {
+     "say": "One wave. Two waves. Three waves."
+    },
+    {
+     "sfx": "splash"
+    },
+    {
+     "say": "The third wave was the biggest one. It pushed the scarf to the shore."
+    },
+    {
+     "prop_move": "scarf",
+     "x": 1000,
+     "y": 830,
+     "dur": 1.4
+    },
+    {
+     "line": "sheep",
+     "text": "Hooray! Thank you, kind waves!",
+     "bubble": "Thank you, waves!",
+     "act": "spin"
+    },
+    {
+     "line": "owl",
+     "text": "But the scarf is wet and sandy. Whoo.",
+     "bubble": "It is sandy...",
+     "act": "shake"
+    },
+    {
+     "say": "Wet and sandy. That was not nice. Sheep felt a little bit sad."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "rain",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 950
+    },
+    {
+     "name": "owl",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 950,
+     "y": 420,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "Then grey clouds came. Pitter, patter! Rain began to fall."
+    },
+    {
+     "sfx": "thunder"
+    },
+    {
+     "line": "sheep",
+     "text": "Oh no. Now it is even wetter. Baa.",
+     "bubble": "So wet...",
+     "act": "shake"
+    },
+    {
+     "line": "owl",
+     "text": "Wait, Sheep. Rain can wash the sand off.",
+     "bubble": "Rain can wash it!",
+     "act": "wave"
+    },
+    {
+     "prop": "d0",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 700,
+     "y": 250,
+     "size": 110
+    },
+    {
+     "prop": "d1",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 870,
+     "y": 250,
+     "size": 110
+    },
+    {
+     "prop": "d2",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1040,
+     "y": 250,
+     "size": 110
+    },
+    {
+     "prop": "d3",
+     "icon": "drop",
+     "color": "#2F8CFF",
+     "x": 1210,
+     "y": 250,
+     "size": 110
+    },
+    {
+     "line": "owl",
+     "text": "Let us count the drops as they fall.",
+     "bubble": "Count the drops!",
+     "act": "jump"
+    },
+    {
+     "say": "One, two, three, four drops. Can you count them with us?"
+    },
+    {
+     "line": "bunny",
+     "text": "Four drops! Look, the scarf is clean again.",
+     "bubble": "Four drops!",
+     "act": "spin"
+    },
+    {
+     "sfx": "sparkle"
+    }
+   ]
+  },
+  {
+   "bg": "rain",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 950
+    },
+    {
+     "name": "owl",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 950,
+     "y": 420,
+     "size": 220
+    }
+   ],
+   "steps": [
+    {
+     "say": "The scarf was clean, but now it was very wet."
+    },
+    {
+     "line": "sheep",
+     "text": "Brr. A wet scarf cannot keep me warm.",
+     "bubble": "Too wet...",
+     "act": "shake"
+    },
+    {
+     "line": "bunny",
+     "text": "The rain will stop soon. Then we can dry it.",
+     "bubble": "Rain will stop!",
+     "act": "wave"
+    },
+    {
+     "say": "Wet and dry are opposites. Can you say wet and dry?"
+    },
+    {
+     "say": "And soon the rain did stop. The sun peeped out from behind a cloud."
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "line": "owl",
+     "text": "Look up! The sun is coming. Whoo!",
+     "bubble": "Sun is back!",
+     "act": "jump"
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 950
+    },
+    {
+     "name": "owl",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 950,
+     "y": 420,
+     "size": 220
+    },
+    {
+     "id": "sun",
+     "icon": "sun",
+     "color": "#FFC92E",
+     "x": 1650,
+     "y": 200,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "So they walked to the garden, where the sun was warm and bright."
+    },
+    {
+     "line": "sheep",
+     "text": "Now my scarf can dry in the sun. Baa!",
+     "bubble": "Dry in the sun!",
+     "act": "jump"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 950,
+     "y": 830,
+     "dur": 1.0
+    },
+    {
+     "line": "owl",
+     "text": "The wind blew it away, the sea carried it, and the rain washed it.",
+     "bubble": "Wind, sea, rain!",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "And the sun is drying it. What a day!",
+     "bubble": "What a day!",
+     "act": "spin"
+    },
+    {
+     "say": "Wind, rain and sun. Windy, wet and warm. Weather changes all day long."
+    },
+    {
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "bg": "garden",
+   "actors": [
+    {
+     "name": "sheep",
+     "x": 500
+    },
+    {
+     "name": "bunny",
+     "x": 950
+    },
+    {
+     "name": "owl",
+     "x": 1400
+    }
+   ],
+   "props": [
+    {
+     "id": "scarf",
+     "icon": "rainbow",
+     "color": "#FF6FB5",
+     "x": 950,
+     "y": 830,
+     "size": 220
+    },
+    {
+     "id": "sun",
+     "icon": "sun",
+     "color": "#FFC92E",
+     "x": 1650,
+     "y": 200,
+     "size": 200
+    }
+   ],
+   "steps": [
+    {
+     "say": "Soon the scarf was dry, soft and warm again."
+    },
+    {
+     "sfx": "sparkle"
+    },
+    {
+     "prop_move": "scarf",
+     "x": 950,
+     "y": 420,
+     "dur": 0.9
+    },
+    {
+     "line": "sheep",
+     "text": "Thank you, Bunny. Thank you, Owl. You helped me.",
+     "bubble": "Thank you, friends!",
+     "act": "spin"
+    },
+    {
+     "line": "owl",
+     "text": "Friends help each other. That is what friends do.",
+     "bubble": "Friends help!",
+     "act": "wave"
+    },
+    {
+     "line": "bunny",
+     "text": "Let us count the colors one more time!",
+     "bubble": "Count once more!",
+     "act": "jump"
+    },
+    {
+     "say": "Red, orange, yellow, green, blue. All five colors are here."
+    },
+    {
+     "act": "all",
+     "kind": "jump"
+    },
+    {
+     "sfx": "ding"
+    },
+    {
+     "say": "Sheep wore her warm rainbow scarf, and her two good friends smiled. The end!"
+    },
+    {
+     "pause": 0.6
+    }
+   ]
+  }
+ ]
+}
